@@ -40,7 +40,7 @@ html {
       background-color: transparent;
 
       .site-footer-inner {
-        border-top: solid 1px #eee;
+        border-top: solid 1px #fff;
       }
     }
   }
@@ -191,7 +191,7 @@ html {
 .site-footer {
   @include relative-font-size(1.0);
   color: $footer-text-color;
-  background-color: $footer-background-color;
+  background-color: #fff;
   text-align: left;
   transition: background-color 0.2s;
 
@@ -274,7 +274,7 @@ html {
       padding-bottom: 30px;
 
       &:not(:last-child) {
-        border-bottom: 1px solid #e3e3e3;
+        border-bottom: 1px solid #000;
       }
     }
   }
@@ -291,11 +291,11 @@ html {
   .post-link {
     @include relative-font-size(1.65);
     font-weight: $base-font-weight * 1.5;
-    color: #333;
+    color: #000;
   }
 
   .post-meta {
-    color: $grey-color;
+    color: $grey-color-light;
     font-size: $base-font-size;
     margin-bottom: $spacing-unit * 0.5;
   }
@@ -350,7 +350,7 @@ html {
   }
 
   .post-text {
-    color: $grey-color;
+    color: $grey-color-light;
     word-break: break-word;
     overflow-wrap: break-word;
     flex: 1;
@@ -370,16 +370,17 @@ html {
     }
 
     &:hover {
-      color: #787878;
+      color: #000;
     }
   }
 
+// .paginator missing in _dark.scss
   .paginator {
     text-align: center;
 
     & > .previous:before {
       content: ' ';
-      border: solid #787878;
+      border: solid #000;
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 4px;
@@ -390,7 +391,7 @@ html {
 
     & > .next:after {
       content: ' ';
-      border: solid #787878;
+      border: solid #000;
       border-width: 0 2px 2px 0;
       display: inline-block;
       padding: 4px;
@@ -400,7 +401,7 @@ html {
     }
 
     .previous span, .next span {
-      color: #b3b3b3;
+      color: #000;
     }
 
     .indicator {
@@ -419,7 +420,7 @@ html {
   .post-header {
     margin: 50px auto 60px;
     padding: 0 0 20px;
-    border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #000;
 
     .post-title {
       margin-bottom: 6px;
@@ -430,7 +431,7 @@ html {
     }
 
     .post-meta {
-      color: $grey-color;
+      color: $grey-color-light;
       padding-bottom: 15px;
     }
   }
@@ -485,7 +486,7 @@ html {
 
     hr {
       height: 1px;
-      background-color: #ebebeb;
+      background-color: #ebebeb; //
       border: none;
     }
   }
@@ -493,7 +494,7 @@ html {
   .post-related {
     &>*:first-child {
       @include relative-font-size(1.425);
-      color: #333;
+      color: $grey-color-light;
       margin-bottom: 14px;
     }
 
@@ -503,10 +504,10 @@ html {
 
     .post-link {
       @include relative-font-size(1.075);
-      color: $grey-color;
+      color: $grey-color-light;
 
       &:hover {
-        color: darken($grey-color, 50%);
+        color: $grey_color-light;
       }
     }
   }
@@ -527,14 +528,14 @@ html {
 
   a {
     @include relative-font-size(1.125);
-    color: $grey-color;
+    color: $grey-color-light;
     line-height: 15px;
     max-width: 50%;
   }
 
   .previous:before {
     content: ' ';
-    border: solid #787878;
+    border: solid $grey-color-light;
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 4px;
@@ -545,7 +546,7 @@ html {
 
   .next:after {
     content: ' ';
-    border: solid #787878;
+    border: solid $grey-color-light;
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 4px;
@@ -576,7 +577,7 @@ html {
 
   .post-meta {
     font-size: $small-font-size;
-    color: $grey-color;
+    color: $grey-color-light;
   }
 }
 
@@ -669,7 +670,7 @@ html {
     }
 
     .left-vsplit:before {
-      background: #e3e3e388;
+      background: #fff;
     }
 
     .post-tags {
@@ -753,7 +754,7 @@ html {
 
   .post-meta {
     font-size: $small-font-size;
-    color: $grey-color;
+    color: $grey-color-light;
   }
 
   li a {
@@ -761,7 +762,7 @@ html {
       margin-left: 5px;
     }
 
-    color: #303030;
+    color: #000;
 
     &:hover {
       color: #000;

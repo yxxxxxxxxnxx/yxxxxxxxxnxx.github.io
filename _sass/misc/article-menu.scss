@@ -15,9 +15,9 @@
 
   .post-menu-content {
     ul {
-      border-left: 1px solid #e9ecef;
+      border-left: 1px solid #000;
       $indent: #{$base-font-size / 4};
-      $active-bgcolor: #ecebec;
+      $active-bgcolor: #000;
 
       @for $i from 2 to 7 {
         .h-h#{$i} {
@@ -30,30 +30,30 @@
       a {
         display: flex;
         padding: 2px 8px;
-        color: darken($text-color, 10%);
+        color: #000;
 
         * {
           pointer-events: none;
         }
 
-        &:hover {
-          text-decoration: none;
-          color: lighten($text-color, 30%)!important;
-        }
+        // &:hover {
+        //   text-decoration: none;
+        //   color: lighten($text-color, 30%)!important;
+        // }
       }
 
       .active {
         background-color: $active-bgcolor;
         transition: background 0.5s;
-        border-left: 2px solid #202020;
-        margin-left: -2px;
+        border-left: 0px solid #000;
+        margin-left: 0px;
 
         &:hover {
           background-color: lighten($active-bgcolor, 2%);
         }
 
         a {
-          color: #121416;
+          color: #fff;
         }
       }
     }

@@ -13,12 +13,12 @@ $base-transition-duration: 0.3s !default;
 
 $spacing-unit:     30px !default;
 
-$text-color:       #1d1d1f !default;
+$text-color:       #000000 !default;
 $background-color: #fff !default;
 
 $grey-color:       #777 !default;
-$grey-color-light: lighten($grey-color, 40%) !default;
-$grey-color-dark:  darken($grey-color, 25%) !default;
+$grey-color-light: #000 !default;
+$grey-color-dark:  #fff !default;
 
 $white-color: #fdfdfd !default;
 
