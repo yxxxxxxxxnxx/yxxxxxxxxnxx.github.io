@@ -155,7 +155,7 @@ defaults:
       video: /assets/videos/jw.mp4
       loop: true
       volume: 0.0
-      start_at: 8.5
+      start_at: 0.0
       image: https://bit.ly/3xTmdUP
       opacity: 0.95
       background: "#000"
