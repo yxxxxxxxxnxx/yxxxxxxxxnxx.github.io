@@ -3,7 +3,7 @@ layout: post
 title: Test post
 subtitle: Subtitle test
 categories: TestCat
-tags: tag1 tag2 tag3
+tags: [tag1, tag2, tag3]
 ---
 
 ~~~ python
