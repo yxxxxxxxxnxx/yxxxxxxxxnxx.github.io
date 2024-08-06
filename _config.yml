@@ -157,7 +157,7 @@ defaults:
       volume: 0.0
       start_at: 8.5
       image: https://bit.ly/3xTmdUP
-      opacity: 0.8
+      opacity: 0.95
       background: "#000"
       height: "100vh"
       min_height: "38vh"
