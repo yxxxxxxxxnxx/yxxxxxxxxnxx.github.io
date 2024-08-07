@@ -66,8 +66,8 @@ yat:
 content_width: "1600px"
 
 # Google analytics - GA4
-# google_analytics: [Measurement ID]
-# enableDNT: "false"
+google_analytics: G-9C49NB9F6P
+enableDNT: "false"
 
 # If you want to generate website sitemap, you can set true
 # sitemap: false
@@ -157,7 +157,7 @@ defaults:
       volume: 0.0
       start_at: 0.0
       image: https://bit.ly/3xTmdUP
-      opacity: 0.95
+      opacity: 0.75
       background: "#000"
       height: "100vh"
       min_height: "38vh"
@@ -181,12 +181,12 @@ defaults:
 #   subheading_style: null  # Custom subheading style (e.g. color: gold)
 
 # Excerpt settings
-# excerpt:
-#   default_image: /assets/images/default-image.jpeg  # Default image when the image style is not none
-#   image_style: z          # Image layout style (It's value could be none, left, right, top, z, z-reverse)
+excerpt:
+  default_image:            # Default image when the image style is not none
+  image_style: right        # Image layout style (It's value could be none, left, right, top, z, z-reverse)
 #   image_width: 38.2%      # Image default width
 #   image_height: 160px     # Image default height
-#   text_size: 350          # Words default size
+  text_size: 650            # Words default size
 
 # Pagination setting
 # paginate: 5
