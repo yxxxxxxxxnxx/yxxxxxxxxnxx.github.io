@@ -108,12 +108,12 @@ snowwhite: #ffffff
 # brand_color: orangered
 #
 # Custom color as below:
-brand_color: "#fbc252"
+brand_color: "#E1AF00"
 
 # You can custom selection style
 selection:
   color: "#000000"
-  background_color: "#fbc252"
+  background_color: "#E1AF00"
 
 # Night/Dark mode
 # Default mode is "auto", "auto" is for auto nightshift
@@ -133,7 +133,7 @@ selection:
 code_badge:
   enabled: "true"
   color: "#fff"
-  background_color: "#fbc252"
+  background_color: "#E1AF00"
   text_transform: "uppercase"  # ("uppercase", "lowercase", "capitalize")
 
 # If you want to link only specific pages in your header, uncomment
@@ -162,7 +162,7 @@ defaults:
       height: "100vh"
       min_height: "38vh"
       heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
-      subheading_style: "color: #fbc252"
+      subheading_style: "color: #E1AF00"
 
 # Banner default settings
 # These banner settings are for global banner default, but you can also
