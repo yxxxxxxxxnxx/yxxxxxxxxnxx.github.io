@@ -372,7 +372,7 @@ plt.show()
 
 
     
-![png](W03_files/W03_6_0.png)
+![png](/assets/images/W03_files/W03_6_0.png)
     
 
 
@@ -472,7 +472,7 @@ plt.show()
 
 
     
-![png](W03_files/W03_9_0.png)
+![png](/assets/images/W03_files/W03_9_0.png)
     
 
 
@@ -655,7 +655,7 @@ plt.show()
 
 
     
-![png](W03_files/W03_14_0.png)
+![png](/assets/images/W03_files/W03_14_0.png)
     
 
 
@@ -685,7 +685,7 @@ plt.show()
 
 
     
-![png](W03_files/W03_15_0.png)
+![png](/assets/images/W03_files/W03_15_0.png)
     
 
 
@@ -727,7 +727,7 @@ plt.show()
 
 
     
-![png](W03_files/W03_18_1.png)
+![png](/assets/images/W03_files/W03_18_1.png)
     
 
 
@@ -965,7 +965,7 @@ plt.show()
 
 
     
-![png](W03_files/W03_22_0.png)
+![png](/assets/images/W03_files/W03_22_0.png)
     
 
 
@@ -991,6 +991,6 @@ plt.show()
 
 
     
-![png](W03_files/W03_23_0.png)
+![png](/assets/images/W03_files/W03_23_0.png)
     
 
