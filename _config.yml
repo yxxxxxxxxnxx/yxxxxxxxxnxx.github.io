@@ -89,10 +89,11 @@ lang: "ko"  # default lang is en
 #     text: Deutsch
 
 # Polyglot
-languages: ["en", "ko", "de"]
+languages: ["ko", "en", "de"]
 default_lang: "ko"
-exclude_from_localization: ["image"]
-parallel_localization: false
+exclude_from_localization: ["images"]
+parallel_localization: true
+url: https://yxxxxxxxxnxx.github.io
 
 # You can choose a theme color
 # Default theme colors as below:
