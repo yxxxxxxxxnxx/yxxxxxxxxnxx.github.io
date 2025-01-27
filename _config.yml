@@ -148,7 +148,7 @@ code_badge:
 header_pages:
   - index.html
   - home.html
-  - about.html
+  - about.md
   - categories.html
   - archives.html
   - tags.html
