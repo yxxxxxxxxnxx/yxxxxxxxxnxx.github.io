@@ -94,13 +94,13 @@ a {
   text-decoration: none;
 }
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .social-media-list a:hover {
   text-decoration: none;
 }
 .social-media-list a:hover .username {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /**
@@ -368,7 +368,7 @@ html[data-scroll-status=down] .framework .sidebar {
   margin-right: 24px;
 }
 .site-nav .page-link:not(:last-child):hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 @media screen and (max-width: 800px) {
   .site-nav {
@@ -842,7 +842,7 @@ html[data-scroll-status=down] .framework .sidebar {
   color: #fff;
 }
 .page-banner .page-banner-inner .post-tags .post-tag:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 @media screen and (max-width: 600px) {
   .page-banner {
