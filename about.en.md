@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: about/
-lang: ko
+lang: en
 ---
 
 <h2>English introduction</h2>

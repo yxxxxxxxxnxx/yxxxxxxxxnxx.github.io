@@ -89,7 +89,7 @@ lang: "ko"  # default lang is en
 #     text: Deutsch
 
 # Polyglot
-languages: ["ko", "en", "de"]
+languages: ["ko", "en"]
 default_lang: "ko"
 exclude_from_localization: ["images"]
 parallel_localization: true
