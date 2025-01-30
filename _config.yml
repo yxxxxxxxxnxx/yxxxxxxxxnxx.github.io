@@ -89,9 +89,10 @@ enableDNT: "false"
 #     text: Deutsch
 
 # Polyglot
+permalink: /:categories/:title/
 languages: ["ko", "en"]
 default_lang: "ko"
-exclude_from_localization: ["_data", "_includes", "_layouts", "_posts", "_sass", "_site", "assets", "Gemfile", "Gemfile.lock", "LICENSE.txt", "README.md", "jekyll-theme-yat.gemspec"]
+exclude_from_localization: ["assets"]
 parallel_localization: true
 url: https://yxxxxxxxxnxx.github.io
 
@@ -149,6 +150,7 @@ header_pages:
   - index.html
   - home.html
   - about.md
+  - about.en.md
   - categories.html
   - archives.html
   - tags.html

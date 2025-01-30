@@ -11,26 +11,21 @@
             | replace: '(p)', '℗'
             | replace: '(cleft)', '<span class="copyleft">&copy;</span>'
         -%}
-      <div>{{ copyright }}</div>
-      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      <div>{{ copyright }} Powered by <a title="Jekyll is a simple, blog-aware, static site
       generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
-      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>      
-      
-      <div class="language-switcher">
-        {% for lang in site.languages %}
-            {% if lang == "en" %}
-                {% assign flag = "🇬🇧" %}
-            {% elsif lang == "ko" %}
-                {% assign flag = "🇰🇷" %}
-            {% endif %}
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
 
-            {% if lang == site.active_lang %}
-                <a href="{% if lang == site.default_lang %}{{ site.baseurl }}{{ page.url }}{% else %}{{ site.baseurl }}/{{ lang }}{{ page.url }}{% endif %}">{{ flag }}</a>
-            {% else %}
-                <a href="{% if lang == site.default_lang %}{{ site.baseurl }}{{ page.url }}{% else %}{{ site.baseurl }}/{{ lang }}{{ page.url }}{% endif %}">{{ flag }}</a>
-            {% endif %}
+      <p>
+        {% for tongue in site.languages %}
+          {% if tongue == "en" %}
+            {% assign flag = "🇬🇧English" %}
+          {% elsif tongue == "ko" %}
+            {% assign flag = "🇰🇷한국어" %}
+          {% endif %}
+          <a {% if tongue == site.active_lang %} style="font-weight: bold;"{% endif %} {% static_href %} href="{% if tongue == site.default_lang %}{{site.baseurl}}{{page.url}}{% else %}{{site.baseurl}}/{{ tongue }}{{page.url}}{% endif %}"{% endstatic_href %}>{{ flag }}</a>
+          {%- if forloop.last == false -%}{{" "}}{{ site.langsep }}{%- endif -%}
         {% endfor %}
-      </div>
+      </p>
     
     </div>
   </div>
