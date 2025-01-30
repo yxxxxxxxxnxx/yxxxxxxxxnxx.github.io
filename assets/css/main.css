@@ -259,7 +259,7 @@ html[data-header-transparent] header.site-header {
 }
 html[data-scroll-status=top] header.site-header-transparent {
   height: 0;
-  margin-top: 12px;
+  margin-top: 0px;
   background-color: transparent;
   transition: 0.1s height, background-color, box-shadow;
 }
@@ -297,7 +297,7 @@ html[data-scroll-status=down] .framework .sidebar {
   height: 63.84px;
   width: 100%;
   transition: height 0.2s, text-shadow 0.2s, top 0.2s;
-  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0);
   position: sticky;
   position: -moz-sticky; /* <-- fix sticky compatibility issue */
   position: -ms-sticky;

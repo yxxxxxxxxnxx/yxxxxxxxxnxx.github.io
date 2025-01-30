@@ -345,135 +345,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </label>
 
           <div class="trigger">
-<a class="page-link" href="/">Home</a><a class="page-link" href="/about.html">About</a><a class="page-link" href="/categories.html">Categories</a><a class="page-link" href="/archives.html">Archives</a><a class="page-link" href="/tags.html">Tags</a>
+<a class="page-link" href="/">Home</a><a class="page-link" href="/about/">About</a><a class="page-link" href="/categories.html">Categories</a><a class="page-link" href="/archives.html">Archives</a><a class="page-link" href="/tags.html">Tags</a>
 
 
 
 
-
-
-
-
-
-<div class="page-link" style="display: inline;">
-
-
-
-<div id="google_translate_element" style="display: none;">
-</div>
-
-<div class="ct-language">
-  <ul class="list-unstyled ct-language-dropdown">
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="ko">
-          
-          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="한국어">
-          
-        </a>
-      </li>
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="en">
-          
-          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
-          
-        </a>
-      </li>
-    
-      <li>
-        <a href="#" class="lang-select" data-lang="de">
-          
-          <img src="https://cdn.countryflags.com/thumbs/germany/flag-400.png" title="Deutsch">
-          
-        </a>
-      </li>
-    
-  </ul>
-</div>
-
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'ko',
-    autoDisplay: false,
-    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
-  }, 'google_translate_element');
-
-  // Links to cross-origin destinations are unsafe
-  var gll = document.getElementsByClassName('goog-logo-link')[0];
-  if (gll) {
-    gll.setAttribute('rel', 'noopener');
-  }
-
-  function restoreLang() {
-    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
-    if (!iframe) return;
-
-    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
-    var restore_el = innerDoc.getElementsByTagName("button");
-
-    for (var i = 0; i < restore_el.length; i++) {
-      if (restore_el[i].id.indexOf("restore") >= 0) {
-        restore_el[i].click();
-        var close_el = innerDoc.getElementsByClassName("goog-close-link");
-        close_el[0].click();
-        return;
-      }
-    }
-  }
-
-  function triggerHtmlEvent(element, eventName) {
-    var event;
-    if (document.createEvent) {
-      event = document.createEvent('HTMLEvents');
-      event.initEvent(eventName, true, true);
-      element.dispatchEvent(event);
-    } else {
-      event = document.createEventObject();
-      event.eventType = eventName;
-      element.fireEvent('on' + event.eventType, event);
-    }
-  }
-
-  var googleCombo = document.querySelector("select.goog-te-combo");
-  var langSelect = document.querySelector('.ct-language');
-  langSelect.addEventListener('click', function(event) {
-    if (!event.target) {
-      return;
-    }
-
-    var selected = document.querySelector('.ct-language .ct-language-selected');
-    if (selected) {
-      selected.classList.remove('ct-language-selected');
-    }
-
-    var target = event.target;
-    while (target && target !== langSelect ) {
-      if (target.matches('.lang-select')) {
-        break;
-      }
-      target = target.parentElement;
-    }
-
-    if (target && target.matches('.lang-select')) {
-      var lang = target.getAttribute('data-lang');
-      if (googleCombo.value == lang) {
-        restoreLang();
-      } else {
-        target.parentElement.classList.add('ct-language-selected');
-        googleCombo.value = lang;
-        triggerHtmlEvent(googleCombo, 'change');
-      }
-    }
-
-    event.preventDefault();
-  });
-}
-</script>
-
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
-</div>
 </div>
         </nav>
 </div>
@@ -856,8 +732,27 @@ function googleTranslateElementInit() {
       <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
       generator." href="https://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
       another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
-      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a>
-</div>
+      
+        <div class="lang" style="display: inline;">
+          <a style="
+            
+              font-weight: bold;
+            " href="/404.html%0A%20%20%20%20%20%20%20%20%20%20%20%20">
+            ko
+          </a>
+          
+            <span class="lang-border"> </span>
+          
+        </div>
+      
+        <div class="lang" style="display: inline;">
+          <a style="
+            " href="/en/404.html%0A%20%20%20%20%20%20%20%20%20%20%20%20">
+            en
+          </a>
+          
+        </div>
+      
     </div>
   </div>
 </footer>
