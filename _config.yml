@@ -47,7 +47,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   line in _config.yml. It will appear in your document head meta (for
   Google search results) and in your feed.xml site description.
 
-baseurl: "" # the subpath of your site, e.g. /blog
+# baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://yxxxxxxxxnxx.github.io" # the base hostname & protocol for your site, e.g. https://example.com
 favicon: "" # the favicon for your site
 
@@ -73,7 +73,7 @@ enableDNT: "false"
 # sitemap: false
 
 # If you want to change site language, you can set lang option
-lang: "ko"  # default lang is en
+# lang: "ko"  # default lang is en
 
 # Translate languges
 # langs refer to https://cloud.google.com/translate/docs/languages
@@ -91,7 +91,7 @@ lang: "ko"  # default lang is en
 # Polyglot
 languages: ["ko", "en"]
 default_lang: "ko"
-exclude_from_localization: ["images"]
+exclude_from_localization: ["_data", "_includes", "_layouts", "_posts", "_sass", "_site", "assets", "Gemfile", "Gemfile.lock", "LICENSE.txt", "README.md", "jekyll-theme-yat.gemspec"]
 parallel_localization: true
 url: https://yxxxxxxxxnxx.github.io
 
