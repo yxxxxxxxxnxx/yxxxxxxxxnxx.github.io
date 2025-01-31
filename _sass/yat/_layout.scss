@@ -622,16 +622,17 @@ html {
 
     color: $banner-text-color;
     padding: 10px 5px;
-    text-shadow: 1px 1px 2px #33333355;
+    // text-shadow: 1px 1px 2px #33333355;
 
     & > *:first-child {
       margin: 0;
 
       > :nth-child(1) {
-        @include relative-font-size(3.9);
+        @include relative-font-size(2.625);
         letter-spacing: -1px;
+        line-height: 1;
         margin-bottom: 0.1em;
-        font-weight: normal;
+        font-weight: 600;
         transition: 0.2s all;
 
         @include media-query($on-palm) {
@@ -656,7 +657,7 @@ html {
 
     .post-subtitle {
       @include relative-font-size(1.525);
-      color: #ffffffcc;
+      color: #fff;
       padding-right: 280px;
 
       @include media-query($on-palm) {
@@ -665,7 +666,7 @@ html {
     }
 
     .post-meta {
-      color: #ffffffcc;
+      color: #fff;
       padding-bottom: 1em;
     }
 
@@ -682,11 +683,11 @@ html {
       }
 
       .post-tag {
-        @include relative-font-size(1.125);
+        font-size: #{$base-font-size}px;
         display: inline-block;
         text-decoration: none;
-        margin: 9px 12px 0 0;
-        color: #fff;
+        margin: 0px 12px 0 0;
+        color: $brand-color;
 
         &:hover {
           text-decoration: none;
@@ -776,7 +777,7 @@ html {
   width: 1px;
   height: 10px;
   margin: 0 10px;
-  background-color: #e3e3e3e3;
+  background-color: #000;
   vertical-align: baseline;
 }
 
