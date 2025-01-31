@@ -1131,7 +1131,7 @@ html[data-theme=dark] .post-menu .post-menu-title {
   color: #fff;
 }
 html[data-theme=dark] .post-menu .post-menu-content ul {
-  border-left: 1px solid #fff;
+  border-left: 0px solid #fff;
 }
 html[data-theme=dark] .post-menu .post-menu-content ul a {
   color: #fff;
@@ -1261,31 +1261,31 @@ html[data-theme=dark] a:visited .post-badges .post-badge.badge-new {
   font-weight: 600;
 }
 .post-menu .post-menu-content ul {
-  border-left: 1px solid #000;
+  border-left: 0px solid #000;
 }
 .post-menu .post-menu-content ul .h-h2 {
-  padding-inline-start: 3.5px0px;
-  font-size: 15.4px;
+  padding-inline-start: 0px;
+  font-size: 14px;
   line-height: 1.4;
 }
 .post-menu .post-menu-content ul .h-h3 {
-  padding-inline-start: 3.5px18.2px;
-  font-size: 15.4px;
+  padding-inline-start: 4px;
+  font-size: 14px;
   line-height: 1.4;
 }
 .post-menu .post-menu-content ul .h-h4 {
-  padding-inline-start: 3.5px36.4px;
-  font-size: 15.4px;
+  padding-inline-start: 8px;
+  font-size: 14px;
   line-height: 1.4;
 }
 .post-menu .post-menu-content ul .h-h5 {
-  padding-inline-start: 3.5px54.6px;
-  font-size: 15.4px;
+  padding-inline-start: 12px;
+  font-size: 14px;
   line-height: 1.4;
 }
 .post-menu .post-menu-content ul .h-h6 {
-  padding-inline-start: 3.5px72.8px;
-  font-size: 15.4px;
+  padding-inline-start: 16px;
+  font-size: 14px;
   line-height: 1.4;
 }
 .post-menu .post-menu-content ul a {

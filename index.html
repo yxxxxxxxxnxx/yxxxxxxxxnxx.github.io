@@ -546,16 +546,16 @@ document.addEventListener('DOMContentLoaded', function(event) {
   </style>
 <style>
     html .page-banner .page-banner-img > *:first-child {
-      opacity: 0.75;
+      opacity: 0.5;
     }
 
     html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
-      opacity: 0.5385;
+      opacity: 0.359;
     }
   </style>
 <style>
     html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
-      font-size: 4.25em; font-weight: bold; text-decoration: underline
+      font-size: 3.25em; font-weight: bold; text-decoration: underline
     }
   </style>
 <style>
@@ -565,9 +565,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
   </style>
 <section class="page-banner">
     <div class="page-banner-img">
-<video autoplay="" poster="/assets/images/banners/home.jpeg" playsinline>
-          <source src="/assets/videos/jw.mp4">
+<video autoplay="" poster="/assets/images/banners/home.jpeg" playsinline id="home-banner-video">
+          <source src="" type="video/mp4">
         </source></video>
+        <script src="/assets/js/random-video.js"></script>
         <script>
           (function() {
             var video = document.querySelector('.page-banner .page-banner-img > video');
@@ -781,6 +782,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   
 
 
+
   
 
 
@@ -888,7 +890,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
  <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
     </a></div>
 
-  <div class="post-tags"><a class="post-tag" href="/tags.html#%ED%95%9C%EA%B5%AD%EC%96%B4%ED%83%9C%EA%B7%B8">#한국어태그</a></div>
+  <!-- <div class="post-tags"><a class="post-tag" href="/tags/#한국어태그">#한국어태그</a></div> -->
 </li>
 
 
@@ -991,9 +993,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 교실에 훌쩍훌쩍 코를 삼키는 아이들이 늘어갈 즈음 담임 선생님은 사 분단으로 된 교실 책상의 오와 열을 바꾸어야 한다 말씀하셨다. 이 분단과 삼 분단의 몇 책상을 양옆 분단으로 옮기고 중간을 교실 앞 뒤로 벌려 놓으면, 난로가 들어갈 만한 공간이 작게 마련되었다. 학교 기사 아저씨들이 우선 교실의 애들 ... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
     </a></div>
 
-  <div class="post-tags">
-<a class="post-tag" href="/tags.html#%EC%B4%88%EB%93%B1%ED%95%99%EA%B5%90">#초등학교</a><a class="post-tag" href="/tags.html#%EA%B2%A8%EC%9A%B8">#겨울</a><a class="post-tag" href="/tags.html#%EB%82%9C%EB%A1%9C">#난로</a>
-</div>
+  <!-- <div class="post-tags"><a class="post-tag" href="/tags/#초등학교">#초등학교</a><a class="post-tag" href="/tags/#겨울">#겨울</a><a class="post-tag" href="/tags/#난로">#난로</a></div> -->
 </li>
 
 
@@ -1117,9 +1117,7 @@ $$\sum_{k=1}^n3k$$
  <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
     </a></div>
 
-  <div class="post-tags">
-<a class="post-tag" href="/tags.html#tag1">#tag1</a><a class="post-tag" href="/tags.html#tag2">#tag2</a><a class="post-tag" href="/tags.html#tag3">#tag3</a>
-</div>
+  <!-- <div class="post-tags"><a class="post-tag" href="/tags/#tag1">#tag1</a><a class="post-tag" href="/tags/#tag2">#tag2</a><a class="post-tag" href="/tags/#tag3">#tag3</a></div> -->
 </li>
 </ul>
 
