@@ -776,18 +776,18 @@ html[data-scroll-status=down] .framework .sidebar {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  color: #fdfdfd;
+  color: #fff;
   padding: 10px 5px;
-  text-shadow: 1px 1px 2px rgba(51, 51, 51, 0.3333333333);
 }
 .page-banner .page-banner-inner > *:first-child {
   margin: 0;
 }
 .page-banner .page-banner-inner > *:first-child > :nth-child(1) {
-  font-size: 54.6px;
+  font-size: 36.75px;
   letter-spacing: -1px;
+  line-height: 1;
   margin-bottom: 0.1em;
-  font-weight: normal;
+  font-weight: 600;
   transition: 0.2s all;
 }
 @media screen and (max-width: 600px) {
@@ -810,7 +810,7 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .page-banner .page-banner-inner .post-subtitle {
   font-size: 21.35px;
-  color: rgba(255, 255, 255, 0.8);
+  color: #fff;
   padding-right: 280px;
 }
 @media screen and (max-width: 600px) {
@@ -819,7 +819,7 @@ html[data-scroll-status=down] .framework .sidebar {
   }
 }
 .page-banner .page-banner-inner .post-meta {
-  color: rgba(255, 255, 255, 0.8);
+  color: #fff;
   padding-bottom: 1em;
 }
 .page-banner .page-banner-inner .left-vsplit:before {
@@ -835,11 +835,11 @@ html[data-scroll-status=down] .framework .sidebar {
   }
 }
 .page-banner .page-banner-inner .post-tags .post-tag {
-  font-size: 15.75px;
+  font-size: 14pxpx;
   display: inline-block;
   text-decoration: none;
-  margin: 9px 12px 0 0;
-  color: #fff;
+  margin: 0px 12px 0 0;
+  color: #E1AF00;
 }
 .page-banner .page-banner-inner .post-tags .post-tag:hover {
   text-decoration: none;
@@ -912,7 +912,7 @@ html[data-scroll-status=down] .framework .sidebar {
   width: 1px;
   height: 10px;
   margin: 0 10px;
-  background-color: rgba(227, 227, 227, 0.8901960784);
+  background-color: #000;
   vertical-align: baseline;
 }
 
