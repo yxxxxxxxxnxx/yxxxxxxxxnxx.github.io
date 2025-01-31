@@ -161,16 +161,16 @@ defaults:
     heading: "yxxxxxxxxnxx"
     subheading: "yxxxxxxxxnxx.github.io"
     banner:
-      video: /assets/videos/jw.mp4
+      video: /assets/videos/subway.mp4
       loop: true
       volume: 0.0
       start_at: 0.0
-      image: https://bit.ly/3xTmdUP
-      opacity: 0.75
+      image: 
+      opacity: 0.50
       background: "#000"
       height: "100vh"
       min_height: "38vh"
-      heading_style: "font-size: 4.25em; font-weight: bold; text-decoration: underline"
+      heading_style: "font-size: 3.25em; font-weight: bold; text-decoration: underline"
       subheading_style: "color: #E1AF00"
 
 # Banner default settings

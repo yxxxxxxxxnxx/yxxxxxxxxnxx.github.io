@@ -70,9 +70,11 @@
           autoplay=""
           poster="{{ banner_image }}"
           playsinline
+          id="home-banner-video"
         >
-          <source src="{{ banner_video }}">
+          <source src="", type="video/mp4">
         </video>
+        <script src="/assets/js/random-video.js"></script>
         <script>
           (function() {
             var video = document.querySelector('.page-banner .page-banner-img > video');
