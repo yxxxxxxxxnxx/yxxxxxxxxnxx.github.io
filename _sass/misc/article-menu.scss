@@ -16,7 +16,7 @@
   .post-menu-content {
     ul {
       border-left: 0px solid #000;
-      $indent: #{$base-font-size / 4};
+      $indent: #{calc($base-font-size / 4)};
       $active-bgcolor: #000;
 
       @for $i from 2 through 6 {
