@@ -165,7 +165,7 @@ defaults:
       loop: true
       volume: 0.0
       start_at: 0.0
-      image: /assets/images/banners/white.jpg
+      image: 
       opacity: 0.50
       background: "#000"
       height: "100vh"
