@@ -476,14 +476,6 @@ html[data-scroll-status=down] .framework .sidebar {
   font-size: 24.5px;
 }
 
-.message-box {
-  background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 15px;
-  margin-bottom: 0px;
-  text-align: center;
-}
-
 /**
  * Pagination page
  */
@@ -607,6 +599,12 @@ html[data-scroll-status=down] .framework .sidebar {
 /**
  * Posts
  */
+.post .message-box {
+  border: 1px solid #000;
+  border-radius: 15px;
+  margin-bottom: 0px;
+  text-align: center;
+}
 .post .post-header {
   margin: 50px auto 60px;
   padding: 0 0 20px;
@@ -1065,6 +1063,9 @@ html[data-theme=dark] .page-segments .post-meta {
 }
 html[data-theme=dark] .page-segments li a {
   color: #fff;
+}
+html[data-theme=dark] .post .message-box {
+  border: 1px solid #fff;
 }
 html[data-theme=dark] .post .post-header {
   border-bottom: 1px solid #fff;
