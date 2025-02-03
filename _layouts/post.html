@@ -18,6 +18,14 @@ sidebar:
     {%- include functions.html func='get_value' -%}
     {%- assign hidden = return -%}
 
+    {%- if page.lang != site.active_lang -%}
+    {%- include no-translation.html -%}
+    {%- endif -%}
+
+    {%- if page.ai == true -%}
+    {%- include ai-translation.html -%}
+    {%- endif -%}
+
     {%- assign result = hidden | where_exp: "item", "item == 'header'" -%}
     {%- if banner == nil and result.size == 0 -%}
     {%- include views/post-header.html -%}

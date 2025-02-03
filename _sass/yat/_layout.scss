@@ -261,6 +261,14 @@ html {
   @include relative-font-size(1.75);
 }
 
+.message-box {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 15px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
 /**
  * Pagination page
  */
