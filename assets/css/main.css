@@ -476,6 +476,14 @@ html[data-scroll-status=down] .framework .sidebar {
   font-size: 24.5px;
 }
 
+.message-box {
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 15px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
 /**
  * Pagination page
  */
