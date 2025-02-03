@@ -150,6 +150,11 @@ html[data-theme="dark"]  {
   }
 
   .post {
+
+    .message-box {
+      border: 1px solid #fff;
+    }
+
     .post-header {
       border-bottom: 1px solid #fff;
     }
