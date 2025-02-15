@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
   const videos = [
-    '/assets/videos/flatiron.mp4',
-    '/assets/videos/skate.mp4',
-    '/assets/videos/subway.mp4'
+    '/assets/videos/seoul-1.mp4',
+    '/assets/videos/seoul-2.mp4',
+    '/assets/videos/seoul-3.mp4'
   ];
 
   const randomIndex = Math.floor(Math.random() * videos.length);

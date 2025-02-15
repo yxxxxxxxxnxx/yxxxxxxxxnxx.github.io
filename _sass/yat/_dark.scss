@@ -28,7 +28,8 @@ html[data-theme="dark"]  {
 
   *:not(pre) > code {
     color: $dark-text-color;
-    background-color: #282828; //
+    background-color: transparent;
+    border: 1px solid map-get($brand-colors, 'darjeelingorange');
   }
 
   blockquote {
@@ -132,8 +133,16 @@ html[data-theme="dark"]  {
       color: $grey-color-dark;
     }
 
-    .post-tags .post-tag:hover {
-      color: #fff;
+    .post-tags .post-tag {
+      color: $brand-color;
+      border: 1px solid $brand-color;
+      background-color: transparent;
+    }
+
+    .post-category .post-categories {
+      color: map-get($brand-colors, 'darjeelingred');
+      border: 1px solid map-get($brand-colors, 'darjeelingred');
+      background-color: transparent;
     }
   }
 
@@ -153,6 +162,7 @@ html[data-theme="dark"]  {
 
     .message-box {
       border: 1px solid #fff;
+      background-color: transparent;
     }
 
     .post-header {
@@ -232,14 +242,14 @@ html[data-theme="dark"]  {
     li {
       border-bottom: solid 1px #fff;
 
+      &:last-child {
+        border-bottom: none;
+      }
+
       a {
         color: #fff; //
       }
-
-      a:hover {
-        background-color: #000000;
-      }
-
+      
       span {
         background-color: #fff;
         color: #000;

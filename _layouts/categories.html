@@ -9,8 +9,11 @@ sidebar: category-list
   {%- include functions.html func='get_categories' -%}
   {% assign categories = return %}
 
+  {%- include functions.html func='get_subcategories' -%}
+  {% assign subcategories = return %}
+
   {% assign keys = categories %}
   {% assign field = 'categories' %}
-  {%- include views/segments.html -%}
+  {%- include views/segments-cat.html -%}
 
 {%- endif -%}

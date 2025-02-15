@@ -14,19 +14,19 @@ $base-transition-duration: 0.3s !default;
 $spacing-unit:     30px !default;
 
 $text-color:       #000000 !default;
-$background-color: #fff !default;
+$background-color: map-get($brand-colors, "darjeelingyellow") !default;
 
 $grey-color:       #777 !default;
 $grey-color-light: #000 !default;
 $grey-color-dark:  #fff !default;
 
-$white-color: #fdfdfd !default;
+$white-color: #fff !default;
 
 $table-text-align: left !default;
 
 $header-height: $base-line-height * $base-font-size * 2.85 !default;
 $header-text-color: invert($theme-color) !default;
-$header-background-color: $theme-color !default;
+$header-background-color: map-get($brand-colors, "darjeelingyellow") !default;
 
 $footer-height: $header-height * 1.05 !default;
 $footer-text-color: lighten(invert($theme-color), 25%) !default;

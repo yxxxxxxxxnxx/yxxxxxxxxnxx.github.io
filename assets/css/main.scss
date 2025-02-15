@@ -11,15 +11,17 @@ $theme-colors: (
 
 // Default brand colors
 $brand-colors: (
-  "orangered": #ff5100,
-  "greatgold": #f2cb05,
-  "greenblue": #389092,
+  "darjeelingyellow": #F2AD00,
+  "darjeelingred": #FF0000,
+  "darjeelinggreen": #00A08A,
+  "darjeelingorange": #F98400,
+  "darjeelingblue": #046C9A
 );
 
 $theme-name: "{{ site.theme_color }}";
 $brand-name: "{{ site.brand_color }}";
 $theme-color: map-get($theme-colors, "snowwhite");
-$brand-color: map-get($brand-colors, "orangered");
+$brand-color: map-get($brand-colors, "darjeelingblue");
 
 @if map-has-key($theme-colors, $theme-name) {
   $theme-color: map-get($theme-colors, $theme-name);
@@ -36,14 +38,14 @@ $brand-color: map-get($brand-colors, "orangered");
 $content-width: {{ site.content_width | default: '920px' }};
 
 // Click to top theme
-$click-to-top-light-background-color: {{ site.click_to_top.light.background_color | default: "white" }};
-$click-to-top-light-color: {{ site.click_to_top.light.color | default: "#454545" }};
-$click-to-top-dark-background-color: {{ site.click_to_top.dark.background_color | default: "#34323d" }};
-$click-to-top-dark-color: {{ site.click_to_top.dark.color | default: "#bbb" }};
+$click-to-top-light-background-color: map-get($brand-colors, "darjeelingyellow");
+$click-to-top-light-color: #000;
+$click-to-top-dark-background-color: #000;
+$click-to-top-dark-color: #fff;
 
 // Selection styles
-$selection-color: unquote("{{ site.selection.color }}");
-$selection-background-color: unquote("{{ site.selection.background_color }}");
+$selection-color: #000;
+$selection-background-color: map-get($brand-colors, "darjeelingblue");
 
 @if $selection-color == "" {
   $selection-color: inherit;

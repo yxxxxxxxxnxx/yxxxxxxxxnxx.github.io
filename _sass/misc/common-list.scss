@@ -25,10 +25,6 @@
       font-weight: normal;
       color: $text-color;
       transition: background 0.2s;
-
-      &:hover {
-        background-color: mix($theme-color, #fff, 20%);
-      }
     }
 
     span {
@@ -39,7 +35,12 @@
       background: #000000;
       padding: 0px 8px;
       margin-left: 20px;
-      color: $white-color;
+      color: $background-color;
     }
   }
+
+  .subcategories-list {
+    margin-left: 8px;
+  }
+
 }

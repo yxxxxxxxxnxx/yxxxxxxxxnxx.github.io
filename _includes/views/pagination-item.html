@@ -28,38 +28,54 @@
   <!-- | default: '/assets/images/default-image.png' -%} -->
 
 <li class="post-item {{ post_item_class }}">
-  <h2 class="post-title">
-    <a class="post-link" href="{{ post_url }}">
-      {{ post.title | escape }}
-      {%- include views/post-badges.html -%}
-    </a>
-  </h2>
-  <div class="post-meta">
-    <span class="post-date"><i class="fa fa-calendar"></i> {{ post.date | date: date_format }}</span>
-    {%- if post.author -%}
-    <span class="post-author left-vsplit"><i class="fa fa-pencil"></i> {{ post.author | escape }}</span>
-    {%- endif -%}
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> {{ reading_time }}</span>
-  </div>
-
   <div class="post-excerpt">
+
+    <div class="post-content">
+      
+      <h2 class="post-title">
+        <a class="post-link" href="{{ post_url }}">
+          {{ post.title | escape }}
+          {%- include views/post-badges.html -%}
+        </a>
+      </h2>
+      
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> {{ post.date | date: date_format }}</span>
+        {%- if post.author -%}
+        <span class="post-author left-vsplit"><i class="fa fa-pencil"></i> {{ post.author | escape }}</span>
+        {%- endif -%}
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> {{ reading_time }}</span>
+      </div>
+
+      <a class="post-text" href="{{ post_url }}">
+        <p>{{ article_excerpt }} <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+      </a>
+      <div class="post-bubbles-container">
+        <div class="post-category">
+          {%- if post.subcategories -%}
+          <span class="post-categories"> {{ post.categories }} ⮐ {{ post.subcategories }}</span>
+          {%- else -%}
+          <span class="post-categories"> {{ post.categories }}</span>
+          {%- endif -%}
+        </div>
+
+        <div class="post-tags">
+          {%- for tag in post.tags -%}
+          <a class="post-tag" href="{{ '/tags/ ' | relative_url }}#{{tag}}">#{{tag}}</a>
+          {%- endfor -%}
+        </div>
+      </div>
+    
+    </div>
+
     {%- if post_image and post_image != 'NO_EXCERPT_IMAGE' -%}
-    <a  class="post-image" href="{{ post_url }}" style="flex: 0 1 {{ image_width }}">
-      <div style="background-image: url({{ post_image | relative_url }}); height: {{ image_height }}"></div>
-    </a>
-    <a class="post-text" href="{{ post_url }}">
-      <p>{{ article_excerpt }} <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-    </a>
-    {%- else -%}
-    <a class="post-text" href="{{ post_url }}">
-      <p>{{ article_excerpt }} <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-    </a>
+    <div class="post-image-container" style="float: right;">
+      <a class="post-image" href="{{ post_url }}">
+        <div style="background-image: url('{{ post_image | relative_url }}');"></div>
+      </a>
+    </div>
     {%- endif-%}
   </div>
 
-  <!-- <div class="post-tags">
-    {%- for tag in post.tags -%}
-    <a class="post-tag" href="{{ '/tags/ ' | relative_url }}#{{tag}}">#{{tag}}</a>
-    {%- endfor -%}
-  </div> -->
+  
 </li>

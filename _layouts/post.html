@@ -22,6 +22,10 @@ sidebar:
     {%- include no-translation.html -%}
     {%- endif -%}
 
+    {%- if page.notrsl == true -%}
+    {%- include no-translation.html -%}
+    {%- endif -%}
+
     {%- if page.ai == true -%}
     {%- include ai-translation.html -%}
     {%- endif -%}

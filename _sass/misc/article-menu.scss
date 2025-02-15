@@ -21,9 +21,9 @@
 
       @for $i from 2 through 6 {
         .h-h#{$i} {
-          padding-inline-start: ($i - 2) * 4px;
+          padding-inline-start: ($i - 2) * 8px;
           font-size: $base-font-size;
-          line-height: 1.4;
+          line-height: #{$base-line-height};
         }
       }
 
@@ -45,6 +45,7 @@
       .active {
         background-color: $active-bgcolor;
         transition: background 0.5s;
+        border-radius: 100px;
         border-left: 0px solid #000;
         margin-left: 0px;
 
@@ -53,7 +54,7 @@
         }
 
         a {
-          color: #fff;
+          color: $background-color;
         }
       }
     }
