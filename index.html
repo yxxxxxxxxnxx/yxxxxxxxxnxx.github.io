@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
 <!-- and it's easy to individually load additional languages -->
 <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js" async></script>
 
@@ -101,20 +101,28 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </script>
 
 <style>
-  /* code language badge */
   pre.badge::before {
+    font-size: 0.75em;
+    padding: 1px;
     content: attr(data-lang);
     color: #fff;
-    background-color: #E1AF00;
-    padding: 0 .5em;
-    border-radius: 0 2px;
+    background-color: #F98400;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
     text-transform: uppercase;
     text-align: center;
-    min-width: 32px;
+    min-width: 40px;
+    min-height: 40px;
     display: inline-block;
     position: absolute;
-    right: 0;
+    top: 10px;
+    right: 10px;
+    line-height: 1.0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
 
   /* fix wrong badge display for firefox browser */
   code > table pre::before {
@@ -532,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 <style>
     html .page-banner {
-      background: #000;
+      background: #F2AD00;
     }
   </style>
 <style>html .page-banner {
@@ -554,12 +562,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
   </style>
 <style>
     html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
-      font-size: 3.25em; font-weight: bold; text-decoration: underline
+      font-size: 2.625em; writing-mode: vertical-lr; transform: rotate(180deg); line-height: 0;
     }
   </style>
 <style>
     html .page-banner .page-banner-inner > *:first-child > *:nth-child(2) {
-      color: #E1AF00
+      font-size: 14px; color: #F2AD00; margin-left: 1.5em;
     }
   </style>
 <section class="page-banner">
@@ -650,7 +658,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <label for="theme-switch">
     <div class="toggle"></div>
     <div class="names">
-      <p class="light">Light</p>
+      <p class="light">Colorful</p>
       <p class="dark">Dark</p>
     </div>
   </label>
@@ -778,7 +786,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
      <div class="articles">
   
 
-  
+  <!-- <style>
+    .common-list {
+        display: none;
+        padding: 0px;
+        margin: 0px;
+    }
+</style> -->
 
 
 
@@ -789,7 +803,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 <div class="pagination">
   <!-- Post list links -->
-  <ul class="post-list right-image-style">
+  <ul class="post-list left-image-style">
     <!-- Top list item --><!-- Normal list item -->
 
 
@@ -871,24 +885,25 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <!-- | default: '/assets/images/default-image.png' -%} -->
 
 <li class="post-item ">
-  <h2 class="post-title">
-    <a class="post-link" href="/Literature/One_Dimensional/">
-      1차원이 되고 싶어<!-- <span class="post-badges">
+  <div class="post-excerpt">
+
+    <div class="post-content">
+      
+      <h2 class="post-title">
+        <a class="post-link" href="/Literature/One_Dimensional/">
+          1차원이 되고 싶어<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
-  </h2>
-  <div class="post-meta">
-    <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-03</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-  </div>
+      </h2>
+      
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-03</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
 
-  <div class="post-excerpt">
-<a class="post-image" href="/Literature/One_Dimensional/" style="flex: 0 1 38.2%">
-      <div style="background-image: url(/assets/att/2025-02-03-One_Dimensional/banner.jpg); height: 160px"></div>
-    </a>
-    <a class="post-text" href="/Literature/One_Dimensional/">
-      <p>Metadata
+      <a class="post-text" href="/Literature/One_Dimensional/">
+        <p>Metadata
 Cover
 
 Publisher
@@ -897,10 +912,22 @@ Publisher
 Quotes
 “그래도 고3 때 일어난 게 아니라 얼마나 다행이니.”
  <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-    </a>
+      </a>
+      <div class="post-bubbles-container">
+        <div class="post-category"><span class="post-categories"> Literature</span></div>
+
+        <div class="post-tags"><a class="post-tag" href="/tags/#%EB%B0%95%EC%83%81%EC%98%81">#박상영</a></div>
+      </div>
+    
+    </div>
+<div class="post-image-container" style="float: right;">
+      <a class="post-image" href="/Literature/One_Dimensional/">
+        <div style="background-image: url('/assets/att/2025-02-03-One_Dimensional/banner.jpg');"></div>
+      </a>
+    </div>
 </div>
 
-  <!-- <div class="post-tags"><a class="post-tag" href="/tags/#박상영">#박상영</a></div> -->
+  
 </li>
 
 
@@ -983,24 +1010,25 @@ Quotes
   <!-- | default: '/assets/images/default-image.png' -%} -->
 
 <li class="post-item ">
-  <h2 class="post-title">
-    <a class="post-link" href="/Literature/Human_Act/">
-      소년이 온다<!-- <span class="post-badges">
+  <div class="post-excerpt">
+
+    <div class="post-content">
+      
+      <h2 class="post-title">
+        <a class="post-link" href="/Literature/Human_Act/">
+          소년이 온다<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
-  </h2>
-  <div class="post-meta">
-    <span class="post-date"><i class="fa fa-calendar"></i> 2025-01-21</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-  </div>
+      </h2>
+      
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> 2025-01-21</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
 
-  <div class="post-excerpt">
-<a class="post-image" href="/Literature/Human_Act/" style="flex: 0 1 38.2%">
-      <div style="background-image: url(/assets/att/2025-01-21-Human_Act/banner.jpeg); height: 160px"></div>
-    </a>
-    <a class="post-text" href="/Literature/Human_Act/">
-      <p>Metadata
+      <a class="post-text" href="/Literature/Human_Act/">
+        <p>Metadata
 Cover
 
 Publisher
@@ -1009,10 +1037,22 @@ Publisher
 Quotes
 
  <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-    </a>
+      </a>
+      <div class="post-bubbles-container">
+        <div class="post-category"><span class="post-categories"> Literature</span></div>
+
+        <div class="post-tags"><a class="post-tag" href="/tags/#%ED%95%9C%EA%B0%95">#한강</a></div>
+      </div>
+    
+    </div>
+<div class="post-image-container" style="float: right;">
+      <a class="post-image" href="/Literature/Human_Act/">
+        <div style="background-image: url('/assets/att/2025-01-21-Human_Act/banner.jpeg');"></div>
+      </a>
+    </div>
 </div>
 
-  <!-- <div class="post-tags"><a class="post-tag" href="/tags/#한강">#한강</a></div> -->
+  
 </li>
 
 
@@ -1095,27 +1135,42 @@ Quotes
   <!-- | default: '/assets/images/default-image.png' -%} -->
 
 <li class="post-item ">
-  <h2 class="post-title">
-    <a class="post-link" href="/%EA%B8%80/%EB%82%9C%EB%A1%9C/">
-      난로<!-- <span class="post-badges">
+  <div class="post-excerpt">
+
+    <div class="post-content">
+      
+      <h2 class="post-title">
+        <a class="post-link" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/">
+          난로<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
-  </h2>
-  <div class="post-meta">
-    <span class="post-date"><i class="fa fa-calendar"></i> 2024-10-19</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
-  </div>
+      </h2>
+      
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> 2024-10-19</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+      </div>
 
-  <div class="post-excerpt"><a class="post-text" href="/%EA%B8%80/%EB%82%9C%EB%A1%9C/">
-      <p>1999, 이른 겨울
+      <a class="post-text" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/">
+        <p>1999, 이른 겨울
 
 멀리 시베리아에서 찾아온 쌀쌀한 바람이 한껏 높아진 가을 하늘을 메우기 시작하면 땅 위의 나무들은 더 낮은 곳으로 제 잎을 털어내며 두터이 바닥을 다졌다. 어린 나는 다가오는 겨울을 엄마의 걱정어린 등쌀에 겹겹이 늘어나는 옷차림과 해가 짧아지며 덩달아 부쩍 줄어든 친구들과 바깥에서 노는 시간으로 실감하였다.
 
 교실에 훌쩍훌쩍 코를 삼키는 아이들이 늘어갈 즈음 담임 선생님은 사 분단으로 된 교실 책상의 오와 열을 바꾸어야 한다 말씀하셨다. 이 분단과 삼 분단의 몇 책상을 양옆 분단으로 옮기고 중간을 교실 앞 뒤로 벌려 놓으면, 난로가 들어갈 만한 공간이 작게 마련되었다. 학교 기사 아저씨들이 우선 교실의 애들 ... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-    </a></div>
+      </a>
+      <div class="post-bubbles-container">
+        <div class="post-category"><span class="post-categories"> 글 ⮐ 학교</span></div>
 
-  <!-- <div class="post-tags"><a class="post-tag" href="/tags/#초등학교">#초등학교</a><a class="post-tag" href="/tags/#겨울">#겨울</a><a class="post-tag" href="/tags/#난로">#난로</a></div> -->
+        <div class="post-tags">
+<a class="post-tag" href="/tags/#%EC%B4%88%EB%93%B1%ED%95%99%EA%B5%90">#초등학교</a><a class="post-tag" href="/tags/#%EA%B2%A8%EC%9A%B8">#겨울</a><a class="post-tag" href="/tags/#%EB%82%9C%EB%A1%9C">#난로</a>
+</div>
+      </div>
+    
+    </div>
+</div>
+
+  
 </li>
 </ul>
 
@@ -1125,53 +1180,6 @@ Quotes
 
 
   </section>
-  <section class="sidebar" style="margin-left: 15px;">
-    <!-- Get sidebar items -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="common-list">
-  <ul>
-    <li>
-      <a href="/index.html">
-        All<span>3</span>
-      </a>
-    </li>
-
-    
-      <li>
-        <a href="/categories/#h-Literature">
-          Literature <span>2</span>
-        </a>
-      </li>
-    
-      <li>
-        <a href="/categories/#h-%EA%B8%80">
-          글 <span>1</span>
-        </a>
-      </li>
-    
-  </ul>
-</div>
-
-</section>
 </div>
 
       </div>

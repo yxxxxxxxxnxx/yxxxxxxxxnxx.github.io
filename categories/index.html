@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
 <!-- and it's easy to individually load additional languages -->
 <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js" async></script>
 
@@ -101,20 +101,28 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </script>
 
 <style>
-  /* code language badge */
   pre.badge::before {
+    font-size: 0.75em;
+    padding: 1px;
     content: attr(data-lang);
     color: #fff;
-    background-color: #E1AF00;
-    padding: 0 .5em;
-    border-radius: 0 2px;
+    background-color: #F98400;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
     text-transform: uppercase;
     text-align: center;
-    min-width: 32px;
+    min-width: 40px;
+    min-height: 40px;
     display: inline-block;
     position: absolute;
-    right: 0;
+    top: 10px;
+    right: 10px;
+    line-height: 1.0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
 
   /* fix wrong badge display for firefox browser */
   code > table pre::before {
@@ -579,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <label for="theme-switch">
     <div class="toggle"></div>
     <div class="names">
-      <p class="light">Light</p>
+      <p class="light">Colorful</p>
       <p class="dark">Dark</p>
     </div>
   </label>
@@ -722,14 +730,30 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
+
+
+
+
+
+
+
+
+
+
   
   <div class="page-segments">
   <ul class="page-segments-list">
     
-    <h2 id="Literature" class="segment-name">Literature</h2>
+      <h2 id="Literature" class="segment-name">Literature</h2>
       
       
-        <li class="">
+      
+      
+      
+      
+        <ul class="page-segments-list">
+          
+            <li class="">
 <span class="post-meta">2025-02-03</span>
 <span>
   <a class="post-link" href="/Literature/One_Dimensional/">
@@ -740,9 +764,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </a>
 </span>
 </li>
-        
-      
-        <li class="">
+            
+          
+            <li class="">
 <span class="post-meta">2025-01-21</span>
 <span>
   <a class="post-link" href="/Literature/Human_Act/">
@@ -753,16 +777,25 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </a>
 </span>
 </li>
-        
+            
+          
+        </ul>
       
     
-    <h2 id="글" class="segment-name">글</h2>
+      <h2 id="글" class="segment-name">글</h2>
       
       
-        <li class="">
+      
+      
+        
+          <h3 class="subcategory-name">학교</h3>
+          <ul class="page-segments-list">
+            
+            
+              <li class="">
 <span class="post-meta">2024-10-19</span>
 <span>
-  <a class="post-link" href="/%EA%B8%80/%EB%82%9C%EB%A1%9C/">
+  <a class="post-link" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/">
     난로<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
@@ -770,19 +803,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </a>
 </span>
 </li>
+              
+            
+          </ul>
         
+      
+      
       
     
   </ul>
 </div>
 
-
   </section>
   <section class="sidebar" style="margin-left: 15px;">
     <!-- Get sidebar items -->
-
-
-
 
 
 
@@ -813,18 +847,34 @@ document.addEventListener('DOMContentLoaded', function(event) {
         <a href="/categories/#h-Literature">
           Literature <span>2</span>
         </a>
+        
+        
+        <ul class="subcategories-list">
+          
+        </ul>
       </li>
     
       <li>
         <a href="/categories/#h-%EA%B8%80">
           글 <span>1</span>
         </a>
+        
+        
+        <ul class="subcategories-list">
+          
+            
+              <li>
+                <a href="/categories/#h-%ED%95%99%EA%B5%90">
+                  학교 <span>1</span>
+                </a>
+              </li>
+            
+          
+        </ul>
       </li>
     
   </ul>
-</div>
-
-</section>
+</div></section>
 </div>
 
       </div>

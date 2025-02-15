@@ -30,8 +30,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/en/feed.xml" title="yxxxxxxxxnxx">
-<link rel="stylesheet" href="/en//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
 <!-- and it's easy to individually load additional languages -->
 <script charset="UTF-8" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js" async></script>
 
@@ -101,20 +101,28 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </script>
 
 <style>
-  /* code language badge */
   pre.badge::before {
+    font-size: 0.75em;
+    padding: 1px;
     content: attr(data-lang);
     color: #fff;
-    background-color: #E1AF00;
-    padding: 0 .5em;
-    border-radius: 0 2px;
+    background-color: #F98400;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
     text-transform: uppercase;
     text-align: center;
-    min-width: 32px;
+    min-width: 40px;
+    min-height: 40px;
     display: inline-block;
     position: absolute;
-    right: 0;
+    top: 10px;
+    right: 10px;
+    line-height: 1.0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
 
   /* fix wrong badge display for firefox browser */
   code > table pre::before {
@@ -579,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <label for="theme-switch">
     <div class="toggle"></div>
     <div class="names">
-      <p class="light">Light</p>
+      <p class="light">Colorful</p>
       <p class="dark">Dark</p>
     </div>
   </label>
@@ -725,19 +733,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <h3 id="font">Font</h3>
 <p>Wanted Sans | 
 <a href="https://github.com/wanteddev/wanted-sans/blob/HEAD/packages/wanted-sans/README-EN.md">Wanted Lab, Inc.</a></p>
-
+<h3 id="color-palette">Color Palette</h3>
+<p>The Darjeeling Limited | Wes Anderson color palette for R | 
+<a href="https://github.com/karthik/wesanderson/">karthik</a></p>
 <h3 id="footages">Footages</h3>
-<p>Skating on lake, Central Park | 
-United States | American Mutoscope and Biograph Company | 1902 |
-<a href="https://www.loc.gov/item/00694380/">The Library of Congress</a></p>
-
-<p>At the Foot of the Flatrion | 
-United states | American Mutoscope and Biograph Company | 1903 | 
-<a href="https://www.loc.gov/item/00694378/">The Library of Congress</a></p>
-
-<p>Interior N.Y. subway, 14th St. to 42nd St |
-United States | American Mutoscope and Biograph Company | 1905 |
-<a href="https://www.loc.gov/item/00694394/">The Library of Congress</a></p>
+<p>Our Seoul ‘90 | 
+<a href="https://archives.seoul.go.kr/">Seoul Metropolitan Archives</a>
+| South Korea | 1990</p>
 
 
 
