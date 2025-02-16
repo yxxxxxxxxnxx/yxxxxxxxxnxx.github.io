@@ -1059,6 +1059,7 @@ html[data-theme=dark] .site-header .ct-language-selected, .ct-language-dropdown 
   }
   html[data-theme=dark] .site-header .site-nav input:checked ~ .trigger {
     background-color: #000000;
+    border: 1px solid #fff;
   }
 }
 html[data-theme=dark] .site-footer {
