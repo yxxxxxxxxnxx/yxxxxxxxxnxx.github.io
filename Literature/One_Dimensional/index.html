@@ -567,6 +567,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
       height: 100vh;
     }
   </style>
+<style>
+    html .page-banner .page-banner-img > *:first-child {
+      opacity: 0.5;
+    }
+
+    html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
+      opacity: 0.359;
+    }
+  </style>
 <section class="page-banner">
     <div class="page-banner-img">
 <div style="background-image: url(/assets/att/2025-02-03-One_Dimensional/banner.jpg)"></div>
@@ -822,12 +831,28 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/Literature/Human_Act/" title="소년이 온다">소년이 온다</a><span></span>
+<a class="previous" href="/Literature/Human_Act/" title="소년이 온다">소년이 온다</a><a class="next" href="/Travel/Africa/South_Africa/" title="Cape Town, South Africa">Cape Town, South Africa</a>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
         <li class="">
+          <a class="post-link" href="/Travel/Africa/South_Africa/" title="Cape Town, South Africa">
+            Cape Town, South Africa<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/Literature/Human_Act/" title="소년이 온다">
+            소년이 온다<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
           <a class="post-link" href="/Literature/One_Dimensional/" title="1차원이 되고 싶어">
             1차원이 되고 싶어<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
@@ -838,14 +863,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <li class="">
           <a class="post-link" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="난로">
             난로<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/Literature/Human_Act/" title="소년이 온다">
-            소년이 온다<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -955,7 +972,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         var headerRect = header.getBoundingClientRect();
         var headerTop = Math.floor(headerRect.top);
         var headerHeight = Math.floor(headerRect.height);
-        var headerHeight = headerTop + headerHeight + 20;
+        var headerHeight = headerTop + headerHeight + 25;
         if (headingRect.top <= headerHeight) {
           var id = 'h-' + h.getAttribute('id');
           var a = menuContent.querySelector('a[href="#' + id  + '"]');

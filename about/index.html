@@ -848,7 +848,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         var headerRect = header.getBoundingClientRect();
         var headerTop = Math.floor(headerRect.top);
         var headerHeight = Math.floor(headerRect.height);
-        var headerHeight = headerTop + headerHeight + 20;
+        var headerHeight = headerTop + headerHeight + 25;
         if (headingRect.top <= headerHeight) {
           var id = 'h-' + h.getAttribute('id');
           var a = menuContent.querySelector('a[href="#' + id  + '"]');
