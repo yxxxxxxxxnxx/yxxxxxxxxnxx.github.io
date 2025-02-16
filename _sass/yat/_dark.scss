@@ -89,6 +89,7 @@ html[data-theme="dark"]  {
 
       .site-nav input:checked ~ .trigger {
         background-color: #000000;
+        border: 1px solid #fff;
       }
     }
   }
