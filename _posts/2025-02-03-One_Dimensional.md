@@ -9,6 +9,7 @@ banner:
     image: /assets/att/2025-02-03-One_Dimensional/banner.jpg
     height: 100vh
     min_height: 38vh
+    opacity: 0.5
 ---
 ## Metadata
 ### Cover
