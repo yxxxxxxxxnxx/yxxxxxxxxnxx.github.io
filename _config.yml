@@ -154,7 +154,7 @@ defaults:
       # background: "#000"
       height: "100vh"
       min_height: "38vh"
-      heading_style: "font-size: 2.625em; writing-mode: vertical-lr; transform: rotate(180deg); line-height: 0;"
+      heading_style: "writing-mode: vertical-lr; transform: rotate(180deg); line-height: 0;"
       subheading_style: "font-size: 14px; color: #F2AD00; margin-left: 1.5em;"
 
 # Banner default settings
