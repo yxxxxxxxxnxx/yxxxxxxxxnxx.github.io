@@ -496,6 +496,7 @@ html[data-scroll-status=down] .framework .sidebar {
   font-size: 36.75px;
   letter-spacing: -1px;
   font-weight: 600;
+  line-height: 1;
   color: #000;
 }
 .pagination .post-meta {
@@ -801,7 +802,7 @@ html[data-scroll-status=down] .framework .sidebar {
   top: 50%;
   transform: translateY(-50%);
   color: #F2AD00;
-  padding: 10px 5px;
+  padding: 10px 0px;
 }
 .page-banner .page-banner-inner > *:first-child {
   margin: 0;
