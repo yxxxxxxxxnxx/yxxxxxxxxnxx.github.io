@@ -819,19 +819,9 @@ html[data-scroll-status=down] .framework .sidebar {
   font-weight: 600;
   transition: 0.2s all;
 }
-@media screen and (max-width: 600px) {
-  .page-banner .page-banner-inner > *:first-child > :nth-child(1) {
-    font-size: 27.65px;
-  }
-}
 .page-banner .page-banner-inner > *:first-child > :nth-child(2) {
   margin-bottom: 0.8em;
   transition: 0.2s all;
-}
-@media screen and (max-width: 600px) {
-  .page-banner .page-banner-inner > *:first-child > :nth-child(2) {
-    font-size: 16.45px;
-  }
 }
 .page-banner .page-banner-inner > *:first-child > :last-child {
   margin-bottom: 0;
