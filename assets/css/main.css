@@ -347,7 +347,7 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 
 .site-nav {
-  font-size: 15.75px;
+  font-size: 14px;
   line-height: 63.84px;
   position: absolute;
   right: 0;
@@ -498,7 +498,8 @@ html[data-scroll-status=down] .framework .sidebar {
   text-decoration: none;
 }
 .pagination .post-link {
-  font-size: 23.1px;
+  font-size: 36.75px;
+  letter-spacing: -1px;
   font-weight: 600;
   color: #000;
 }
@@ -521,7 +522,7 @@ html[data-scroll-status=down] .framework .sidebar {
   position: relative;
   order: 2;
   max-width: 180px;
-  min-width: 90px;
+  min-width: 120px;
 }
 .pagination .post-excerpt .post-image-container .post-image > *:first-child {
   width: 100%;
@@ -551,11 +552,6 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .pagination .post-list.z-reverse-image-style .post-item:nth-child(odd) .post-excerpt {
   flex-direction: row-reverse;
-}
-@media screen and (max-width: 800px) {
-  .pagination .post-list .post-item .post-excerpt {
-    flex-direction: column !important;
-  }
 }
 .pagination .post-text {
   color: #000;
@@ -876,6 +872,9 @@ html[data-scroll-status=down] .framework .sidebar {
   padding: 2px 8px;
   border-radius: 100px;
   background-color: #046C9A;
+}
+.page-banner .page-banner-inner .post-tags .post-tag:is(:first-child) {
+  margin-bottom: 8px;
 }
 .page-banner .page-banner-inner .post-tags .post-tag:hover {
   text-decoration: none;
@@ -1221,7 +1220,7 @@ html[data-theme=dark] a:visited .post-badges .post-badge.badge-new {
 
 .theme-toggle {
   position: relative;
-  width: 161px;
+  width: 112px;
   margin-top: 10px;
   margin-right: 30px;
   margin-left: auto;
@@ -1245,9 +1244,8 @@ html[data-theme=dark] a:visited .post-badges .post-badge.badge-new {
 }
 .theme-toggle .names {
   font-size: 1em;
-  font-weight: bolder;
   width: 76%;
-  margin-left: 10%;
+  margin-left: 14%;
   position: relative;
   display: flex;
   justify-content: space-between;
