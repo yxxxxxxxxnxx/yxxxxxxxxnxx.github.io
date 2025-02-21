@@ -150,8 +150,8 @@ defaults:
       volume: 0.0
       start_at: 0.0
       image: 
-      opacity: 0.5
-      background: "#F2AD00"
+      opacity: 0.25
+      # background: "#000"
       height: "100vh"
       min_height: "38vh"
       heading_style: "font-size: 2.625em; writing-mode: vertical-lr; transform: rotate(180deg); line-height: 0;"
