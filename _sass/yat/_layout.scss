@@ -114,7 +114,7 @@ html {
 }
 
 .site-nav {
-  @include relative-font-size(1.125);
+  @include relative-font-size(1);
   line-height: $header-height;
   position: absolute;
   right: 0;
@@ -289,8 +289,10 @@ html {
   }
 
   .post-link {
-    @include relative-font-size(1.65);
-    font-weight: $base-font-weight * 1.5;
+    @include relative-font-size(2.625);
+    letter-spacing: -1px;
+    font-weight: 600;
+    // font-weight: $base-font-weight * 1.5;
     color: #000;
   }
 
@@ -315,7 +317,7 @@ html {
       position: relative;
       order: 2;
       max-width: 180px;
-      min-width: 90px;
+      min-width: 120px;
 
       .post-image > *:first-child {
         width: 100%;
@@ -359,7 +361,7 @@ html {
 
     .post-item .post-excerpt {
       @include media-query($on-laptop) {
-        flex-direction: column !important;
+        // flex-direction: column !important;
       }
     }
   }
@@ -731,6 +733,9 @@ html {
         border-radius: 100px;
         background-color: $brand-color;
 
+        &:is(:first-child) {
+          margin-bottom: 8px;
+        }
 
         &:hover {
           text-decoration: none;
