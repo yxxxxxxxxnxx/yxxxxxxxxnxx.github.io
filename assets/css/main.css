@@ -445,11 +445,6 @@ html[data-scroll-status=down] .framework .sidebar {
   letter-spacing: -1px;
   line-height: 1;
 }
-@media screen and (max-width: 800px) {
-  .post .post-title {
-    font-size: 31.5px;
-  }
-}
 .post .post-tags {
   padding-right: 150px;
 }
@@ -1290,7 +1285,7 @@ html[data-theme=dark] a:visited .post-badges .post-badge.badge-new {
 .post-menu {
   padding-left: 20px;
   min-width: 200px;
-  max-width: 230px;
+  max-width: 200px;
 }
 .post-menu .post-menu-title {
   font-size: 21px;
