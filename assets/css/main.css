@@ -549,6 +549,11 @@ html[data-scroll-status=down] .framework .sidebar {
 .pagination .post-list.z-reverse-image-style .post-item:nth-child(odd) .post-excerpt {
   flex-direction: row-reverse;
 }
+@media screen and (max-width: 800px) {
+  .pagination .post-list .post-item .post-excerpt {
+    flex-direction: column !important;
+  }
+}
 .pagination .post-text {
   color: #000;
   word-break: break-word;
@@ -677,6 +682,10 @@ html[data-scroll-status=down] .framework .sidebar {
   display: block;
   max-height: 50vh;
 }
+.post .post-content video {
+  display: block;
+  margin: 0 auto;
+}
 .post .post-content h2, .post .post-content h3, .post .post-content h4, .post .post-content h5, .post .post-content h6 {
   margin: 60px 0 19px;
 }
@@ -702,6 +711,12 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .post .post-related .post-link:hover {
   color: #000;
+}
+
+.caption {
+  font-size: 12.25px;
+  display: block;
+  text-align: center;
 }
 
 .post-comments {
