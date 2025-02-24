@@ -362,7 +362,7 @@ html {
 
     .post-item .post-excerpt {
       @include media-query($on-laptop) {
-        // flex-direction: column !important;
+        flex-direction: column !important;
       }
     }
   }
@@ -517,6 +517,11 @@ html {
       max-height: 50vh;
     }
 
+    video {
+      display: block;
+      margin: 0 auto;
+    }
+
     h2, h3, h4, h5, h6 {
       margin: 60px 0 19px;
     }
@@ -552,6 +557,12 @@ html {
       }
     }
   }
+}
+
+.caption {
+  font-size: $small-font-size;
+  display: block;
+  text-align: center;
 }
 
 .post-comments {
