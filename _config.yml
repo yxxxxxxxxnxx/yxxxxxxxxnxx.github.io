@@ -63,7 +63,7 @@ yat:
 # header_transparent: true
 
 # If you want to change the content width, you can set to another value
-content_width: "1600px"
+content_width: "100%"
 
 # Google analytics - GA4
 google_analytics: G-9C49NB9F6P
@@ -145,15 +145,15 @@ defaults:
     heading: "yxxxxxxxxnxx"
     subheading: "yxxxxxxxxnxx.github.io"
     banner:
-      video: /assets/videos/seoul-1.mp4
+      video: #/assets/videos/seoul-1.mp4
       loop: true
       volume: 0.0
       start_at: 0.0
       image: 
       opacity: 0.25
       # background: "#000"
-      height: "100vh"
-      min_height: "38vh"
+      height: #"100vh"
+      min_height: #"38vh"
       heading_style: "writing-mode: vertical-lr; transform: rotate(180deg); line-height: 0;"
       subheading_style: "font-size: 14px; color: #F2AD00; margin-left: 1.5em;"
 
@@ -174,9 +174,9 @@ defaults:
 #   subheading_style: null  # Custom subheading style (e.g. color: gold)
 
 # Excerpt settings
-excerpt:
-  default_image:            # Default image when the image style is not none
-  image_style: left        # Image layout style (It's value could be none, left, right, top, z, z-reverse)
+# excerpt:
+#   default_image:            # Default image when the image style is not none
+#   image_style: top          # Image layout style (It's value could be none, left, right, top, z, z-reverse)
 #   image_width: 38.2%      # Image default width
 #   image_height: 160px     # Image default height
   text_size: 650            # Words default size

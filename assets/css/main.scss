@@ -15,7 +15,8 @@ $brand-colors: (
   "darjeelingred": #FF0000,
   "darjeelinggreen": #00A08A,
   "darjeelingorange": #F98400,
-  "darjeelingblue": #046C9A
+  "darjeelingblue": #046C9A,
+  "pageBackground": #f3f3f1
 );
 
 $theme-name: "{{ site.theme_color }}";
@@ -38,7 +39,7 @@ $brand-color: map-get($brand-colors, "darjeelingblue");
 $content-width: {{ site.content_width | default: '920px' }};
 
 // Click to top theme
-$click-to-top-light-background-color: map-get($brand-colors, "darjeelingyellow");
+$click-to-top-light-background-color: map-get($brand-colors, "pageBackground");
 $click-to-top-light-color: #000;
 $click-to-top-dark-background-color: #000;
 $click-to-top-dark-color: #fff;

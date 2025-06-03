@@ -10,10 +10,8 @@
 
 {%- if paginator.posts.size > 0 -%}
 <div class="pagination">
-  <!-- Post list links -->
-  <ul class="post-list {{ image_style }}">
-    <!-- Top list item -->
-    {%- if paginator == site or paginator.page == 1 -%}
+  <div class="top-panel">
+    <ul class="post-list {{ image_style }}">
       {%- assign post_item_class = "top-post" -%}
       {%- assign posts = site.posts
         | where_exp: "item", "item.top > 0"
@@ -21,17 +19,60 @@
       {%- for post in posts -%}
         {%- include views/pagination-item.html -%}
       {%- endfor -%}
-    {%- endif -%}
+    </ul>
+  </div>
+  <script src="/assets/js/scroll-horizontal.js"></script>
 
-    <!-- Normal list item -->
-    {%- assign post_item_class = "" -%}
-    {%- for post in paginator.posts -%}
-      {%- if post.top -%}
-        {%- continue -%}
-      {%- endif -%}
-      {%- include views/pagination-item.html -%}
-    {%- endfor -%}
-  </ul>
+  <div class="panels-wrapper">
+
+    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Travel'" -%}
+
+    <div class="left-panel">
+      <ul class="post-list {{ image_style }}">
+        {%- for post in travel_posts -%}
+          {%- if post.top != nil and post.top != false and post.top != '' -%}
+            {%- include views/pagination-item.html -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="right-panel">
+      <ul class="post-list {{ image_style }}">
+        {%- for post in travel_posts -%}
+          {%- if post.top == nil or post.top == false or post.top == '' -%}
+            {%- include views/pagination-item.html -%}
+          {%- endif -%}
+        {%- endfor -%} 
+      </ul>
+    </div>
+  </div>
+
+  <div class="panels-wrapper2">
+
+    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Literature'" -%}
+
+    <div class="left-panel2">
+      <ul class="post-list {{ image_style }}">
+        {%- for post in travel_posts -%}
+          {%- if post.top != nil and post.top != false and post.top != '' -%}
+            {%- include views/pagination-item.html -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="right-panel2">
+      <ul class="post-list {{ image_style }}">
+        {%- for post in travel_posts -%}
+          {%- if post.top == nil or post.top == false or post.top == '' -%}
+            {%- include views/pagination-item.html -%}
+          {%- endif -%}
+        {%- endfor -%} 
+      </ul>
+    </div>
+  </div>
+
+  <script src="/assets/js/scroll-sync.js"></script>
+
 
   <!-- Pagination links -->
   {%- if paginator.posts.size < site.posts.size -%}
