@@ -11,7 +11,6 @@ banner:
     height: 100vh
     min_height: 38vh
     opacity: 0.5
-top: 1
 ---
 
 ## FAO
