@@ -330,7 +330,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-<header class="site-header site-header-transparent" role="banner">
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
 
   <div class="wrapper">
     <div class="site-header-inner">
@@ -394,217 +404,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   }
   document.addEventListener('DOMContentLoaded', initHeader);
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<style>html .page-banner {
-      height:  36.8vh;
-      min-height: 38vh;
-    }
-    html[data-scroll-status="top"] .page-banner {
-      height: 100vh;
-    }
-  </style>
-<style>
-    html .page-banner .page-banner-img > *:first-child {
-      opacity: 0.25;
-    }
-
-    html[data-theme="dark"] .page-banner .page-banner-img > *:first-child {
-      opacity: 0.1795;
-    }
-  </style>
-<style>
-    html .page-banner .page-banner-inner > *:first-child > *:nth-child(1) {
-      writing-mode: vertical-lr; transform: rotate(180deg); line-height: 0;
-    }
-  </style>
-<style>
-    html .page-banner .page-banner-inner > *:first-child > *:nth-child(2) {
-      font-size: 14px; color: #F2AD00; margin-left: 1.5em;
-    }
-  </style>
-<section class="page-banner">
-    <div class="page-banner-img">
-<video autoplay="" poster="/assets/images/banners/home.jpeg" playsinline id="home-banner-video">
-          <source src="" type="video/mp4">
-        </source></video>
-        <script src="/assets/js/random-video.js"></script>
-        <script>
-          (function() {
-            var video = document.querySelector('.page-banner .page-banner-img > video');
-            var videoPlay = function() {
-              video.play().catch (function() {
-                  video.muted = true;
-                  video.play();
-                });
-            }
-
-            video.onloadstart = function() {
-              video.currentTime = 0.0;
-              video.volume = 0.0;
-              video.muted = (video.volume == 0);
-              videoPlay();
-            }
-
-            video.onended = function() {
-              video.currentTime = 0.0;
-              video.volume = 0;video.play();}
-          })();
-        </script>
-</div>
-    <div class="wrapper">
-      <div class="page-banner-inner"><div class="page-banner-default">
-            <h1 class="page-banner-heading">
-              yxxxxxxxxnxx
-            </h1>
-            <h2 class="page-banner-subheading">
-              yxxxxxxxxnxx.github.io
-            </h2>
-          </div></div>
-    </div>
-  </section><script>
+<script>
   function hashLocate(hashValue) {
     hashValue = hashValue.replace(/^.*#h-/, '');
     hashValue = decodeURIComponent(hashValue);
@@ -648,113 +448,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
   });
 </script>
-<div class="theme-toggle">
-  <input type="checkbox" id="theme-switch">
-  <label for="theme-switch">
-    <div class="toggle"></div>
-    <div class="names">
-      <p class="light">Light</p>
-      <p class="dark">Dark</p>
-    </div>
-  </label>
-</div>
-
-
-
-
-<script>
-  (function() {
-    var sw = document.getElementById('theme-switch');
-    var html = document.getElementsByTagName('html')[0];
-    var nightModeOption = ('auto' || 'auto').toLowerCase();
-    var storage = nightModeOption === 'manual'
-        ? localStorage
-        : sessionStorage;
-    var themeData = loadThemeData();
-
-    function saveThemeData(data) {
-      storage.setItem('theme', JSON.stringify(data));
-    }
-
-    function loadThemeData() {
-      var data = storage.getItem('theme');
-      try {
-        data = JSON.parse(data ? data : '');
-      } catch(e) {
-        data = { nightShift: undefined, autoToggleAt: 0 };
-        saveThemeData(data);
-      }
-      return data;
-    }
-
-    function handleThemeToggle(nightShift) {
-      themeData.nightShift = nightShift;
-      saveThemeData(themeData);
-      html.dataset.theme = nightShift ? 'dark' : 'light';
-      setTimeout(function() {
-        sw.checked = nightShift ? true : false;
-      }, 50);
-    }
-
-    function autoThemeToggle() {
-      // Next time point of theme toggle
-      var now = new Date();
-      var toggleAt = new Date();
-      var hours = now.getHours();
-      var nightShift = hours >= 19 || hours <=7;
-
-      if (nightShift) {
-        if (hours > 7) {
-          toggleAt.setDate(toggleAt.getDate() + 1);
-        }
-        toggleAt.setHours(7);
-      } else {
-        toggleAt.setHours(19);
-      }
-
-      toggleAt.setMinutes(0);
-      toggleAt.setSeconds(0);
-      toggleAt.setMilliseconds(0)
-
-      var delay = toggleAt.getTime() - now.getTime();
-
-      // auto toggle theme mode
-      setTimeout(function() {
-        handleThemeToggle(!nightShift);
-      }, delay);
-
-      return {
-        nightShift: nightShift,
-        toggleAt: toggleAt.getTime()
-      };
-    }
-
-    // Listen the theme toggle event
-    sw.addEventListener('change', function(event) {
-      handleThemeToggle(event.target.checked);
-    });
-
-    if (nightModeOption == 'auto') {
-      var data = autoThemeToggle();
-
-      // Toggle theme by local setting
-      if (data.toggleAt > themeData.autoToggleAt) {
-        themeData.autoToggleAt = data.toggleAt;
-        handleThemeToggle(data.nightShift);
-      } else {
-        handleThemeToggle(themeData.nightShift);
-      }
-    } else if (nightModeOption == 'manual') {
-      handleThemeToggle(themeData.nightShift);
-    } else {
-      var nightShift = themeData.nightShift;
-      if (nightShift === undefined) {
-        nightShift = nightModeOption === 'on';
-      }
-      handleThemeToggle(nightShift);
-    }
-  })();
-</script>
 <div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-arrow-up-long"></i>
 </div>
@@ -774,6 +467,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
   })();
 </script>
 <main class="page-content" aria-label="Content">
+
+      <!-- <script src="/assets/js/scroll-sync.js"></script>
+      <script src="/assets/js/scroll-control.js"></script> -->
+
       <div class="wrapper">
         <div class="framework">
   <section class="main">
@@ -781,13 +478,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
      <div class="articles">
   
 
-  <!-- <style>
-    .common-list {
-        display: none;
-        padding: 0px;
-        margin: 0px;
-    }
-</style> -->
+  
 
 
 
@@ -797,9 +488,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 <div class="pagination">
-  <!-- Post list links -->
-  <ul class="post-list left-image-style">
-    <!-- Top list item --><!-- Normal list item -->
+  <div class="top-panel">
+    <ul class="post-list z-image-style">
 
 
 
@@ -879,161 +569,42 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <!-- | default: default_image -->
   <!-- | default: '/assets/images/default-image.png' -%} -->
 
-<li class="post-item ">
-  <div class="post-excerpt">
+<li class="post-item top-post">
 
-    <div class="post-content">
-      
-      <h2 class="post-title">
-        <a class="post-link" href="/Home(s)/Berlin/Berlinale_2025/">
-          Berlinale 2025<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-      </h2>
-      
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-23</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
-      </div>
-
-      <a class="post-text" href="/Home(s)/Berlin/Berlinale_2025/">
-        <p>75. Internationale Filmfestspiele Berlin
-Poster
-
-
-© Berlinale, Claudia Schramke
-
-Trailer
-
-
-© Berlinale, Uli M. Schueppel
-
-
-Queerpanorama
-
-
-by Jun Li (Director, Screenplay)
-with Jayden Cheung, Erfan Shekarriz, Sebastian Mahito Soukup, Arm Anatphikorn, Zenni Corbin
-87' \ USA, Hong Kong, China \ 2025 \ Black&amp;White \ English, Mand... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Africa/South_Africa/">
+        <div style="background-image: url('/assets/att/2025-01-15-Cape_Town/banner.jpeg');"></div>
       </a>
+
       <div class="post-bubbles-container">
-        <div class="post-category"><span class="post-categories"> Home(s) ⮐ Berlin</span></div>
 
-        <div class="post-tags">
-<a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%AC%EB%82%A0%EB%A0%88">#베를리날레</a><a class="post-tag" href="/tags/#%EC%98%81%ED%99%94%EC%A0%9C">#영화제</a><a class="post-tag" href="/tags/#2025">#2025</a><a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/tags/#%EB%8F%85%EC%9D%BC">#독일</a>
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Africa</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#CapeTown">#CapeTown</a><a class="post-tag" href="/tags/#SouthAfrica">#SouthAfrica</a>
 </div>
-      </div>
-    
+        </div>
     </div>
-<div class="post-image-container" style="float: right;">
-      <a class="post-image" href="/Home(s)/Berlin/Berlinale_2025/">
-        <div style="background-image: url('/assets/att/2025-02-23-Berlinale_2025/banner.jpeg');"></div>
-      </a>
-    </div>
-</div>
-
-  
-</li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- | default: default_image -->
-  <!-- | default: '/assets/images/default-image.png' -%} -->
-
-<li class="post-item ">
-  <div class="post-excerpt">
-
-    <div class="post-content">
-      
-      <h2 class="post-title">
-        <a class="post-link" href="/Travel/Africa/South_Africa/">
-          Cape Town, South Africa<!-- <span class="post-badges">
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Africa/South_Africa/">
+            Cape Town, South Africa<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
-      </h2>
-      
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-15</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+        </h2>
+          
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-15</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+        </div>
       </div>
 
-      <a class="post-text" href="/Travel/Africa/South_Africa/">
-        <p>Stellenbosch
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Africa/South_Africa/">
+          <p>Stellenbosch
 
 
 
@@ -1134,131 +705,11 @@ Salsify at the Roundhouse
 
 
 
-
-
-
-
-
-
-
-
-
-City Center
-Company’s Garden
-
-
-
-
-
-
-Waterfront
-
-
-
-
-Woodstock
-Salon
-
-
-
-
-
-
-
-
-Muizenberg
-
-
-
-
-Fish Hoek
- 
-
-
-Cape of Good Hope
-Cape Point Nature Reserve
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Simon’s Town
-Boulders Beach
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Sandy Bay
 ... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-      </a>
-      <div class="post-bubbles-container">
-        <div class="post-category"><span class="post-categories"> Travel ⮐ Africa</span></div>
-
-        <div class="post-tags">
-<a class="post-tag" href="/tags/#CapeTown">#CapeTown</a><a class="post-tag" href="/tags/#SouthAfrica">#SouthAfrica</a>
-</div>
+        </a>
       </div>
-    
-    </div>
-<div class="post-image-container" style="float: right;">
-      <a class="post-image" href="/Travel/Africa/South_Africa/">
-        <div style="background-image: url('/assets/att/2025-01-15-Cape_Town/banner.jpeg');"></div>
-      </a>
-    </div>
-</div>
-
-  
+    </div>    
+  </div>
 </li>
 
 
@@ -1339,26 +790,176 @@ Sandy Bay
 <!-- | default: default_image -->
   <!-- | default: '/assets/images/default-image.png' -%} -->
 
-<li class="post-item ">
-  <div class="post-excerpt">
+<li class="post-item top-post">
 
-    <div class="post-content">
-      
-      <h2 class="post-title">
-        <a class="post-link" href="/Literature/One_Dimensional/">
-          1차원이 되고 싶어<!-- <span class="post-badges">
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Home(s)/Berlin/Berlinale_2025/">
+        <div style="background-image: url('/assets/att/2025-02-23-Berlinale_2025/banner.jpeg');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Home(s) ⮐ Berlin</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%AC%EB%82%A0%EB%A0%88">#베를리날레</a><a class="post-tag" href="/tags/#%EC%98%81%ED%99%94%EC%A0%9C">#영화제</a><a class="post-tag" href="/tags/#2025">#2025</a><a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/tags/#%EB%8F%85%EC%9D%BC">#독일</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Home(s)/Berlin/Berlinale_2025/">
+            Berlinale 2025<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
-      </h2>
-      
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-03</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+        </h2>
+          
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-23</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+        </div>
       </div>
 
-      <a class="post-text" href="/Literature/One_Dimensional/">
-        <p>Metadata
+      <div class="excerpt-container">
+        <a class="post-text" href="/Home(s)/Berlin/Berlinale_2025/">
+          <p>75. Internationale Filmfestspiele Berlin
+Poster
+
+
+© Berlinale, Claudia Schramke
+
+Trailer
+
+
+© Berlinale, Uli M. Schueppel
+
+
+Queerpanorama
+
+
+by Jun Li (Director, Screenplay)
+with J... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item top-post">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Literature/One_Dimensional/">
+        <div style="background-image: url('/assets/att/2025-02-03-One_Dimensional/banner.jpg');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Literature</span></div>
+
+          <div class="post-tags"><a class="post-tag" href="/tags/#%EB%B0%95%EC%83%81%EC%98%81">#박상영</a></div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Literature/One_Dimensional/">
+            1차원이 되고 싶어<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+          
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-03</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+        </div>
+      </div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Literature/One_Dimensional/">
+          <p>Metadata
 Cover
 
 Publisher
@@ -1367,23 +968,18 @@ Publisher
 Quotes
 “그래도 고3 때 일어난 게 아니라 얼마나 다행이니.”
  <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-      </a>
-      <div class="post-bubbles-container">
-        <div class="post-category"><span class="post-categories"> Literature</span></div>
-
-        <div class="post-tags"><a class="post-tag" href="/tags/#%EB%B0%95%EC%83%81%EC%98%81">#박상영</a></div>
+        </a>
       </div>
-    
-    </div>
-<div class="post-image-container" style="float: right;">
-      <a class="post-image" href="/Literature/One_Dimensional/">
-        <div style="background-image: url('/assets/att/2025-02-03-One_Dimensional/banner.jpg');"></div>
-      </a>
-    </div>
-</div>
-
-  
+    </div>    
+  </div>
 </li>
+</ul>
+  </div>
+  <script src="/assets/js/scroll-horizontal.js"></script>
+
+  <div class="panels-wrapper">
+<div class="left-panel">
+      <ul class="post-list z-image-style">
 
 
 
@@ -1463,26 +1059,401 @@ Quotes
 <!-- | default: default_image -->
   <!-- | default: '/assets/images/default-image.png' -%} -->
 
-<li class="post-item ">
-  <div class="post-excerpt">
+<li class="post-item top-post">
 
-    <div class="post-content">
-      
-      <h2 class="post-title">
-        <a class="post-link" href="/Literature/Human_Act/">
-          소년이 온다<!-- <span class="post-badges">
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Africa/South_Africa/">
+        <div style="background-image: url('/assets/att/2025-01-15-Cape_Town/banner.jpeg');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Africa</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#CapeTown">#CapeTown</a><a class="post-tag" href="/tags/#SouthAfrica">#SouthAfrica</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Africa/South_Africa/">
+            Cape Town, South Africa<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
-      </h2>
-      
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2025-01-21</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+        </h2>
+          
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-15</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
+        </div>
       </div>
 
-      <a class="post-text" href="/Literature/Human_Act/">
-        <p>Metadata
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Africa/South_Africa/">
+          <p>Stellenbosch
+
+
+
+
+
+
+
+
+Stellenbosch University Botanical Garden
+
+
+
+
+
+
+
+
+
+
+
+
+Spier Wine Farm
+
+
+
+
+
+
+
+
+
+
+Lanzerac Wine Estate
+
+
+
+
+
+
+
+
+Tokara Wine Estate
+
+
+
+
+
+
+Dusk Restaurant
+
+
+
+
+
+
+Franschhoek
+
+
+
+
+
+
+
+
+Kalk Bay
+
+
+
+
+Sea Point
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Clifton Bay
+
+
+Camps Bay
+
+
+Salsify at the Roundhouse
+
+
+
+
+
+
+
+
+
+... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+</li>
+</ul>
+    </div>
+    <div class="right-panel">
+      <ul class="post-list z-image-style"></ul>
+    </div>
+  </div>
+
+  <div class="panels-wrapper2">
+<div class="left-panel2">
+      <ul class="post-list z-image-style">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item top-post">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Literature/One_Dimensional/">
+        <div style="background-image: url('/assets/att/2025-02-03-One_Dimensional/banner.jpg');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Literature</span></div>
+
+          <div class="post-tags"><a class="post-tag" href="/tags/#%EB%B0%95%EC%83%81%EC%98%81">#박상영</a></div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Literature/One_Dimensional/">
+            1차원이 되고 싶어<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+          
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> 2025-02-03</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+        </div>
+      </div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Literature/One_Dimensional/">
+          <p>Metadata
+Cover
+
+Publisher
+문학동네 | 2021 | e-book
+
+Quotes
+“그래도 고3 때 일어난 게 아니라 얼마나 다행이니.”
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+</li>
+</ul>
+    </div>
+    <div class="right-panel2">
+      <ul class="post-list z-image-style">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item top-post">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Literature/Human_Act/">
+        <div style="background-image: url('/assets/att/2025-01-21-Human_Act/banner.jpeg');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Literature</span></div>
+
+          <div class="post-tags"><a class="post-tag" href="/tags/#%ED%95%9C%EA%B0%95">#한강</a></div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Literature/Human_Act/">
+            소년이 온다<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+          
+        <div class="post-meta">
+          <span class="post-date"><i class="fa fa-calendar"></i> 2025-01-21</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+        </div>
+      </div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Literature/Human_Act/">
+          <p>Metadata
 Cover
 
 Publisher
@@ -1491,141 +1462,17 @@ Publisher
 Quotes
 
  <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-      </a>
-      <div class="post-bubbles-container">
-        <div class="post-category"><span class="post-categories"> Literature</span></div>
-
-        <div class="post-tags"><a class="post-tag" href="/tags/#%ED%95%9C%EA%B0%95">#한강</a></div>
+        </a>
       </div>
-    
-    </div>
-<div class="post-image-container" style="float: right;">
-      <a class="post-image" href="/Literature/Human_Act/">
-        <div style="background-image: url('/assets/att/2025-01-21-Human_Act/banner.jpeg');"></div>
-      </a>
-    </div>
-</div>
-
-  
-</li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- | default: default_image -->
-  <!-- | default: '/assets/images/default-image.png' -%} -->
-
-<li class="post-item ">
-  <div class="post-excerpt">
-
-    <div class="post-content">
-      
-      <h2 class="post-title">
-        <a class="post-link" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/">
-          난로<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-      </h2>
-      
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2024-10-19</span><span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
-      </div>
-
-      <a class="post-text" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/">
-        <p>1999, 이른 겨울
-
-멀리 시베리아에서 찾아온 쌀쌀한 바람이 한껏 높아진 가을 하늘을 메우기 시작하면 땅 위의 나무들은 더 낮은 곳으로 제 잎을 털어내며 두터이 바닥을 다졌다. 어린 나는 다가오는 겨울을 엄마의 걱정어린 등쌀에 겹겹이 늘어나는 옷차림과 해가 짧아지며 덩달아 부쩍 줄어든 친구들과 바깥에서 노는 시간으로 실감하였다.
-
-교실에 훌쩍훌쩍 코를 삼키는 아이들이 늘어갈 즈음 담임 선생님은 사 분단으로 된 교실 책상의 오와 열을 바꾸어야 한다 말씀하셨다. 이 분단과 삼 분단의 몇 책상을 양옆 분단으로 옮기고 중간을 교실 앞 뒤로 벌려 놓으면, 난로가 들어갈 만한 공간이 작게 마련되었다. 학교 기사 아저씨들이 우선 교실의 애들 ... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-      </a>
-      <div class="post-bubbles-container">
-        <div class="post-category"><span class="post-categories"> 글 ⮐ 학교</span></div>
-
-        <div class="post-tags">
-<a class="post-tag" href="/tags/#%EC%B4%88%EB%93%B1%ED%95%99%EA%B5%90">#초등학교</a><a class="post-tag" href="/tags/#%EA%B2%A8%EC%9A%B8">#겨울</a><a class="post-tag" href="/tags/#%EB%82%9C%EB%A1%9C">#난로</a>
-</div>
-      </div>
-    
-    </div>
-</div>
-
-  
+    </div>    
+  </div>
 </li>
 </ul>
+    </div>
+  </div>
+
+  <script src="/assets/js/scroll-sync.js"></script>
+
 
   <!-- Pagination links -->
 </div>
