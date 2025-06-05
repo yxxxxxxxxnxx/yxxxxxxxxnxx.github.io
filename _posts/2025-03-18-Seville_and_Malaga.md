@@ -8,9 +8,6 @@ subcategories: Europe
 tags: Seville Malaga Spain
 banner:
     image: /assets/att/2025-03-18-Seville_and_Malaga/banner.jpeg
-    height: 100vh
-    min_height: 38vh
-    opacity: 0.5
 top: 1
 ---
 

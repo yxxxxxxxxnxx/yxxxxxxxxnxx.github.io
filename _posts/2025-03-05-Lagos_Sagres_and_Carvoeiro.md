@@ -8,9 +8,6 @@ subcategories: Europe
 tags: Lagos Sagres Carvoeiro Portugal
 banner:
     image: /assets/att/2025-03-05-Lagos_Sagres_and_Carvoeiro/banner.jpeg
-    height: 100vh
-    min_height: 38vh
-    opacity: 0.5
 ---
 
 ## FAO

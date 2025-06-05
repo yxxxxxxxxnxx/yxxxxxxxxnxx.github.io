@@ -18,9 +18,9 @@ $background-color: map-get($brand-colors, "pageBackground") !default;
 
 $grey-color:       #777 !default;
 $grey-color-light: #000 !default;
-$grey-color-dark:  #fff !default;
+$grey-color-dark:  #f3f3f1 !default;
 
-$white-color: #fff !default;
+$white-color: #f3f3f1 !default;
 
 $table-text-align: left !default;
 
@@ -33,7 +33,7 @@ $footer-text-color: lighten(invert($theme-color), 25%) !default;
 $footer-background-color: darken($theme-color, 5%) !default;
 
 $banner-height: 640px !default;
-$banner-text-color: #fff !default;
+$banner-text-color: #f3f3f1 !default;
 $banner-background: rgba(0,0,0,0.8) !default;
 
 // Width of the content area
