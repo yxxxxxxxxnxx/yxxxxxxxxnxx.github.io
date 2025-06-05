@@ -281,29 +281,29 @@ html {
     display: block;
     scroll-snap-align: start; //
 
-      .post-list {
-        display: flex;
-        flex-direction: row;
-        gap: 16px;
-        justify-content: left;
-        align-items: flex-start;
-        padding: 0;
-        margin: 0;
-        list-style: none;
-        overflow-x: auto;
-        padding-right: 100vw * 0.15; 
+    .post-list {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      justify-content: left;
+      align-items: flex-start;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      overflow-x: auto;
+      padding-right: 100vw * 0.15; 
 
-        > li {
-          width: 100%;
-          box-sizing: border-box;
-          margin-bottom: $spacing-unit * 0.25;
-          padding-bottom: 0px;
-          
-          &:not(:last-child) {
-            border-bottom: none;
-          }
+      > li {
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: $spacing-unit * 0.25;
+        padding-bottom: 0px;
+        
+        &:not(:last-child) {
+          border-bottom: none;
         }
       }
+    }
   }
 
   .panels-wrapper, .panels-wrapper2, .panels-wrapper3 {

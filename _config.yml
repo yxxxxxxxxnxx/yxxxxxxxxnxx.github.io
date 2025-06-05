@@ -170,7 +170,7 @@ banner:
 #   background: "rgba(0, 0, 0, 0.8)"  # Banner background (Could be a image)
   height: "100vh"         # Banner default height
   min_height: 38vh        # Banner minimum height
-  # heading_style: "color: #F2AD00;"     # Custom heading style (e.g. "font-weight: bold; text-decoration: underline")
+#   heading_style: "color: #F2AD00;"     # Custom heading style (e.g. "font-weight: bold; text-decoration: underline")
 #   subheading_style: null  # Custom subheading style (e.g. color: gold)
 
 # Excerpt settings
