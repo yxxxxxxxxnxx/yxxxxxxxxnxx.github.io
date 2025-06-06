@@ -53,7 +53,7 @@
 
   <div class="panels-wrapper2">
 
-    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Home(s)'" -%}
+    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Home\s'" -%}
 
     <div class="left-panel2">
       <ul class="post-list {{ image_style }}">

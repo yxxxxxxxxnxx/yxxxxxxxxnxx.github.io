@@ -9,6 +9,7 @@
       <a href="{{ '/index.html' | relative_url }}">
         All<span>{{ site.posts.size }}</span>
       </a>
+      <div class="wavy-line"></div>
     </li>
 
     {% for key in categories %}
@@ -25,10 +26,12 @@
                 <a href="{{ '/categories/' | relative_url }}#h-{{ subcategory }}">
                   {{ subcategory }} <span>{{ items | where: 'subcategories', subcategory | size }}</span>
                 </a>
+                <!-- <div class="wavy-line"></div> -->
               </li>
             {% endif %}
           {% endfor %}
         </ul>
+        <div class="wavy-line"></div>
       </li>
     {% endfor %}
   </ul>

@@ -186,6 +186,26 @@ html {
 }
 
 /**
+ * Wavy Line
+ */
+.wavy-line {
+  --s: 4px; /* size of the wave */
+  --b: 1px; /* thickness of the line */
+  --m: 1.0; /* curvature of the wave [0 2] */
+  
+  background: #000;
+  --R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
+  height: calc(2*var(--R));
+  width: 100%;
+  --_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
+  mask:
+    radial-gradient(var(--R) at left 50% bottom calc(-1*var(--m)*var(--s)), var(--_g)) 
+     calc(50% - 2*var(--s)) calc(50% - var(--s)/2 - var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x,
+    radial-gradient(var(--R) at left 50% top calc(-1*var(--m)*var(--s)),var(--_g)) 
+     50% calc(50% + var(--s)/2 + var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
+} 
+
+/**
  * Site footer
  */
 .site-footer {
@@ -302,6 +322,10 @@ html {
         &:not(:last-child) {
           border-bottom: none;
         }
+
+        .wavy-line {
+          display: none;
+        }
       }
     }
   }
@@ -354,15 +378,21 @@ html {
     > li {
       width: 100%;
       box-sizing: border-box;
-      margin-bottom: $spacing-unit * 1.5;
-      padding-bottom: 30px;
-
-      &:not(:last-child) {
-        border-bottom: 1px solid #000;
+      // margin-bottom: $spacing-unit * 1.5;
+      // padding-bottom: 30px;
+      .wavy-line{
+        margin-bottom: 32px;
+      }
+      // &:not(:last-child) {
+      //   border-bottom: 1px solid #000;
+      // }
+      &:last-child {
+        .wavy-line{
+          display: none;
+        };
       }
     }
   }
-
 
   .post-content {
     display: flex;
@@ -502,25 +532,6 @@ html {
     }
   }
 
-.wavy-line {
-  --s: 8px; /* size of the wave */
-  --b: 1px; /* thickness of the line */
-  --m: 1.0; /* curvature of the wave [0 2] */
-  
-  background: #000;
-  --R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
-  height: calc(2*var(--R));
-  width: 100%;
-  --_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
-  mask:
-    radial-gradient(var(--R) at left 50% bottom calc(-1*var(--m)*var(--s)), var(--_g)) 
-     calc(50% - 2*var(--s)) calc(50% - var(--s)/2 - var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x,
-    radial-gradient(var(--R) at left 50% top calc(-1*var(--m)*var(--s)),var(--_g)) 
-     50% calc(50% + var(--s)/2 + var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
-  margin-top: 32px;
-  margin-bottom: 32px;
-  } 
-
   // .paginator missing in _dark.scss
   .paginator {
     text-align: center;
@@ -579,8 +590,8 @@ html {
 
   .post-header {
     margin: 50px auto 60px;
-    padding: 0 0 20px;
-    border-bottom: 1px solid #000;
+    // padding: 0 0 20px;
+    // border-bottom: 1px solid #000;
 
     .post-title {
       margin-bottom: 6px;
@@ -593,6 +604,11 @@ html {
     .post-meta {
       color: $grey-color-light;
       padding-bottom: 15px;
+    }
+
+    .wavy-line {
+      display: block;
+      margin-top: 32px;
     }
   }
 
@@ -873,6 +889,10 @@ html {
           text-decoration: none;
         }
       }
+    }
+
+    .wavy-line {
+      display: none;
     }
   }
 

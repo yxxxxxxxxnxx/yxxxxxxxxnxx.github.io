@@ -2,7 +2,7 @@
 layout: post
 title: Lagos-Sagres-Carvoeiro, Portugal
 lang: ko
-permalink: /Travel/Europe/Portugal/
+permalink: /Travel/Europe/Lagos_Sagres_and_Carvoeiro/
 categories: Travel
 subcategories: Europe
 tags: Lagos Sagres Carvoeiro Portugal

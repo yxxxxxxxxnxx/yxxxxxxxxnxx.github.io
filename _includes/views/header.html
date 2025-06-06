@@ -40,6 +40,12 @@
               {%- endif -%}
             {%- endfor -%}
             
+            {%- if site.active_lang == "en" -%}
+              <a {% static_href %} href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}>🇰🇷</a>
+            {%- elsif site.active_lang == "ko" -%}
+              <a {% static_href %} href="{{site.baseurl}}/en{{page.url}}"{% endstatic_href %}>🇬🇧</a>
+            {%- endif -%}
+
             <!-- {%- assign name = 'translate_langs' -%}
             {%- include functions.html func='get_value' -%}
             {%- assign translate_langs = return -%}

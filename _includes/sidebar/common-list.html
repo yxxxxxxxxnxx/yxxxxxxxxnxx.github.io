@@ -12,6 +12,7 @@
       <a href="{{ '/index.html' | relative_url }}">
         All<span>{{ site.posts.size }}</span>
       </a>
+      <div class="wavy-line"></div>
     </li>
 
     {% for key in  keys %}
@@ -19,6 +20,7 @@
         <a href="{{ url }}#h-{{ key }}">
           {{ key }} <span>{{ site.posts | where: field, key | size }}</span>
         </a>
+        <div class="wavy-line"></div>
       </li>
     {% endfor %}
   </ul>

@@ -32,9 +32,7 @@ sidebar:
 
     {%- assign result = hidden | where_exp: "item", "item == 'header' or item == 'post-header'" -%}
     {%- if result.size == 0 -%}
-    {%- if banner.image or banner.video -%}
-    {%- include views/banner.html -%}
-    {%- else -%}
+    {%- if banner.image == nil and banner.video == nil -%}
     {%- include views/post-header.html -%}
     {%- endif -%}
     {%- endif -%}

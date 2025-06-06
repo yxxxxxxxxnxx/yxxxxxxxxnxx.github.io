@@ -11,7 +11,7 @@
   }
 
   li {
-    border-bottom: solid 1px #000;
+    // border-bottom: solid 1px #000;
 
     &:last-child {
       border-bottom: none;
@@ -46,5 +46,4 @@
   .subcategories-list  li{
     border-bottom: none;
   }
-
 }

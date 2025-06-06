@@ -2,7 +2,7 @@
 layout: post
 title: Seville-Malaga, Spain
 lang: ko
-permalink: /Travel/Europe/Spain/
+permalink: /Travel/Europe/Seville_and_Malaga/
 categories: Travel
 subcategories: Europe
 tags: Seville Malaga Spain
