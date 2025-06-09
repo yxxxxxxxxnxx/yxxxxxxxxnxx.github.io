@@ -79,7 +79,7 @@
 
   <div class="panels-wrapper3">
 
-    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Literature'" -%}
+    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Book'" -%}
 
     <div class="left-panel3">
       <ul class="post-list {{ image_style }}">
