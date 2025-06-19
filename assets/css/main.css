@@ -526,7 +526,7 @@ html[data-scroll-status=down] .framework .sidebar {
 .pagination .top-panel .post-list > li .wavy-line {
   display: none;
 }
-.pagination .panels-wrapper, .pagination .panels-wrapper2, .pagination .panels-wrapper3 {
+.pagination .panels-wrapper, .pagination .panels-wrapper2, .pagination .panels-wrapper3, .pagination .panels-wrapper4, .pagination .panels-wrapper5 {
   display: flex;
   flex-direction: row;
   height: 100vh;
@@ -534,19 +534,19 @@ html[data-scroll-status=down] .framework .sidebar {
   overflow-x: hidden;
   scroll-snap-align: start;
 }
-.pagination .panels-wrapper .left-panel, .pagination .panels-wrapper .left-panel2, .pagination .panels-wrapper .left-panel3, .pagination .panels-wrapper2 .left-panel, .pagination .panels-wrapper2 .left-panel2, .pagination .panels-wrapper2 .left-panel3, .pagination .panels-wrapper3 .left-panel, .pagination .panels-wrapper3 .left-panel2, .pagination .panels-wrapper3 .left-panel3 {
+.pagination .panels-wrapper .left-panel, .pagination .panels-wrapper .left-panel2, .pagination .panels-wrapper .left-panel3, .pagination .panels-wrapper .left-wrapper4, .pagination .panels-wrapper .left-wrapper5, .pagination .panels-wrapper2 .left-panel, .pagination .panels-wrapper2 .left-panel2, .pagination .panels-wrapper2 .left-panel3, .pagination .panels-wrapper2 .left-wrapper4, .pagination .panels-wrapper2 .left-wrapper5, .pagination .panels-wrapper3 .left-panel, .pagination .panels-wrapper3 .left-panel2, .pagination .panels-wrapper3 .left-panel3, .pagination .panels-wrapper3 .left-wrapper4, .pagination .panels-wrapper3 .left-wrapper5, .pagination .panels-wrapper4 .left-panel, .pagination .panels-wrapper4 .left-panel2, .pagination .panels-wrapper4 .left-panel3, .pagination .panels-wrapper4 .left-wrapper4, .pagination .panels-wrapper4 .left-wrapper5, .pagination .panels-wrapper5 .left-panel, .pagination .panels-wrapper5 .left-panel2, .pagination .panels-wrapper5 .left-panel3, .pagination .panels-wrapper5 .left-wrapper4, .pagination .panels-wrapper5 .left-wrapper5 {
   width: 45vw;
   max-width: 75vh;
   overflow-y: auto;
 }
-.pagination .panels-wrapper .right-panel, .pagination .panels-wrapper .right-panel2, .pagination .panels-wrapper .right-panel3, .pagination .panels-wrapper2 .right-panel, .pagination .panels-wrapper2 .right-panel2, .pagination .panels-wrapper2 .right-panel3, .pagination .panels-wrapper3 .right-panel, .pagination .panels-wrapper3 .right-panel2, .pagination .panels-wrapper3 .right-panel3 {
+.pagination .panels-wrapper .right-panel, .pagination .panels-wrapper .right-panel2, .pagination .panels-wrapper .right-panel3, .pagination .panels-wrapper .right-wrapper4, .pagination .panels-wrapper .right-wrapper5, .pagination .panels-wrapper2 .right-panel, .pagination .panels-wrapper2 .right-panel2, .pagination .panels-wrapper2 .right-panel3, .pagination .panels-wrapper2 .right-wrapper4, .pagination .panels-wrapper2 .right-wrapper5, .pagination .panels-wrapper3 .right-panel, .pagination .panels-wrapper3 .right-panel2, .pagination .panels-wrapper3 .right-panel3, .pagination .panels-wrapper3 .right-wrapper4, .pagination .panels-wrapper3 .right-wrapper5, .pagination .panels-wrapper4 .right-panel, .pagination .panels-wrapper4 .right-panel2, .pagination .panels-wrapper4 .right-panel3, .pagination .panels-wrapper4 .right-wrapper4, .pagination .panels-wrapper4 .right-wrapper5, .pagination .panels-wrapper5 .right-panel, .pagination .panels-wrapper5 .right-panel2, .pagination .panels-wrapper5 .right-panel3, .pagination .panels-wrapper5 .right-wrapper4, .pagination .panels-wrapper5 .right-wrapper5 {
   width: 45vw;
   max-width: 75vh;
   overflow-y: auto;
 }
 .pagination .top-panel,
-.pagination .left-panel, .pagination .left-panel2, .pagination .left-panel3,
-.pagination .right-panel, .pagination .right-panel2, .pagination .right-panel3,
+.pagination .left-panel, .pagination .left-panel2, .pagination .left-panel3, .pagination .left-panel4, .pagination .left-panel5,
+.pagination .right-panel, .pagination .right-panel2, .pagination .right-panel3, .pagination .right-panel4, .pagination .right-panel5,
 .pagination .top-panel .post-list,
 .pagination .left-panel .post-list,
 .pagination .right-panel .post-list {
@@ -557,8 +557,8 @@ html[data-scroll-status=down] .framework .sidebar {
   -ms-overflow-style: none;
 }
 .pagination .top-panel::-webkit-scrollbar,
-.pagination .left-panel::-webkit-scrollbar, .pagination .left-panel2::-webkit-scrollbar, .pagination .left-panel3::-webkit-scrollbar,
-.pagination .right-panel::-webkit-scrollbar, .pagination .right-panel2::-webkit-scrollbar, .pagination .right-panel3::-webkit-scrollbar,
+.pagination .left-panel::-webkit-scrollbar, .pagination .left-panel2::-webkit-scrollbar, .pagination .left-panel3::-webkit-scrollbar, .pagination .left-panel4::-webkit-scrollbar, .pagination .left-panel5::-webkit-scrollbar,
+.pagination .right-panel::-webkit-scrollbar, .pagination .right-panel2::-webkit-scrollbar, .pagination .right-panel3::-webkit-scrollbar, .pagination .right-panel4::-webkit-scrollbar, .pagination .right-panel5::-webkit-scrollbar,
 .pagination .top-panel .post-list::-webkit-scrollbar,
 .pagination .left-panel .post-list::-webkit-scrollbar,
 .pagination .right-panel .post-list::-webkit-scrollbar {
@@ -731,7 +731,6 @@ html[data-scroll-status=down] .framework .sidebar {
  * Posts
  */
 .post .message-box {
-  background-color: #00A08A;
   border: 1px solid #000;
   border-radius: 100px;
   margin-bottom: 8px;

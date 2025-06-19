@@ -56,6 +56,10 @@ document.addEventListener("DOMContentLoaded", function () {
       rightPanel = document.querySelector('.right-panel2');
     } else if (leftPanel.classList.contains('left-panel3')) {
       rightPanel = document.querySelector('.right-panel3');
+    } else if (leftPanel.classList.contains('left-panel4')) {
+      rightPanel = document.querySelector('.right-panel4');
+    } else if (leftPanel.classList.contains('left-panel5')) {
+      rightPanel = document.querySelector('.right-panel5');
     } else {
       rightPanel = document.querySelector('.right-panel');
     }
