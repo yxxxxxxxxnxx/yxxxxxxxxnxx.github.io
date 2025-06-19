@@ -101,6 +101,54 @@
     </div>
   </div>
 
+  <div class="panels-wrapper4">
+
+    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Tech'" -%}
+
+    <div class="left-panel4">
+      <ul class="post-list {{ image_style }}">
+        {%- for post in travel_posts -%}
+          {%- if post.top != nil and post.top != false and post.top != '' -%}
+            {%- include views/pagination-item.html -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="right-panel4">
+      <ul class="post-list {{ image_style }}">
+        {%- for post in travel_posts -%}
+          {%- if post.top == nil or post.top == false or post.top == '' -%}
+            {%- include views/pagination-item.html -%}
+          {%- endif -%}
+        {%- endfor -%} 
+      </ul>
+    </div>
+  </div>
+
+  <div class="panels-wrapper5">
+
+    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Language\s'" -%}
+
+    <div class="left-panel5">
+      <ul class="post-list {{ image_style }}">
+        {%- for post in travel_posts -%}
+          {%- if post.top != nil and post.top != false and post.top != '' -%}
+            {%- include views/pagination-item.html -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="right-panel5">
+      <ul class="post-list {{ image_style }}">
+        {%- for post in travel_posts -%}
+          {%- if post.top == nil or post.top == false or post.top == '' -%}
+            {%- include views/pagination-item.html -%}
+          {%- endif -%}
+        {%- endfor -%} 
+      </ul>
+    </div>
+  </div>
+
   <script src="/assets/js/scroll-sync.js"></script>
 
   <!-- Pagination links -->

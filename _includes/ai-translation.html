@@ -1,3 +1,16 @@
 <div class="message-box" id="ai-translation-msg">
-    {{ site.data.strings.ai_translation }}
+    {{ site.data.strings.ai_translation | replace: "Apple Intelligence", "<span class='app_int_highlight'><b>Apple Intelligence</b></span>" }}
 </div>
+
+<style>
+    .app_int_highlight {
+        display: inline-block;
+        background: linear-gradient(to right, #3391ff, #af4eff, #ff3b5c, #ff9f0a);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+</style>

@@ -330,7 +330,7 @@ html {
     }
   }
 
-  .panels-wrapper, .panels-wrapper2, .panels-wrapper3 {
+  .panels-wrapper, .panels-wrapper2, .panels-wrapper3, .panels-wrapper4, .panels-wrapper5 {
     display: flex;
     flex-direction: row;
     height: 100vh;
@@ -339,13 +339,13 @@ html {
     scroll-snap-align: start; // scroll controls
   
 
-    .left-panel, .left-panel2, .left-panel3 {
+    .left-panel, .left-panel2, .left-panel3, .left-wrapper4, .left-wrapper5 {
       width: 45vw;
       max-width: 75vh;
       overflow-y: auto;
     }
 
-    .right-panel, .right-panel2, .right-panel3 {
+    .right-panel, .right-panel2, .right-panel3, .right-wrapper4, .right-wrapper5 {
       width: 45vw;
       max-width: 75vh;
       overflow-y: auto;
@@ -353,8 +353,8 @@ html {
   }
 
   .top-panel,
-  .left-panel, .left-panel2, .left-panel3,
-  .right-panel, .right-panel2, .right-panel3,
+  .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5,
+  .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5,
   .top-panel .post-list,
   .left-panel .post-list,
   .right-panel .post-list {
@@ -581,7 +581,7 @@ html {
   @extend %post-header;
 
   .message-box {
-    background-color: map-get($brand-colors, "darjeelinggreen");
+    // background-color: map-get($brand-colors, "darjeelinggreen");
     border: 1px solid #000;
     border-radius: 100px;
     margin-bottom: 8px;
