@@ -537,11 +537,13 @@ html[data-scroll-status=down] .framework .sidebar {
 .pagination .panels-wrapper .left-panel, .pagination .panels-wrapper .left-panel2, .pagination .panels-wrapper .left-panel3, .pagination .panels-wrapper .left-panel4, .pagination .panels-wrapper .left-panel5, .pagination .panels-wrapper2 .left-panel, .pagination .panels-wrapper2 .left-panel2, .pagination .panels-wrapper2 .left-panel3, .pagination .panels-wrapper2 .left-panel4, .pagination .panels-wrapper2 .left-panel5, .pagination .panels-wrapper3 .left-panel, .pagination .panels-wrapper3 .left-panel2, .pagination .panels-wrapper3 .left-panel3, .pagination .panels-wrapper3 .left-panel4, .pagination .panels-wrapper3 .left-panel5, .pagination .panels-wrapper4 .left-panel, .pagination .panels-wrapper4 .left-panel2, .pagination .panels-wrapper4 .left-panel3, .pagination .panels-wrapper4 .left-panel4, .pagination .panels-wrapper4 .left-panel5, .pagination .panels-wrapper5 .left-panel, .pagination .panels-wrapper5 .left-panel2, .pagination .panels-wrapper5 .left-panel3, .pagination .panels-wrapper5 .left-panel4, .pagination .panels-wrapper5 .left-panel5 {
   width: 45vw;
   max-width: 75vh;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 .pagination .panels-wrapper .right-panel, .pagination .panels-wrapper .right-panel2, .pagination .panels-wrapper .right-panel3, .pagination .panels-wrapper .right-panel4, .pagination .panels-wrapper .right-panel5, .pagination .panels-wrapper2 .right-panel, .pagination .panels-wrapper2 .right-panel2, .pagination .panels-wrapper2 .right-panel3, .pagination .panels-wrapper2 .right-panel4, .pagination .panels-wrapper2 .right-panel5, .pagination .panels-wrapper3 .right-panel, .pagination .panels-wrapper3 .right-panel2, .pagination .panels-wrapper3 .right-panel3, .pagination .panels-wrapper3 .right-panel4, .pagination .panels-wrapper3 .right-panel5, .pagination .panels-wrapper4 .right-panel, .pagination .panels-wrapper4 .right-panel2, .pagination .panels-wrapper4 .right-panel3, .pagination .panels-wrapper4 .right-panel4, .pagination .panels-wrapper4 .right-panel5, .pagination .panels-wrapper5 .right-panel, .pagination .panels-wrapper5 .right-panel2, .pagination .panels-wrapper5 .right-panel3, .pagination .panels-wrapper5 .right-panel4, .pagination .panels-wrapper5 .right-panel5 {
   width: 45vw;
   max-width: 75vh;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 .pagination .top-panel,
