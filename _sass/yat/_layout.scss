@@ -342,12 +342,14 @@ html {
     .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5 {
       width: 45vw;
       max-width: 75vh;
+      overflow-x: hidden;
       overflow-y: auto;
     }
 
     .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5 {
       width: 45vw;
       max-width: 75vh;
+      overflow-x: hidden;
       overflow-y: auto;
     }
   }
