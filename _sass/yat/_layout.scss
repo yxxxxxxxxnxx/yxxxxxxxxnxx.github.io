@@ -339,13 +339,13 @@ html {
     scroll-snap-align: start; // scroll controls
   
 
-    .left-panel, .left-panel2, .left-panel3, .left-wrapper4, .left-wrapper5 {
+    .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5 {
       width: 45vw;
       max-width: 75vh;
       overflow-y: auto;
     }
 
-    .right-panel, .right-panel2, .right-panel3, .right-wrapper4, .right-wrapper5 {
+    .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5 {
       width: 45vw;
       max-width: 75vh;
       overflow-y: auto;
@@ -447,7 +447,7 @@ html {
 
     .post-image-container {
       position: relative;
-      max-width: 50vw;
+      max-width: 100vw;
       min-width: 120px;
 
       .post-bubbles-container {
@@ -529,6 +529,33 @@ html {
       @include media-query($on-laptop) {
         flex-direction: column !important;
       }
+    }
+  }
+
+  @include media-query($on-palm) {
+    .top-panel {
+      .post-list {
+        > li {
+          width: 100vw;
+          margin-bottom: 0px;
+        }
+      }
+    }
+
+    .panels-wrapper, .panels-wrapper2, .panels-wrapper3, .panels-wrapper4, .panels-wrapper5 {
+      .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5 {
+        display: none;
+      }
+
+      .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5 {
+        width: 100vw;
+        height: 100vh;
+      }
+    }
+
+    .post-content .post-image-container .post-image > *:first-child {
+      width: 90vw;
+      max-width: 90vw;
     }
   }
 

@@ -10,150 +10,83 @@
 
 {%- if paginator.posts.size > 0 -%}
 <div class="pagination">
+
+  {%- assign sortable_list = "" | split: "" -%}
+  {%- for category_data in site.categories -%}
+    {%- assign category_name = category_data[0] -%}
+    {%- assign posts_in_category = category_data[1] -%}
+    
+    {%- assign posts_with_banner = posts_in_category | where_exp: "item", "item.banner" -%}
+
+    {%- if posts_with_banner.size > 0 -%}
+      {%- assign latest_post_timestamp = posts_with_banner.first.date | date: '%s' -%}
+      {%- assign post_count_padded = posts_with_banner.size | prepend: '0000' | slice: -4, 4 -%}
+      
+      {%- assign sort_string = latest_post_timestamp | append: '#' | append: post_count_padded | append: '#' | append: category_name -%}
+      {%- assign sortable_list = sortable_list | push: sort_string -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- assign sorted_temp_list = sortable_list | sort | reverse -%}
+
+  {%- assign sorted_categories = "" | split: "" -%}
+  {%- for sort_string in sorted_temp_list -%}
+    {%- assign category_name = sort_string | split: '#' | last -%}
+    {%- assign sorted_categories = sorted_categories | push: category_name -%}
+  {%- endfor -%}
+
+
   <div class="top-panel">
     <ul class="post-list {{ image_style }}">
-      {%- assign post_item_class = "top-post" -%}
-      {%- assign posts = site.posts
-        | where_exp: "item", "item.top > 0"
-        | sort: "top" -%}
-      {%- for post in posts -%}
-        {%- include views/pagination-item.html -%}
+      {%- for category in sorted_categories -%}
+        {%- assign posts_with_banner = site.categories[category] | where_exp: "item", "item.banner" -%}
+        {%- assign latest_post_in_category = posts_with_banner | first -%}
+
+        {%- if latest_post_in_category -%}
+          {%- assign post = latest_post_in_category -%}
+          {%- include views/pagination-item.html -%}
+        {%- endif -%}
       {%- endfor -%}
     </ul>
   </div>
-  <!-- <script src="/assets/js/scroll-horizontal.js"></script> -->
 
-  <!-- <div class="wavy-line"></div> -->
 
-  <div class="panels-wrapper">
+  {%- for category in sorted_categories -%}
+    {%- assign panel_posts = paginator.posts 
+        | where_exp: "post", "post.categories contains category" 
+        | where_exp: "post", "post.banner" -%}
 
-    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Travel'" -%}
-
-    <div class="left-panel">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top != nil and post.top != false and post.top != '' -%}
+    {%- if panel_posts.size > 0 -%}
+      <div class="panels-wrapper{% if forloop.index > 1 %}{{ forloop.index }}{% endif %}">
+        
+        <div class="left-panel{% if forloop.index > 1 %}{{ forloop.index }}{% endif %}">
+          <ul class="post-list {{ image_style }}">
+            {%- assign post = panel_posts[0] -%}
             {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
-    </div>
-    <div class="right-panel">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top == nil or post.top == false or post.top == '' -%}
-            {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%} 
-      </ul>
-    </div>
-  </div>
+          </ul>
+        </div>
 
-  <!-- <div class="wavy-line"></div> -->
+        <div class="right-panel{% if forloop.index > 1 %}{{ forloop.index }}{% endif %}">
+          <ul class="post-list {{ image_style }}">
+            {%- for i in (1..5) -%}
+              {%- if panel_posts[i] -%}
+                {%- assign post = panel_posts[i] -%}
+                {%- include views/pagination-item.html -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        </div>
 
-  <div class="panels-wrapper2">
-
-    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Home\s'" -%}
-
-    <div class="left-panel2">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top != nil and post.top != false and post.top != '' -%}
-            {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
-    </div>
-    <div class="right-panel2">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top == nil or post.top == false or post.top == '' -%}
-            {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%} 
-      </ul>
-    </div>
-  </div>
-
-  <!-- <div class="wavy-line"></div> -->
-
-  <div class="panels-wrapper3">
-
-    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Book'" -%}
-
-    <div class="left-panel3">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top != nil and post.top != false and post.top != '' -%}
-            {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
-    </div>
-    <div class="right-panel3">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top == nil or post.top == false or post.top == '' -%}
-            {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%} 
-      </ul>
-    </div>
-  </div>
-
-  <div class="panels-wrapper4">
-
-    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Tech'" -%}
-
-    <div class="left-panel4">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top != nil and post.top != false and post.top != '' -%}
-            {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
-    </div>
-    <div class="right-panel4">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top == nil or post.top == false or post.top == '' -%}
-            {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%} 
-      </ul>
-    </div>
-  </div>
-
-  <div class="panels-wrapper5">
-
-    {%- assign travel_posts = paginator.posts | where_exp: "post", "post.categories contains 'Language\s'" -%}
-
-    <div class="left-panel5">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top != nil and post.top != false and post.top != '' -%}
-            {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%}
-      </ul>
-    </div>
-    <div class="right-panel5">
-      <ul class="post-list {{ image_style }}">
-        {%- for post in travel_posts -%}
-          {%- if post.top == nil or post.top == false or post.top == '' -%}
-            {%- include views/pagination-item.html -%}
-          {%- endif -%}
-        {%- endfor -%} 
-      </ul>
-    </div>
-  </div>
-
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+  
   <script src="/assets/js/scroll-sync.js"></script>
 
-  <!-- Pagination links -->
-  {%- if paginator.posts.size < site.posts.size -%}
+
+  {%- if paginator.total_pages > 1 -%}
     {%- include views/paginator.html -%}
   {%- endif -%}
+
 </div>
 {%- endif -%}

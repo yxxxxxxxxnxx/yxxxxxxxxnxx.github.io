@@ -1,11 +1,11 @@
 ---
 layout: post
-title: B&W Px8
+title: 베를린에서 화장품 찾기
 lang: ko
-permalink: /Tech/Electronic Devices/B&W Px8/
-categories: Tech
-subcategories: Electronic Devices
-tags: B&W Bowers&Wilkins Px8 Headphones
+permalink: /Homes/Berlin/Cosmetic_Products/
+categories: Home\s
+subcategories: Berlin
+tags: 독일 화장품
 banner:
     image: https://www.bowerswilkins.com/on/demandware.static/-/Sites-master-catalog-soundunited/default/dwf2c89100/bowers/Rich-Content/bw_px8_cancel_the_noise_desktop.jpg
 ---
