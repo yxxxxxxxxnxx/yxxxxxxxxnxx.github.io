@@ -41,9 +41,9 @@
             {%- endfor -%}
             
             {%- if site.active_lang == "en" -%}
-              <a {% static_href %} href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}>🇰🇷</a>
+              <a class="page-link" {% static_href %} href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}>Ko</a>
             {%- elsif site.active_lang == "ko" -%}
-              <a {% static_href %} href="{{site.baseurl}}/en{{page.url}}"{% endstatic_href %}>🇬🇧</a>
+              <a class="page-link" {% static_href %} href="{{site.baseurl}}/en{{page.url}}"{% endstatic_href %}>En</a>
             {%- endif -%}
 
             <!-- {%- assign name = 'translate_langs' -%}

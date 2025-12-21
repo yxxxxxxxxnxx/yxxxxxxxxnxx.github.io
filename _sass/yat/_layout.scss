@@ -17,8 +17,14 @@ html {
 
       &.site-header {
         .site-brand-inner, .page-link {
-          color: #fff;
+          // color: #fff;
           transition: 0.1s color;
+        }
+
+        .page-link {
+          // color: #fff;
+          // border: solid 2.5px #fff;
+          // background-color: transparent;
         }
 
         @include media-query($on-laptop) {
@@ -60,7 +66,7 @@ html {
  * Site header
  */
 .site-header {
-  background-color: $header-background-color;
+  background-color: transparent;
   height: $header-height;
   width: 100%;
   transition: height 0.2s, text-shadow 0.2s, top 0.2s;
@@ -132,77 +138,80 @@ html {
     line-height: $base-line-height;
     color: $header-text-color;
     transition: 0.1s ease-in-out;
+    font-size: $base-font-size * 1.0;
+    font-weight: $base-font-weight * 1.5;
+    border: solid 2.5px #000;
+    background-color: $header-background-color;
+    padding: 8px 8px;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
-      margin-right: 24px;
+      margin-right: -2.5px;
       &:hover {
         text-decoration: none;
       }
     }
   }
 
-  @include media-query($on-laptop) {
-    position: absolute;
-    top: 0;
-    text-align: center;
+  // @include media-query($on-laptop) {
+  //   position: absolute;
+  //   top: 0;
+  //   text-align: center;
 
-    label[for="nav-trigger"] {
-      display: block;
-      z-index: 2;
-      cursor: pointer;
-    }
+  //   label[for="nav-trigger"] {
+  //     display: block;
+  //     z-index: 2;
+  //     cursor: pointer;
+  //   }
 
-    .menu-icon {
-      display: block;
-      float: right;
-      text-align: center;
+  //   .menu-icon {
+  //     display: block;
+  //     float: right;
+  //     text-align: center;
 
-      > svg {
-        fill: rgba($header-text-color, 80%);
-        transition: 0.1s fill;
-      }
-    }
+  //     > svg {
+  //       fill: rgba($header-text-color, 80%);
+  //       transition: 0.1s fill;
+  //     }
+  //   }
 
-    input ~ .trigger {
-      clear: both;
-      display: none;
-      border: solid 1px #000;
-      border-radius: 100px;
-    }
+  //   input ~ .trigger {
+  //     clear: both;
+  //     display: none;
+  //   }
 
-    input:checked ~ .trigger {
-      display: block;
-      background: $header-background-color;
-    }
+  //   input:checked ~ .trigger {
+  //     display: block;
+  //     // background: $header-background-color;
+  //   }
 
-    .page-link {
-      display: block;
-      padding: 5px 5px;
-      color: #000;
-      margin: 20px 25px;
-    }
-  }
+  //   .page-link {
+  //     padding: 5px 5px;
+  //     color: #000;
+  //     background-color: $header-background-color;
+  //   }
+  // }
 }
 
 /**
  * Wavy Line
  */
 .wavy-line {
-  --s: 4px; /* size of the wave */
-  --b: 1px; /* thickness of the line */
-  --m: 1.0; /* curvature of the wave [0 2] */
+  border-bottom: solid 2.5px #000;
+  // --s: 4px; /* size of the wave */
+  // --b: 1px; /* thickness of the line */
+  // --m: 1.0; /* curvature of the wave [0 2] */
   
-  background: #000;
-  --R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
-  height: calc(2*var(--R));
-  width: 100%;
-  --_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
-  mask:
-    radial-gradient(var(--R) at left 50% bottom calc(-1*var(--m)*var(--s)), var(--_g)) 
-     calc(50% - 2*var(--s)) calc(50% - var(--s)/2 - var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x,
-    radial-gradient(var(--R) at left 50% top calc(-1*var(--m)*var(--s)),var(--_g)) 
-     50% calc(50% + var(--s)/2 + var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
+  // background: #000;
+  // --R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
+  // height: calc(2*var(--R));
+  // width: 100%;
+  // --_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
+  // mask:
+  //   radial-gradient(var(--R) at left 50% bottom calc(-1*var(--m)*var(--s)), var(--_g)) 
+  //    calc(50% - 2*var(--s)) calc(50% - var(--s)/2 - var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x,
+  //   radial-gradient(var(--R) at left 50% top calc(-1*var(--m)*var(--s)),var(--_g)) 
+  //    50% calc(50% + var(--s)/2 + var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
 } 
 
 /**
@@ -211,6 +220,7 @@ html {
 .site-footer {
   @include relative-font-size(1.0);
   color: $footer-text-color;
+  font-weight: $base-font-weight * 1.5;
   background-color: $background-color;
   text-align: left;
   transition: background-color 0.2s;
@@ -610,9 +620,11 @@ html {
   @extend %post-header;
 
   .message-box {
-    // background-color: map-get($brand-colors, "darjeelinggreen");
-    border: 1px solid #000;
-    border-radius: 100px;
+    font-size: $base-font-size* 1.0;
+    font-weight: $base-font-weight *1.5;
+    border: solid 2.5px #000;
+    background-color: $header-background-color;
+    padding: 4px;
     margin-bottom: 8px;
     text-align: center;
   }
@@ -746,6 +758,9 @@ html {
   a {
     @include relative-font-size(1.125);
     color: $grey-color-light;
+    border: solid 2.5px #000;
+    padding: 8px;
+    background-color: $header-background-color;
     line-height: 15px;
     max-width: 50%;
   }
@@ -836,21 +851,24 @@ html {
 
   .page-banner-inner {
     @include vertical-center(relative);
-
     color: $background-color;
     padding: 10px 0px;
-    // text-shadow: 1px 1px 2px #33333355;
 
     & > *:first-child {
       margin: 0;
 
       > :nth-child(1) {
         @include relative-font-size(2.625);
+        display: inline-block;
         letter-spacing: -1px;
         line-height: 1;
         margin-bottom: 0.1em;
-        font-weight: 600;
+        font-weight: $base-font-weight * 1.5;
         transition: 0.2s all;
+        color: #000;
+        border: solid 2.5px #000;
+        background-color: $background-color;
+        padding: 8px;
 
         @include media-query($on-palm) {
           // @include relative-font-size(1.975);
@@ -885,6 +903,7 @@ html {
     .post-meta {
       color: $background-color;
       padding-bottom: 1em;
+      
     }
 
     .left-vsplit:before {

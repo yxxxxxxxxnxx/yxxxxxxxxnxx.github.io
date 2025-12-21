@@ -15,7 +15,6 @@
 
   .post-menu-content {
     ul {
-      border-left: 0px solid #000;
       $indent: #{calc($base-font-size / 4)};
       $active-bgcolor: #000;
 
@@ -36,25 +35,25 @@
           pointer-events: none;
         }
 
-        // &:hover {
-        //   text-decoration: none;
-        //   color: lighten($text-color, 30%)!important;
-        // }
+        &:hover {
+          font-weight: $base-font-weight * 1.5;
+        }
       }
 
       .active {
-        background-color: $active-bgcolor;
+        font-weight: $base-font-weight * 1.5;
+        background-color: $header-background-color;
         transition: background 0.5s;
-        border-radius: 100px;
-        border-left: 0px solid #000;
-        margin-left: 0px;
+        border: solid 2.5px #000;
+        margin-left: -2px;
+        
 
         &:hover {
-          background-color: lighten($active-bgcolor, 2%);
+          // background-color: lighten($active-bgcolor, 2%);
         }
 
         a {
-          color: $background-color;
+          color: #000;
         }
       }
     }

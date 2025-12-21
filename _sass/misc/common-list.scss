@@ -22,20 +22,18 @@
       justify-content: space-between;
       padding: 8px 12px;
       text-decoration: none;
-      font-weight: normal;
+      font-weight: $base-font-weight * 1.5;
       color: $text-color;
       transition: background 0.2s;
     }
 
     span {
-      @include relative-font-size(0.8);
+      @include relative-font-size(1.0);
       display: inline-block;
-      border-radius: 10px;
       align-self: center;
-      background: #000000;
-      padding: 0px 8px;
       margin-left: 20px;
-      color: $background-color;
+      color: #000;
+      font-weight: $base-font-weight * 1.5;
     }
   }
 
