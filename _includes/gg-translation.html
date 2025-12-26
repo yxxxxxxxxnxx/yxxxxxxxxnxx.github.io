@@ -1,0 +1,16 @@
+<div class="message-box" id="gg-translation-msg">
+    {{ site.data.strings.gg_translation | replace: "Gemini", "<span class='gem_highlight'><b>Gemini</b></span>" }}
+</div>
+
+<style>
+    .gem_highlight {
+        display: inline-block;
+        background: linear-gradient(to right, #4796E4, #4796E4, #8C78C9, #CE646C);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+</style>

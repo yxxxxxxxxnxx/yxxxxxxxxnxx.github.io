@@ -30,6 +30,10 @@ sidebar:
     {%- include ai-translation.html -%}
     {%- endif -%}
 
+    {%- if page.gg == true -%}
+    {%- include gg-translation.html -%}
+    {%- endif -%}
+
     {%- assign result = hidden | where_exp: "item", "item == 'header' or item == 'post-header'" -%}
     {%- if result.size == 0 -%}
     {%- if banner.image == nil and banner.video == nil -%}
