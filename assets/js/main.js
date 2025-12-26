@@ -26,9 +26,10 @@ function getScrollPos() {
 }
 
 var _scrollTimer = [];
+var _scrollElementTimer = [];
 
 // Smooth scroll
-function smoothScrollTo(y, time) {
+function smoothScrollTo(y, time, callback) {
   time = time == undefined ? 500 : time;
 
   var scrollPos = getScrollPos();
@@ -53,6 +54,40 @@ function smoothScrollTo(y, time) {
         );
       }, (time / count) * cur);
     })();
+  }
+
+  if (typeof callback === 'function') {
+    setTimeout(callback, time);
+  }
+}
+
+// Smooth scroll for an element (e.g., .pagination)
+function smoothScrollElementTo(el, y, time, callback) {
+  time = time === undefined ? 500 : time;
+
+  var start = el.scrollTop;
+  var count = 60;
+  var length = (y - start);
+
+  function easeInOut(k) {
+    return .5 * (Math.sin((k - .5) * Math.PI) + 1);
+  }
+
+  for (var i = _scrollElementTimer.length - 1; i >= 0; i--) {
+    clearTimeout(_scrollElementTimer[i]);
+  }
+
+  for (var i = 0; i <= count; i++) {
+    (function() {
+      var cur = i;
+      _scrollElementTimer[cur] = setTimeout(function() {
+        el.scrollTop = start + length * easeInOut(cur / count);
+      }, (time / count) * cur);
+    })();
+  }
+
+  if (typeof callback === 'function') {
+    setTimeout(callback, time);
   }
 }
 

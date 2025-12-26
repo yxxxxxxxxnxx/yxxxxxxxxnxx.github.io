@@ -826,16 +826,78 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        clickToTop.classList.add('show')
-      }else {
-        clickToTop.classList.remove('show')
+
+    function getPagination() {
+      return document.querySelector('.pagination');
+    }
+
+    function updateVisibility() {
+      const pagination = getPagination();
+      if (window.scrollY > 100 || (pagination && pagination.scrollTop > 0)) {
+        clickToTop.classList.add('show');
+      } else {
+        clickToTop.classList.remove('show');
+      }
+    }
+
+    // Window scroll visibility
+    window.addEventListener('scroll', updateVisibility, { passive: true });
+
+    // Detect user scrolling inside pagination even if it is dynamically replaced
+    document.addEventListener('wheel', function (e) {
+      if (e.target && e.target.closest && e.target.closest('.pagination')) {
+        updateVisibility();
+      }
+    }, { passive: true });
+
+    // For touch devices
+    document.addEventListener('touchmove', function (e) {
+      if (e.target && e.target.closest && e.target.closest('.pagination')) {
+        updateVisibility();
+      }
+    }, { passive: true });
+
+    function isAtBottom() {
+      return (window.innerHeight + window.scrollY) >= (document.body.scrollHeight - 10);
+    }
+
+    clickToTop.addEventListener('click', () => {
+      const atBottom = isAtBottom();
+      const pagination = getPagination();
+
+      if (pagination && (atBottom || pagination.scrollTop > 0)) {
+        // If at bottom, scroll pagination first then window; if pagination scrolled, scroll it only
+        if (typeof smoothScrollElementTo === 'function') {
+          if (atBottom) {
+            smoothScrollElementTo(pagination, 0, 300, function() {
+              if (typeof smoothScrollTo === 'function') smoothScrollTo(0, 300);
+            });
+          } else {
+            smoothScrollElementTo(pagination, 0, 300);
+          }
+        } else if (pagination.scrollTo) {
+          if (atBottom) {
+            pagination.scrollTo({ top: 0, behavior: 'smooth' });
+            if (typeof window.scrollTo === 'function') window.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            pagination.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        } else {
+          pagination.scrollTop = 0;
+          if (atBottom && typeof smoothScrollTo === 'function') smoothScrollTo(0, 300);
+        }
+        return;
+      }
+
+      if (typeof smoothScrollTo === 'function') {
+        smoothScrollTo(0);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
-    clickToTop.addEventListener('click', () => {
-      window.smoothScrollTo(0);
-    });
+
+    // Initial visibility check
+    updateVisibility();
   })();
 </script>
 <main class="page-content" aria-label="Content">
@@ -963,8 +1025,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/en/Travel/Europe/Lagos_Sagres_and_Carvoeiro/" title="Lagos-Sagres-Carvoeiro, Portugal">
-            Lagos-Sagres-Carvoeiro, Portugal<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Homes/Berlin/Sperrkonto/" title="Sperrkonto">
+            Sperrkonto<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -978,17 +1040,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </span> -->
 </a>
         </li>
-<li class="">
-          <a class="post-link" href="/en/Travel/Europe/Sevilla_and_M%C3%A1laga/" title="Sevilla-Málaga, España">
-            Sevilla-Málaga, España<!-- <span class="post-badges">
+<li class="top-post">
+          <a class="post-link" href="/en/Travel/Europe/Dubrovnik/" title="Dubrovnik, Hrvatska">
+            Dubrovnik, Hrvatska<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Homes/Berlin/Cosmetic_Products/" title="베를린, 화장품 기행 (紀行 또는 奇行)">
-            베를린, 화장품 기행 (紀行 또는 奇行)<!-- <span class="post-badges">
+          <a class="post-link" href="/en/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="Stove">
+            Stove<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
