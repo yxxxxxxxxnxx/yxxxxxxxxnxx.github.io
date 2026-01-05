@@ -17,6 +17,7 @@
     ul {
       $indent: #{calc($base-font-size / 4)};
       $active-bgcolor: #000;
+      font-weight: $base-font-weight * 1.5;
 
       @for $i from 2 through 6 {
         .h-h#{$i} {
@@ -44,10 +45,7 @@
         font-weight: $base-font-weight * 1.5;
         background-color: $header-background-color;
         transition: background 0.5s;
-        border: solid 2.5px #000;
-        margin-left: -2px;
-        
-
+        border-bottom: solid 2.5px #000;
         &:hover {
           // background-color: lighten($active-bgcolor, 2%);
         }
