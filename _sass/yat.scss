@@ -1,9 +1,46 @@
 @charset "utf-8";
-// Web font
-@import url('https://fastly.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css');
-// Define defaults for each variable.
 
-$base-font-family: Wanted Sans Variable, Helvetica Neue, Helvetica, Arial, sans-serif, !default;
+// Webfonts
+@font-face {
+  font-family: 'PyeojinGothic';
+  src: url('../../assets/fonts/PyeojinGothic-Light.woff2') format('woff2');
+  unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'PyeojinGothic';
+  src: url('../../assets/fonts/PyeojinGothic-Regular.woff2') format('woff2');
+  unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'PyeojinGothic';
+  src: url('../../assets/fonts/PyeojinGothic-Medium.woff2') format('woff2');
+  unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'PyeojinGothic';
+  src: url('../../assets/fonts/PyeojinGothic-SemiBold.woff2') format('woff2');
+  unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'PyeojinGothic';
+  src: url('../../assets/fonts/PyeojinGothic-Bold.woff2') format('woff2');
+  unicode-range: U+AC00-D7A3, U+1100-11FF, U+3130-318F;
+  font-weight: 700;
+}
+
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+
+
+
+$base-font-family: PyeojinGothic, Wanted Sans Variable, Helvetica Neue, Helvetica, Arial, sans-serif, !default;
 $base-font-size: 14px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
