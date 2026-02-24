@@ -242,4 +242,12 @@ plugins:
   - jekyll-spaceship
   - jekyll-polyglot
 
+jekyll-spaceship:
+  element-processor:
+    css:
+      - 'video[src$=".avif"]':
+          name: img
+          props:
+            src: ['(^.*$)', '\0']
+
 future: true
