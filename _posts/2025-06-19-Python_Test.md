@@ -7,7 +7,7 @@ categories: Tech
 subcategories: Python
 tags: 
 banner:
-    image: /assets/att/2025-06-09-Praha/banner.jpeg
+    image: /assets/att/2025-06-09-Praha/banner.avif
 ---
 
 Test

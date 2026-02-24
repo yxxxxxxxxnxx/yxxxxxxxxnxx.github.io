@@ -7,12 +7,12 @@ categories: Book
 subcategories: Literature
 tags: 박상영
 banner:
-    image: /assets/att/2025-02-03-One_Dimensional/banner.jpg
+    image: /assets/att/2025-02-03-One_Dimensional/banner.avif
 top: 3
 ---
 ## Metadata
 ### Cover
-![cover](/assets/att/2025-02-03-One_Dimensional/cover.jpg)
+![cover](/assets/att/2025-02-03-One_Dimensional/cover.avif)
 ### Publisher
 문학동네 | 2021 | e-book
 

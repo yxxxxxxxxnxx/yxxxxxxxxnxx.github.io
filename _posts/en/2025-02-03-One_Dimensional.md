@@ -7,13 +7,13 @@ categories: Book
 subcategories: Literature
 tags: SangYoungPark SangYoung Park
 banner:
-    image: /assets/att/2025-02-03-One_Dimensional/banner.jpg
+    image: /assets/att/2025-02-03-One_Dimensional/banner.avif
 top: 3
 ai: true
 ---
 ## Metadata
 ### Cover
-![cover](/assets/att/2025-02-03-One_Dimensional/cover.jpg)
+![cover](/assets/att/2025-02-03-One_Dimensional/cover.avi)
 ### Publisher
 Munhakdongne | 2021 | e-book
 

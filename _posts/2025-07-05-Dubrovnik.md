@@ -7,7 +7,7 @@ categories: Travel
 subcategories: Europe
 tags: Dubrovnik Hrvatska Croatia
 banner:
-    image: /assets/att/2025-07-05-Dubrovnik/banner.jpeg
+    image: /assets/att/2025-07-05-Dubrovnik/banner.avif
 top: 1
 ---
 
