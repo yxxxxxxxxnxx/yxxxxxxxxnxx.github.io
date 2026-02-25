@@ -245,7 +245,7 @@ plugins:
 jekyll-spaceship:
   element-processor:
     css:
-      - 'video[src$=".avif"]':
+      - 'video[id$=".avi"]':
           name: img
           props:
             src: ['(^.*$)', '\0']
