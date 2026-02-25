@@ -243,11 +243,7 @@ plugins:
   - jekyll-polyglot
 
 jekyll-spaceship:
-  element-processor:
-    css:
-      - 'video[id$=".avi"]':
-          name: img
-          props:
-            src: ['(^.*$)', '\0']
+  media-processor:
+    enabled: false
 
 future: true
