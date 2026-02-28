@@ -7,7 +7,7 @@ categories: Home\s
 subcategories: Berlin
 tags: 베를린 독일 화장품
 banner:
-    image: https://www.bowerswilkins.com/on/demandware.static/-/Sites-master-catalog-soundunited/default/dwf2c89100/bowers/Rich-Content/bw_px8_cancel_the_noise_desktop.jpg
+    image: https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/ca/skin-smarts/how-to-mosturize/best-moisturizer-dermatologist-recommended-600x400.jpg
 ---
 
 ## 한국
@@ -28,7 +28,7 @@ banner:
 ### Effaclar Tiefenreinigende Waschcreme, La Roche-Posay
 🇫🇷 Effaclar Crème moussante désincrustante | 🇰🇷 에빠끌라 딥 클렌징 포밍 크림 | 🇬🇧 Effaclar Deep Cleansing Foaming Cream
 
-![Effaclar](https://www.larocheposay.de/-/media/project/loreal/brand-sites/lrp/emea/dach/products/effaclar/effaclar-tiefenreinigende-waschcreme/3433422404366larocheposay3209166larocheposayeffaclartiefenreinigendewaschcreme01reinigungscremefront.png){: width="256" }
+![Effaclar](https://www.larocheposay.de/-/media/project/loreal/brand-sites/lrp/emea/dach/new/products/effaclar/effaclar-tiefenreinigende-waschcreme/effaclar_creme_moussante_desincrustante.png){: width="256" }
 
 더마 코스메틱 브랜드에서 알칼리성 세안제를 출시하는 경우가 적은 탓인지 국내에서도 인기가 많은 듯하다. 한국에서 접하던 클렌징 폼들이 치약 같은 되기였다면, 그에 비해서는 상당히 묽은 젤에 가깝다. 그렇다고 해서 아주 생소한 느낌은 아니고, 다른 제품에서 비슷한 경우들을 많이 보기는 했다. 라 로슈-포제 특유의 향이 있고, 뽀드득하게 씻긴다. 물기를 완전히 말리면 꽤 건조하게 느껴지는데, 나는 씻을 때 얼굴의 기름기를 최대한 제거하고 따로 충분히 보습을 하고자 하기에 장점으로 여기고 있다. 마음에 들었지만, 12.79 유로.. 흠..
 
@@ -90,11 +90,6 @@ banner:
 
 
 ## 출처
-Product images
-© CeraVe Deutschland official website
-© La Roche-Posay Deutschland official website
-© NIVEA Deutschland official website
-© Stridex U.S. official website
-© The Ordinary Deutschland official website
-© pura d'or U.S. official website
-© australian bodycare Deutschland official website
+Banner image ©️ Cerave official website
+
+Product images © CeraVe Deutschland official website; © La Roche-Posay Deutschland official website; © NIVEA Deutschland official website; © Stridex U.S. official website; © The Ordinary Deutschland official website; © pura d'or U.S. official website; © australian bodycare Deutschland official website

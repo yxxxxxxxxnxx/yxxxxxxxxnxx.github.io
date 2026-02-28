@@ -7,7 +7,7 @@ categories: Home\s
 subcategories: Berlin
 tags: 슈페어콘토
 banner:
-    image: https://www.bowerswilkins.com/on/demandware.static/-/Sites-master-catalog-soundunited/default/dwf2c89100/bowers/Rich-Content/bw_px8_cancel_the_noise_desktop.jpg
+    image: https://8668267.fs1.hubspotusercontent-na1.net/hub/8668267/hubfs/custom-video-thumbnails/EN%20CA%20HZ%20V2-thumb.jpeg
 ---
 
 ## Sperrkonto 2025
@@ -27,6 +27,9 @@ DKB, Commerzbank
 #### Fintiba
 개설 수수료 89
 유지비 4.90 EUR/m
+
+## 출처
+Banner image ©️ Expatrio official website
 
 
 [^1]: 
