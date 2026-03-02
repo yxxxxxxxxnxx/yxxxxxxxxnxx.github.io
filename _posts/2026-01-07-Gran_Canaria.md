@@ -2,9 +2,9 @@
 layout: post
 title: Gran Canaria, España
 lang: ko
-permalink: /Travel/Europe/Gran_Canaria/
+permalink: /Travel/Africa/Gran_Canaria/
 categories: Travel
-subcategories: Europe
+subcategories: Africa
 tags: Gran_Canaria España Spain
 banner:
     image: /assets/att/2026-01-07-Gran_Canaria/banner.avif
