@@ -10,22 +10,37 @@ banner:
     image: /assets/att/2025-12-24-Berlin_Christmas_Markets/banner.avif
 ---
 
+## Berlin
+
+### Kotti
 
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7471.avif) 
 
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7473.avif) 
 
+### Rathaus
+
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7478.avif) 
 
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7480.avif) 
 
+### Alexanderplatz
+
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7500.avif) 
+
+![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7539.avif) 
+
+![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7540.avif)
+
+### Spreeinsel
 
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7502.avif) 
 
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7503.avif) 
 
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7507.avif) 
+
+### Gendarmenmarkt
 
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7515.avif) 
 
@@ -38,7 +53,3 @@ banner:
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7534.avif) 
 
 ![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7538.avif) 
-
-![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7539.avif) 
-
-![alt text](/assets/att/2025-12-24-Berlin_Christmas_Markets/IMG_7540.avif)
