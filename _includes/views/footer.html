@@ -2,37 +2,40 @@
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
   <div class="wrapper">
-    <div class="site-footer-inner">
-        {%- assign currentYear = 'now' | date: "%Y" -%}
-        {%- assign copyright = site.copyright
-            | replace: '{currentYear}', currentYear
-            | replace: '{author}', site.author
-            | replace: '(c)', '&copy;'
-            | replace: '(p)', '℗'
-            | replace: '(cleft)', '<span class="copyleft">&copy;</span>'
-        -%}
+    <div class="site-footer-copyright">
+      {%- assign currentYear = 'now' | date: "%Y" -%}
+          {%- assign copyright = site.copyright
+              | replace: '{currentYear}', currentYear
+              | replace: '{author}', site.author
+              | replace: '(c)', '&copy;'
+              | replace: '(p)', '℗'
+              | replace: '(cleft)', '<span class="copyleft">&copy;</span>'
+          -%}
       <div>{{ copyright }}<br></div>
       <div class="wavy-line"></div><br>
-      <div>
-      Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
-      Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a><br>
-      Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Avif-logo-rgb.svg" alt="AVIF Logo Greyscale" style="filter: grayscale(100%); opacity: 0.75;" width="80"><br>
-      <font class="caption" style="text-align: left; opacity: 0.75;">All images are AVIF-optimized and compressed.<br>If display issues occur, please use the latest browser version.</font><br><br>
-      </div>
-
-      <p>
-        {% for tongue in site.languages %}
-          {% if tongue == "en" %}
-            {% assign flag = "🇬🇧English" %}
-          {% elsif tongue == "ko" %}
-            {% assign flag = "🇰🇷한국어" %}
-          {% endif %}
-          <a {% if tongue == site.active_lang %} style="font-weight: bold;"{% endif %} {% static_href %} href="{% if tongue == site.default_lang %}{{site.baseurl}}{{page.url}}{% else %}{{site.baseurl}}/{{ tongue }}{{page.url}}{% endif %}"{% endstatic_href %}>{{ flag }}</a>
-          {%- if forloop.last == false -%}{{" "}}{{ site.langsep }}{%- endif -%}
-        {% endfor %}
-      </p>
-    
+      <div class="site-footer-container">
+        <div class="site-footer-L">
+          <p>
+            Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
+            Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&preview.size=171">Google Sans Flex</a><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
+          </p>
+          <p>
+            {% for tongue in site.languages %}
+              {% if tongue == "en" %}
+                {% assign flag = "🇬🇧English" %}
+              {% elsif tongue == "ko" %}
+                {% assign flag = "🇰🇷한국어" %}
+              {% endif %}
+              <a {% if tongue == site.active_lang %} style="font-weight: bold;"{% endif %} {% static_href %} href="{% if tongue == site.default_lang %}{{site.baseurl}}{{page.url}}{% else %}{{site.baseurl}}/{{ tongue }}{{page.url}}{% endif %}"{% endstatic_href %}>{{ flag }}</a>
+              {%- if forloop.last == false -%}{{" "}}{{ site.langsep }}{%- endif -%}
+            {% endfor %}
+          </p>
+        </div>
+        <div class="site-footer-R">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Avif-logo-rgb.svg" alt="AVIF Logo Greyscale" style="filter: grayscale(100%); opacity: 1.0;" width="65"><br>
+          <p>All images are AVIF-optimized and compressed.<br>If display issues occur, please use the latest browser version.</p><br><br>
+        </div>
     </div>
   </div>
 </footer>

@@ -97,5 +97,13 @@
 
     storeScrollData();
   }
+
+  function setHeaderOffset() {
+    var headerHeight = document.querySelector('header.site-header').offsetHeight;
+    document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+  }
+  document.addEventListener('DOMContentLoaded', setHeaderOffset);
+  window.addEventListener('resize', setHeaderOffset);
+
   document.addEventListener('DOMContentLoaded', initHeader);
 </script>

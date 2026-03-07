@@ -1,130 +1,90 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const paginationElement = document.querySelector(".pagination");
-  const topPanel = document.querySelector(".top-panel");
-  const postList = topPanel?.querySelector(".post-list");
-  const panelsWrapper = document.querySelector(".panels-wrapper");
+  const pagination    = document.querySelector(".pagination");
+  const topPanel      = document.querySelector(".top-panel");
+  const postList      = topPanel?.querySelector(".post-list");
 
-  if (!paginationElement || !topPanel || !postList || !panelsWrapper) {
-    console.warn("Required elements for scroll sync not found.");
+  if (!pagination || !topPanel || !postList) {
+    console.warn("scroll-sync: required elements not found.");
     return;
   }
 
-  // --- 1. 헤더 스크롤 상태 동기화 ---
   const html = document.documentElement;
-  let lastWindowScrollY = window.scrollY;
-  let lastPaginationScrollY = paginationElement.scrollTop;
 
   function setScrollStatus(status) {
-    // 상태가 변할 때만 속성 변경 (DOM 조작 최소화)
     if (html.getAttribute("data-scroll-status") !== status) {
       html.setAttribute("data-scroll-status", status);
     }
   }
 
-  // Window 스크롤 감지
-  window.addEventListener("scroll", function () {
-    const currentY = window.scrollY;
-    if (currentY > lastWindowScrollY) {
-      setScrollStatus("down");
-    } else if (currentY < lastWindowScrollY) {
-      setScrollStatus("up");
-    } else if (currentY === 0) {
-      setScrollStatus("top");
-    }
-    lastWindowScrollY = currentY;
+  let lastWindowY = window.scrollY;
+  window.addEventListener("scroll", () => {
+    const y = window.scrollY;
+    if      (y === 0)          setScrollStatus("top");
+    else if (y > lastWindowY)  setScrollStatus("down");
+    else                       setScrollStatus("up");
+    lastWindowY = y;
   }, { passive: true });
 
-  // Pagination 내부 스크롤 감지
-  paginationElement.addEventListener("scroll", function () {
-    const currentY = paginationElement.scrollTop;
-    if (currentY > lastPaginationScrollY) {
-      setScrollStatus("down");
-    } else if (currentY < lastPaginationScrollY) {
-      setScrollStatus("up");
-    } else if (currentY === 0) {
-      setScrollStatus("top");
-    }
-    lastPaginationScrollY = currentY;
+  let lastPagY = pagination.scrollTop;
+  pagination.addEventListener("scroll", () => {
+    const y = pagination.scrollTop;
+    if      (y === 0)        setScrollStatus("top");
+    else if (y > lastPagY)   setScrollStatus("down");
+    else                     setScrollStatus("up");
+    lastPagY = y;
   }, { passive: true });
 
-  // --- 2. Left/Right Panel 스크롤 동기화 (로직 단순화) ---
-  const leftPanels = document.querySelectorAll("[class^='left-panel']");
 
-  leftPanels.forEach((leftPanel) => {
-    // 클래스명에서 숫자 접미사 추출 (예: 'left-panel2' -> '2', 'left-panel' -> '')
-    const suffix = leftPanel.className.replace("left-panel", "");
-    const rightPanel = document.querySelector(`.right-panel${suffix}`);
+  topPanel.addEventListener("wheel", function (e) {
+    if (e.deltaY === 0) return;
 
-    if (!rightPanel) return;
+    const scrollable = postList.scrollWidth > postList.clientWidth;
+    if (!scrollable) return;
 
-    leftPanel.addEventListener("wheel", function (event) {
-      // 오른쪽 패널이 스크롤 가능한지 확인
-      const isRightScrollable = rightPanel.scrollHeight > rightPanel.clientHeight;
-      if (!isRightScrollable) return;
+    const atLeft  = postList.scrollLeft <= 0;
+    const atRight = postList.scrollLeft >= postList.scrollWidth - postList.clientWidth;
 
-      const isScrollingUp = event.deltaY < 0;
-      const isScrollingDown = event.deltaY > 0;
-      const atTop = rightPanel.scrollTop <= 0;
-      const atBottom = rightPanel.scrollTop >= rightPanel.scrollHeight - rightPanel.clientHeight;
+    if ((e.deltaY < 0 && !atLeft) || (e.deltaY > 0 && !atRight)) {
+      e.preventDefault();
+      postList.scrollLeft += e.deltaY;
+    }
+  }, { passive: false });
 
-      // 스크롤 가능한 방향일 때만 이벤트 가로채기
-      if ((isScrollingUp && !atTop) || (isScrollingDown && !atBottom)) {
-        event.preventDefault();
-        rightPanel.scrollTop += event.deltaY;
+
+  document.querySelectorAll("[class^='left-panel']").forEach((left) => {
+    const suffix = left.className.match(/left-panel(\d*)/)?.[1] ?? "";
+    const right  = document.querySelector(`.right-panel${suffix}`);
+    if (!right) return;
+
+    left.addEventListener("wheel", function (e) {
+      if (window.innerWidth <= 600) return;
+      const scrollable = right.scrollHeight > right.clientHeight;
+      if (!scrollable) return;
+
+      const atTop    = right.scrollTop <= 0;
+      const atBottom = right.scrollTop >= right.scrollHeight - right.clientHeight;
+
+      if ((e.deltaY < 0 && !atTop) || (e.deltaY > 0 && !atBottom)) {
+        e.preventDefault();
+        right.scrollTop += e.deltaY;
       }
     }, { passive: false });
   });
 
-  // --- 3. Top Panel 가로 스크롤 변환 ---
-  function onWheelTopPanel(event) {
-    if (event.deltaY === 0) return;
 
-    const isScrollable = postList.scrollWidth > postList.clientWidth;
-    if (!isScrollable) return;
+  let snapping = false;
 
-    const isScrollingLeft = event.deltaY < 0;
-    const isScrollingRight = event.deltaY > 0;
-    const atLeft = postList.scrollLeft <= 0;
-    const atRight = postList.scrollLeft >= postList.scrollWidth - postList.clientWidth;
+  window.addEventListener("wheel", function (e) {
+    if (window.innerWidth <= 600) return;
+    if (snapping) return;
 
-    if ((isScrollingLeft && !atLeft) || (isScrollingRight && !atRight)) {
-      event.preventDefault();
-      postList.scrollLeft += event.deltaY;
-    }
-  }
-  topPanel.addEventListener("wheel", onWheelTopPanel, { passive: false });
-
-  // --- 4. 페이지 최하단(푸터) 스크롤 업 처리 ---
-  let isScrollingToPagination = false;
-
-  window.addEventListener("wheel", function (event) {
-    const bodyHeight = document.body.scrollHeight;
-    const windowHeight = window.innerHeight;
-    const scrollPosition = window.scrollY;
-    const distanceToBottom = bodyHeight - (scrollPosition + windowHeight);
-
-    // 하단 영역에서 스크롤 업 발생 시 Pagination 위치로 이동
-    // main.js의 smoothScrollTo 사용
-    if (event.deltaY < 0 && distanceToBottom < windowHeight * 0.5 && !isScrollingToPagination) {
-      const paginationOffsetTop = paginationElement.getBoundingClientRect().top + window.scrollY;
-
-      event.preventDefault();
-      isScrollingToPagination = true;
-      smoothScrollTo(paginationOffsetTop, 300);
-      
-      setTimeout(() => {
-        isScrollingToPagination = false;
-      }, 300);
+    const distToBottom = document.body.scrollHeight - (window.scrollY + window.innerHeight);
+    if (e.deltaY < 0 && distToBottom < window.innerHeight * 0.5) {
+      const target = pagination.getBoundingClientRect().top + window.scrollY;
+      e.preventDefault();
+      snapping = true;
+      smoothScrollTo(target, 300, () => { snapping = false; });
     }
   }, { passive: false });
 
-  // --- 5. Pagination 상단 도달 시 Top-Panel로 전환 ---
-  paginationElement.addEventListener("wheel", function (event) {
-    if (event.deltaY < 0 && paginationElement.scrollTop <= 0) {
-      const topPanelOffsetTop = topPanel.getBoundingClientRect().top + window.scrollY;
-
-      event.preventDefault();
-      smoothScrollTo(topPanelOffsetTop, 180);
-    }
-  }, { passive: false });
 });

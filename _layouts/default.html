@@ -21,7 +21,13 @@
       <script src="/assets/js/scroll-control.js"></script> -->
 
       <div class="wrapper">
-        {{ content }}
+        {%- if page.banner -%}
+          {{ content }}
+        {%- else -%}
+          <div class="header-offset">
+          {{ content }}
+          </div>
+        {%- endif -%}
       </div>
     </main>
 

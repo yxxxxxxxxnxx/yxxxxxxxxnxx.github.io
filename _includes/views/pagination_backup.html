@@ -38,12 +38,15 @@
 
   <div class="top-panel">
     <ul class="post-list {{ image_style }}">
-      {%- assign all_posts_with_banner = paginator.posts | where_exp: "item", "item.banner" -%}
-      {%- assign latest_post = all_posts_with_banner | first -%}
-      {%- if latest_post -%}
-        {%- assign post = latest_post -%}
-        {%- include views/pagination-item.html -%}
-      {%- endif -%}
+      {%- for category in sorted_categories -%}
+        {%- assign posts_with_banner = site.categories[category] | where_exp: "item", "item.banner" -%}
+        {%- assign latest_post_in_category = posts_with_banner | first -%}
+
+        {%- if latest_post_in_category -%}
+          {%- assign post = latest_post_in_category -%}
+          {%- include views/pagination-item.html -%}
+        {%- endif -%}
+      {%- endfor -%}
     </ul>
   </div>
 

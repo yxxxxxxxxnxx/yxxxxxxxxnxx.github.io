@@ -37,30 +37,50 @@
 }
 
 @import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
 
 
 
 $base-font-family: PyeojinGothic, Wanted Sans Variable, Helvetica Neue, Helvetica, Arial, sans-serif, !default;
-$base-font-size: 14px !default;
+$base-font-size: 16px !default;
 $base-font-weight: 400 !default;
-$small-font-size:  $base-font-size * 0.875 !default;
+$small-font-size:  $base-font-size * 0.75 !default;
 $base-line-height: 1.6 !default;
 $base-transition-duration: 0.3s !default;
 
-$spacing-unit:     30px !default;
+$heading-sizes: (
+  1: 56px,
+  2: 48px,
+  3: 24px,
+  4: 16px,
+  5: 12px
+);
+$heading-weights: (
+  1: 600,
+  2: 600,
+  3: 400,
+  4: 400,
+  5: 400
+);
+@mixin hierarchical-font-sw($hnum) {
+  font-size: map-get($heading-sizes, $hnum);
+  font-weight: map-get($heading-weights, $hnum);
+}
 
-$text-color:       #000000 !default;
+$spacing-unit:     24px !default;
+
+$text-color:       #1d1d1d !default;
 $background-color: map-get($brand-colors, "pageBackground") !default;
 
-$grey-color:       #777 !default;
-$grey-color-light: #000 !default;
-$grey-color-dark:  #f3f3f1 !default;
+$grey-color:       red !default;
+$grey-color-light: red !default;
+$grey-color-dark:  red !default;
 
-$white-color: #f3f3f1 !default;
+$white-color: red !default;
 
 $table-text-align: left !default;
 
-$header-height: $base-line-height * $base-font-size * 2.85 !default;
+$header-height: $base-line-height * $base-font-size * 1.25 !default;
 $header-text-color: invert($theme-color) !default;
 $header-background-color: map-get($brand-colors, "pageBackground") !default;
 

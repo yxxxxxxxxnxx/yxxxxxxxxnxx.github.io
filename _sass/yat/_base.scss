@@ -189,6 +189,11 @@ pre {
   @extend %clearfix;
 }
 
+.wrapper-home {
+  max-width: $content-width;
+  @extend %clearfix;
+}
+
 
 
 /**
