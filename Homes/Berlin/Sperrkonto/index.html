@@ -384,12 +384,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
     <div class="site-header-inner">
 <span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
   <!-- Page logo -->
-  <!-- <img class="site-logo" title="yxxxxxxxxnxx" src="" onerror="this.style.display='none'"> -->
+  <img class="site-logo" title="yxxxxxxxxnxx" src="" onerror="this.style.display='none'">
   
-  <!-- Disabled favicon and site title -->
-  <!-- <img class="site-favicon" title="yxxxxxxxxnxx" src="" onerror="this.style.display='none'">
-  yxxxxxxxxnxx -->
-</a>
+  <!-- Disabled favicon and site title --><span class="site-brand-inner-line01">49</span>
+    <span class="site-brand-inner-line02">Aachen, Deutschland</span>
+    <span class="site-brand-inner-line02">yxxxxxxxxnxx</span>
+    <span class="site-brand-inner-line03">Test text<br>yxxxxxxxxnxx</span></a>
 </span><nav class="site-nav">
           <input type="checkbox" id="nav-trigger" class="nav-trigger">
           <label for="nav-trigger">
@@ -440,6 +440,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
     storeScrollData();
   }
+
+  function setHeaderOffset() {
+    var headerHeight = document.querySelector('header.site-header').offsetHeight;
+    document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+  }
+  document.addEventListener('DOMContentLoaded', setHeaderOffset);
+  window.addEventListener('resize', setHeaderOffset);
+
   document.addEventListener('DOMContentLoaded', initHeader);
 </script>
 
@@ -905,7 +913,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <script src="/assets/js/scroll-control.js"></script> -->
 
       <div class="wrapper">
-        <div class="framework">
+<div class="framework">
   <section class="main">
 
      <div class="post">
@@ -967,32 +975,32 @@ DKB, Commerzbank</p>
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="난로">
-            난로<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Dubrovnik/" title="Dubrovnik, Hrvatska">
+            Dubrovnik, Hrvatska<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Z%C3%BCrich/" title="Zürich, Schweiz\Suisse">
-            Zürich, Schweiz\Suisse<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Berlin/Christmas_Markets/" title="Berlin Christmas Markets">
+            Berlin Christmas Markets<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/J%C3%BCterbog/" title="Jüterbog, Deutschland">
-            Jüterbog, Deutschland<!-- <span class="post-badges">
+          <a class="post-link" href="/Tech/Electronic%20Devices/B&amp;W%20Px8/" title="B&amp;W Px8">
+            B&amp;W Px8<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Book/Literature/Human_Acts/" title="소년이 온다">
-            소년이 온다<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Szcezcin/" title="Szcezcin, Polska">
+            Szcezcin, Polska<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1130,36 +1138,39 @@ DKB, Commerzbank</p>
 </script>
 </section>
 </div>
-
-      </div>
+</div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
 
   <div class="wrapper">
-    <div class="site-footer-inner">
+    <div class="site-footer-copyright">
 <div>
 <span class="copyleft">©</span> 2026 yxxxxxxxxnxx.<br>
 </div>
       <div class="wavy-line"></div>
 <br>
-      <div>
-      Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
-      Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a><br>
-      Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Avif-logo-rgb.svg" alt="AVIF Logo Greyscale" style="filter: grayscale(100%); opacity: 0.75;" width="80"><br>
-      <font class="caption" style="text-align: left; opacity: 0.75;">All images are AVIF-optimized and compressed.<br>If display issues occur, please use the latest browser version.</font><br><br>
-      </div>
-
-      <p>
-        
-          
-          <a style="font-weight: bold;" href="/Homes/Berlin/Sperrkonto/">🇰🇷한국어</a> 
-          
-          <a href="/en/Homes/Berlin/Sperrkonto/">🇬🇧English</a>
-      </p>
-    
+      <div class="site-footer-container">
+        <div class="site-footer-L">
+          <p>
+            Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
+            Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&amp;preview.size=171">Google Sans Flex</a><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
+          </p>
+          <p>
+            
+              
+              <a style="font-weight: bold;" href="/Homes/Berlin/Sperrkonto/">🇰🇷한국어</a> 
+              
+              <a href="/en/Homes/Berlin/Sperrkonto/">🇬🇧English</a>
+          </p>
+        </div>
+        <div class="site-footer-R">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Avif-logo-rgb.svg" alt="AVIF Logo Greyscale" style="filter: grayscale(100%); opacity: 1.0;" width="65"><br>
+          <p>All images are AVIF-optimized and compressed.<br>If display issues occur, please use the latest browser version.</p>
+<br><br>
+        </div>
     </div>
   </div>
-</footer>
+</div></footer>
 </body>
 </html>
