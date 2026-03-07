@@ -157,6 +157,12 @@ html {
       transition: 0.1s filter, color;
     }
 
+    @include media-query($on-palm) {
+      .site-brand-inner-line01, .site-brand-inner-line01-mono {
+        font-size: $base-font-size * 6.0;
+      }
+    }
+
     &, &:visited {
       color: $header-text-color;
     }
