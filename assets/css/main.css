@@ -375,7 +375,7 @@ html[data-scroll-status=down] .framework .sidebar {
   justify-content: center;
 }
 .site-brand .site-brand-inner .site-brand-inner-line01 {
-  font-size: 240px;
+  font-size: 192px;
   font-family: "Google Sans Flex", sans-serif;
   font-weight: 500;
   color: #f3f3f1;
@@ -405,7 +405,7 @@ html[data-scroll-status=down] .framework .sidebar {
   transition: 0.1s filter, color;
 }
 .site-brand .site-brand-inner .site-brand-inner-line01-mono {
-  font-size: 240px;
+  font-size: 192px;
   font-family: "Google Sans Flex", sans-serif;
   font-weight: 500;
   color: #1d1d1d;
