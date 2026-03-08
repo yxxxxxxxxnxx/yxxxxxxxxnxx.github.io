@@ -833,8 +833,7 @@ html {
       max-height: 75vh;
 
       @include media-query($on-palm) {
-        max-height: none;
-        max-width: 100%;
+        max-width: calc(100vw - #{$spacing-unit * 3});
       }
     }
 
