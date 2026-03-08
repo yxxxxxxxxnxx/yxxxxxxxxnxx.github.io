@@ -87,4 +87,103 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, { passive: false });
 
+
+  // ─────────────────────────────────────────────
+  // 5. on-palm 전용: 휠로 snap 직접 구현
+  // ─────────────────────────────────────────────
+  if (window.innerWidth <= 600) {
+    const leftPanels = Array.from(document.querySelectorAll(
+      ".left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5"
+    ));
+
+    const sequence = [topPanel];
+    leftPanels.forEach(left => {
+      sequence.push(left);
+      const suffix = left.className.match(/left-panel(\d*)/)?.[1] ?? "";
+      const right = document.querySelector(`.right-panel${suffix}`);
+      if (right) sequence.push(right);
+    });
+
+    function getPagOffset(el) {
+      return el.getBoundingClientRect().top
+        - pagination.getBoundingClientRect().top
+        + pagination.scrollTop;
+    }
+
+    let cooldown = false;
+
+    function snapTo(scrollPos) {
+      cooldown = true;
+      smoothScrollElementTo(pagination, Math.round(scrollPos), 500, () => {
+        setTimeout(() => { cooldown = false; }, 200);  // 스크롤 후 200ms 쿨다운
+      });
+    }
+
+    // ── pagination 내부 snap ──────────────────────────
+    pagination.addEventListener("wheel", function (e) {
+      if (cooldown) { e.preventDefault(); return; }
+
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const curScroll = pagination.scrollTop;
+      const pagH      = pagination.clientHeight;
+
+      // deltaY 임계값 — 너무 작은 스크롤 무시 (민감도 조절)
+      if (Math.abs(e.deltaY) < 10) return;
+
+      let currentIdx = 0;
+      sequence.forEach((el, i) => {
+        if (getPagOffset(el) <= curScroll + pagH * 0.3) currentIdx = i;
+      });
+
+      const currentEl = sequence[currentIdx];
+      const isRight   = currentEl.className.includes("right-panel");
+
+      if (isRight) {
+        const rightTop    = getPagOffset(currentEl);
+        const rightBottom = rightTop + currentEl.offsetHeight;
+
+        if (direction > 0 && curScroll + pagH >= rightBottom - 10) {
+          e.preventDefault();
+          const next = sequence[currentIdx + 1];
+          if (next) snapTo(getPagOffset(next));
+        } else if (direction < 0 && curScroll <= rightTop + 10) {
+          e.preventDefault();
+          snapTo(getPagOffset(sequence[currentIdx - 1]));
+        }
+        // 경계 아니면 자연 스크롤
+        return;
+      }
+
+      // top-panel / left-panel: 즉시 snap
+      e.preventDefault();
+      if (direction > 0) {
+        const next = sequence[currentIdx + 1];
+        if (next) snapTo(getPagOffset(next));
+      } else {
+        const prev = sequence[currentIdx - 1];
+        if (prev) snapTo(getPagOffset(prev));
+      }
+    }, { passive: false });
+
+    // ── 푸터 → pagination 복귀 (window 스크롤) ────────
+    let windowCooldown = false;
+
+    window.addEventListener("wheel", function (e) {
+      if (window.innerWidth > 600) return;
+      if (windowCooldown) { e.preventDefault(); return; }
+
+      const distToBottom = document.body.scrollHeight - (window.scrollY + window.innerHeight);
+      const inFooter = distToBottom < window.innerHeight * 0.5;
+
+      if (inFooter && e.deltaY < 0) {
+        // 푸터에서 스크롤 업 → window를 pagination 위치로 복귀
+        e.preventDefault();
+        windowCooldown = true;
+        smoothScrollTo(pagination.getBoundingClientRect().top + window.scrollY, 500, () => {
+          setTimeout(() => { windowCooldown = false; }, 200);
+        });
+      }
+    }, { passive: false });
+  }
+
 });

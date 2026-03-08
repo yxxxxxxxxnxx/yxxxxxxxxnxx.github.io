@@ -282,6 +282,11 @@ html {
       justify-content: space-between;
       align-items: flex-start;
 
+      @include media-query($on-palm) {
+        flex-direction: column;
+        gap: $spacing-unit * 3;
+      }
+
       .site-footer-L {
         display: block;
       }
@@ -632,7 +637,7 @@ html {
 
       .title-container .post-link {
         color: $background-color;
-        -webkit-text-stroke: 1px $text-color;
+        -webkit-text-stroke: 0.4px $text-color;
         paint-order: stroke fill;
       }
 
@@ -826,6 +831,11 @@ html {
     img:not(.emoji), svg, iframe {
       display: block;
       max-height: 75vh;
+
+      @include media-query($on-palm) {
+        max-height: none;
+        max-width: 100%;
+      }
     }
 
     video {
@@ -992,7 +1002,7 @@ html {
         line-height: 1;
         transition: 0.2s all;
         color: $background-color;
-        -webkit-text-stroke: 1px $text-color;
+        -webkit-text-stroke: 0.4px $text-color;
         paint-order: stroke fill;
         letter-spacing: -1px;
         margin-bottom: 0;
