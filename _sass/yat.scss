@@ -58,7 +58,7 @@ $heading-sizes: (
 $heading-weights: (
   1: 600,
   2: 600,
-  3: 400,
+  3: 500,
   4: 400,
   5: 400
 );
@@ -67,7 +67,7 @@ $heading-weights: (
   font-weight: map-get($heading-weights, $hnum);
 }
 
-$spacing-unit:     24px !default;
+$spacing-unit:     8px !default;
 
 $text-color:       #1d1d1d !default;
 $background-color: map-get($brand-colors, "pageBackground") !default;

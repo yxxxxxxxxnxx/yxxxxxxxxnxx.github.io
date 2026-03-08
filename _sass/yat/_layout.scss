@@ -1,4 +1,63 @@
 /**
+ * Shared placeholders
+ */
+
+// site-brand 라인 공통 베이스
+%brand-line01-base {
+  font-size: $base-font-size * 12.0;
+  font-family: 'Google Sans Flex', sans-serif;
+  line-height: 0.8;
+  transform: translateX(-2.5px);
+  transition: 0.1s filter, color;
+}
+
+%brand-line02-base {
+  font-size: $base-font-size * 1.5;
+  font-weight: $base-font-weight * 1.5;
+  line-height: 1.2;
+  transition: 0.1s filter, color;
+}
+
+%brand-line03-base {
+  font-size: $base-font-size;
+  font-weight: $base-font-weight * 1.5;
+  color: $text-color;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  transition: 0.1s filter, color;
+  margin-top: $spacing-unit;
+}
+
+// 화살표 공통 베이스 (.paginator, .post-nav 공용)
+%nav-arrow {
+  content: ' ';
+  border: solid $text-color;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: $spacing-unit * 0.5;
+}
+
+// 버블 태그 공통 베이스
+%bubble-tag-base {
+  @include hierarchical-font-sw(4);
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid $brand-color;
+  padding: 2px $spacing-unit;
+  border-radius: 100px;
+  background-color: $brand-color;
+  color: $background-color;
+}
+
+// 스크롤바 숨김 공통
+%scrollbar-hidden {
+  &::-webkit-scrollbar { display: none; }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+
+/**
  * Animation for transparent header
  */
 html {
@@ -11,7 +70,7 @@ html {
   &[data-scroll-status='top'] {
     header.site-header-transparent {
       height: 0;
-      margin-top: 0px;
+      margin-top: 0;
       background-color: transparent;
       transition: 0.1s height, background-color, box-shadow;
 
@@ -40,7 +99,7 @@ html {
 
   &[data-scroll-status='down'] {
     header.site-header {
-      transform: translateY(-100%);  /* ← 수정 */
+      transform: translateY(-100%);
     }
 
     .framework .sidebar {
@@ -52,16 +111,21 @@ html {
 .site-header {
   background-color: transparent;
   height: auto;
-  padding: 24px 0;
+  padding: $spacing-unit * 3 0;
   width: 100%;
-  transition: transform 0.2s, text-shadow 0.2s;  /* top → transform */
+  transition: transform 0.2s, text-shadow 0.2s;
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.00);
+  pointer-events: none;
 
   @include flex-sticky(0);
   z-index: 1000;
 
+  a, button, .page-link, .menu-icon, .nav-trigger {
+    pointer-events: auto;  /* ← 추가 */
+  }
+
   & > .wrapper {
-    margin: 0 $spacing-unit;
+    margin: 0 $spacing-unit * 3;
     padding: 0;
     max-width: 100%;
     transition: 0.2s margin;
@@ -97,69 +161,53 @@ html {
     justify-content: center;
 
     .site-brand-inner-line01 {
-      font-size: $base-font-size * 12.0;
-      font-family: 'Google Sans Flex', sans-serif;
-      font-weight: $base-font-weight * 1.25;
+      @extend %brand-line01-base;
+      font-weight: $base-font-weight * 1.15;
       color: $background-color;
       -webkit-text-stroke: 5px $text-color;
       paint-order: stroke fill;
-      line-height: 0.8;
-      transform: translateX(-2.5px);
-      transition: 0.1s filter, color;
-    }
-
-    .site-brand-inner-line02 {
-      font-size: $base-font-size * 1.5;
-      font-weight: $base-font-weight * 1.5;
-      color: $background-color;
-      background-color: $text-color;
-      width: fit-content;
-      line-height: 1.2;
-      margin-bottom: 4px;
-      padding: 0 4px;
-      transition: 0.1s filter, color;
-    }
-
-    .site-brand-inner-line03 {
-      font-size: $base-font-size * 1.0;
-      font-weight: $base-font-weight * 1.5;
-      color: $text-color;
-      letter-spacing: -1px;
-      line-height: 1.2;
-      transition: 0.1s filter, color;
     }
 
     .site-brand-inner-line01-mono {
-      font-size: $base-font-size * 12.0;
-      font-family: 'Google Sans Flex', sans-serif;
+      @extend %brand-line01-base;
       font-weight: $base-font-weight * 1.25;
       color: $text-color;
-      line-height: 0.8;
-      transform: translateX(-2.5px);
-      transition: 0.1s filter, color;
+    }
+
+    .site-brand-inner-line02 {
+      @extend %brand-line02-base;
+      color: $background-color;
+      background-color: $text-color;
+      width: fit-content;
+      margin-bottom: $spacing-unit * 0.5;
+      padding: 0 $spacing-unit * 0.5;
     }
 
     .site-brand-inner-line02-mono {
-      font-size: $base-font-size * 1.5;
-      font-weight: $base-font-weight * 1.5;
+      @extend %brand-line02-base;
       color: $text-color;
       letter-spacing: -1px;
-      line-height: 1.2;
-      transition: 0.1s filter, color;
     }
 
+    .site-brand-inner-line03,
     .site-brand-inner-line03-mono {
-      font-size: $base-font-size * 1.0;
-      font-weight: $base-font-weight * 1.5;
-      color: $text-color;
-      letter-spacing: -1px;
-      line-height: 1.2;
-      transition: 0.1s filter, color;
+      @extend %brand-line03-base;
     }
 
     @include media-query($on-palm) {
-      .site-brand-inner-line01, .site-brand-inner-line01-mono {
-        font-size: $base-font-size * 6.0;
+      .site-brand-inner-line01,
+      .site-brand-inner-line01-mono {
+        font-size: $base-font-size * 8.0;
+      }
+
+      .site-brand-inner-line02,
+      .site-brand-inner-line02-mono {
+        font-size: $base-font-size * 1.25;
+      }
+
+      .site-brand-inner-line03,
+      .site-brand-inner-line03-mono {
+        font-size: $base-font-size;
       }
     }
 
@@ -184,11 +232,11 @@ html {
     line-height: $base-line-height;
     color: $header-text-color;
     transition: 0.1s ease-in-out;
-    font-sw: $base-font-size;
+    font-size: $base-font-size;
     font-weight: $base-font-weight * 1.5;
-    border: solid 2.5px #000;
+    border: solid 2.5px $text-color;
     background-color: $header-background-color;
-    padding: 8px;
+    padding: $spacing-unit;
 
     &:not(:last-child) {
       margin-right: -2.5px;
@@ -201,31 +249,18 @@ html {
 
   @include media-query($on-palm) {
     align-self: flex-end;
-    padding-bottom: $spacing-unit * 4;
-
+    padding-bottom: $spacing-unit * 10;
   }
 }
+
 
 /**
  * Wavy Line
  */
 .wavy-line {
-  border-bottom: solid 2.5px #000;
-  // --s: 4px; /* sw of the wave */
-  // --b: 1px; /* thickness of the line */
-  // --m: 1.0; /* curvature of the wave [0 2] */
-  
-  // background: #000;
-  // --R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
-  // height: calc(2*var(--R));
-  // width: 100%;
-  // --_g: #0000 calc(99% - var(--b)), #000 calc(101% - var(--b)) 99%, #0000 101%;
-  // mask:
-  //   radial-gradient(var(--R) at left 50% bottom calc(-1*var(--m)*var(--s)), var(--_g)) 
-  //    calc(50% - 2*var(--s)) calc(50% - var(--s)/2 - var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x,
-  //   radial-gradient(var(--R) at left 50% top calc(-1*var(--m)*var(--s)),var(--_g)) 
-  //    50% calc(50% + var(--s)/2 + var(--b)/2)/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
-} 
+  border-bottom: solid 2.5px $text-color;
+}
+
 
 /**
  * Site footer
@@ -240,7 +275,7 @@ html {
 
   .site-footer-copyright {
     transition: border-top 0.2s;
-    padding: $spacing-unit * 1.8 0;
+    padding: $spacing-unit * 5 0;
 
     .site-footer-container {
       display: flex;
@@ -253,8 +288,7 @@ html {
 
       .site-footer-R {
         display: block;
-        text-align: left;
-        font-sw: $small-font-size;
+        font-size: $small-font-size;
       }
     }
   }
@@ -274,22 +308,19 @@ html {
   transform: rotate(180deg);
 }
 
+
 /**
  * Post header
  */
 %post-header {
   .post-header {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit * 3;
   }
 
   .post-title {
     @include relative-font-size(2.625);
     letter-spacing: -1px;
     line-height: 1;
-
-    @include media-query($on-laptop) {
-      // @include relative-font-size(2.25);
-    }
   }
 
   .post-tags {
@@ -297,10 +328,11 @@ html {
 
     .post-tag {
       display: inline-block;
-      margin: 0 12px 0 0;
+      margin: 0 $spacing-unit * 1.5 0 0;
     }
   }
 }
+
 
 /**
  * Page content
@@ -310,15 +342,15 @@ html {
 }
 
 .page-content {
-  @extend %flex-1; /* <-- Keep footer on the bottom */
-  -ms-flex: none; /* <-- Fix IE footer issue */
-  padding: $spacing-unit * 2 0;
+  @extend %flex-1;
+  -ms-flex: none;
+  padding: $spacing-unit * 6 0;
   padding-top: 72px;
 }
 
 .page-content-home {
-  @extend %flex-1; /* <-- Keep footer on the bottom */
-  -ms-flex: none; /* <-- Fix IE footer issue */
+  @extend %flex-1;
+  -ms-flex: none;
   height: 100vh;
   overflow: hidden;
 }
@@ -336,6 +368,7 @@ html {
   @include relative-font-size(1.75);
 }
 
+
 /**
  * Pagination page
  */
@@ -343,24 +376,23 @@ html {
   display: block;
   height: 100vh;
   overflow-x: hidden;
-
-  // scroll controls
-  scroll-snap-type: y mandatory;
   overflow-y: scroll;
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  @extend %scrollbar-hidden;
 
   .top-panel {
     width: 100vw;
     height: max-content;
     position: relative;
     display: block;
-    scroll-snap-align: start; //
+    scroll-snap-align: start;
 
     .post-list {
       display: flex;
       flex-direction: row;
-      gap: 16px;
-      justify-content: left;
+      gap: $spacing-unit * 2;
+      justify-content: flex-start;
       align-items: flex-start;
       padding: 0;
       margin: 0;
@@ -370,9 +402,8 @@ html {
       > li {
         width: 100%;
         box-sizing: border-box;
-        margin-bottom: $spacing-unit * 0.25;
-        padding-bottom: 0px;
-        
+        margin-bottom: $spacing-unit;
+
         &:not(:last-child) {
           border-bottom: none;
         }
@@ -417,38 +448,25 @@ html {
   .top-panel .post-list,
   .left-panel .post-list,
   .right-panel .post-list {
-    /* 크롬, 사파리, 엣지 */
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    /* 파이어폭스 */
-    scrollbar-width: none;
-    /* IE, Edge (legacy) */
-    -ms-overflow-style: none;
+    @extend %scrollbar-hidden;
   }
 
   .post-list {
     display: flex;
     flex-direction: column;
-
     margin-left: 0;
     list-style: none;
 
     > li {
       width: 100%;
       box-sizing: border-box;
-      // margin-bottom: $spacing-unit * 1.5;
-      // padding-bottom: 30px;
-      .wavy-line{
-        margin-bottom: 32px;
+
+      .wavy-line {
+        margin-bottom: $spacing-unit * 4;
       }
-      // &:not(:last-child) {
-      //   border-bottom: 1px solid #000;
-      // }
-      &:last-child {
-        .wavy-line{
-          display: none;
-        };
+
+      &:last-child .wavy-line {
+        display: none;
       }
     }
   }
@@ -457,19 +475,19 @@ html {
     display: flex;
     flex-direction: column;
     position: relative;
-    gap: 15px;
-    margin-bottom: 15px;
+    gap: $spacing-unit * 2;
+    margin-bottom: $spacing-unit * 2;
 
     .element-container {
       display: flex;
       flex-direction: column;
-      margin-left: $spacing-unit;
+      margin-left: $spacing-unit * 3;
 
-      .title-container{
+      .title-container {
         display: inline !important;
 
         .post-title {
-          margin-bottom: $spacing-unit * 0.2;
+          margin-bottom: $spacing-unit * 0.5;
           transition: 0.2s all;
 
           a {
@@ -487,7 +505,7 @@ html {
         .post-meta {
           @include hierarchical-font-sw(4);
           color: $text-color;
-          margin-bottom: $spacing-unit * 0.5;
+          margin-bottom: $spacing-unit * 2;
         }
       }
 
@@ -511,52 +529,41 @@ html {
 
       .post-bubbles-container {
         position: absolute;
-        left: 16px;
-        bottom: 8px;
+        left: $spacing-unit * 2;
+        bottom: $spacing-unit;
         z-index: 2;
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: 8px;
-      
+        gap: $spacing-unit;
+
         .post-tags .post-tag {
-          display: inline-block;
-          text-decoration: none;
-          border: 1px solid $brand-color;
-          padding: 2px 8px;
-          border-radius: 100px;
+          @extend %bubble-tag-base;
           transition: color 0.2s;
-          margin-bottom: 8px;
-          background-color: $brand-color;
-          @include hierarchical-font-sw(4);
-          color: $background-color;
-    
+          margin-bottom: $spacing-unit;
+
           &:not(:last-child) {
-            margin-right: 8px;
+            margin-right: $spacing-unit;
           }
         }
-      
+
         .post-category .post-categories {
-          display: inline-block;
-          border: 1px solid map-get($brand-colors, "darjeelingred");
-          padding: 2px 8px;
-          border-radius: 100px;
-          margin-bottom: 8px;
+          @extend %bubble-tag-base;
+          border-color: map-get($brand-colors, "darjeelingred");
           background-color: map-get($brand-colors, "darjeelingred");
-          @include hierarchical-font-sw(4);
-          color: $background-color;
+          margin-bottom: $spacing-unit;
         }
       }
 
       .post-image {
+        display: block;
         height: 100%;
         width: 100%;
-      
+
         & > *:first-child {
+          display: block;
           height: 100%;
           width: 100%;
-          object-fit: contain;
-          object-position: center center;
           background-size: cover;
           background-position: center;
           overflow: hidden;
@@ -567,9 +574,33 @@ html {
   }
 
   .top-panel {
+    .post-content {
+      height: 100vh;
+      overflow: hidden;
+      gap: 0;
+      margin-bottom: 0;
+    }
+
+    .element-container {
+      flex-shrink: 0;
+      margin-top: $spacing-unit * 3;
+    }
+
     .post-image-container {
-      height: 87.5vh;
+      flex: 1;
+      min-height: 0;
+      height: auto;
       width: 100%;
+
+      .post-image {
+        height: 100%;
+        width: 100%;
+
+        & > *:first-child {
+          height: 100%;
+          width: 100%;
+        }
+      }
     }
   }
 
@@ -584,8 +615,8 @@ html {
 
       .post-bubbles-container {
         position: absolute;
-        bottom: 8px;
-        left: 16px;
+        bottom: $spacing-unit;
+        left: $spacing-unit * 2;
       }
     }
 
@@ -597,7 +628,7 @@ html {
       right: 0;
       z-index: 1;
       margin-left: 0;
-      padding: $spacing-unit;
+      padding: $spacing-unit * 3;
 
       .title-container .post-link {
         color: $background-color;
@@ -623,7 +654,7 @@ html {
   }
 
   .post-list {
-   &.none-image-style .post-item .post-excerpt .post-image {
+    &.none-image-style .post-item .post-excerpt .post-image {
       display: none;
     }
 
@@ -635,7 +666,7 @@ html {
       flex-direction: row-reverse;
     }
 
-    &.post-list.top-image-style .post-item .post-excerpt {
+    &.top-image-style .post-item .post-excerpt {
       flex-direction: column;
     }
 
@@ -655,15 +686,19 @@ html {
   }
 
   @include media-query($on-palm) {
+    scroll-snap-type: none;
+
     .panels-wrapper, .panels-wrapper2, .panels-wrapper3, .panels-wrapper4, .panels-wrapper5 {
       flex-direction: column;
       height: auto;
       align-items: center;
+      scroll-snap-align: none;
 
       .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5 {
         display: block;
         width: 100vw;
         height: 100vh;
+        scroll-snap-align: none;
       }
 
       .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5 {
@@ -687,46 +722,30 @@ html {
     }
   }
 
-  // .paginator missing in _dark.scss
   .paginator {
     text-align: center;
 
     & > .previous:before {
-      content: ' ';
-      border: solid #000;
-      border-width: 0 2px 2px 0;
-      display: inline-block;
-      padding: 4px;
-      margin-right: 8px;
+      @extend %nav-arrow;
+      margin-right: $spacing-unit;
       transform: rotate(135deg);
-      -webkit-transform: rotate(135deg);
     }
 
     & > .next:after {
-      content: ' ';
-      border: solid #000;
-      border-width: 0 2px 2px 0;
-      display: inline-block;
-      padding: 4px;
-      margin-left: 8px;
+      @extend %nav-arrow;
+      margin-left: $spacing-unit;
       transform: rotate(-45deg);
-      -webkit-transform: rotate(-45deg);
     }
 
     .previous span, .next span {
-      color: #000;
+      color: $text-color;
     }
 
     .indicator {
-      padding: 0 15px;
+      padding: 0 $spacing-unit * 2;
     }
   }
 }
-
-.pagination::-webkit-scrollbar {
-  display: none;
-}
-
 
 
 /**
@@ -736,43 +755,43 @@ html {
   @extend %post-header;
 
   .message-box {
-    font-size: $base-font-size* 1.0;
-    font-weight: $base-font-weight *1.5;
-    border: solid 2.5px #000;
+    font-size: $base-font-size;
+    font-weight: $base-font-weight * 1.5;
+    border: solid 2.5px $text-color;
     background-color: $header-background-color;
-    padding: 4px;
-    margin-bottom: 8px;
+    padding: $spacing-unit * 0.5;
+    margin-bottom: $spacing-unit;
     text-align: center;
   }
 
   .post-header {
     margin: 50px auto 60px;
-    // padding: 0 0 20px;
-    // border-bottom: 1px solid #000;
 
     .post-title {
-      margin-bottom: 6px;
+      @include hierarchical-font-sw(2);
+      margin-bottom: $spacing-unit * 0.5;
     }
 
     .post-subtitle {
-      font-weight: 300;
+      @include hierarchical-font-sw(3);
+      margin-bottom: $spacing-unit;
     }
 
     .post-meta {
+      @include hierarchical-font-sw(4);
       color: $text-color;
-      padding-bottom: 15px;
+      margin-bottom: $spacing-unit;
     }
 
     .wavy-line {
       display: block;
-      margin-top: 32px;
+      margin-top: $spacing-unit * 4;
     }
   }
 
   .post-content {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit * 3;
     overflow-wrap: normal;
-    word-wrap: normal;
     word-break: normal;
 
     h2 {
@@ -806,7 +825,7 @@ html {
 
     img:not(.emoji), svg, iframe {
       display: block;
-      max-height: 50vh;
+      max-height: 75vh;
     }
 
     video {
@@ -820,25 +839,25 @@ html {
     }
 
     p, hr {
-      margin-bottom: 24px;
+      margin-bottom: $spacing-unit * 3;
     }
 
     hr {
       height: 1px;
-      background-color: #ebebeb; //
+      background-color: #ebebeb;
       border: none;
     }
   }
 
   .post-related {
-    &>*:first-child {
+    & > *:first-child {
       @include relative-font-size(1.425);
       color: $text-color;
-      margin-bottom: 14px;
+      margin-bottom: $spacing-unit * 2;
     }
 
     ul {
-      margin-left: 15px;
+      margin-left: $spacing-unit * 2;
     }
 
     .post-link {
@@ -859,8 +878,9 @@ html {
 }
 
 .post-comments {
-  padding-top: 25px;
+  padding-top: $spacing-unit * 3;
 }
+
 
 /**
  * Posts misc
@@ -868,39 +888,29 @@ html {
 .post-nav {
   display: flex;
   justify-content: space-between;
-  margin: 72px 0 59px;
-  padding: 31px 0 0;
+  margin: $spacing-unit * 9 0 $spacing-unit * 7;
+  padding: $spacing-unit * 4 0 0;
 
   a {
     @include relative-font-size(1.125);
     color: $text-color;
-    border: solid 2.5px #000;
-    padding: 8px;
+    border: solid 2.5px $text-color;
+    padding: $spacing-unit;
     background-color: $header-background-color;
-    line-height: 15px;
+    line-height: $spacing-unit * 2;
     max-width: 50%;
   }
 
   .previous:before {
-    content: ' ';
-    border: solid $text-color;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 4px;
-    margin-right: 8px;
+    @extend %nav-arrow;
+    margin-right: $spacing-unit;
     transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
   }
 
   .next:after {
-    content: ' ';
-    border: solid $text-color;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 4px;
-    margin-left: 8px;
+    @extend %nav-arrow;
+    margin-left: $spacing-unit;
     transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
   }
 }
 
@@ -916,11 +926,11 @@ html {
 
   .archives-time {
     @include relative-font-size(1.5);
+    margin-bottom: $spacing-unit;
 
     &:not(:first-child) {
-      margin-top: 18px;
+      margin-top: $spacing-unit * 2;
     }
-    margin-bottom: 8px;
   }
 
   .post-meta {
@@ -978,17 +988,19 @@ html {
 
       > :nth-child(1) {
         @include hierarchical-font-sw(2);
-        display: inline-block;
+        display: block;
         line-height: 1;
         transition: 0.2s all;
         color: $background-color;
+        -webkit-text-stroke: 1px $text-color;
+        paint-order: stroke fill;
         letter-spacing: -1px;
-        padding: 8px;
+        margin-bottom: 0;
       }
 
       > :nth-child(2) {
-        margin-bottom: 0.8em;
         transition: 0.2s all;
+        margin-bottom: $spacing-unit;
       }
 
       > :last-child {
@@ -997,19 +1009,15 @@ html {
     }
 
     .post-subtitle {
-      @include relative-font-size(1.525);
+      @include hierarchical-font-sw(3);
       color: $background-color;
-      padding-right: 280px;
-
-      @include media-query($on-palm) {
-        padding-right: 0;
-      }
+      display: block;
     }
 
     .post-meta {
       @include hierarchical-font-sw(4);
-      color: $background-color; 
-      margin-bottom: $spacing-unit * 0.5;     
+      color: $background-color;
+      margin-bottom: $spacing-unit;
     }
 
     .left-vsplit:before {
@@ -1018,22 +1026,19 @@ html {
 
     .post-tags {
       .post-tag {
-        @include hierarchical-font-sw(4);
-        display: inline-block;
-        text-decoration: none;
-        margin: 0px 12px 0 0;
-        color: $background-color;
-        border: 1px solid $brand-color;
-        padding: 2px 8px;
-        border-radius: 100px;
-        background-color: $brand-color;
+        @extend %bubble-tag-base;
+        margin: 0 $spacing-unit * 1.5 0 0;
 
         &:is(:first-child) {
-          margin-bottom: $spacing-unit * 0.25;
+          margin-bottom: $spacing-unit;
         }
 
         &:hover {
           text-decoration: none;
+        }
+
+        &:is(:last-child) {
+          margin: 0;
         }
       }
     }
@@ -1053,8 +1058,8 @@ html {
  * Layout and sidebar
  */
 .framework {
-    @extend %flex;
-    height: 100%;
+  @extend %flex;
+  height: 100%;
 
   .main {
     @extend %flex-1;
@@ -1063,15 +1068,14 @@ html {
   }
 
   .sidebar {
-    padding-left: 8px;
+    padding-left: $spacing-unit;
     transition: top 0.2s, display 0.2s;
 
-    @include flex-sticky($header-height + $spacing-unit * 2);
+    @include flex-sticky($header-height + $spacing-unit * 6);
 
     @include media-query($on-laptop) {
       display: none;
     }
-
   }
 }
 
@@ -1087,13 +1091,13 @@ html {
 
   .segment-name {
     font-weight: $base-font-weight * 1.5;
-    margin-bottom: 8px;
+    margin-bottom: $spacing-unit;
     position: relative;
 
     @include relative-font-size(1.6);
 
     &:not(:first-child) {
-      margin-top: 28px;
+      margin-top: $spacing-unit * 4;
     }
 
     &:hover:before {
@@ -1108,14 +1112,14 @@ html {
   }
 
   li a {
+    color: $text-color;
+
     &.post-link {
-      margin-left: 5px;
+      margin-left: $spacing-unit * 0.5;
     }
 
-    color: #000;
-
     &:hover {
-      color: #000;
+      color: $text-color;
     }
   }
 }
@@ -1130,32 +1134,25 @@ html {
   vertical-align: baseline;
 }
 
+
 /**
  * Post badge
  */
 .post-badges {
   display: inline-block;
   position: relative;
-  margin-left: 8px;
-  margin-top: 3px;
+  margin-left: $spacing-unit;
+  margin-top: $spacing-unit * 0.5;
   user-select: none;
 }
 
-.pagination .post-badges {
-  bottom: 0.5em;
-}
-
-.post-related .post-badges {
-  bottom: 0.1em;
-}
-
-.page-segments .post-badges {
-  bottom: 0.1em;
-}
+.pagination .post-badges  { bottom: 0.5em; }
+.post-related .post-badges,
+.page-segments .post-badges { bottom: 0.1em; }
 
 .post-badge {
   display: none;
-  padding: 0px 3px;
+  padding: 0 $spacing-unit * 0.5;
   background-color: $brand-color;
   color: #fff;
   font-size: 10px;
@@ -1177,8 +1174,3 @@ a:visited .post-badges .post-badge.badge-new {
   color: $background-color;
   background-color: $background-color;
 }
-
-
-// .grayscale-image {
-//     filter: grayscale(100%);
-// }

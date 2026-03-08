@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Gran Canaria, España
+subtitle: Gran Canaria, Spain
 lang: ko
 permalink: /Travel/Africa/Gran_Canaria/
 categories: Travel

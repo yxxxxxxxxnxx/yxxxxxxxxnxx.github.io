@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Trennbare Verben und Untrennbare Verben
+subtitle: German learning
 lang: ko
 permalink: /Languages/Deutsch/Trennbare_Verben_und_Untrennbare_Verben/
 categories: Language\s

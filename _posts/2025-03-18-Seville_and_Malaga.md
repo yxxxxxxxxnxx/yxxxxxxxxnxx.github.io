@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Sevilla-Málaga, España
+subtitle: Seville-Malaga, Spain
 lang: ko
 permalink: /Travel/Europe/Sevilla_and_Málaga/
 categories: Travel
