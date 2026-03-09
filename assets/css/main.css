@@ -291,8 +291,7 @@ table td {
  * Shared placeholders
  */
 .site-brand .site-brand-inner .site-brand-inner-line01-mono, .site-brand .site-brand-inner .site-brand-inner-line01 {
-  font-size: 192px;
-  font-family: "Google Sans Flex", sans-serif;
+  font-size: clamp(64px, 5vw, 128px);
   line-height: 0.8;
   transform: translateX(-2.5px);
   transition: 0.1s filter, color;
@@ -417,7 +416,7 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 @media screen and (max-width: 1024px) {
   .site-header > .wrapper {
-    margin: 0 20px;
+    margin: 0 24px;
     max-width: unset;
   }
 }
@@ -446,7 +445,7 @@ html[data-scroll-status=down] .framework .sidebar {
   justify-content: center;
 }
 .site-brand .site-brand-inner .site-brand-inner-line01 {
-  font-weight: 460;
+  font-weight: 500;
   color: #f3f3f1;
   -webkit-text-stroke: 5px #1d1d1d;
   paint-order: stroke fill;
@@ -466,10 +465,10 @@ html[data-scroll-status=down] .framework .sidebar {
   color: #1d1d1d;
   letter-spacing: -1px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .site-brand .site-brand-inner .site-brand-inner-line01,
   .site-brand .site-brand-inner .site-brand-inner-line01-mono {
-    font-size: 128px;
+    font-size: 64px;
   }
   .site-brand .site-brand-inner .site-brand-inner-line02,
   .site-brand .site-brand-inner .site-brand-inner-line02-mono {
@@ -993,7 +992,8 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 @media screen and (max-width: 600px) {
   .post .post-content img:not(.emoji), .post .post-content svg, .post .post-content iframe {
-    max-width: calc(100vw - 24px);
+    max-width: calc(100vw - 48px);
+    max-height: none;
   }
 }
 .post .post-content video {
