@@ -4,8 +4,7 @@
 
 // site-brand 라인 공통 베이스
 %brand-line01-base {
-  font-size: $base-font-size * 12.0;
-  font-family: 'Google Sans Flex', sans-serif;
+  font-size: clamp(64px, 5vw, 128px);
   line-height: 0.8;
   transform: translateX(-2.5px);
   transition: 0.1s filter, color;
@@ -131,7 +130,7 @@ html {
     transition: 0.2s margin;
 
     @include media-query(1024px) {
-      margin: 0 20px;
+      margin: 0 $spacing-unit * 3;
       max-width: unset;
     }
   }
@@ -162,7 +161,7 @@ html {
 
     .site-brand-inner-line01 {
       @extend %brand-line01-base;
-      font-weight: $base-font-weight * 1.15;
+      font-weight: $base-font-weight * 1.25;
       color: $background-color;
       -webkit-text-stroke: 5px $text-color;
       paint-order: stroke fill;
@@ -194,10 +193,10 @@ html {
       @extend %brand-line03-base;
     }
 
-    @include media-query($on-palm) {
+    @include media-query($on-laptop) {
       .site-brand-inner-line01,
       .site-brand-inner-line01-mono {
-        font-size: $base-font-size * 8.0;
+        font-size: $base-font-size * 4.0;
       }
 
       .site-brand-inner-line02,
@@ -833,7 +832,8 @@ html {
       max-height: 75vh;
 
       @include media-query($on-palm) {
-        max-width: calc(100vw - #{$spacing-unit * 3});
+        max-width: calc(100vw - #{$spacing-unit * 6});
+        max-height: none;
       }
     }
 
