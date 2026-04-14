@@ -71,4 +71,5 @@ TBU
 
 ## 참고 서적
 [^1]: Schmohl, S., et al. *Akademie Deutsch A1+*. München: Hueber Verlag, 2019.
+
 [^2]: 안희철. 『한번에 끝내는 독일어 문법 초중급편』. 파주: 넥서스, 2022. (전자책)

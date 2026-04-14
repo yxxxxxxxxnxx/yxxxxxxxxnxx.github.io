@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Dubrovnik, Hrvatska
-subtitle: Dubrovnik, Croatia
+title: Dubrovnik, Croatia
+subtitle: Dubrovnik, Hrvatska
 lang: ko
 permalink: /Travel/Europe/Dubrovnik/
 categories: Travel

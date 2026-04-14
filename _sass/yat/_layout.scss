@@ -30,7 +30,7 @@
 // 화살표 공통 베이스 (.paginator, .post-nav 공용)
 %nav-arrow {
   content: ' ';
-  border: solid $text-color;
+  border: solid $background-color;
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: $spacing-unit * 0.5;
@@ -635,9 +635,17 @@ html {
       padding: $spacing-unit * 3;
 
       .title-container .post-link {
-        color: $background-color;
-        -webkit-text-stroke: 0.4px $text-color;
-        paint-order: stroke fill;
+        color: $text-color;
+        border: solid 2.5px $text-color;
+        background-color: $background-color;
+        padding: 0 $spacing-unit;
+        
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+
+        // color: $background-color;
+        // -webkit-text-stroke: 0.4px $text-color;
+        // paint-order: stroke fill;
       }
 
       .title-container .post-meta {
@@ -902,12 +910,12 @@ html {
 
   a {
     @include relative-font-size(1.125);
-    color: $text-color;
+    color: $background-color;
     border: solid 2.5px $text-color;
     padding: $spacing-unit;
-    background-color: $header-background-color;
+    background-color: $text-color;
     line-height: $spacing-unit * 2;
-    max-width: 50%;
+    max-width: 45%;
   }
 
   .previous:before {

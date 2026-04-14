@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Gran Canaria, España
-subtitle: Gran Canaria, Spain
+title: Gran Canaria, Spain
+subtitle: Gran Canaria, España
 lang: ko
 permalink: /Travel/Africa/Gran_Canaria/
 categories: Travel
 subcategories: Africa
-tags: Gran_Canaria España Spain
+tags: GranCanaria España Spain
 banner:
     image: /assets/att/2026-01-07-Gran_Canaria/banner.avif
 ---
