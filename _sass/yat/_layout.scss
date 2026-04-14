@@ -838,6 +838,7 @@ html {
     img:not(.emoji), svg, iframe {
       display: block;
       max-height: 75vh;
+      max-height: 75svh;
 
       @include media-query($on-palm) {
         max-height: none;
