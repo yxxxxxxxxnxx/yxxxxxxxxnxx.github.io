@@ -317,7 +317,7 @@ table td {
 
 .post-nav .next:after, .post-nav .previous:before, .pagination .paginator > .next:after, .pagination .paginator > .previous:before {
   content: " ";
-  border: solid #1d1d1d;
+  border: solid #f3f3f1;
   border-width: 0 2px 2px 0;
   display: inline-block;
   padding: 4px;
@@ -831,9 +831,12 @@ html[data-scroll-status=down] .framework .sidebar {
   padding: 24px;
 }
 .pagination .left-panel .element-container .title-container .post-link, .pagination .left-panel2 .element-container .title-container .post-link, .pagination .left-panel3 .element-container .title-container .post-link, .pagination .left-panel4 .element-container .title-container .post-link, .pagination .left-panel5 .element-container .title-container .post-link {
-  color: #f3f3f1;
-  -webkit-text-stroke: 0.4px #1d1d1d;
-  paint-order: stroke fill;
+  color: #1d1d1d;
+  border: solid 2.5px #1d1d1d;
+  background-color: #f3f3f1;
+  padding: 0 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 .pagination .left-panel .element-container .title-container .post-meta, .pagination .left-panel2 .element-container .title-container .post-meta, .pagination .left-panel3 .element-container .title-container .post-meta, .pagination .left-panel4 .element-container .title-container .post-meta, .pagination .left-panel5 .element-container .title-container .post-meta {
   color: #f3f3f1;
@@ -1049,12 +1052,12 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .post-nav a {
   font-size: 18px;
-  color: #1d1d1d;
+  color: #f3f3f1;
   border: solid 2.5px #1d1d1d;
   padding: 8px;
-  background-color: #f3f3f1;
+  background-color: #1d1d1d;
   line-height: 16px;
-  max-width: 50%;
+  max-width: 45%;
 }
 .post-nav .previous:before {
   margin-right: 8px;
@@ -1881,7 +1884,7 @@ body {
   width: 64px;
   height: 64px;
   border-radius: 32px;
-  background-color: #f3f3f1;
+  background-color: rgba(243, 243, 241, 0.85);
   right: 60px;
   bottom: 48px;
   cursor: pointer;
