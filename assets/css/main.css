@@ -997,7 +997,7 @@ html[data-scroll-status=down] .framework .sidebar {
 @media screen and (max-width: 600px) {
   .post .post-content img:not(.emoji), .post .post-content svg, .post .post-content iframe {
     max-height: none;
-    max-width: calc(100vw - 48px);
+    max-width: 100vw;
   }
 }
 .post .post-content video {
