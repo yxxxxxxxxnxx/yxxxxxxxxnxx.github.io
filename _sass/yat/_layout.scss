@@ -838,12 +838,15 @@ html {
 
     img:not(.emoji), svg, iframe {
       display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
       max-height: 75vh;
       max-height: 75svh;
       object-fit: contain;
 
       @include media-query($on-palm) {
-        max-width: calc(100vw - #{$spacing-unit * 12});
+        max-height: none;
       }
     }
 
