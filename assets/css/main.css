@@ -992,13 +992,16 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .post .post-content img:not(.emoji), .post .post-content svg, .post .post-content iframe {
   display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   max-height: 75vh;
   max-height: 75svh;
   object-fit: contain;
 }
 @media screen and (max-width: 600px) {
   .post .post-content img:not(.emoji), .post .post-content svg, .post .post-content iframe {
-    max-width: calc(100vw - 96px);
+    max-height: none;
   }
 }
 .post .post-content video {
