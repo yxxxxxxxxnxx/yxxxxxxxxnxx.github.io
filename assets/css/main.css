@@ -103,7 +103,7 @@ figcaption {
  * Lists
  */
 ul, ol {
-  margin-left: 8px;
+  margin-left: 24px;
 }
 
 li > ul,
@@ -1026,7 +1026,9 @@ html[data-scroll-status=down] .framework .sidebar {
   margin-bottom: 16px;
 }
 .post .post-related ul {
-  margin-left: 16px;
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
 }
 .post .post-related .post-link {
   font-size: 17.2px;
