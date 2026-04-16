@@ -992,16 +992,13 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .post .post-content img:not(.emoji), .post .post-content svg, .post .post-content iframe {
   display: block;
-  max-width: 100%; /* 부모 컨테이너 너비를 넘지 않도록 제한 */
-  height: auto; /* 너비 변경 시 원본 비율 유지 */
   max-height: 75vh;
   max-height: 75svh;
-  object-fit: contain; /* 할당된 공간 내에서 비율을 유지하며 맞춤 */
+  object-fit: contain;
 }
 @media screen and (max-width: 600px) {
   .post .post-content img:not(.emoji), .post .post-content svg, .post .post-content iframe {
-    max-height: none;
-    /* 모바일 환경에서는 max-height 제한을 풀고, 가로는 max-width: 100%의 통제를 받게 됨 */
+    max-width: calc(100vw - 96px);
   }
 }
 .post .post-content video {
