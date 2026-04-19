@@ -8,6 +8,30 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
+  // 누락된 smoothScrollTo 함수 구현
+  function smoothScrollTo(target, duration, callback) {
+    const start = window.scrollY;
+    const distance = target - start;
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      
+      // easeInOutQuad 이징 함수 적용
+      const ease = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+      window.scrollTo(0, start + distance * ease);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      } else {
+        if (callback) callback();
+      }
+    }
+    requestAnimationFrame(animation);
+  }
+
   const html = document.documentElement;
 
   // ─────────────────────────────────────────────
@@ -39,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // ─────────────────────────────────────────────
-  // 2. Top Panel: 세로 휠 → 가로 스크롤 변환
+  // 2. Top Panel: 세로 휠/터치 → 가로 스크롤 변환
   // ─────────────────────────────────────────────
   let topPanelTouchY = null;
   topPanel.addEventListener("touchstart", function (e) {
@@ -59,7 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!scrollable) return;
 
     const atLeft  = postList.scrollLeft <= 0;
-    const atRight = postList.scrollLeft >= postList.scrollWidth - postList.clientWidth;
+    // 소수점 오차 보정 (Math.ceil 적용)
+    const atRight = Math.ceil(postList.scrollLeft + postList.clientWidth) >= postList.scrollWidth;
 
     if ((deltaY < 0 && !atLeft) || (deltaY > 0 && !atRight)) {
       e.preventDefault();
@@ -74,7 +99,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!scrollable) return;
 
     const atLeft  = postList.scrollLeft <= 0;
-    const atRight = postList.scrollLeft >= postList.scrollWidth - postList.clientWidth;
+    // 소수점 오차 보정 (Math.ceil 적용)
+    const atRight = Math.ceil(postList.scrollLeft + postList.clientWidth) >= postList.scrollWidth;
 
     if ((e.deltaY < 0 && !atLeft) || (e.deltaY > 0 && !atRight)) {
       e.preventDefault();
@@ -110,7 +136,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!scrollable) return;
 
       const atTop    = right.scrollTop <= 0;
-      const atBottom = right.scrollTop >= right.scrollHeight - right.clientHeight;
+      // 소수점 오차 보정 (Math.ceil 적용)
+      const atBottom = Math.ceil(right.scrollTop + right.clientHeight) >= right.scrollHeight;
 
       if ((deltaY < 0 && !atTop) || (deltaY > 0 && !atBottom)) {
         e.preventDefault();
@@ -124,7 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!scrollable) return;
 
       const atTop    = right.scrollTop <= 0;
-      const atBottom = right.scrollTop >= right.scrollHeight - right.clientHeight;
+      // 소수점 오차 보정 (Math.ceil 적용)
+      const atBottom = Math.ceil(right.scrollTop + right.clientHeight) >= right.scrollHeight;
 
       if ((e.deltaY < 0 && !atTop) || (e.deltaY > 0 && !atBottom)) {
         e.preventDefault();
@@ -152,7 +180,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const y = e.touches[0].clientY;
     const deltaY = pageTouchStartY - y;
     pageTouchStartY = y;
-    if (deltaY <= 0) return;
+    
+    // 수정: 위로 스크롤(스와이프 다운, deltaY < 0) 시에만 동작하도록 조건 변경
+    if (deltaY >= 0) return;
 
     const distToBottom = document.body.scrollHeight - (window.scrollY + window.innerHeight);
     if (distToBottom < window.innerHeight * 0.5) {
@@ -182,6 +212,5 @@ document.addEventListener("DOMContentLoaded", function () {
       smoothScrollTo(target, 300, () => { snapping = false; });
     }
   }, { passive: false });
-
 
 });
