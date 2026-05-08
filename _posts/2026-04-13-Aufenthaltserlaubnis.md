@@ -3,7 +3,7 @@ layout: post
 title: 독일 학생체류허가
 subtitle: Aufenthaltserlaubnis zum Studium
 lang: ko
-permalink: /Home\s/Aachen/Aufenthaltserlaubnis/
+permalink: /Homes/Aachen/Aufenthaltserlaubnis/
 categories: Home\s
 subcategories: Aachen
 tags: 독일 학생체류허가 학생 체류허가 비자
@@ -87,12 +87,14 @@ banner:
 
 수령에도 방문 예약이 필요하다... 다 끝났다고 생각했는데, 마지막 관문이 기다리고 있었다. 가능한 날짜로 3주 뒤가 뜨길래 며칠 붙잡고 생각 날 때마다 새로고침을 했더니, 다행히 가까운 날짜 이른 오전 시간이 있어서 무리하게 일정에 끼워 넣었다.
 
-집에 와서 eID 활성화하고
+단순히 수령만 하겠거니 생각했는데, 데스크에서 직원과 마주 앉아 신원 확인 및 기존 체류허가증 말소하는 과정이 있어 시간이 조금 걸렸다.
+
+그렇게 집에 와서 BundID 설정하고, 드디어 이 모든 과정이 끝.
 
 Banner image ©️ RWTH Aachen
 
 [^1]: Aufenthaltserlaubnis zum Studium (§ 16b Abs. 1)
-[^2]: 원문 ([한국어)](https://seoul.diplo.de/kr-ko/service/visa-einreise/1892924-1892924) - 주한독일연방공화국대사관 웹사이트
-[^3]: 원문 [(한국어)](https://seoul.diplo.de/kr-ko/service/visa-einreise/2249890-2249890) - 주한독일연방공화국대사관 웹사이트
+[^2]: 주한독일연방공화국대사관 웹사이트 원문 ([한국어)](https://seoul.diplo.de/kr-ko/service/visa-einreise/1892924-1892924)
+[^3]: 주한독일연방공화국대사관 웹사이트 원문  [(한국어)](https://seoul.diplo.de/kr-ko/service/visa-einreise/2249890-2249890)
 [^4]: 베를린 LEA에서 요구하는 서류의 최신 정보는 다음 페이지에서 확인할 수 있다. ([독문](https://service.berlin.de/dienstleistung/305244/), [영문](https://service.berlin.de/dienstleistung/305244/en/))
 [^5]: 아헨 외국인청 체류허가신청서 및 신청 안내 페이지 [(독문)](https://bportal.staedteregion-aachen.de/detail/-/vr-bis-detail/dienstleistung/15000/show)
