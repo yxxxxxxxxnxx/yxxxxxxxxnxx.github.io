@@ -699,7 +699,13 @@ html {
   }
 
   @include media-query($on-palm) {
-    scroll-snap-type: none;
+    // 세로 스택 레이아웃에 맞춰 스냅 단위를 개별 패널로 재지정한다.
+    // 가변 높이(right-panel: height auto)라 mandatory 대신 proximity 사용.
+    scroll-snap-type: y proximity;
+
+    .top-panel {
+      scroll-snap-align: start;
+    }
 
     .panels-wrapper, .panels-wrapper2, .panels-wrapper3, .panels-wrapper4, .panels-wrapper5 {
       flex-direction: column;
@@ -711,12 +717,13 @@ html {
         display: block;
         width: 100vw;
         height: 100vh;
-        scroll-snap-align: none;
+        scroll-snap-align: start;
       }
 
       .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5 {
         width: 95vw;
         height: auto;
+        scroll-snap-align: start;
 
         .post-image-container {
           width: 95vw;
