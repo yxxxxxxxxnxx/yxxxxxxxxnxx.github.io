@@ -712,6 +712,11 @@ html {
       height: auto;
       align-items: center;
       scroll-snap-align: none;
+      // 데스크톱의 overflow-x: hidden은 CSS 명세상 overflow-y를 auto로 승격시켜
+      // wrapper 자체가 스크롤 컨테이너가 된다. 그러면 자식 패널의 scroll-snap-align이
+      // .pagination이 아닌 wrapper에 귀속되어 스냅이 죽는다. visible로 되돌려
+      // 스냅 대상이 .pagination에 캡처되게 한다.
+      overflow: visible;
 
       .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5 {
         display: block;
