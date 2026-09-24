@@ -266,7 +266,7 @@ html {
  */
 .site-footer {
   @include relative-font-size(1.0);
-  color: $footer-text-color;
+  color: $text-color;
   font-weight: $base-font-weight * 1.5;
   background-color: $background-color;
   text-align: left;
@@ -392,6 +392,7 @@ html {
     position: relative;
     display: block;
     scroll-snap-align: start;
+    padding-bottom: 64vh;
 
     .post-list {
       display: flex;
@@ -420,7 +421,7 @@ html {
     }
   }
 
-  .panels-wrapper, .panels-wrapper2, .panels-wrapper3, .panels-wrapper4, .panels-wrapper5 {
+  .panels-wrapper {
     display: flex;
     flex-direction: row;
     height: 100vh;
@@ -428,14 +429,14 @@ html {
     overflow-x: hidden;
     scroll-snap-align: start;
 
-    .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5 {
+    .left-panel {
       width: 47.5vw;
       flex-shrink: 0;
       overflow-x: hidden;
       overflow-y: hidden;
     }
 
-    .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5 {
+    .right-panel {
       width: 47.5vw;
       flex-shrink: 0;
       overflow-x: hidden;
@@ -448,10 +449,9 @@ html {
   }
 
   .top-panel,
-  .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5,
-  .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5,
+  .left-panel,
+  .right-panel,
   .top-panel .post-list,
-  .left-panel .post-list,
   .right-panel .post-list {
     @extend %scrollbar-hidden;
   }
@@ -507,8 +507,8 @@ html {
           color: $text-color;
         }
 
-        .post-meta {
-          @include hierarchical-font-sw(4);
+        .post-subtitle {
+          @include hierarchical-font-sw(3);
           color: $text-color;
           margin-bottom: $spacing-unit * 2;
         }
@@ -589,6 +589,7 @@ html {
     .element-container {
       flex-shrink: 0;
       margin-top: $spacing-unit * 3;
+      margin-right: $spacing-unit * 3;
     }
 
     .post-image-container {
@@ -609,92 +610,40 @@ html {
     }
   }
 
-  .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5 {
-    .post-content {
-      position: relative;
-    }
-
-    .post-image-container {
-      height: 100vh;
-      width: 100%;
-
-      .post-bubbles-container {
-        position: absolute;
-        bottom: $spacing-unit;
-        left: $spacing-unit * 2;
-      }
-    }
-
-    .element-container {
-      position: absolute;
-      top: 50vh;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 1;
-      margin-left: 0;
-      padding: $spacing-unit * 3;
-
-      .title-container .post-link {
-        color: $text-color;
-        border: solid 2.5px $text-color;
-        background-color: $background-color;
-        padding: 0 $spacing-unit;
-        
-        box-decoration-break: clone;
-        -webkit-box-decoration-break: clone;
-
-        // color: $background-color;
-        // -webkit-text-stroke: 0.4px $text-color;
-        // paint-order: stroke fill;
-      }
-
-      .title-container .post-meta {
-        color: $background-color;
-      }
-
-      .excerpt-container .post-text {
-        color: $background-color;
-      }
-    }
+  .left-panel .panel-title {
+    @include hierarchical-font-sw(2);
+    // 반시계방향 90도 회전 (아래→위로 읽힘)
+    display: inline-block;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: -1px;
+    line-height: 1;
+    color: $text-color;
+    margin: $spacing-unit * 3 0 0 $spacing-unit * 3;
   }
 
-  .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5 {
+  .right-panel {
     .post-image-container {
       width: 47.5vw;
       height: 47.5vw;
     }
-  }
 
-  .post-list {
-    &.none-image-style .post-item .post-excerpt .post-image {
-      display: none;
+    .post-list > li:last-child {
+      padding-bottom: 64vh;
     }
 
-    &.left-image-style .post-item .post-excerpt {
-      flex-direction: row;
-    }
+    // title과 subtitle 사이 0, title(+subtitle)과 excerpt 사이 8px
+    .element-container .title-container {
+      margin-bottom: $spacing-unit;
 
-    &.right-image-style .post-item .post-excerpt {
-      flex-direction: row-reverse;
-    }
-
-    &.top-image-style .post-item .post-excerpt {
-      flex-direction: column;
-    }
-
-    &.z-image-style .post-item:nth-child(even) .post-excerpt {
-      flex-direction: row-reverse;
-    }
-
-    &.z-reverse-image-style .post-item:nth-child(odd) .post-excerpt {
-      flex-direction: row-reverse;
-    }
-
-    .post-item .post-excerpt {
-      @include media-query($on-laptop) {
-        flex-direction: column !important;
+      .post-title,
+      .post-subtitle {
+        margin: 0;
       }
+    }
+
+    .excerpt-container p {
+      margin-top: 0;
     }
   }
 
@@ -705,9 +654,10 @@ html {
 
     .top-panel {
       scroll-snap-align: start;
+      padding-bottom: 32vh;
     }
 
-    .panels-wrapper, .panels-wrapper2, .panels-wrapper3, .panels-wrapper4, .panels-wrapper5 {
+    .panels-wrapper {
       flex-direction: column;
       height: auto;
       align-items: center;
@@ -718,21 +668,39 @@ html {
       // 스냅 대상이 .pagination에 캡처되게 한다.
       overflow: visible;
 
-      .left-panel, .left-panel2, .left-panel3, .left-panel4, .left-panel5 {
-        display: block;
-        width: 100vw;
-        height: 100vh;
-        scroll-snap-align: start;
-      }
+      gap: $spacing-unit * 3;
 
-      .right-panel, .right-panel2, .right-panel3, .right-panel4, .right-panel5 {
+      // 배경 영역 없이 카테고리명만 right-panel 위에 붙여 표시
+      .left-panel {
+        display: block;
         width: 95vw;
         height: auto;
         scroll-snap-align: start;
 
+        line-height: 0;
+
+        .panel-title {
+          margin: 0;
+        }
+      }
+
+      .right-panel {
+        width: 95vw;
+        height: auto;
+        scroll-snap-align: none;
+        // 데스크톱의 overflow-y: auto가 남아 있으면 right-panel이 스크롤 컨테이너가 되어
+        // 포스트 이미지의 scroll-snap-align이 .pagination에 귀속되지 않는다.
+        overflow: visible;
+
+        // 포스트 이미지 상단을 추가 스냅 포인트로 사용
         .post-image-container {
           width: 95vw;
           height: 95vw;
+          scroll-snap-align: start;
+        }
+
+        .post-list > li:last-child {
+          padding-bottom: 32vh;
         }
 
         .post-content .post-image-container .post-image > *:first-child {
@@ -740,9 +708,6 @@ html {
           height: 95vw;
         }
 
-        .post-list > li:last-child {
-          padding-bottom: 30vh;
-        }
       }
     }
   }

@@ -1,10 +1,5 @@
-{%- assign date_format = site.yat.date_format | default: "%b %-d, %Y" -%}
-
 {%- assign article = post.content -%}
 {%- assign lang = post.lang -%}
-{%- include functions.html func='get_reading_time' -%}
-{%- assign reading_time = return -%}
-
 {%- include functions.html func='get_article_excerpt' -%}
 {%- assign article_excerpt = return -%}
 {%- assign post_url = post.url | relative_url -%}
@@ -63,13 +58,9 @@
           </a>
         </h2>
           
-        <div class="post-meta">
-          <span class="post-date"><i class="fa fa-calendar"></i> {{ post.date | date: date_format }}</span>
-          {%- if post.author -%}
-          <span class="post-author left-vsplit"><i class="fa fa-pencil"></i> {{ post.author | escape }}</span>
-          {%- endif -%}
-          <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> {{ reading_time }}</span>
-        </div>
+        {%- if post.subtitle -%}
+        <p class="post-subtitle">{{ post.subtitle | escape }}</p>
+        {%- endif -%}
       </div>
 
       <div class="excerpt-container">
