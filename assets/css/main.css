@@ -323,7 +323,7 @@ table td {
   padding: 4px;
 }
 
-.page-banner .page-banner-inner .post-tags .post-tag, .pagination .post-content .post-image-container .post-bubbles-container .post-category .post-categories, .pagination .post-content .post-image-container .post-bubbles-container .post-tags .post-tag {
+.pagination .post-content .post-image-container .post-bubbles-container .post-category .post-categories, .pagination .post-content .post-image-container .post-bubbles-container .post-tags .post-tag {
   font-size: 16px;
   font-weight: 400;
   display: inline-block;
@@ -1114,7 +1114,7 @@ html[data-scroll-status=down] .framework .sidebar {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  opacity: 0.75;
+  opacity: 1;
 }
 .page-banner .page-banner-img > *:first-child {
   height: 100%;
@@ -1129,68 +1129,6 @@ html[data-scroll-status=down] .framework .sidebar {
   object-fit: cover;
 }
 .page-banner .page-banner-img > img.img-placeholder {
-  display: none;
-}
-.page-banner .wrapper {
-  height: 100%;
-}
-.page-banner .page-banner-inner {
-  position: relative;
-  top: 75%;
-  transform: translateY(-75%);
-  text-align: center;
-  color: #f3f3f1;
-}
-.page-banner .page-banner-inner > *:first-child {
-  margin: 0;
-}
-.page-banner .page-banner-inner > *:first-child > :nth-child(1) {
-  font-size: 48px;
-  font-weight: 600;
-  display: block;
-  line-height: 1;
-  transition: 0.2s all;
-  color: #f3f3f1;
-  -webkit-text-stroke: 0.4px #1d1d1d;
-  paint-order: stroke fill;
-  letter-spacing: -1px;
-  margin-bottom: 0;
-}
-.page-banner .page-banner-inner > *:first-child > :nth-child(2) {
-  transition: 0.2s all;
-  margin-bottom: 8px;
-}
-.page-banner .page-banner-inner > *:first-child > :last-child {
-  margin-bottom: 0;
-}
-.page-banner .page-banner-inner .post-subtitle {
-  font-size: 24px;
-  font-weight: 500;
-  color: #f3f3f1;
-  display: block;
-}
-.page-banner .page-banner-inner .post-meta {
-  font-size: 16px;
-  font-weight: 400;
-  color: #f3f3f1;
-  margin-bottom: 8px;
-}
-.page-banner .page-banner-inner .left-vsplit:before {
-  background: #f3f3f1;
-}
-.page-banner .page-banner-inner .post-tags .post-tag {
-  margin: 0 12px 0 0;
-}
-.page-banner .page-banner-inner .post-tags .post-tag:is(:first-child) {
-  margin-bottom: 8px;
-}
-.page-banner .page-banner-inner .post-tags .post-tag:hover {
-  text-decoration: none;
-}
-.page-banner .page-banner-inner .post-tags .post-tag:is(:last-child) {
-  margin: 0;
-}
-.page-banner .page-banner-inner .wavy-line {
   display: none;
 }
 @media screen and (max-width: 600px) {
