@@ -1,7 +1,6 @@
 ---
 layout: framework
 banner:
-banner_html: post-header.html
 hidden: []
 sidebar:
   - article-menu
@@ -9,10 +8,6 @@ sidebar:
 
 <div class="post">
   <section>
-
-    {%- assign name = 'banner' -%}
-    {%- include functions.html func='get_value' -%}
-    {%- assign banner = return -%}
 
     {%- assign name = 'hidden' -%}
     {%- include functions.html func='get_value' -%}
@@ -36,9 +31,7 @@ sidebar:
 
     {%- assign result = hidden | where_exp: "item", "item == 'header' or item == 'post-header'" -%}
     {%- if result.size == 0 -%}
-    {%- if banner.image == nil and banner.video == nil -%}
     {%- include views/post-header.html -%}
-    {%- endif -%}
     {%- endif -%}
 
     {%- include views/article.html -%}

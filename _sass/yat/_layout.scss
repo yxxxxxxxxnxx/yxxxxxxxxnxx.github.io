@@ -992,7 +992,7 @@ html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    opacity: 0.75;
+    opacity: 1;
 
     & > *:first-child {
       @include center-image;
@@ -1005,82 +1005,6 @@ html {
     }
 
     & > img.img-placeholder {
-      display: none;
-    }
-  }
-
-  .wrapper {
-    height: 100%;
-  }
-
-  .page-banner-inner {
-    position: relative;
-    top: 75%;
-    transform: translateY(-75%);
-    text-align: center;
-    color: $background-color;
-
-    & > *:first-child {
-      margin: 0;
-
-      > :nth-child(1) {
-        @include hierarchical-font-sw(2);
-        display: block;
-        line-height: 1;
-        transition: 0.2s all;
-        color: $background-color;
-        -webkit-text-stroke: 0.4px $text-color;
-        paint-order: stroke fill;
-        letter-spacing: -1px;
-        margin-bottom: 0;
-      }
-
-      > :nth-child(2) {
-        transition: 0.2s all;
-        margin-bottom: $spacing-unit;
-      }
-
-      > :last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    .post-subtitle {
-      @include hierarchical-font-sw(3);
-      color: $background-color;
-      display: block;
-    }
-
-    .post-meta {
-      @include hierarchical-font-sw(4);
-      color: $background-color;
-      margin-bottom: $spacing-unit;
-    }
-
-    .left-vsplit:before {
-      background: $background-color;
-    }
-
-    .post-tags {
-      .post-tag {
-        @extend %bubble-tag-base;
-        margin: 0 $spacing-unit * 1.5 0 0;
-
-        &:is(:first-child) {
-          margin-bottom: $spacing-unit;
-        }
-
-        &:hover {
-          text-decoration: none;
-        }
-
-        &:is(:last-child) {
-          margin: 0;
-        }
-      }
-    }
-
-    .wavy-line {
       display: none;
     }
   }
