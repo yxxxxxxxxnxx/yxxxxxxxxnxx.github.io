@@ -429,6 +429,11 @@ html {
     overflow-x: hidden;
     scroll-snap-align: start;
 
+    // Home\s 카테고리만 좌우 패널 위치를 바꿔 표시 (데스크톱 전용)
+    &.panels-homes {
+      flex-direction: row-reverse;
+    }
+
     .left-panel {
       width: 47.5vw;
       flex-shrink: 0;
@@ -657,7 +662,8 @@ html {
       padding-bottom: 32vh;
     }
 
-    .panels-wrapper {
+    .panels-wrapper,
+    .panels-wrapper.panels-homes {
       flex-direction: column;
       height: auto;
       align-items: center;
