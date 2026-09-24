@@ -666,6 +666,9 @@ html[data-scroll-status=down] .framework .sidebar {
   overflow-x: hidden;
   scroll-snap-align: start;
 }
+.pagination .panels-wrapper.panels-homes {
+  flex-direction: row-reverse;
+}
 .pagination .panels-wrapper .left-panel {
   width: 47.5vw;
   flex-shrink: 0;
@@ -845,7 +848,8 @@ html[data-scroll-status=down] .framework .sidebar {
     scroll-snap-align: start;
     padding-bottom: 32vh;
   }
-  .pagination .panels-wrapper {
+  .pagination .panels-wrapper,
+  .pagination .panels-wrapper.panels-homes {
     flex-direction: column;
     height: auto;
     align-items: center;
@@ -853,31 +857,37 @@ html[data-scroll-status=down] .framework .sidebar {
     overflow: visible;
     gap: 24px;
   }
-  .pagination .panels-wrapper .left-panel {
+  .pagination .panels-wrapper .left-panel,
+  .pagination .panels-wrapper.panels-homes .left-panel {
     display: block;
     width: 95vw;
     height: auto;
     scroll-snap-align: start;
     line-height: 0;
   }
-  .pagination .panels-wrapper .left-panel .panel-title {
+  .pagination .panels-wrapper .left-panel .panel-title,
+  .pagination .panels-wrapper.panels-homes .left-panel .panel-title {
     margin: 0;
   }
-  .pagination .panels-wrapper .right-panel {
+  .pagination .panels-wrapper .right-panel,
+  .pagination .panels-wrapper.panels-homes .right-panel {
     width: 95vw;
     height: auto;
     scroll-snap-align: none;
     overflow: visible;
   }
-  .pagination .panels-wrapper .right-panel .post-image-container {
+  .pagination .panels-wrapper .right-panel .post-image-container,
+  .pagination .panels-wrapper.panels-homes .right-panel .post-image-container {
     width: 95vw;
     height: 95vw;
     scroll-snap-align: start;
   }
-  .pagination .panels-wrapper .right-panel .post-list > li:last-child {
+  .pagination .panels-wrapper .right-panel .post-list > li:last-child,
+  .pagination .panels-wrapper.panels-homes .right-panel .post-list > li:last-child {
     padding-bottom: 32vh;
   }
-  .pagination .panels-wrapper .right-panel .post-content .post-image-container .post-image > *:first-child {
+  .pagination .panels-wrapper .right-panel .post-content .post-image-container .post-image > *:first-child,
+  .pagination .panels-wrapper.panels-homes .right-panel .post-content .post-image-container .post-image > *:first-child {
     width: 95vw;
     height: 95vw;
   }
