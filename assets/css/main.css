@@ -634,7 +634,7 @@ html[data-scroll-status=down] .framework .sidebar {
   position: relative;
   display: block;
   scroll-snap-align: start;
-  padding-bottom: 64vh;
+  padding-bottom: 32vh;
 }
 .pagination .top-panel .post-list {
   display: flex;
@@ -665,9 +665,6 @@ html[data-scroll-status=down] .framework .sidebar {
   gap: 2.5vw;
   overflow-x: hidden;
   scroll-snap-align: start;
-}
-.pagination .panels-wrapper.panels-homes {
-  flex-direction: row-reverse;
 }
 .pagination .panels-wrapper .left-panel {
   width: 47.5vw;
@@ -812,16 +809,20 @@ html[data-scroll-status=down] .framework .sidebar {
   height: 100%;
   width: 100%;
 }
+.pagination .left-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .pagination .left-panel .panel-title {
   font-size: 48px;
   font-weight: 600;
-  display: inline-block;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+  white-space: nowrap;
+  transform: rotate(-45deg);
   letter-spacing: -1px;
   line-height: 1;
   color: #1d1d1d;
-  margin: 24px 0 0 24px;
+  margin: 0;
 }
 .pagination .right-panel .post-image-container {
   width: 47.5vw;
@@ -848,8 +849,7 @@ html[data-scroll-status=down] .framework .sidebar {
     scroll-snap-align: start;
     padding-bottom: 32vh;
   }
-  .pagination .panels-wrapper,
-  .pagination .panels-wrapper.panels-homes {
+  .pagination .panels-wrapper {
     flex-direction: column;
     height: auto;
     align-items: center;
@@ -857,37 +857,29 @@ html[data-scroll-status=down] .framework .sidebar {
     overflow: visible;
     gap: 24px;
   }
-  .pagination .panels-wrapper .left-panel,
-  .pagination .panels-wrapper.panels-homes .left-panel {
-    display: block;
+  .pagination .panels-wrapper .left-panel {
     width: 95vw;
     height: auto;
     scroll-snap-align: start;
-    line-height: 0;
   }
-  .pagination .panels-wrapper .left-panel .panel-title,
-  .pagination .panels-wrapper.panels-homes .left-panel .panel-title {
-    margin: 0;
+  .pagination .panels-wrapper .left-panel .panel-title {
+    margin: calc((4.14em - 1em) / 2) 0;
   }
-  .pagination .panels-wrapper .right-panel,
-  .pagination .panels-wrapper.panels-homes .right-panel {
+  .pagination .panels-wrapper .right-panel {
     width: 95vw;
     height: auto;
     scroll-snap-align: none;
     overflow: visible;
   }
-  .pagination .panels-wrapper .right-panel .post-image-container,
-  .pagination .panels-wrapper.panels-homes .right-panel .post-image-container {
+  .pagination .panels-wrapper .right-panel .post-image-container {
     width: 95vw;
     height: 95vw;
     scroll-snap-align: start;
   }
-  .pagination .panels-wrapper .right-panel .post-list > li:last-child,
-  .pagination .panels-wrapper.panels-homes .right-panel .post-list > li:last-child {
+  .pagination .panels-wrapper .right-panel .post-list > li:last-child {
     padding-bottom: 32vh;
   }
-  .pagination .panels-wrapper .right-panel .post-content .post-image-container .post-image > *:first-child,
-  .pagination .panels-wrapper.panels-homes .right-panel .post-content .post-image-container .post-image > *:first-child {
+  .pagination .panels-wrapper .right-panel .post-content .post-image-container .post-image > *:first-child {
     width: 95vw;
     height: 95vw;
   }
@@ -1852,6 +1844,67 @@ html[data-theme=light] .click-to-top {
 html[data-theme=dark] .click-to-top {
   background-color: #000;
   color: #fff;
+}
+
+.pdf-embed {
+  margin: 24px 0;
+  border: 1px solid rgba(29, 29, 29, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pdf-embed-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  font-size: 13.8px;
+  border-bottom: 1px solid rgba(29, 29, 29, 0.15);
+}
+.pdf-embed-toolbar .pdf-embed-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pdf-embed-toolbar .pdf-embed-pages {
+  opacity: 0.6;
+  white-space: nowrap;
+}
+.pdf-embed-toolbar .pdf-embed-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.pdf-embed-viewer {
+  max-height: 80vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px;
+  background-color: rgba(29, 29, 29, 0.06);
+}
+.pdf-embed-viewer .pdf-embed-page {
+  display: block;
+  margin: 0 auto 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
+.pdf-embed-viewer .pdf-embed-page:last-child {
+  margin-bottom: 0;
+}
+.pdf-embed-viewer .pdf-embed-status {
+  padding: 32px 0;
+  text-align: center;
+  opacity: 0.6;
+}
+
+html[data-theme=dark] .pdf-embed,
+html[data-theme=dark] .pdf-embed-toolbar {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+html[data-theme=dark] .pdf-embed-viewer {
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
 /*# sourceMappingURL=main.css.map */
