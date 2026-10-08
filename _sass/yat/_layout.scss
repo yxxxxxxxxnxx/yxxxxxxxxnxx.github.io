@@ -392,7 +392,7 @@ html {
     position: relative;
     display: block;
     scroll-snap-align: start;
-    padding-bottom: 64vh;
+    padding-bottom: 32vh;
 
     .post-list {
       display: flex;
@@ -428,11 +428,6 @@ html {
     gap: 2.5vw;
     overflow-x: hidden;
     scroll-snap-align: start;
-
-    // Home\s 카테고리만 좌우 패널 위치를 바꿔 표시 (데스크톱 전용)
-    &.panels-homes {
-      flex-direction: row-reverse;
-    }
 
     .left-panel {
       width: 47.5vw;
@@ -615,16 +610,27 @@ html {
     }
   }
 
+  // 카테고리 제목: 반시계방향 45도 기울임.
+  // 기울어진 글자를 둘러싼 정사각형의 중심은 기울이기 전 글자 상자의 중심과 같다.
+  // 그래서 글자 상자를 패널 가운데에 놓고 그 중심을 축으로 돌리면 정사각형이 패널 정중앙에 온다.
+  // $panel-title-square: 가장 긴 제목(newThings)을 둘러싼 정사각형 한 변 = sin45 × (글자 폭 + 줄 높이).
+  //   모바일에서 카테고리명 영역 높이로 쓴다. 제목을 바꿔 더 길어지면 이 값을 다시 계산해야 한다.
+  $panel-title-square: 4.14em;
+
+  .left-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .left-panel .panel-title {
     @include hierarchical-font-sw(2);
-    // 반시계방향 90도 회전 (아래→위로 읽힘)
-    display: inline-block;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
+    white-space: nowrap;
+    transform: rotate(-45deg);
     letter-spacing: -1px;
     line-height: 1;
     color: $text-color;
-    margin: $spacing-unit * 3 0 0 $spacing-unit * 3;
+    margin: 0;
   }
 
   .right-panel {
@@ -662,8 +668,7 @@ html {
       padding-bottom: 32vh;
     }
 
-    .panels-wrapper,
-    .panels-wrapper.panels-homes {
+    .panels-wrapper {
       flex-direction: column;
       height: auto;
       align-items: center;
@@ -678,15 +683,13 @@ html {
 
       // 배경 영역 없이 카테고리명만 right-panel 위에 붙여 표시
       .left-panel {
-        display: block;
         width: 95vw;
         height: auto;
         scroll-snap-align: start;
 
-        line-height: 0;
-
+        // 영역 높이를 가장 긴 제목의 정사각형에 맞춰 모든 카테고리가 같은 높이가 되게 한다
         .panel-title {
-          margin: 0;
+          margin: calc((#{$panel-title-square} - 1em) / 2) 0;
         }
       }
 
