@@ -29,6 +29,10 @@ sidebar:
     {%- include gg-translation.html -%}
     {%- endif -%}
 
+    {%- if page.update == true -%}
+    {%- include update.html -%}
+    {%- endif -%}
+
     {%- assign result = hidden | where_exp: "item", "item == 'header' or item == 'post-header'" -%}
     {%- if result.size == 0 -%}
     {%- include views/post-header.html -%}

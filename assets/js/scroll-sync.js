@@ -176,13 +176,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // 데스크톱 배치: right-panel의 다음 항목, 목록 끝이면 pagination의 다음 지점(이전/다음 카테고리)
-  // 데스크톱 배치에서 right-panel 끝(시작)을 넘어설 때 갈 이전/다음 카테고리
+  // 푸터: 마지막 지점에서 더 내려가면 페이지(창)를 끝까지 내려 푸터를 보여 주고,
+  // 푸터가 보이는 상태에서 위로 가면 먼저 페이지를 맨 위로 되돌린다.
+  const pageScroller = document.scrollingElement || document.documentElement;
+
+  function footerTarget(direction) {
+    const max = pageScroller.scrollHeight - pageScroller.clientHeight;
+    if (direction > 0 && pageScroller.scrollTop < max - 1) return { scroller: pageScroller, top: max };
+    if (direction < 0 && pageScroller.scrollTop > 0)       return { scroller: pageScroller, top: 0 };
+    return null;
+  }
+
+  // 데스크톱 배치에서 right-panel 끝(시작)을 넘어설 때 갈 이전/다음 카테고리. 마지막 카테고리 다음은 푸터
   function categoryTarget(direction) {
     const page = nextPoint(paginationPoints(), pagination.scrollTop, direction);
-    return page === null ? null : { scroller: pagination, top: page };
+    if (page !== null) return { scroller: pagination, top: page };
+    return direction > 0 ? footerTarget(direction) : null;
   }
 
   function desktopTarget(right, direction) {
+    // 푸터가 보이는 상태에서 위로 가면 푸터부터 내린다
+    if (direction < 0 && pageScroller.scrollTop > 0) return footerTarget(direction);
+
     const item = nextPoint(itemPoints(right), right.scrollTop, direction);
     if (item !== null) return { scroller: right, top: item, points: () => itemPoints(right), overflow: categoryTarget };
 
@@ -527,10 +542,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let snapping = false;
 
   window.addEventListener("wheel", function (e) {
-    if (snapping) return;
+    // 패널 위의 휠은 3번 섹션에서 이미 처리했다 (푸터가 보이면 그쪽에서 먼저 내린다)
+    if (snapping || e.defaultPrevented) return;
 
+    // 푸터가 실제로 보일 때(페이지가 내려가 있을 때)만 동작
     const distToBottom = document.body.scrollHeight - (window.scrollY + window.innerHeight);
-    if (e.deltaY < 0 && distToBottom < window.innerHeight * 0.5) {
+    if (e.deltaY < 0 && window.scrollY > 0 && distToBottom < window.innerHeight * 0.5) {
       const target = pagination.getBoundingClientRect().top + window.scrollY;
       e.preventDefault();
       snapping = true;
@@ -543,8 +560,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // 5. on-palm 전용: 휠·터치 한 번에 스냅 지점(top-panel, 카테고리명, 포스트 이미지 상단) 하나씩 이동
   // ─────────────────────────────────────────────
   function palmTarget(direction) {
+    if (direction < 0 && pageScroller.scrollTop > 0) return footerTarget(direction);
+
     const top = nextPoint(paginationPoints(), pagination.scrollTop, direction);
-    return top === null ? null : { scroller: pagination, top, points: paginationPoints };
+    if (top !== null) return { scroller: pagination, top, points: paginationPoints };
+    return direction > 0 ? footerTarget(direction) : null;
   }
 
   const palmLane = { scroller: pagination, points: paginationPoints, target: palmTarget };

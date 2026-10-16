@@ -9,6 +9,7 @@ subcategories: Berlin
 tags: 베를린 안멜둥 거주지등록 전입신고
 banner:
     image: /assets/att/2026-10-02-Anmeldung_Berlin/banner.avif
+update: true
 ---
 
 ## 다시 베를린으로

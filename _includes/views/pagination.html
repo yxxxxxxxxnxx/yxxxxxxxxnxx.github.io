@@ -11,9 +11,6 @@
 {%- if paginator.posts.size > 0 -%}
 <div class="pagination">
 
-  {%- comment -%} 표시 순서와 분류 고정: key:표시명:카테고리[,카테고리] {%- endcomment -%}
-  {%- assign panel_groups = "travel:Travel:Travel|homes:Home\s:Home\s|newThings:newThings:Book,Tech" | split: "|" -%}
-
   <div class="top-panel">
     <ul class="post-list {{ image_style }}">
       {%- assign all_posts_with_banner = paginator.posts | where_exp: "item", "item.banner" -%}
@@ -26,14 +23,10 @@
   </div>
 
 
-  {%- for group in panel_groups -%}
-    {%- assign group_fields = group | split: ":" -%}
-    {%- assign group_key = group_fields[0] -%}
-    {%- assign group_label = group_fields[1] -%}
-    {%- assign group_categories = group_fields[2] | split: "," -%}
-
+  {%- comment -%} 패널 순서·제목·분류는 _data/pagination_panels.yml에서 정한다 {%- endcomment -%}
+  {%- for group in site.data.pagination_panels -%}
     {%- assign panel_posts = "" | split: "" -%}
-    {%- for category in group_categories -%}
+    {%- for category in group.categories -%}
       {%- assign category_posts = paginator.posts
           | where_exp: "post", "post.categories contains category"
           | where_exp: "post", "post.banner" -%}
@@ -42,10 +35,14 @@
     {%- assign panel_posts = panel_posts | sort: "date" | reverse -%}
 
     {%- if panel_posts.size > 0 -%}
-      <div class="panels-wrapper panels-{{ group_key }}">
+      <div class="panels-wrapper panels-{{ group.key }}">
 
         <div class="left-panel">
-          <h2 class="panel-title">{{ group_label | escape }}</h2>
+          <h2 class="panel-title">
+            {%- for line in group.title -%}
+              <span class="panel-title-line">{{ line | escape }}</span>
+            {%- endfor -%}
+          </h2>
         </div>
 
         <div class="right-panel">

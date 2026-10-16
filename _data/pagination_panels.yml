@@ -1,0 +1,28 @@
+# 홈 pagination의 카테고리 패널 (left-panel / right-panel 쌍)
+# 위에서부터 이 순서대로 표시한다.
+#
+#   key:        패널 클래스 이름에 쓴다 (panels-<key>)
+#   title:      left-panel 제목. 한 항목이 한 줄이다 (줄 안의 띄어쓰기는 그대로 표시).
+#   categories: 이 패널에 모을 포스트 카테고리. 여럿이면 날짜순으로 합친다.
+
+- key: travel
+  title:
+    - 여행
+    - Travel
+  categories:
+    - Travel
+
+- key: homes
+  title:
+    - 집\들
+    - Home\s
+  categories:
+    - Home\s
+
+- key: newThings
+  title:
+    - 새것들
+    - New Things
+  categories:
+    - Book
+    - Tech

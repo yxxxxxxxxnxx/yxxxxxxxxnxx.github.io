@@ -610,27 +610,37 @@ html {
     }
   }
 
-  // 카테고리 제목: 반시계방향 45도 기울임.
-  // 기울어진 글자를 둘러싼 정사각형의 중심은 기울이기 전 글자 상자의 중심과 같다.
-  // 그래서 글자 상자를 패널 가운데에 놓고 그 중심을 축으로 돌리면 정사각형이 패널 정중앙에 온다.
-  // $panel-title-square: 가장 긴 제목(newThings)을 둘러싼 정사각형 한 변 = sin45 × (글자 폭 + 줄 높이).
-  //   모바일에서 카테고리명 영역 높이로 쓴다. 제목을 바꿔 더 길어지면 이 값을 다시 계산해야 한다.
-  $panel-title-square: 4.14em;
-
+  // 카테고리 제목. flex 기본값(stretch)이면 제목이 패널 높이 전체로 늘어나므로 글자 높이만큼만 차지하게 한다.
   .left-panel {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: left;
+    align-items: flex-start;
   }
 
+  // 우측 정렬한 뒤 반시계방향 90도 회전 (아래→위로 읽힘, 첫 줄이 왼쪽).
+  // 세로쓰기(vertical-rl) + 180도 회전을 써서 레이아웃 크기도 회전된 모양(폭 = 줄 수, 높이 = 글자 길이)을 따른다.
+  // text-orientation 기본값(mixed)은 한글을 세워 두어 180도 회전 후 뒤집히므로, 영문처럼 모두 눕힌다.
+  // 줄마다 따로 박스를 그린다. 세로쓰기에서 column 방향은 줄이 쌓이는 방향(가로)이고,
+  // flex-end 정렬은 줄 끝(아래)에 맞춰져 180도 회전 후에는 위쪽 정렬(= 회전 전 우측 정렬)이 된다.
   .left-panel .panel-title {
     @include hierarchical-font-sw(2);
-    white-space: nowrap;
-    transform: rotate(-45deg);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: $spacing-unit;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
     letter-spacing: -1px;
     line-height: 1;
-    color: $text-color;
-    margin: 0;
+    margin: $spacing-unit * 3;
+
+    .panel-title-line {
+      color: $background-color;
+      background-color: $text-color;
+      border: solid 2.5px $text-color;
+      padding: $spacing-unit;
+    }
   }
 
   .right-panel {
@@ -686,11 +696,6 @@ html {
         width: 95vw;
         height: auto;
         scroll-snap-align: start;
-
-        // 영역 높이를 가장 긴 제목의 정사각형에 맞춰 모든 카테고리가 같은 높이가 되게 한다
-        .panel-title {
-          margin: calc((#{$panel-title-square} - 1em) / 2) 0;
-        }
       }
 
       .right-panel {
@@ -908,8 +913,8 @@ html {
     border: solid 2.5px $text-color;
     padding: $spacing-unit;
     background-color: $text-color;
-    line-height: $spacing-unit * 2;
-    max-width: 45%;
+    line-height: $spacing-unit * 2.5;
+    max-width: 30%;
   }
 
   .previous:before {
