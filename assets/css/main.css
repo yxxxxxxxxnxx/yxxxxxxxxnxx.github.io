@@ -811,18 +811,28 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .pagination .left-panel {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: left;
+  align-items: flex-start;
 }
 .pagination .left-panel .panel-title {
   font-size: 48px;
   font-weight: 600;
-  white-space: nowrap;
-  transform: rotate(-45deg);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  transform: rotate(180deg);
   letter-spacing: -1px;
   line-height: 1;
-  color: #1d1d1d;
-  margin: 0;
+  margin: 24px;
+}
+.pagination .left-panel .panel-title .panel-title-line {
+  color: #f3f3f1;
+  background-color: #1d1d1d;
+  border: solid 2.5px #1d1d1d;
+  padding: 8px;
 }
 .pagination .right-panel .post-image-container {
   width: 47.5vw;
@@ -861,9 +871,6 @@ html[data-scroll-status=down] .framework .sidebar {
     width: 95vw;
     height: auto;
     scroll-snap-align: start;
-  }
-  .pagination .panels-wrapper .left-panel .panel-title {
-    margin: calc((4.14em - 1em) / 2) 0;
   }
   .pagination .panels-wrapper .right-panel {
     width: 95vw;
@@ -1043,8 +1050,8 @@ html[data-scroll-status=down] .framework .sidebar {
   border: solid 2.5px #1d1d1d;
   padding: 8px;
   background-color: #1d1d1d;
-  line-height: 16px;
-  max-width: 45%;
+  line-height: 20px;
+  max-width: 30%;
 }
 .post-nav .previous:before {
   margin-right: 8px;
