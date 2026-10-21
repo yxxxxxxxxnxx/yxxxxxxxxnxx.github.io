@@ -112,6 +112,28 @@ html[data-theme="dark"]  {
   }
 
   .pagination {
+    .show-window,
+    .top-panel,
+    .panels-wrapper {
+      background-color: $dark-background-color;
+    }
+
+    // 어두운 배경에서는 밝은 테두리로 경계를 보이고 그림자는 검게 (macOS 다크 모드 창처럼)
+    .top-panel::before,
+    .panels-wrapper::before {
+      box-shadow:
+        0 0 0 0.5px rgba($dark-text-color, 0.25),
+        0 -4px 12px rgba(#000, 0.5),
+        0 -22px 70px 4px rgba(#000, 0.8);
+    }
+
+    .load-more .load-more-bubble,
+    .panel-cover-label span {
+      border-color: $dark-text-color;
+      background-color: $dark-text-color;
+      color: $dark-background-color;
+    }
+
     .post-link {
       color: #fff;
     }

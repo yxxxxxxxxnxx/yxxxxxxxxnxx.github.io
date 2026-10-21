@@ -71,7 +71,7 @@ $heading-weights: (
 
 $spacing-unit:     8px !default;
 
-$text-color:       #1d1d1d !default;
+$text-color:       #1f1f1f !default;
 $background-color: map-get($brand-colors, "pageBackground") !default;
 
 $grey-color:       red !default;
@@ -91,7 +91,7 @@ $footer-text-color: lighten(invert($theme-color), 25%) !default;
 $footer-background-color: darken($theme-color, 5%) !default;
 
 $banner-height: 640px !default;
-$banner-text-color: #f3f3f1 !default;
+$banner-text-color: #f1f1f1 !default;
 $banner-background: rgba(0,0,0,0.8) !default;
 
 // Width of the content area

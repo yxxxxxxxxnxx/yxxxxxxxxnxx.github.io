@@ -44,3 +44,106 @@ html[data-theme="dark"] {
     color: $click-to-top-dark-color;
   }
 }
+
+
+// 홈 전용: 패널(show-window, top-panel, 카테고리, 푸터) 사이를 오가는 위/아래 버튼.
+// click-to-top 바로 위($spacing-unit * 2 간격)에 놓는 위아래로 긴 버블. 높이는 click-to-top 지름의 정확히 두 배.
+.panel-nav {
+  $size: 64px;   // click-to-top 지름
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  width: $size;
+  right: 60px;
+  bottom: 48px + $size + $spacing-unit * 2;
+  border-radius: 9999px;   // 최댓값: 위아래 끝이 반원
+  background-color: rgba($text-color, 0.85);
+  overflow: hidden;
+  user-select: none;
+  z-index: 10;
+  // 나타날 때: 배경이 먼저 빠르게 떠올라 감속하며 멈추고(ease-out), 화살표가 아래 → 위 순서로 살짝 늦게 따라 올라온다.
+  // 사라질 때: 화살표가 먼저 가라앉고, 배경이 가속하며(ease-in) 뒤따라 내려간다.
+  $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  $ease-in:  cubic-bezier(0.55, 0, 1, 0.45);
+
+  transition:
+    opacity 0.3s $ease-out,
+    transform 0.3s $ease-out;
+
+  // 화살표 아이콘 (FontAwesome이 <i>를 <svg>로 바꾸므로 자식 요소 전체를 대상으로 한다)
+  button > * {
+    transition:
+      opacity 0.3s $ease-out,
+      transform 0.3s $ease-out;
+  }
+
+  .panel-nav-next > * {
+    transition-delay: 0.04s;
+  }
+
+  .panel-nav-prev > * {
+    transition-delay: 0.08s;
+  }
+
+  // 휠을 돌리는 동안 감추고, 멈춘 뒤 1초가 지나면 다시 보인다 (scroll-sync.js)
+  &.is-scrolling {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition:
+      opacity 0.25s $ease-in 0.05s,
+      transform 0.25s $ease-in 0.05s;
+
+    button > * {
+      opacity: 0;
+      transform: translateY(8px);
+      transition:
+        opacity 0.2s $ease-in,
+        transform 0.2s $ease-in;
+    }
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: $size;
+    padding: 0;
+    border: none;
+    background: none;
+    color: $background-color;
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+  }
+
+  @include media-query($on-laptop) {
+    $size: 48px;
+
+    width: $size;
+    right: 35px;
+    bottom: 48px + $size + $spacing-unit * 2;
+
+    button {
+      height: $size;
+    }
+  }
+}
+
+html[data-theme="dark"] {
+  .panel-nav {
+    background-color: rgba($dark-text-color, 0.85);
+
+    button {
+      color: $dark-background-color;
+    }
+  }
+}

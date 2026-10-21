@@ -1,0 +1,31 @@
+{%- comment -%} 이미지 목록은 _data/show_window.yml에서 정한다 {%- endcomment -%}
+{%- assign show_window_images = site.data.show_window -%}
+{%- if show_window_images.size > 0 -%}
+<div class="show-window">
+  <img class="show-window-image no-photo-swipe" alt="">
+</div>
+
+<script>
+  // 접속/새로고침마다 무작위 이미지. 이미지가 둘 이상이면 직전에 본 이미지는 피한다.
+  (function () {
+    const images = [
+      {%- for image in show_window_images -%}
+        { src: {{ image.file | prepend: '/assets/images/show-window/' | relative_url | jsonify }}, position: {{ image.position | default: 'center' | jsonify }} }{% unless forloop.last %},{% endunless %}
+      {%- endfor -%}
+    ];
+    const key = "show-window-last";
+
+    let last = null;
+    try { last = localStorage.getItem(key); } catch (e) {}
+
+    const candidates = images.length > 1 ? images.filter((image) => image.src !== last) : images;
+    const image = candidates[Math.floor(Math.random() * candidates.length)];
+
+    const img = document.querySelector(".show-window-image");
+    img.style.objectPosition = image.position;
+    img.src = image.src;
+
+    try { localStorage.setItem(key, image.src); } catch (e) {}
+  })();
+</script>
+{%- endif -%}

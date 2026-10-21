@@ -11,7 +11,13 @@
 {%- if paginator.posts.size > 0 -%}
 <div class="pagination">
 
+  {%- include views/show-window.html -%}
+
   <div class="top-panel">
+
+    <div class="panel-cover-label" aria-hidden="true">
+      <span>최신 ・ Newest</span>
+    </div>
     <ul class="post-list {{ image_style }}">
       {%- assign all_posts_with_banner = paginator.posts | where_exp: "item", "item.banner" -%}
       {%- assign latest_post = all_posts_with_banner | first -%}
@@ -37,6 +43,10 @@
     {%- if panel_posts.size > 0 -%}
       <div class="panels-wrapper panels-{{ group.key }}">
 
+        <div class="panel-cover-label" aria-hidden="true">
+          <span>{{ group.title | join: ' ・ ' | escape }}</span>
+        </div>
+
         <div class="left-panel">
           <h2 class="panel-title">
             {%- for line in group.title -%}
@@ -47,15 +57,33 @@
 
         <div class="right-panel">
           <ul class="post-list {{ image_style }}">
-            {%- for post in panel_posts limit: 8 -%}
+            {%- comment -%} 처음에는 8개만 보이고, 나머지는 Load more를 누를 때마다 8개씩 보인다 {%- endcomment -%}
+            {%- for post in panel_posts -%}
+              {%- if forloop.index > 8 -%}
+                {%- assign post_item_class = 'is-more' -%}
+              {%- else -%}
+                {%- assign post_item_class = '' -%}
+              {%- endif -%}
               {%- include views/pagination-item.html -%}
             {%- endfor -%}
+            {%- assign post_item_class = '' -%}
           </ul>
+
+          {%- if panel_posts.size > 8 -%}
+          <div class="load-more">
+            <button type="button" class="load-more-bubble">Load more</button>
+          </div>
+          {%- endif -%}
         </div>
 
       </div>
     {%- endif -%}
   {%- endfor -%}
+
+  <div class="panel-nav" aria-label="Panels">
+    <button type="button" class="panel-nav-prev" aria-label="Previous panel"><i class="fa-solid fa-arrow-up"></i></button>
+    <button type="button" class="panel-nav-next" aria-label="Next panel"><i class="fa-solid fa-arrow-down"></i></button>
+  </div>
 
   <script src="/assets/js/scroll-sync.js"></script>
 
