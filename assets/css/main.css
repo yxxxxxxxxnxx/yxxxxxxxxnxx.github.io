@@ -404,7 +404,7 @@ html[data-scroll-status=down] .framework .sidebar {
 .site-header {
   background-color: transparent;
   height: auto;
-  padding: 24px 0;
+  padding: calc(24px + env(safe-area-inset-top)) 0 24px;
   width: 100%;
   transition: transform 0.2s, text-shadow 0.2s;
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0);
@@ -424,7 +424,7 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .site-header > .wrapper {
   margin: 0 24px;
-  padding: 0;
+  padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
   max-width: 100%;
   transition: 0.2s margin;
 }
@@ -539,6 +539,10 @@ html[data-scroll-status=down] .framework .sidebar {
 /**
  * Site footer
  */
+html.home-footer-hidden .site-footer {
+  visibility: hidden;
+}
+
 .site-footer {
   font-size: 16px;
   color: #1f1f1f;
@@ -549,7 +553,7 @@ html[data-scroll-status=down] .framework .sidebar {
 }
 .site-footer .site-footer-copyright {
   transition: border-top 0.2s;
-  padding: 40px 0;
+  padding: 40px 0 calc(40px + env(safe-area-inset-bottom));
 }
 .site-footer .site-footer-copyright .site-footer-container {
   display: flex;
@@ -895,7 +899,7 @@ html[data-scroll-status=down] .framework .sidebar {
   gap: 8px;
   letter-spacing: -1px;
   line-height: 1;
-  margin: 24px;
+  margin: calc(24px + env(safe-area-inset-top)) 24px 24px;
 }
 .pagination .left-panel .panel-title .panel-title-line {
   color: #f1f1f1;
@@ -1915,8 +1919,8 @@ body {
   height: 64px;
   border-radius: 32px;
   background-color: rgba(241, 241, 241, 0.85);
-  right: 60px;
-  bottom: 48px;
+  right: calc(60px + env(safe-area-inset-right));
+  bottom: calc(48px + env(safe-area-inset-bottom));
   cursor: pointer;
   opacity: 0;
   transform: translateY(10px);
@@ -1930,7 +1934,7 @@ body {
     width: 48px;
     height: 48px;
     border-radius: 24px;
-    right: 35px;
+    right: calc(35px + env(safe-area-inset-right));
     font-size: 20px;
   }
 }
@@ -1956,8 +1960,8 @@ html[data-theme=dark] .click-to-top {
   align-items: center;
   position: fixed;
   width: 64px;
-  right: 60px;
-  bottom: 128px;
+  right: calc(60px + env(safe-area-inset-right));
+  bottom: calc(128px + env(safe-area-inset-bottom));
   border-radius: 9999px;
   background-color: rgba(31, 31, 31, 0.85);
   overflow: hidden;
@@ -2006,8 +2010,8 @@ html[data-theme=dark] .click-to-top {
 @media screen and (max-width: 800px) {
   .panel-nav {
     width: 48px;
-    right: 35px;
-    bottom: 112px;
+    right: calc(35px + env(safe-area-inset-right));
+    bottom: calc(112px + env(safe-area-inset-bottom));
   }
   .panel-nav button {
     height: 48px;
