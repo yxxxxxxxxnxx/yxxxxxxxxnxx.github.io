@@ -204,7 +204,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;

@@ -205,7 +205,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -973,24 +974,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/en/Travel/Europe/Salerno/" title="Salerno, Italy">
-            Salerno, Italy<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/en/Travel/Europe/Wannsee/" title="Wannsee, Germany">
-            Wannsee, Germany<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/en/Homes/Berlin/Student_Health_Insurace/" title="독일 학생 의료 보험">
-            독일 학생 의료 보험<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Travel/Europe/Sitges/" title="Sitges, Spain">
+            Sitges, Spain<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -999,6 +984,22 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <li class="">
           <a class="post-link" href="/en/Travel/Europe/Mallorca/" title="Mallorca, Spain">
             Mallorca, Spain<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/en/Book/Literature/Human_Acts/" title="Human Acts">
+            Human Acts<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/en/Travel/Europe/Lagos-Sagres-Carvoeiro/" title="Lagos-Sagres-Carvoeiro, Portugal">
+            Lagos-Sagres-Carvoeiro, Portugal<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->

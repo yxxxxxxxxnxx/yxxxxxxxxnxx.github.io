@@ -205,7 +205,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -948,6 +949,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
+          <a class="post-link" href="/Homes/Berlin/Ora/" title="Ora">
+            Ora<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
           <a class="post-link" href="/Travel/Europe/Sitges/" title="Sitges, Spain">
             Sitges, Spain<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
@@ -956,24 +965,16 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Wannsee/" title="Wannsee, Germany">
-            Wannsee, Germany<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Weert/" title="Weert, The Netherlands">
+            Weert, The Netherlands<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Languages/Deutsch/Trennbare_Verben_und_Untrennbare_Verben/" title="Trennbare Verben und Untrennbare Verben">
-            Trennbare Verben und Untrennbare Verben<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/Homes/Berlin/Ora/" title="Ora">
-            Ora<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Berlin/Anmeldung_Berlin/" title="베를린에서 안멜둥 (거주지 등록) 하기">
+            베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->

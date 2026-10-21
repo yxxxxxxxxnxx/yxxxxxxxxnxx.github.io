@@ -204,7 +204,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -595,8 +596,33 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 <div class="pagination">
+<div class="show-window">
+  <img class="show-window-image no-photo-swipe" alt="">
+</div>
 
-  <div class="top-panel">
+<script>
+  // 접속/새로고침마다 무작위 이미지. 이미지가 둘 이상이면 직전에 본 이미지는 피한다.
+  (function () {
+    const images = [{ src: "/assets/images/show-window/03BD643A-8C54-42DA-88F1-4557CEFF09F0_1_105_c.jpeg", position: "center" },{ src: "/assets/images/show-window/5B84145A-1FA0-44D1-BFF8-1AC3F471F69E_1_105_c.jpeg", position: "center" },{ src: "/assets/images/show-window/86F4B8CF-8FB9-4CB2-ABF2-63D59600618C_1_105_c.jpeg", position: "center" },{ src: "/assets/images/show-window/96735B1B-4F0A-4C50-A299-12F3008AB8A3_1_105_c.jpeg", position: "center" },{ src: "/assets/images/show-window/9EA28CB9-0E6A-446F-A52E-3CBD5EADEBA9_1_105_c.jpeg", position: "center" },{ src: "/assets/images/show-window/C642C49C-ECF9-40EC-BDEE-A6E6F7928E66_1_105_c.jpeg", position: "center" },{ src: "/assets/images/show-window/D9DA5C3D-B41E-4123-BD93-49F2AB314275_1_105_c.jpeg", position: "center" },{ src: "/assets/images/show-window/EC592402-9E5D-4925-B32A-74988CB231A2_1_105_c.jpeg", position: "center" },{ src: "/assets/images/show-window/EE50EF6E-C7D6-4D51-9672-DD7E952998AB_1_105_c.jpeg", position: "center" }];
+    const key = "show-window-last";
+
+    let last = null;
+    try { last = localStorage.getItem(key); } catch (e) {}
+
+    const candidates = images.length > 1 ? images.filter((image) => image.src !== last) : images;
+    const image = candidates[Math.floor(Math.random() * candidates.length)];
+
+    const img = document.querySelector(".show-window-image");
+    img.style.objectPosition = image.position;
+    img.src = image.src;
+
+    try { localStorage.setItem(key, image.src); } catch (e) {}
+  })();
+</script><div class="top-panel">
+
+    <div class="panel-cover-label" aria-hidden="true">
+      <span>최신 ・ Newest</span>
+    </div>
     <ul class="post-list z-image-style">
 
 
@@ -649,8 +675,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Anmeldung_Berlin/">
-        <div style="background-image: url('/assets/att/2026-10-02-Anmeldung_Berlin/banner.avif');"></div>
+      <a class="post-image" href="/Homes/Berlin/Protein_supplement/">
+        <div style="background-image: url('/assets/att/2026-10-19-Protein_supplement/banner.avif');"></div>
       </a>
 
       <div class="post-bubbles-container">
@@ -658,30 +684,43 @@ document.addEventListener('DOMContentLoaded', function(event) {
           <div class="post-category"><span class="post-categories"> Home\s ⮐ Berlin</span></div>
 
           <div class="post-tags">
-<a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/tags/#%EC%95%88%EB%A9%9C%EB%91%A5">#안멜둥</a><a class="post-tag" href="/tags/#%EA%B1%B0%EC%A3%BC%EC%A7%80%EB%93%B1%EB%A1%9D">#거주지등록</a><a class="post-tag" href="/tags/#%EC%A0%84%EC%9E%85%EC%8B%A0%EA%B3%A0">#전입신고</a>
+<a class="post-tag" href="/tags/#%EB%8B%A8%EB%B0%B1%EC%A7%88">#단백질</a><a class="post-tag" href="/tags/#%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B3%B4%EC%B6%A9%EC%A0%9C">#단백질보충제</a><a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/tags/#%EB%8F%85%EC%9D%BC">#독일</a>
 </div>
         </div>
     </div>
 <div class="element-container">
       <div class="title-container">
         <h2 class="post-title">
-          <a class="post-link" href="/Homes/Berlin/Anmeldung_Berlin/">
-            베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Berlin/Protein_supplement/">
+            단백질 보충제<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </h2>
-<p class="post-subtitle">Anmeldung</p>
 </div>
 
       <div class="excerpt-container">
-        <a class="post-text" href="/Homes/Berlin/Anmeldung_Berlin/">
-          <p>다시 베를린으로
+        <a class="post-text" href="/Homes/Berlin/Protein_supplement/">
+          <p>Supermarket PB
 
-마지막 학기에는 출석 수업이 없어, 아예 베를린으로 돌아왔다. 아헨은 작고 아름다우며 실용적인 도시지만, 내게는 베를린이 조금 더 집처럼 여겨진다.
+Lidl
 
-한국에서 전입신고를 하듯, 독일에서도 거주지가 바뀌면 관청에 고지를 해야 한다. 독일 내에서 보통 맞이하게 되는 가장 간단하면서 최초의 행정 절차지만, 독일어에 능숙하지 않다면 벽처럼 느껴질 수도 있는 일이다. 여전히 내 독일어는 매우 서툴지만, 이번까지 총 세 번의 안멜둥을 모두 어... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+Milbona High Protein Drink
+
+
+©️ Lidl official website
+
+가장 먹기 편하다
+초코, 딸기, 바나나, 바닐라
+35g
+당  17.49 g (딸기)
+
+스페인에 다른 맛 더
+
+REWE
+
+REWE Beste Wahl High Protein Puddi... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
         </a>
       </div>
     </div>    
@@ -691,6 +730,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </ul>
   </div>
 <div class="panels-wrapper panels-travel">
+
+        <div class="panel-cover-label" aria-hidden="true">
+          <span>여행 ・ Travel</span>
+        </div>
 
         <div class="left-panel">
           <h2 class="panel-title">
@@ -799,6 +842,49 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
+Mallorca
+
+Palma
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+La Vieja de Jonay Hdez
+
+
+
+
+
+
+
+
+
+
+
+Ses Covetes, Ses Salines, and Santanyí
 
 
 
@@ -828,40 +914,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Way Home
 
 
 
@@ -984,6 +1037,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
+Das Hamburger Rathaus
 
 
 
@@ -991,6 +1045,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
+Die Binnenalster
 
 
 
@@ -1012,6 +1067,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
+Die Hafencity
 
 
 
@@ -1027,6 +1083,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
+Die Elbphilharmonie
 
 
 
@@ -1048,7 +1105,15 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
+Das Theater im Hafen
 
+
+
+
+
+
+
+Der Alter Elbtunnel
 
 
 
@@ -2066,11 +2131,2361 @@ Way Home
   </div>
   <div class="wavy-line"></div>
 </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Africa/Gran_Canaria/">
+        <div style="background-image: url('/assets/att/2026-01-07-Gran_Canaria/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Africa</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#GranCanaria">#GranCanaria</a><a class="post-tag" href="/tags/#Espa%C3%B1a">#España</a><a class="post-tag" href="/tags/#Spain">#Spain</a>
+</div>
         </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Africa/Gran_Canaria/">
+            Gran Canaria, Spain<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Gran Canaria, España</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Africa/Gran_Canaria/">
+          <p>Las Palmas
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Restaurante Ons
+
+
+
+
+
+
+
+Nakar Restaurante
+
+
+
+
+
+Restaurante Sorondongo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Teror
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Punta de Sardina
+
+
+
+
+
+
+
+Agüimes
+
+
+
+
+
+
+
+La Sorrueda
+
+
+
+
+
+
+
+Maspalomas
+
+
+
+
+
+
+
+
+
+
+
+LoLa
+
+
+
+
+
+
+
+
+
+
+
+Social Tapas Restaurant
+
+
+
+
+
+
+
+
+
+
+
+
+
+Santa Brígida
+
+
+
+
+
+
+
+Mogán
+
+
+
+
+
+
+
+... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Valencia/">
+        <div style="background-image: url('/assets/att/2025-09-21-Valencia/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Val%C3%A8ncia">#València</a><a class="post-tag" href="/tags/#Espa%C3%B1a">#España</a><a class="post-tag" href="/tags/#Valencia">#Valencia</a><a class="post-tag" href="/tags/#Spain">#Spain</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Valencia/">
+            Valencia, Spain<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">València, España</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Valencia/">
+          <p>BER-ZRH-VLC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Valencia
+
+Playa Cabanyal
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ayora and El Grau
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Haku Valencia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fets
+
+
+
+
+
+Old Town
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Brot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Toshi Restaurant
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Way Home
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Zumikon-Zurich/">
+        <div style="background-image: url('/assets/att/2025-09-07-Zumikon-Zurich/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Zumikon">#Zumikon</a><a class="post-tag" href="/tags/#Z%C3%BCrich">#Zürich</a><a class="post-tag" href="/tags/#Schweiz\Suisse">#Schweiz\Suisse</a><a class="post-tag" href="/tags/#Zurich">#Zurich</a><a class="post-tag" href="/tags/#Switzerland">#Switzerland</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Zumikon-Zurich/">
+            Zumikon-Zurich, Switzerland<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Zumikon-Zürich, Schweiz\Suisse</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Zumikon-Zurich/">
+          <p>Zumikon
+
+
+
+
+
+
+
+
+
+Zürich
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Way Home
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Warsaw/">
+        <div style="background-image: url('/assets/att/2025-08-24-Warsaw/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Warszawa">#Warszawa</a><a class="post-tag" href="/tags/#Warsaw">#Warsaw</a><a class="post-tag" href="/tags/#Polska">#Polska</a><a class="post-tag" href="/tags/#Poland">#Poland</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Warsaw/">
+            Warsaw, Poland<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Warszawa, Polska</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Warsaw/">
+          <p>Warszawa
+
+###
+
+
+
+Alewino
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Old Town
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Chopin
+
+
+
+
+
+Muzeum Fryderyka Chopina
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Restaurant
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Sitges/">
+        <div style="background-image: url('/assets/att/2025-07-30-Sitges/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Sitges">#Sitges</a><a class="post-tag" href="/tags/#Espa%C3%B1a">#España</a><a class="post-tag" href="/tags/#Spain">#Spain</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Sitges/">
+            Sitges, Spain<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Sitges, España</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Sitges/">
+          <p>Sitges
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Szczecin/">
+        <div style="background-image: url('/assets/att/2025-07-19-Szczecin/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Szczecin">#Szczecin</a><a class="post-tag" href="/tags/#Polska">#Polska</a><a class="post-tag" href="/tags/#Poland">#Poland</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Szczecin/">
+            Szczecin, Poland<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Szczecin, Polska</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Szczecin/">
+          <p>Szczecin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Dubrovnik/">
+        <div style="background-image: url('/assets/att/2025-07-05-Dubrovnik/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Dubrovnik">#Dubrovnik</a><a class="post-tag" href="/tags/#Hrvatska">#Hrvatska</a><a class="post-tag" href="/tags/#Croatia">#Croatia</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Dubrovnik/">
+            Dubrovnik, Croatia<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Dubrovnik, Hrvatska</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Dubrovnik/">
+          <p>Dubrovnik
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/J%C3%BCterbog/">
+        <div style="background-image: url('/assets/att/2025-06-22-J%C3%BCterbog/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#J%C3%BCterbog">#Jüterbog</a><a class="post-tag" href="/tags/#Deutschland">#Deutschland</a><a class="post-tag" href="/tags/#Germany">#Germany</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/J%C3%BCterbog/">
+            Jüterbog, Germany<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Jüterbog, Deutschland</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/J%C3%BCterbog/">
+          <p>Jüterbog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Wannsee/">
+        <div style="background-image: url('/assets/att/2025-06-17-Wannsee/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Wannsee">#Wannsee</a><a class="post-tag" href="/tags/#Deutschland">#Deutschland</a><a class="post-tag" href="/tags/#Germany">#Germany</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Wannsee/">
+            Wannsee, Germany<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Wannsee, Deutschland</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Wannsee/">
+          <p>Wannsee
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Prague/">
+        <div style="background-image: url('/assets/att/2025-06-09-Prague/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Praha">#Praha</a><a class="post-tag" href="/tags/#%C4%8Cesko">#Česko</a><a class="post-tag" href="/tags/#Prague">#Prague</a><a class="post-tag" href="/tags/#CzechRepublic">#CzechRepublic</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Prague/">
+            Prague, Czech Republic<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Praha, Česko</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Prague/">
+          <p>Praha
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Výčep
+Korunní 1304/92
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bockem
+Elišky Peškové 1095/5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Osada
+Osadní 774/35
+
+
+
+
+
+DOX
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Seville-Malaga/">
+        <div style="background-image: url('/assets/att/2025-03-18-Seville-Malaga/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Sevilla">#Sevilla</a><a class="post-tag" href="/tags/#M%C3%A1laga">#Málaga</a><a class="post-tag" href="/tags/#Espa%C3%B1a">#España</a><a class="post-tag" href="/tags/#Seville">#Seville</a><a class="post-tag" href="/tags/#Malaga">#Malaga</a><a class="post-tag" href="/tags/#Spain">#Spain</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Seville-Malaga/">
+            Seville-Malaga, Spain<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Sevilla-Málaga, España</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Seville-Malaga/">
+          <p>Sevilla
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Lalola de Javi Abascal
+
+
+
+
+Avantal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Málaga
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Beluga
+
+
+
+
+
+
+La Cosmopolita
+
+
+
+
+
+
+Mercado Central de Atarazanas
+
+
+
+
+
+
+
+
+
+
+
+
+Way Home
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Europe/Lagos-Sagres-Carvoeiro/">
+        <div style="background-image: url('/assets/att/2025-03-05-Lagos-Sagres-Carvoeiro/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Europe</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#Lagos">#Lagos</a><a class="post-tag" href="/tags/#Sagres">#Sagres</a><a class="post-tag" href="/tags/#Carvoeiro">#Carvoeiro</a><a class="post-tag" href="/tags/#Portugal">#Portugal</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Europe/Lagos-Sagres-Carvoeiro/">
+            Lagos-Sagres-Carvoeiro, Portugal<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Europe/Lagos-Sagres-Carvoeiro/">
+          <p>FAO
+
+
+
+
+Lagos
+
+
+
+
+
+
+
+
+Meia Praia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Avenida
+
+
+
+
+
+
+
+
+
+
+Sagres
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Carvoeiro
+Numa
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Travel/Africa/Cape_Town/">
+        <div style="background-image: url('/assets/att/2025-01-15-Cape_Town/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Travel ⮐ Africa</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#CapeTown">#CapeTown</a><a class="post-tag" href="/tags/#SouthAfrica">#SouthAfrica</a><a class="post-tag" href="/tags/#Kaapstad">#Kaapstad</a><a class="post-tag" href="/tags/#Suid-Afrika">#Suid-Afrika</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Travel/Africa/Cape_Town/">
+            Cape Town, South Africa<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+<p class="post-subtitle">Kaapstad, Suid-Afrika</p>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Travel/Africa/Cape_Town/">
+          <p>Stellenbosch
+
+
+
+
+
+
+
+
+Stellenbosch University Botanical Garden
+
+
+
+
+
+
+
+
+
+
+
+
+Spier Wine Farm
+
+
+
+
+
+
+
+
+
+
+Lanzerac Wine Estate
+
+
+
+
+
+
+
+
+Tokara Wine Estate
+
+
+
+
+
+
+Dusk Restaurant
+
+
+
+
+
+
+Franschhoek
+
+
+
+
+
+
+
+
+Kalk Bay
+
+
+
+
+Sea Point
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Clifton Bay
+
+
+Camps Bay
+
+
+Salsify at the Roundhouse
+
+
+
+
+
+
+
+
+
+... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+</ul>
+<div class="load-more">
+            <button type="button" class="load-more-bubble">Load more</button>
+          </div>
+</div>
 
       </div>
 <div class="panels-wrapper panels-homes">
+
+        <div class="panel-cover-label" aria-hidden="true">
+          <span>집\들 ・ Home\s</span>
+        </div>
 
         <div class="left-panel">
           <h2 class="panel-title">
@@ -2080,6 +4495,217 @@ Way Home
 
         <div class="right-panel">
           <ul class="post-list z-image-style">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item ">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Homes/Berlin/Protein_supplement/">
+        <div style="background-image: url('/assets/att/2026-10-19-Protein_supplement/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Home\s ⮐ Berlin</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#%EB%8B%A8%EB%B0%B1%EC%A7%88">#단백질</a><a class="post-tag" href="/tags/#%EB%8B%A8%EB%B0%B1%EC%A7%88%EB%B3%B4%EC%B6%A9%EC%A0%9C">#단백질보충제</a><a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/tags/#%EB%8F%85%EC%9D%BC">#독일</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Homes/Berlin/Protein_supplement/">
+            단백질 보충제<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Homes/Berlin/Protein_supplement/">
+          <p>Supermarket PB
+
+Lidl
+
+Milbona High Protein Drink
+
+
+©️ Lidl official website
+
+가장 먹기 편하다
+초코, 딸기, 바나나, 바닐라
+35g
+당  17.49 g (딸기)
+
+스페인에 다른 맛 더
+
+REWE
+
+REWE Beste Wahl High Protein Puddi... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item ">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Homes/Berlin/Restaurant_Choi/">
+        <div style="background-image: url('/assets/att/2026-10-16-Restaurant_Choi/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Home\s ⮐ Berlin</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#RestaurantChoi">#RestaurantChoi</a><a class="post-tag" href="/tags/#Choi">#Choi</a><a class="post-tag" href="/tags/#Restaurant">#Restaurant</a><a class="post-tag" href="/tags/#Mitte">#Mitte</a><a class="post-tag" href="/tags/#Berlin">#Berlin</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Homes/Berlin/Restaurant_Choi/">
+            Restaurant Choi<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Homes/Berlin/Restaurant_Choi/">
+          <p>Restaurant Choi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
 
 
 
@@ -2722,7 +5348,7 @@ Gendarmenmarkt
 <!-- | default: default_image -->
   <!-- | default: '/assets/images/default-image.png' -%} -->
 
-<li class="post-item ">
+<li class="post-item is-more">
 
   <div class="post-content">
 <div class="post-image-container">
@@ -2815,7 +5441,7 @@ Exp... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p
 <!-- | default: default_image -->
   <!-- | default: '/assets/images/default-image.png' -%} -->
 
-<li class="post-item ">
+<li class="post-item is-more">
 
   <div class="post-content">
 <div class="post-image-container">
@@ -2855,11 +5481,207 @@ Exp... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p
   </div>
   <div class="wavy-line"></div>
 </li>
-</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Homes/Berlin/Cosmetic_Products/">
+        <div style="background-image: url('https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/ca/skin-smarts/how-to-mosturize/best-moisturizer-dermatologist-recommended-600x400.jpg');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Home\s ⮐ Berlin</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/tags/#%EB%8F%85%EC%9D%BC">#독일</a><a class="post-tag" href="/tags/#%ED%99%94%EC%9E%A5%ED%92%88">#화장품</a>
+</div>
         </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Homes/Berlin/Cosmetic_Products/">
+            베를린, 화장품 기행 (紀行 또는 奇行)<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Homes/Berlin/Cosmetic_Products/">
+          <p>한국
+
+세안제
+한국에서 일반적인 폼 클렌저 (한창 유행했던 약산성 제품들은 차치하고) 하면 통상 떠올리는 뽀득뽀득한 느낌의 알칼리성 제품은 유럽에서 찾아보기 힘들다. 정말, 온갖 제조사를 다 뒤져도 없다. 종종 아마존에서 국내 브랜드 제품들을 찾아볼 수는 있지만, 한국 정가에 비해 비싸고 프로모션 가격과 비교하면 눈물이 날... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- | default: default_image -->
+  <!-- | default: '/assets/images/default-image.png' -%} -->
+
+<li class="post-item is-more">
+
+  <div class="post-content">
+<div class="post-image-container">
+      <a class="post-image" href="/Home%5Cs/Berlin/Berlinale_2025/">
+        <div style="background-image: url('/assets/att/2025-02-23-Berlinale_2025/banner.avif');"></div>
+      </a>
+
+      <div class="post-bubbles-container">
+
+          <div class="post-category"><span class="post-categories"> Home\s ⮐ Berlin</span></div>
+
+          <div class="post-tags">
+<a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%AC%EB%82%A0%EB%A0%88">#베를리날레</a><a class="post-tag" href="/tags/#%EC%98%81%ED%99%94%EC%A0%9C">#영화제</a><a class="post-tag" href="/tags/#2025">#2025</a><a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/tags/#%EB%8F%85%EC%9D%BC">#독일</a>
+</div>
+        </div>
+    </div>
+<div class="element-container">
+      <div class="title-container">
+        <h2 class="post-title">
+          <a class="post-link" href="/Home%5Cs/Berlin/Berlinale_2025/">
+            Berlinale 2025<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </h2>
+</div>
+
+      <div class="excerpt-container">
+        <a class="post-text" href="/Home%5Cs/Berlin/Berlinale_2025/">
+          <p>75. Internationale Filmfestspiele Berlin
+Poster
+
+
+© Berlinale, Claudia Schramke
+
+Trailer
+
+
+© Berlinale, Uli M. Schueppel
+
+
+Queerpanorama
+
+
+by Jun Li (Director, Screenplay)
+with J... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
+        </a>
+      </div>
+    </div>    
+  </div>
+  <div class="wavy-line"></div>
+</li>
+</ul>
+<div class="load-more">
+            <button type="button" class="load-more-bubble">Load more</button>
+          </div>
+</div>
 
       </div>
 <div class="panels-wrapper panels-newThings">
+
+        <div class="panel-cover-label" aria-hidden="true">
+          <span>새것들 ・ New Things</span>
+        </div>
 
         <div class="left-panel">
           <h2 class="panel-title">
@@ -2959,90 +5781,6 @@ vs. Sennheiser Momentum 4
 전반적 감상
 전자 음악, Pop 음악 최적화
 남성 보컬 음역대의 재현이 더 마음에 들지만, 여성 음역대도 간혹 만족스러운 경우가 있다. 흥미롭게도 여성 보컬 중 상대적으로 저역대이거나 후처리가 많이 적용되었을수록 더 좋은 소리를 ... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
-        </a>
-      </div>
-    </div>    
-  </div>
-  <div class="wavy-line"></div>
-</li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- | default: default_image -->
-  <!-- | default: '/assets/images/default-image.png' -%} -->
-
-<li class="post-item ">
-
-  <div class="post-content">
-<div class="post-image-container">
-      <a class="post-image" href="/Tech/Python/Python_Test/">
-        <div style="background-image: url('/assets/att/2025-06-09-Praha/banner.avif');"></div>
-      </a>
-
-      <div class="post-bubbles-container">
-
-          <div class="post-category"><span class="post-categories"> Tech ⮐ Python</span></div>
-
-          <div class="post-tags"></div>
-        </div>
-    </div>
-<div class="element-container">
-      <div class="title-container">
-        <h2 class="post-title">
-          <a class="post-link" href="/Tech/Python/Python_Test/">
-            Python Test<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </h2>
-</div>
-
-      <div class="excerpt-container">
-        <a class="post-text" href="/Tech/Python/Python_Test/">
-          <p>Test
- <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p>
         </a>
       </div>
     </div>    
@@ -3232,10 +5970,15 @@ Quotes
   <div class="wavy-line"></div>
 </li>
 </ul>
-        </div>
+</div>
 
       </div>
-<script src="/assets/js/scroll-sync.js"></script>
+<div class="panel-nav" aria-label="Panels">
+    <button type="button" class="panel-nav-prev" aria-label="Previous panel"><i class="fa-solid fa-arrow-up"></i></button>
+    <button type="button" class="panel-nav-next" aria-label="Next panel"><i class="fa-solid fa-arrow-down"></i></button>
+  </div>
+
+  <script src="/assets/js/scroll-sync.js"></script>
 </div>
 </div>
 

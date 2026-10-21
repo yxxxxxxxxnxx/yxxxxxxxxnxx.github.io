@@ -205,7 +205,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -958,32 +959,32 @@ Still © Taiwan Public Television Service Foundation \ Metadata © Berlinale
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/Travel/Europe/Weert/" title="Weert, The Netherlands">
-            Weert, The Netherlands<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Africa/Cape_Town/" title="Cape Town, South Africa">
+            Cape Town, South Africa<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Homes/Berlin/Ora/" title="Ora">
-            Ora<!-- <span class="post-badges">
+          <a class="post-link" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="난로">
+            난로<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Warsaw/" title="Warsaw, Poland">
-            Warsaw, Poland<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Prague/" title="Prague, Czech Republic">
+            Prague, Czech Republic<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Homes/Berlin/Anmeldung_Berlin/" title="베를린에서 안멜둥 (거주지 등록) 하기">
-            베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Hamburg/" title="Hamburg, Germany">
+            Hamburg, Germany<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->

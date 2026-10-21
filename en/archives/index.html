@@ -204,7 +204,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -846,6 +847,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       
       
         <li class="">
+<span class="post-meta">2026-10-19</span>
+<span>
+  <a class="post-link" href="/en/Homes/Berlin/Protein_supplement/">
+    단백질 보충제<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+</span>
+</li>
+        
+      
+        <li class="">
+<span class="post-meta">2026-10-16</span>
+<span>
+  <a class="post-link" href="/en/Homes/Berlin/Restaurant_Choi/">
+    Restaurant Choi<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+</span>
+</li>
+        
+      
+        <li class="">
 <span class="post-meta">2026-10-02</span>
 <span>
   <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/">
@@ -1200,45 +1227,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </li>
         
       
-        <li class="top-post">
-<span class="post-meta">2025-06-19</span>
-<span>
-  <a class="post-link" href="/en/Homes/Berlin/Geotjeori/">
-    Geotjeori with Local Ingredients from Berlin<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-        
-      
-        <li class="">
-<span class="post-meta">2025-06-19</span>
-<span>
-  <a class="post-link" href="/en/Tech/Python/Python_Test/">
-    Python Test<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-        
-      
-        <li class="top-post">
-<span class="post-meta">2025-06-19</span>
-<span>
-  <a class="post-link" href="/en/Language%5Cs/Deutsch/Deutsch_Test/">
-    Deutsch Test<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-        
-      
         <li class="">
 <span class="post-meta">2025-06-17</span>
 <span>
@@ -1397,7 +1385,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <ul>
     <li>
       <a href="/en/index.html">
-        All<span>39</span>
+        All<span>38</span>
       </a>
       <div class="wavy-line"></div>
     </li>
@@ -1412,14 +1400,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
     
       <li>
         <a href="/en/archives/#h-2025">
-          2025 <span>24</span>
+          2025 <span>21</span>
         </a>
         <div class="wavy-line"></div>
       </li>
     
       <li>
         <a href="/en/archives/#h-2026">
-          2026 <span>14</span>
+          2026 <span>16</span>
         </a>
         <div class="wavy-line"></div>
       </li>

@@ -205,7 +205,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -1223,20 +1224,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/Travel/Europe/Mallorca/" title="Mallorca, Spain">Mallorca, Spain</a><span></span>
+<a class="previous" href="/Travel/Europe/Mallorca/" title="Mallorca, Spain">Mallorca, Spain</a><a class="next" href="/Homes/Berlin/Restaurant_Choi/" title="Restaurant Choi">Restaurant Choi</a>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li class="">
-          <a class="post-link" href="/Travel/Europe/Arosa/" title="Arosa, Switzerland">
-            Arosa, Switzerland<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="top-post">
+        <li class="top-post">
           <a class="post-link" href="/Book/Literature/One_Dimensional/" title="1차원이 되고 싶어">
             1차원이 되고 싶어<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
@@ -1245,16 +1238,24 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/" title="Hoi An-Phu Quoc-Hanoi, Viet Nam">
-            Hoi An-Phu Quoc-Hanoi, Viet Nam<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Berlin/Protein_supplement/" title="단백질 보충제">
+            단백질 보충제<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/L%C3%BCbeck/" title="Lübeck, Germany">
-            Lübeck, Germany<!-- <span class="post-badges">
+          <a class="post-link" href="/Home%5Cs/Berlin/Berlinale_2025/" title="Berlinale 2025">
+            Berlinale 2025<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/Homes/Berlin/Anmeldung_Berlin/" title="베를린에서 안멜둥 (거주지 등록) 하기">
+            베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->

@@ -204,7 +204,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -897,6 +898,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
             
             
               <li class="">
+<span class="post-meta">2026-10-19</span>
+<span>
+  <a class="post-link" href="/Homes/Berlin/Protein_supplement/">
+    단백질 보충제<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+</span>
+</li>
+              
+            
+              <li class="">
+<span class="post-meta">2026-10-16</span>
+<span>
+  <a class="post-link" href="/Homes/Berlin/Restaurant_Choi/">
+    Restaurant Choi<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+</span>
+</li>
+              
+            
+              <li class="">
 <span class="post-meta">2026-10-02</span>
 <span>
   <a class="post-link" href="/Homes/Berlin/Anmeldung_Berlin/">
@@ -988,19 +1015,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
               
             
               <li class="">
-<span class="post-meta">2025-06-19</span>
-<span>
-  <a class="post-link" href="/Homes/Berlin/Geotjeori/">
-    베를린에서 겉절이 담그기<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-              
-            
-              <li class="">
 <span class="post-meta">2025-02-23</span>
 <span>
   <a class="post-link" href="/Home%5Cs/Berlin/Berlinale_2025/">
@@ -1076,19 +1090,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </li>
               
             
-              <li class="top-post">
-<span class="post-meta">2025-06-19</span>
-<span>
-  <a class="post-link" href="/Language%5Cs/Deutsch/Deutsch_Test/">
-    Deutsch Test<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-              
-            
           </ul>
         
       
@@ -1110,27 +1111,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <span>
   <a class="post-link" href="/Tech/Electronic%20Devices/B&amp;W%20Px8/">
     B&amp;W Px8<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-              
-            
-          </ul>
-        
-      
-        
-          <h3 class="subcategory-name">Python</h3>
-          <ul class="page-segments-list">
-            
-            
-              <li class="">
-<span class="post-meta">2025-06-19</span>
-<span>
-  <a class="post-link" href="/Tech/Python/Python_Test/">
-    Python Test<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1506,7 +1486,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
   <ul>
     <li>
       <a href="/index.html">
-        All<span>39</span>
+        All<span>38</span>
       </a>
       <div class="wavy-line"></div>
     </li>
@@ -1535,7 +1515,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     
       <li>
         <a href="/categories/#h-Home\s">
-          Home\s <span>11</span>
+          Home\s <span>12</span>
         </a>
         
         
@@ -1544,7 +1524,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
             
               <li>
                 <a href="/categories/#h-Berlin">
-                  Berlin <span>9</span>
+                  Berlin <span>10</span>
                 </a>
                 <!-- <div class="wavy-line"></div> -->
               </li>
@@ -1565,7 +1545,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     
       <li>
         <a href="/categories/#h-Language\s">
-          Language\s <span>2</span>
+          Language\s <span>1</span>
         </a>
         
         
@@ -1574,7 +1554,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
             
               <li>
                 <a href="/categories/#h-Deutsch">
-                  Deutsch <span>2</span>
+                  Deutsch <span>1</span>
                 </a>
                 <!-- <div class="wavy-line"></div> -->
               </li>
@@ -1586,7 +1566,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     
       <li>
         <a href="/categories/#h-Tech">
-          Tech <span>2</span>
+          Tech <span>1</span>
         </a>
         
         
@@ -1596,15 +1576,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
               <li>
                 <a href="/categories/#h-Electronic%20Devices">
                   Electronic Devices <span>1</span>
-                </a>
-                <!-- <div class="wavy-line"></div> -->
-              </li>
-            
-          
-            
-              <li>
-                <a href="/categories/#h-Python">
-                  Python <span>1</span>
                 </a>
                 <!-- <div class="wavy-line"></div> -->
               </li>

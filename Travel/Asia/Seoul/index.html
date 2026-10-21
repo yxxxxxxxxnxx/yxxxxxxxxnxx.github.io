@@ -205,7 +205,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -1007,33 +1008,33 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li class="top-post">
-          <a class="post-link" href="/Book/Literature/One_Dimensional/" title="1차원이 되고 싶어">
-            1차원이 되고 싶어<!-- <span class="post-badges">
+        <li class="">
+          <a class="post-link" href="/Travel/Europe/Wannsee/" title="Wannsee, Germany">
+            Wannsee, Germany<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Home%5Cs/Berlin/Berlinale_2025/" title="Berlinale 2025">
-            Berlinale 2025<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Sitges/" title="Sitges, Spain">
+            Sitges, Spain<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Lagos-Sagres-Carvoeiro/" title="Lagos-Sagres-Carvoeiro, Portugal">
-            Lagos-Sagres-Carvoeiro, Portugal<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Berlin/Restaurant_Choi/" title="Restaurant Choi">
+            Restaurant Choi<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Tech/Python/Python_Test/" title="Python Test">
-            Python Test<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Africa/Gran_Canaria/" title="Gran Canaria, Spain">
+            Gran Canaria, Spain<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->

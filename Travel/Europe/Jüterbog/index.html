@@ -205,7 +205,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -924,38 +925,38 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/Tech/Python/Python_Test/" title="Python Test">Python Test</a><a class="next" href="/Travel/Europe/Dubrovnik/" title="Dubrovnik, Croatia">Dubrovnik, Croatia</a>
+<a class="previous" href="/Travel/Europe/Wannsee/" title="Wannsee, Germany">Wannsee, Germany</a><a class="next" href="/Travel/Europe/Dubrovnik/" title="Dubrovnik, Croatia">Dubrovnik, Croatia</a>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/Travel/Africa/Gran_Canaria/" title="Gran Canaria, Spain">
-            Gran Canaria, Spain<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Weert/" title="Weert, The Netherlands">
+            Weert, The Netherlands<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Homes/Berlin/Cosmetic_Products/" title="베를린, 화장품 기행 (紀行 또는 奇行)">
-            베를린, 화장품 기행 (紀行 또는 奇行)<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="top-post">
-          <a class="post-link" href="/Language%5Cs/Deutsch/Deutsch_Test/" title="Deutsch Test">
-            Deutsch Test<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Valencia/" title="Valencia, Spain">
+            Valencia, Spain<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Asia/Seoul/" title="Seoul, South Korea">
-            Seoul, South Korea<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/J%C3%BCterbog/" title="Jüterbog, Germany">
+            Jüterbog, Germany<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/Travel/Africa/Cape_Town/" title="Cape Town, South Africa">
+            Cape Town, South Africa<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->

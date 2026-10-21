@@ -205,7 +205,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    const els = galleryEl.querySelectorAll("img:not(.emoji)");
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
         return;
@@ -1019,32 +1020,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/Travel/Europe/L%C3%BCbeck/" title="Lübeck, Germany">
-            Lübeck, Germany<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Weert/" title="Weert, The Netherlands">
+            Weert, The Netherlands<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Wannsee/" title="Wannsee, Germany">
-            Wannsee, Germany<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Berlin/Anmeldung_Berlin/" title="베를린에서 안멜둥 (거주지 등록) 하기">
+            베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="난로">
-            난로<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/J%C3%BCterbog/" title="Jüterbog, Germany">
+            Jüterbog, Germany<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Zumikon-Zurich/" title="Zumikon-Zurich, Switzerland">
-            Zumikon-Zurich, Switzerland<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Berlin/Student_Health_Insurace/" title="독일 학생 의료 보험">
+            독일 학생 의료 보험<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
