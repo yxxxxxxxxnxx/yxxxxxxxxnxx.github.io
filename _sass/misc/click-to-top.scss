@@ -7,8 +7,9 @@
   height: 64px;
   border-radius: 32px;
   background-color: rgba($background-color, 0.85);
-  right: 60px;
-  bottom: 48px;
+  // viewport-fit=cover: iPhone 하단 주소창·홈 인디케이터, 가로 화면의 노치를 피한다
+  right: calc(60px + env(safe-area-inset-right));
+  bottom: calc(48px + env(safe-area-inset-bottom));
   cursor: pointer;
   opacity: 0;
   transform: translateY(10px);
@@ -21,7 +22,7 @@
     width: 48px;
     height: 48px;
     border-radius: 24px;
-    right: 35px;
+    right: calc(35px + env(safe-area-inset-right));
     font-size: 20px;
   }
 }
@@ -56,8 +57,8 @@ html[data-theme="dark"] {
   align-items: center;
   position: fixed;
   width: $size;
-  right: 60px;
-  bottom: 48px + $size + $spacing-unit * 2;
+  right: calc(60px + env(safe-area-inset-right));
+  bottom: calc(#{48px + $size + $spacing-unit * 2} + env(safe-area-inset-bottom));
   border-radius: 9999px;   // 최댓값: 위아래 끝이 반원
   background-color: rgba($text-color, 0.85);
   overflow: hidden;
@@ -129,8 +130,8 @@ html[data-theme="dark"] {
     $size: 48px;
 
     width: $size;
-    right: 35px;
-    bottom: 48px + $size + $spacing-unit * 2;
+    right: calc(35px + env(safe-area-inset-right));
+    bottom: calc(#{48px + $size + $spacing-unit * 2} + env(safe-area-inset-bottom));
 
     button {
       height: $size;

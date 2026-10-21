@@ -260,12 +260,18 @@ document.addEventListener("DOMContentLoaded", function () {
     return pagination.scrollTop >= maxScroll() - 1;
   }
 
+  // 푸터는 실제로 내려갈 때만 보인다. 그 전에는 감춰 두어 iOS Safari의 반투명 하단 주소창 뒤로 비치지 않게 한다.
+  function updateFooterHidden() {
+    html.classList.toggle("home-footer-hidden", pageScroller.scrollTop <= 0 && !animations.has(pageScroller));
+  }
+
   function showFooter() {
-    animateTo(pageScroller, pageMax(), 450);
+    animateTo(pageScroller, pageMax(), 450, updateFooterHidden);
+    updateFooterHidden();
   }
 
   function hideFooter() {
-    animateTo(pageScroller, 0, 450);
+    animateTo(pageScroller, 0, 450, updateFooterHidden);
   }
 
   // pagination이 el 패널 시작 위치에 멈춰 있는지
@@ -275,6 +281,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   layoutStack();
+  updateFooterHidden();
+  window.addEventListener("scroll", updateFooterHidden, { passive: true });
   pagination.addEventListener("scroll", updateCoverProgress, { passive: true });
   window.addEventListener("resize", layoutStack);
   // 이미지 로드, Load more 등으로 패널 높이가 바뀌면 다시 계산
@@ -846,14 +854,31 @@ document.addEventListener("DOMContentLoaded", function () {
     pagination.addEventListener("scroll", updateNav, { passive: true });
     window.addEventListener("scroll", updateNav, { passive: true });
 
-    // 사용자가 휠을 돌리는 동안에만 감추고, 멈춘 뒤 1초가 지나면 다시 보인다.
-    // 버튼을 눌러 자동으로 스크롤될 때(스크롤 이벤트만 생긴다)는 그대로 둔다.
+    // 사용자가 휠을 돌리거나 손가락으로 끄는 동안에만 감추고, 멈춘(손을 뗀) 뒤 1초가 지나면 다시 보인다.
+    // 버튼을 눌러 자동으로 스크롤될 때(스크롤 이벤트만 생긴다)나 그냥 탭할 때는 그대로 둔다.
     let idleTimer = null;
-    document.addEventListener("wheel", () => {
+    let touching  = false;
+
+    function hideWhileScrolling() {
       nav.classList.add("is-scrolling");
       clearTimeout(idleTimer);
-      idleTimer = setTimeout(() => nav.classList.remove("is-scrolling"), 1000);
+      if (!touching) idleTimer = setTimeout(() => nav.classList.remove("is-scrolling"), 1000);
+    }
+
+    document.addEventListener("wheel", hideWhileScrolling, { capture: true, passive: true });
+    document.addEventListener("touchmove", () => {
+      touching = true;
+      hideWhileScrolling();
     }, { capture: true, passive: true });
+
+    function endTouchScroll() {
+      if (!touching) return;
+      touching = false;
+      hideWhileScrolling();   // 손을 뗀 때부터 1초
+    }
+
+    document.addEventListener("touchend", endTouchScroll, { capture: true, passive: true });
+    document.addEventListener("touchcancel", endTouchScroll, { capture: true, passive: true });
   }
 
 });
