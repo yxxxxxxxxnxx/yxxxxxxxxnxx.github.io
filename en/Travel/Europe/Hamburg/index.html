@@ -29,7 +29,7 @@
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/main.css?v=1792688695">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/en/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -444,7 +444,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   function setHeaderOffset() {
     var headerHeight = document.querySelector('header.site-header').offsetHeight;
-    document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+    // 스크롤 중 감춘 상태(display: none)에서는 높이가 0이므로 건너뛴다
+    if (headerHeight > 0) document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
   }
   document.addEventListener('DOMContentLoaded', setHeaderOffset);
   window.addEventListener('resize', setHeaderOffset);
@@ -1007,32 +1008,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/en/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="Stove">
-            Stove<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Homes/Berlin/Student_Health_Insurace/" title="독일 학생 의료 보험">
+            독일 학생 의료 보험<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/" title="Hoi An-Phu Quoc-Hanoi, Viet Nam">
-            Hoi An-Phu Quoc-Hanoi, Viet Nam<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Travel/Africa/Cape_Town/" title="Cape Town, South Africa">
+            Cape Town, South Africa<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Travel/Europe/Salerno/" title="Salerno, Italy">
-            Salerno, Italy<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Homes/Berlin/Christmas_Markets/" title="Berlin Christmas Markets">
+            Berlin Christmas Markets<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Homes/Berlin/Restaurant_Choi/" title="Restaurant Choi">
-            Restaurant Choi<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Travel/Europe/Dubrovnik/" title="Dubrovnik, Croatia">
+            Dubrovnik, Croatia<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
