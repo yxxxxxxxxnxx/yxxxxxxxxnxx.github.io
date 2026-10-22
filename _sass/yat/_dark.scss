@@ -111,8 +111,11 @@ html[data-theme="dark"]  {
     }
   }
 
+  .show-window {
+    background-color: $dark-background-color;
+  }
+
   .pagination {
-    .show-window,
     .top-panel,
     .panels-wrapper {
       background-color: $dark-background-color;

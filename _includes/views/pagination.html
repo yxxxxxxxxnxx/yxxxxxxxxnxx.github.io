@@ -9,9 +9,14 @@
 {%- assign image_style = return | append: '-image-style' -%}
 
 {%- if paginator.posts.size > 0 -%}
+{%- comment -%} show-window는 스크롤 박스(.pagination) 밖의 배경 층, 박스 안에는 그 자리(spacer)만 둔다 {%- endcomment -%}
+{%- include views/show-window.html -%}
+
 <div class="pagination">
 
-  {%- include views/show-window.html -%}
+  {%- if site.data.show_window.size > 0 -%}
+  <div class="show-window-spacer" aria-hidden="true"></div>
+  {%- endif -%}
 
   <div class="top-panel">
 
@@ -85,7 +90,7 @@
     <button type="button" class="panel-nav-next" aria-label="Next panel"><i class="fa-solid fa-arrow-down"></i></button>
   </div>
 
-  <script src="/assets/js/scroll-sync.js"></script>
+  <script src="/assets/js/scroll-sync.js?v={{ site.time | date: '%s' }}"></script>
 
 
   {%- if paginator.total_pages > 1 -%}

@@ -113,12 +113,22 @@ html {
   }
 
   &[data-scroll-status='down'] {
+    // 위로 밀어 올린 뒤 display: none으로 완전히 뺀다. iOS Safari는 화면 너비만 한 fixed 헤더가 있기만 하면
+    // (화면 밖에 있거나 visibility: hidden이어도) 상태바 띠를 단색으로 칠해, 콘텐츠가 그 뒤로 비치지 않는다.
     header.site-header {
       transform: translateY(-100%);
+      display: none;
     }
 
     .framework .sidebar {
       top: 20px;
+    }
+  }
+
+  // 다시 나타날 때 위에서 내려온다 (display: none에서 돌아오는 순간의 시작 모습)
+  &[data-scroll-status='up'] header.site-header {
+    @starting-style {
+      transform: translateY(-100%);
     }
   }
 }
@@ -129,12 +139,18 @@ html {
   // viewport-fit=cover: iPhone의 다이내믹 아일랜드·노치 아래로 메뉴가 들어가지 않게 위쪽 안전 영역만큼 더 띄운다
   padding: calc(#{$spacing-unit * 3} + env(safe-area-inset-top)) 0 $spacing-unit * 3;
   width: 100%;
-  transition: transform 0.2s, text-shadow 0.2s;
+  // display는 사라질 때 슬라이드가 끝난 뒤에 바뀌도록 (allow-discrete)
+  transition: transform 0.2s, text-shadow 0.2s, display 0.2s allow-discrete;
   box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.00);
   pointer-events: none;
 
   @include flex-sticky(0);
   z-index: 1000;
+
+  // 모바일: 위 여백 16px (다이내믹 아일랜드 안전 영역은 그대로 더한다)
+  @include media-query($on-palm) {
+    padding-top: calc(#{$spacing-unit * 2} + env(safe-area-inset-top));
+  }
 
   a, button, .page-link, .menu-icon, .nav-trigger {
     pointer-events: auto;  /* ← 추가 */
@@ -150,6 +166,11 @@ html {
     @include media-query(1024px) {
       margin: 0 $spacing-unit * 3;
       max-width: unset;
+    }
+
+    // 모바일: 좌우(오른쪽 메뉴 포함) 여백 8px
+    @include media-query($on-palm) {
+      margin: 0 $spacing-unit;
     }
   }
 
@@ -282,11 +303,6 @@ html {
 /**
  * Site footer
  */
-// 홈: 푸터로 내려가기 전에는 감춘다 (scroll-sync.js). iOS Safari 하단 주소창 뒤로 비치지 않게.
-html.home-footer-hidden .site-footer {
-  visibility: hidden;
-}
-
 .site-footer {
   @include relative-font-size(1.0);
   color: $text-color;
@@ -380,13 +396,70 @@ html.home-footer-hidden .site-footer {
 .page-content-home {
   @extend %flex-1;
   -ms-flex: none;
-  height: 100vh;
-  overflow: hidden;
+
+  // 홈은 문서(창) 자체가 스크롤된다. 높이를 묶거나 overflow로 자르면 패널 sticky가 풀리므로 그대로 둔다.
+  .framework,
+  .framework .main {
+    height: auto;
+    overflow: visible;
+  }
 }
 
-.wrapper-home {
-  height: 100%;
+// 홈은 문서 스크롤바를 감춘다 (패널이 화면 너비(100vw)를 꽉 채우므로 스크롤바만큼 가로로 넘치지 않게)
+html:has(.page-content-home) {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// iOS Safari 상태바·주소창 뒤까지 채우는 여백 (scroll-sync.js의 BLEED는 .pagination의 --panel-bleed에서 읽는다)
+$panel-bleed: 120px;
+
+// show-window: 스크롤 박스 밖, 뒤쪽 배경 층. 문서가 움직이지 않으므로 sticky 없이도 제자리에 머문다.
+// iOS Safari는 화면 맨 위에 sticky로 고정된 요소가 있으면 상태바에 단단한 띠를 덮어, 사진이 비치지 않게 된다.
+// 높이는 화면 + 위아래 $panel-bleed (다이내믹 아일랜드·주소창 뒤까지).
+.page-content-home .articles {
+  position: relative;
+}
+
+.show-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: calc(var(--view-h, 100vh) + #{$panel-bleed * 2});
   overflow: hidden;
+  background-color: $background-color;
+
+  .show-window-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  // 다음 패널이 덮는 만큼 점점 어두워진다 (--cover-dim, scroll-sync.js)
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #000;
+    opacity: calc(var(--cover-dim, 0) * 0.5);
+    pointer-events: none;
+  }
+}
+
+// 홈의 헤더는 fixed·sticky가 아니라 absolute로 둔다. 홈은 문서가 BLEED(120px) 위치에 머물러 있으므로 그 자리에
+// 두면 고정된 것과 똑같이 보인다. iOS Safari는 화면 너비만 한 fixed·sticky 헤더가 있으면 상태바 띠를 단색으로 칠해,
+// show-window가 다이내믹 아일랜드 뒤까지 비치지 않기 때문.
+html:has(.page-content-home) header.site-header,
+html:has(.page-content-home)[data-header-transparent] header.site-header {
+  position: absolute;
+  top: $panel-bleed;
+  left: 0;
 }
 
 .page-heading {
@@ -402,23 +475,37 @@ html.home-footer-hidden .site-footer {
  * Pagination page
  */
 .pagination {
+  // 패널들은 이 박스 안에서 스크롤된다. 박스는 화면보다 위아래로 $panel-bleed만큼 크고, 문서는 그만큼 내려 둔다
+  // (scroll-sync.js). 위·아래로 넘친 부분이 iOS Safari 상태바·주소창 뒤에 블러로 비친다.
+  --panel-bleed: #{$panel-bleed};
+
+  position: relative;
+  z-index: 1;
   display: block;
-  height: 100vh;
+  height: calc(100vh + #{$panel-bleed * 2});   // 실제 높이는 scroll-sync.js가 화면 높이로 맞춘다
   overflow-x: hidden;
   overflow-y: scroll;
   overscroll-behavior: none;
   @extend %scrollbar-hidden;
 
-  // 패널 전환: 패널(show-window, top-panel, 카테고리)은 끝까지 스크롤된 위치에 고정되고(sticky),
+  // 패널 전환: 패널(top-panel, 카테고리)은 끝까지 스크롤된 위치에 고정되고(박스 안 sticky),
   // 다음 패널이 아래에서 올라와 덮는다. 같은 z-index면 뒤의 패널이 위에 그려진다.
-  // 화면보다 긴 패널의 고정 위치(top: 100vh - 높이)와 스냅(70vh)은 scroll-sync.js가 맡는다. CSS 스냅은 쓰지 않는다.
-  .show-window,
+  // 패널은 위아래로 $panel-bleed만큼 여백을 두고 박스 맨 위(= 스크린 최상단, 다이내믹 아일랜드 뒤)에 고정된다.
+  // 위 여백이 상태바 뒤를, 아래 여백이 주소창 뒤를 채우고 내용은 그 사이(화면 높이)에 놓인다.
+  // top(화면보다 긴 패널의 고정 위치)과 스냅(70%)은 scroll-sync.js가 맡는다.
   .top-panel,
   .panels-wrapper {
     position: sticky;
     top: 0;
     z-index: 1;
+    padding-top: $panel-bleed;
+    padding-bottom: $panel-bleed;
     background-color: $background-color;
+  }
+
+  // show-window 자리. 투명해서 뒤(박스 밖)에 있는 show-window가 비친다.
+  .show-window-spacer {
+    height: calc(var(--view-h, 100vh) + #{$panel-bleed * 2});
   }
 
   // 올라오는 패널에 macOS 활성 창처럼 넓고 부드러운 그림자를 드리운다 (가는 테두리 + 가까운 그림자 + 넓게 퍼지는 그림자).
@@ -442,7 +529,6 @@ html.home-footer-hidden .site-footer {
   }
 
   // 다음 패널이 덮는 만큼 점점 어두워진다 (--cover-dim: 0 ~ 1, scroll-sync.js가 갱신)
-  .show-window::after,
   .top-panel::after,
   .panels-wrapper::after {
     content: '';
@@ -472,21 +558,6 @@ html.home-footer-hidden .site-footer {
 
     span {
       @extend %panel-bubble;
-    }
-  }
-
-  .show-window {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-
-    .show-window-image {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
   }
 
@@ -524,7 +595,8 @@ html.home-footer-hidden .site-footer {
   .panels-wrapper {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    box-sizing: border-box;
+    height: calc(var(--view-h, 100vh) + #{$panel-bleed * 2});   // 내용 높이 = 화면 높이
     gap: 2.5vw;
     // overflow를 두지 않는다: hidden·clip(일부 브라우저)은 위로 드리운 그림자(::before)까지 잘라 낸다.
     // 좌우 패널 폭 합(47.5 + 2.5 + 47.5vw)이 화면보다 좁아 넘칠 일은 없다.
@@ -690,8 +762,15 @@ html.home-footer-hidden .site-footer {
   }
 
   .top-panel {
+    // 위 여백($panel-bleed)을 배경색 대신 사진으로 채운다: 목록을 여백만큼 위로 올리고(.post-list) 그만큼 사진 영역을 키운다.
+    // 목록은 가로 스크롤 박스라 안쪽 요소를 올리면 박스 경계에서 잘리므로 목록 자체를 올린다.
+    // 고정되면 늘어난 사진이 다이내믹 아일랜드 뒤를 채우고, 데스크톱에서는 화면 위 바깥이라 보이지 않는다.
+    .post-list {
+      margin-top: -$panel-bleed;
+    }
+
     .post-content {
-      height: 100vh;
+      height: calc(var(--view-h, 100vh) + #{$panel-bleed});
       overflow: hidden;
       gap: 0;
       margin-bottom: 0;
@@ -749,7 +828,7 @@ html.home-footer-hidden .site-footer {
   }
 
   .right-panel {
-    overscroll-behavior: contain;
+    // 목록 끝(시작)에서 계속 스크롤하면 박스로 이어져 패널 전환으로 넘어간다 (브라우저 기본 스크롤 연결)
 
     // 끝에서도 마지막 항목을 화면 위까지 올릴 수 있게 남겨 두는 여백.
     // padding으로 두면 sticky인 Load more 버블이 그만큼 위에 붙으므로 빈 요소로 둔다.
@@ -803,7 +882,21 @@ html.home-footer-hidden .site-footer {
   }
 
   @include media-query($on-palm) {
+    // top-panel 포스트 제목·excerpt 좌우 여백 8px
+    .top-panel .element-container {
+      margin-left: $spacing-unit;
+      margin-right: $spacing-unit;
+    }
+
+    // 카테고리명: 상단 여백 8px (다이내믹 아일랜드 안전 영역은 그대로 더한다).
+    // 왼쪽은 0: left-panel이 이미 화면에서 8px 안쪽이라, 박스 왼쪽이 사진 왼쪽(8px)과 맞는다.
+    .left-panel .panel-title {
+      margin-top: calc(#{$spacing-unit} + env(safe-area-inset-top));
+      margin-left: 0;
+    }
+
     // 세로로 쌓고 높이는 내용만큼. 화면보다 길면 끝까지 본 뒤 그 위치에 고정된다.
+    // 좌우 여백 8px: 패널 폭 = 화면 - 16px
     .panels-wrapper {
       flex-direction: column;
       height: auto;
@@ -812,13 +905,13 @@ html.home-footer-hidden .site-footer {
 
       // 배경 영역 없이 카테고리명만 right-panel 위에 붙여 표시
       .left-panel {
-        width: 95vw;
+        width: calc(100vw - #{$spacing-unit * 2});
         height: auto;
       }
 
       // 스크롤 컨테이너가 아니다 (pagination이 통째로 스크롤)
       .right-panel {
-        width: 95vw;
+        width: calc(100vw - #{$spacing-unit * 2});
         height: auto;
         overflow: visible;
 
@@ -831,13 +924,13 @@ html.home-footer-hidden .site-footer {
         }
 
         .post-image-container {
-          width: 95vw;
-          height: 95vw;
+          width: calc(100vw - #{$spacing-unit * 2});
+          height: calc(100vw - #{$spacing-unit * 2});
         }
 
         .post-content .post-image-container .post-image > *:first-child {
-          width: 95vw;
-          height: 95vw;
+          width: calc(100vw - #{$spacing-unit * 2});
+          height: calc(100vw - #{$spacing-unit * 2});
         }
 
       }

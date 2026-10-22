@@ -9,7 +9,8 @@
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+  {%- comment -%} ?v=빌드 시각: 새로 빌드할 때마다 브라우저(특히 iOS Safari) 캐시를 새로 받게 한다 {%- endcomment -%}
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}?v={{ site.time | date: '%s' }}">
   <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
   <script src="{{ "/assets/js/avif.js" | relative_url }}"></script>
   {%- feed_meta -%}

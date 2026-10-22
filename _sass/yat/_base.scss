@@ -187,6 +187,12 @@ pre {
   padding-right: $spacing-unit * 3;
   padding-left: $spacing-unit * 3;
   @extend %clearfix;
+
+  // 모바일: 사이트 전체 좌우 여백
+  @include media-query($on-palm) {
+    padding-right: $spacing-unit;
+    padding-left: $spacing-unit;
+  }
 }
 
 .wrapper-home {
