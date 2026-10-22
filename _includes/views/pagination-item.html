@@ -28,7 +28,9 @@
     {%- if post_image and post_image != 'NO_EXCERPT_IMAGE' -%}
     <div class="post-image-container">
       <a class="post-image" href="{{ post_url }}">
-        <div style="background-image: url('{{ post_image | relative_url }}');"></div>
+        {%- comment -%} 배경 이미지가 아니라 img: 화면(패널)에 가까워질 때만 받는다 (loading="lazy") {%- endcomment -%}
+        <img class="no-photo-swipe" src="{{ post_image | relative_url }}" alt="{{ post.title | escape }}" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">

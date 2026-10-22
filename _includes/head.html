@@ -3,9 +3,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
+  {%- comment -%} canonical 주소는 _plugins/seo-extras.rb가 언어별로 정하고, hreflang은 seo-i18n.html이 넣는다 {%- endcomment -%}
   {%- seo -%}
+  {%- include seo-i18n.html -%}
   <link rel="icon" href="{{ site.favicon }}">
-  <link rel="canonical" href="{{ site.url }}">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">

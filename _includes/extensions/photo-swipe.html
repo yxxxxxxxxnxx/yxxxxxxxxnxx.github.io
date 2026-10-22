@@ -41,7 +41,8 @@
     }
 
     const imgEls = [];
-    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경, 홈 포스트 썸네일)
+    // width·height 속성(_plugins/image-attrs.rb가 넣는 실제 크기)이 있으면 그 크기로 연다: lazy 이미지는 아직 안 받았을 수 있다
     const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
@@ -61,10 +62,10 @@
       <a class="photo-swipe"
         href="${imgEl.src}"
         data-pswp-width="${
-          Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale
+          (Number(imgEl.getAttribute("width")) || Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale)
         }"
         data-pswp-height="${
-          Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale
+          (Number(imgEl.getAttribute("height")) || Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale)
         }"
         data-pswp-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
         target="_blank">

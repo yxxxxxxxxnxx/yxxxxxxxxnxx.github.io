@@ -85,11 +85,6 @@
     {%- endif -%}
   {%- endfor -%}
 
-  <div class="panel-nav" aria-label="Panels">
-    <button type="button" class="panel-nav-prev" aria-label="Previous panel"><i class="fa-solid fa-arrow-up"></i></button>
-    <button type="button" class="panel-nav-next" aria-label="Next panel"><i class="fa-solid fa-arrow-down"></i></button>
-  </div>
-
   <script src="/assets/js/scroll-sync.js?v={{ site.time | date: '%s' }}"></script>
 
 
@@ -97,5 +92,11 @@
     {%- include views/paginator.html -%}
   {%- endif -%}
 
+</div>
+
+{%- comment -%} 박스(.pagination, z-index 1) 밖에 둔다: 안에 두면 그 쌓임 맥락에 갇혀 푸터가 올라올 때 뒤로 가려진다 {%- endcomment -%}
+<div class="panel-nav" aria-label="Panels">
+  <button type="button" class="panel-nav-prev" aria-label="Previous panel"><i class="fa-solid fa-arrow-up"></i></button>
+  <button type="button" class="panel-nav-next" aria-label="Next panel"><i class="fa-solid fa-arrow-down"></i></button>
 </div>
 {%- endif -%}

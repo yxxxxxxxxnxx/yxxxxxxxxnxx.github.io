@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+{%- comment -%} data-scroll-status="top": 처음부터 맨 위 상태로 그린다. 없으면 header.html 스크립트가 붙일 때 배너가 100vh로 늘어나며 본문이 밀린다 (CLS) {%- endcomment -%}
+<html lang="{{ page.lang | default: site.active_lang | default: site.lang | default: "en" }}" data-scroll-status="top">
 
   {%- include head.html -%}
 

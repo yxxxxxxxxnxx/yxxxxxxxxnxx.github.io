@@ -5,23 +5,23 @@ on:
     branches:
       - main  # main
 
+# gh-pages 브랜치에 푸시할 권한만 준다
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.1
-
-      - name: Install Dependencies
-        run: |
-          gem install bundler
-          bundle install
+          ruby-version: '3.3'   # 로컬과 같은 버전 (3.1은 지원 종료)
+          bundler-cache: true   # Gemfile.lock대로 설치하고 캐시
 
       - name: Build Jekyll Site
         run: |

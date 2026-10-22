@@ -3,6 +3,8 @@
 {%- if show_window_images.size > 0 -%}
 <div class="show-window">
   <img class="show-window-image no-photo-swipe" alt="">
+  {%- comment -%} 타이포 로고: show-window 층 안에 있어 다음 패널이 올라오면 그 뒤로 가려진다. 등장·퇴장은 scroll-sync.js {%- endcomment -%}
+  <div class="show-window-logo" aria-hidden="true"><span>yxxxxxxxxnxx</span></div>
 </div>
 
 <script>
