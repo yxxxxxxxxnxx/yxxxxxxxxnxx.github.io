@@ -445,9 +445,9 @@ $panel-bleed: 120px;
   // 글자 크기·굵기 = 사이트 메뉴(.page-link)와 같게 고정, 색 = 포스트 사진 워터마크 색(#F2AD00).
   // show-window 층은 문서와 함께 BLEED만큼 위로 올라가 있으므로 화면 아래 기준 위치에 BLEED를 더한다.
   // 위치 값은 click-to-top.scss의 .panel-nav와 맞춘다: 내비게이션 아래끝 = 48px + $size + $spacing-unit * 2,
-  // 내비게이션 높이 = $size * 2 - 겹침($spacing-unit * 2), 로고는 그 위 $spacing-unit * 2.
+  // 내비게이션 높이 = $size * 2 - $spacing-unit * 2, 로고는 그 위 $spacing-unit * 2.
   // 등장·퇴장 (scroll-sync.js가 .is-hidden을 붙인다): 내비게이션 버튼과 같은 길이·곡선으로 가라앉으며 사라지고 떠오르며 나타난다.
-  // 스크롤로 사라질 때는 로고가 먼저, 나타날 때는 아래·위 버튼 다음에 로고(.is-staggered: 위 버튼보다 0.1초 늦게).
+  // 스크롤로 사라질 때는 로고가 먼저, 나타날 때는 아래·위 화살표 다음에 로고(.is-staggered: 위 화살표보다 0.1초 늦게).
   .show-window-logo {
     $size: 64px;
     $ease-out: cubic-bezier(0.22, 1, 0.36, 1);

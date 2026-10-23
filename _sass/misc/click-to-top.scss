@@ -67,7 +67,7 @@
 }
 
 .click-to-top.is-refracting,
-.panel-nav button.is-refracting {
+.panel-nav.is-refracting {
   @extend %liquid-glass-refracting;
 }
 
@@ -82,17 +82,16 @@ html[data-theme="dark"] {
   }
 
   .click-to-top.is-refracting,
-  .panel-nav button.is-refracting {
+  .panel-nav.is-refracting {
     background-color: rgba(#000, 0.12);
   }
 }
 
 
 // 홈 전용: 패널(show-window, top-panel, 카테고리, 푸터) 사이를 오가는 위/아래 버튼.
-// click-to-top 바로 위($spacing-unit * 2 간격)에 놓는다. 버튼마다 click-to-top과 같은 지름의 원형 유리이고,
-// 두 원은 $spacing-unit * 2만큼 겹치고, 위로 가는 원이 앞에 그려진다. 전체 높이 = 지름 × 2 - 겹침.
-// 리퀴드 글래스(liquid-glass-buttons.js)도 버튼마다 따로 입힌다.
-$panel-nav-overlap: $spacing-unit * 2;
+// click-to-top 바로 위($spacing-unit * 2 간격)에 놓는 위아래로 긴 버블 하나 (리퀴드 글래스도 하나).
+// 높이 = click-to-top 지름 × 2 - $spacing-unit * 2, 위·아래 버튼이 반씩 나눈다.
+$panel-nav-trim: $spacing-unit * 2;
 
 .panel-nav {
   $size: 64px;   // click-to-top 지름
@@ -102,71 +101,44 @@ $panel-nav-overlap: $spacing-unit * 2;
   align-items: center;
   position: fixed;
   width: $size;
+  height: $size * 2 - $panel-nav-trim;
   right: calc(60px + env(safe-area-inset-right));
   bottom: calc(#{48px + $size + $spacing-unit * 2} + env(safe-area-inset-bottom));
+  border-radius: 9999px;   // 최댓값: 위아래 끝이 반원
+  @extend %liquid-glass;
+  overflow: hidden;
   user-select: none;
   z-index: 10;
-  // 원마다 따로 떠오르고 가라앉는다 (나타날 때 ease-out으로 감속, 사라질 때 ease-in으로 가속).
-  // 나타날 때: 아래 원 → 0.1초 뒤 위 원 → 0.1초 뒤 show-window 타이포 로고(_layout.scss).
-  // 사라질 때(역순): 로고 → 0.1초 뒤 위 원 → 0.1초 뒤 아래 원.
+  // 나타날 때: 배경과 아래 화살표가 먼저 떠오르고(ease-out으로 감속) 0.1초 뒤 위 화살표, 다시 0.1초 뒤 show-window 타이포 로고.
+  // 사라질 때(역순): 로고 → 0.1초 뒤 위 화살표 → 0.1초 뒤 아래 화살표와 배경이 가라앉는다(ease-in으로 가속).
   $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   $ease-in:  cubic-bezier(0.55, 0, 1, 0.45);
 
-  button {
-    transition:
-      opacity 0.3s $ease-out,
-      transform 0.3s $ease-out;
-  }
-
-  .panel-nav-prev {
-    transition-delay: 0.1s;
-  }
-
-  // 휠을 돌리거나 손가락으로 끄는 동안 감추고, 멈춘 뒤 1초가 지나면 다시 보인다 (scroll-sync.js)
-  &.is-scrolling {
-    pointer-events: none;
-
-    button {
-      opacity: 0;
-      transform: translateY(16px);
-      transition:
-        opacity 0.25s $ease-in,
-        transform 0.25s $ease-in;
-    }
-
-    .panel-nav-prev {
-      transition-delay: 0.1s;
-    }
-
-    .panel-nav-next {
-      transition-delay: 0.2s;
-    }
-  }
+  transition:
+    opacity 0.3s $ease-out,
+    transform 0.3s $ease-out;
 
   button {
-    @extend %liquid-glass;
     display: flex;
-    flex-shrink: 0;
     align-items: center;
     justify-content: center;
-    width: $size;
-    height: $size;
+    width: 100%;
+    height: 50%;
     padding: 0;
     border: none;
-    border-radius: 50%;
+    background: none;
+    color: inherit;
     font-size: var(--button-icon-size);
     cursor: pointer;
 
-    & + button {
-      margin-top: -$panel-nav-overlap;
+    // 화살표 아이콘 (FontAwesome이 <i>를 <svg>로 바꿀 수 있어 자식 요소 전체를 대상으로 한다)
+    & > * {
+      transition:
+        opacity 0.3s $ease-out,
+        transform 0.3s $ease-out;
     }
 
-    &.panel-nav-prev {
-      position: relative;
-      z-index: 1;
-    }
-
-    // 비활성: 유리는 그대로 두고 화살표만 흐리게
+    // 비활성: 화살표만 흐리게
     &:disabled {
       cursor: default;
 
@@ -176,22 +148,48 @@ $panel-nav-overlap: $spacing-unit * 2;
     }
   }
 
+  .panel-nav-prev > * {
+    transition-delay: 0.1s;
+  }
+
+  // 휠을 돌리거나 손가락으로 끄는 동안 감추고, 멈춘 뒤 1초가 지나면 다시 보인다 (scroll-sync.js)
+  &.is-scrolling {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition:
+      opacity 0.25s $ease-in 0.2s,
+      transform 0.25s $ease-in 0.2s;
+
+    button > * {
+      opacity: 0;
+      transform: translateY(8px);
+      transition:
+        opacity 0.25s $ease-in,
+        transform 0.25s $ease-in;
+    }
+
+    .panel-nav-prev > * {
+      transition-delay: 0.1s;
+    }
+
+    .panel-nav-next > * {
+      transition-delay: 0.2s;
+    }
+  }
+
   @include media-query($on-laptop) {
     $size: 48px;
 
     width: $size;
+    height: $size * 2 - $panel-nav-trim;
     right: calc(35px + env(safe-area-inset-right));
     bottom: calc(#{48px + $size + $spacing-unit * 2} + env(safe-area-inset-bottom));
-
-    button {
-      width: $size;
-      height: $size;
-    }
   }
 }
 
 html[data-theme="dark"] {
-  .panel-nav button {
+  .panel-nav {
     @extend %liquid-glass-dark;
   }
 }
