@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-scroll-status="top">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -12,23 +12,24 @@
 <meta property="og:title" content="Archives">
 <meta name="author" content="yxxxxxxxxnxx">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+<meta name="description" content="여행과 집, 새것들에 대한 사진과 기록. Photos and notes on travel, homes and new things.">
+<meta property="og:description" content="여행과 집, 새것들에 대한 사진과 기록. Photos and notes on travel, homes and new things.">
 <link rel="canonical" href="https://yxxxxxxxxnxx.github.io/archives/">
 <meta property="og:url" content="https://yxxxxxxxxnxx.github.io/archives/">
 <meta property="og:site_name" content="yxxxxxxxxnxx">
+<meta property="og:image" content="https://yxxxxxxxxnxx.github.io/assets/og/home.jpg">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="https://yxxxxxxxxnxx.github.io/assets/og/home.jpg">
 <meta property="twitter:title" content="Archives">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Archives","url":"https://yxxxxxxxxnxx.github.io/archives/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"description":"여행과 집, 새것들에 대한 사진과 기록. Photos and notes on travel, homes and new things.","headline":"Archives","image":"https://yxxxxxxxxnxx.github.io/assets/og/home.jpg","url":"https://yxxxxxxxxnxx.github.io/archives/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
-  <link rel="canonical" href="https://yxxxxxxxxnxx.github.io">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792688695">
+<link rel="stylesheet" href="/assets/css/main.css?v=1792740267">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/en/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -204,7 +205,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경, 홈 포스트 썸네일)
+    // width·height 속성(_plugins/image-attrs.rb가 넣는 실제 크기)이 있으면 그 크기로 연다: lazy 이미지는 아직 안 받았을 수 있다
     const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
@@ -224,10 +226,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <a class="photo-swipe"
         href="${imgEl.src}"
         data-pswp-width="${
-          Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale
+          (Number(imgEl.getAttribute("width")) || Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale)
         }"
         data-pswp-height="${
-          Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale
+          (Number(imgEl.getAttribute("height")) || Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale)
         }"
         data-pswp-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
         target="_blank">
@@ -728,6 +730,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792740267"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -1434,7 +1437,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
           <p>
             Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
             Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&amp;preview.size=171">Google Sans Flex</a><br>
-            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
+            Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
           </p>
           <p>
             

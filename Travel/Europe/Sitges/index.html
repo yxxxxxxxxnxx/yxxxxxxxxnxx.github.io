@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-scroll-status="top">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -17,19 +17,20 @@
 <link rel="canonical" href="https://yxxxxxxxxnxx.github.io/Travel/Europe/Sitges/">
 <meta property="og:url" content="https://yxxxxxxxxnxx.github.io/Travel/Europe/Sitges/">
 <meta property="og:site_name" content="yxxxxxxxxnxx">
+<meta property="og:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2025-07-30-Sitges.jpg">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2025-07-30T00:00:00+00:00">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2025-07-30-Sitges.jpg">
 <meta property="twitter:title" content="Sitges, Spain">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2025-07-30T00:00:00+00:00","datePublished":"2025-07-30T00:00:00+00:00","description":"Sitges","headline":"Sitges, Spain","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Sitges/"},"url":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Sitges/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2025-07-30T00:00:00+00:00","datePublished":"2025-07-30T00:00:00+00:00","description":"Sitges","headline":"Sitges, Spain","image":"https://yxxxxxxxxnxx.github.io/assets/og/2025-07-30-Sitges.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Sitges/"},"url":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Sitges/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
-  <link rel="canonical" href="https://yxxxxxxxxnxx.github.io">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792688695">
+<link rel="stylesheet" href="/assets/css/main.css?v=1792740267">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -205,7 +206,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경, 홈 포스트 썸네일)
+    // width·height 속성(_plugins/image-attrs.rb가 넣는 실제 크기)이 있으면 그 크기로 연다: lazy 이미지는 아직 안 받았을 수 있다
     const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
@@ -225,10 +227,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <a class="photo-swipe"
         href="${imgEl.src}"
         data-pswp-width="${
-          Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale
+          (Number(imgEl.getAttribute("width")) || Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale)
         }"
         data-pswp-height="${
-          Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale
+          (Number(imgEl.getAttribute("height")) || Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale)
         }"
         data-pswp-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
         target="_blank">
@@ -752,6 +754,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792740267"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -898,117 +901,117 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
       <h2 id="sitges">Sitges</h2>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5640.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5640.avif" alt="Sitges, Spain 사진 1"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5649.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5649.avif" alt="Sitges, Spain 사진 2"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5652.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5652.avif" alt="Sitges, Spain 사진 3"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5655.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5655.avif" alt="Sitges, Spain 사진 4"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5657.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5657.avif" alt="Sitges, Spain 사진 5"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5658.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5658.avif" alt="Sitges, Spain 사진 6"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5659.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5659.avif" alt="Sitges, Spain 사진 7"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5660.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5660.avif" alt="Sitges, Spain 사진 8"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5661.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5661.avif" alt="Sitges, Spain 사진 9"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5662.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5662.avif" alt="Sitges, Spain 사진 10"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5663.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5663.avif" alt="Sitges, Spain 사진 11"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5674.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5674.avif" alt="Sitges, Spain 사진 12"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5676.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5676.avif" alt="Sitges, Spain 사진 13"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5680.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5680.avif" alt="Sitges, Spain 사진 14"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5682.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5682.avif" alt="Sitges, Spain 사진 15"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5688.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5688.avif" alt="Sitges, Spain 사진 16"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5691.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5691.avif" alt="Sitges, Spain 사진 17"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5692.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5692.avif" alt="Sitges, Spain 사진 18"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5699.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5699.avif" alt="Sitges, Spain 사진 19"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5701.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5701.avif" alt="Sitges, Spain 사진 20"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5709.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5709.avif" alt="Sitges, Spain 사진 21"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5710.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5710.avif" alt="Sitges, Spain 사진 22"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5725.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5725.avif" alt="Sitges, Spain 사진 23"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5738.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5738.avif" alt="Sitges, Spain 사진 24"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5739.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5739.avif" alt="Sitges, Spain 사진 25"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5744.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5744.avif" alt="Sitges, Spain 사진 26"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5745.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5745.avif" alt="Sitges, Spain 사진 27"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5761.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5761.avif" alt="Sitges, Spain 사진 28"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5763.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5763.avif" alt="Sitges, Spain 사진 29"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5764.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5764.avif" alt="Sitges, Spain 사진 30"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5765.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5765.avif" alt="Sitges, Spain 사진 31"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5767.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5767.avif" alt="Sitges, Spain 사진 32"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5770.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5770.avif" alt="Sitges, Spain 사진 33"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5771.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5771.avif" alt="Sitges, Spain 사진 34"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5773.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5773.avif" alt="Sitges, Spain 사진 35"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5778.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5778.avif" alt="Sitges, Spain 사진 36"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5779.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5779.avif" alt="Sitges, Spain 사진 37"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5785.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5785.avif" alt="Sitges, Spain 사진 38"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5788.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5788.avif" alt="Sitges, Spain 사진 39"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5791.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5791.avif" alt="Sitges, Spain 사진 40"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5792.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5792.avif" alt="Sitges, Spain 사진 41"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5793.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5793.avif" alt="Sitges, Spain 사진 42"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5796.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5796.avif" alt="Sitges, Spain 사진 43"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5798.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5798.avif" alt="Sitges, Spain 사진 44"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5799.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5799.avif" alt="Sitges, Spain 사진 45"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5800.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5800.avif" alt="Sitges, Spain 사진 46"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5801.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5801.avif" alt="Sitges, Spain 사진 47"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5802.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5802.avif" alt="Sitges, Spain 사진 48"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5804.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5804.avif" alt="Sitges, Spain 사진 49"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5812.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5812.avif" alt="Sitges, Spain 사진 50"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5814.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5814.avif" alt="Sitges, Spain 사진 51"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5815.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5815.avif" alt="Sitges, Spain 사진 52"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5819.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5819.avif" alt="Sitges, Spain 사진 53"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5835.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5835.avif" alt="Sitges, Spain 사진 54"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5843.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5843.avif" alt="Sitges, Spain 사진 55"></p>
 
-<p><img src="/assets/att/2025-07-30-Sitges/IMG_5850.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-07-30-Sitges/IMG_5850.avif" alt="Sitges, Spain 사진 56"></p>
 
 
     </div>
@@ -1021,32 +1024,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/Travel/Europe/Warsaw/" title="Warsaw, Poland">
-            Warsaw, Poland<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/" title="Hoi An-Phu Quoc-Hanoi, Viet Nam">
+            Hoi An-Phu Quoc-Hanoi, Viet Nam<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Weert/" title="Weert, The Netherlands">
-            Weert, The Netherlands<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Africa/Gran_Canaria/" title="Gran Canaria, Spain">
+            Gran Canaria, Spain<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Homes/Berlin/Ora/" title="Ora">
-            Ora<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Berlin/Sperrkonto/" title="Sperrkonto">
+            Sperrkonto<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/J%C3%BCterbog/" title="Jüterbog, Germany">
-            Jüterbog, Germany<!-- <span class="post-badges">
+          <a class="post-link" href="/Home%5Cs/Berlin/Berlinale_2025/" title="Berlinale 2025">
+            Berlinale 2025<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1200,7 +1203,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
           <p>
             Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
             Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&amp;preview.size=171">Google Sans Flex</a><br>
-            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
+            Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
           </p>
           <p>
             

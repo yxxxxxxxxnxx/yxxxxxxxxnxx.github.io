@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 3. 공통 도구: 스크롤 애니메이션, 스냅 지점 계산
   // ─────────────────────────────────────────────
   const animations = new Map();
+  const wheelGoal  = new Map();   // 마우스 휠 한 칸을 부드럽게 옮기는 중인 요소 → 목적지 (6번)
 
   function stopAnimations() {
     animations.forEach((id) => cancelAnimationFrame(id));
@@ -111,6 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function animateTo(scroller, target, duration, onDone) {
     cancelAnimationFrame(animations.get(scroller));
+    wheelGoal.delete(scroller);
 
     const start    = scroller.scrollTop;
     const distance = target - start;
@@ -234,17 +236,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 스냅: 남은 관성을 끊고(잠깐 스크롤을 막는다. iOS 관성도 overflow를 바꾸면 멈춘다) 목적지로 옮긴다.
   // 그동안의 휠·터치는 6·7번에서 막는다 (막힌 박스 대신 창이 스크롤되지 않게).
-  let snapping = false;
+  //  - 터치: 박스를 막는 건 관성을 끊는 두 프레임만. iOS는 박스를 막는 동안 sticky 패널 층을 새로 그리는데,
+  //    화면보다 긴 패널(카테고리)은 다 그리기 전까지 배경이 비어 이전 패널이 비친다.
+  //  - 마우스 휠: 터치처럼 기본 스크롤이라, 두 프레임 막아 브라우저의 부드러운 스크롤을 끊는다.
+  //  - 트랙패드: 트랙패드 스크롤은 처음부터 6번이 직접 한다(기본 스크롤을 막고 deltaY만큼 옮긴다). 브라우저는 한 번의 스크롤 중
+  //    처음 이벤트를 막지 않으면 이어지는 이벤트(트랙패드 관성)를 막을 수 없게 보내, 스냅 중 남은 관성이 창(푸터)이나
+  //    right-panel을 스크롤하거나 스냅 애니메이션과 싸워 화면이 떨린다. 직접 하면 스냅 중 이벤트를 버리기만 하면 되고
+  //    박스를 막을(overflow) 필요도 없다. 스냅한 스크롤의 남은 관성은 스냅이 끝난 뒤에도 버리고(pageWheel.locked),
+  //    새로 스와이프하면(6번 isFreshWheel) 바로 다시 스크롤된다.
+  let snapping  = false;
+  let lastInput = "trackpad";   // 스냅을 일으킨 입력: "trackpad"(직접 스크롤) | "native"(마우스 휠·터치, 기본 스크롤)
 
   function snapTo(target) {
     const y = pagination.scrollTop;
     snapping = true;
-    pagination.style.overflowY = "hidden";
-    pagination.scrollTop = y;
-    animateTo(pagination, target, Math.min(250 + Math.abs(target - y) * 0.3, 600), () => {
-      pagination.style.overflowY = "";
-      snapping = false;
-    });
+    buttonTarget = null;   // 9번: 버튼 이동은 끝났다
+    if (lastInput === "trackpad") {
+      pageWheel.locked = true;
+    } else {
+      pagination.style.overflowY = "hidden";
+      pagination.scrollTop = y;
+      requestAnimationFrame(() => requestAnimationFrame(() => { pagination.style.overflowY = ""; }));
+    }
+    animateTo(pagination, target, Math.min(250 + Math.abs(target - y) * 0.3, 600), () => { snapping = false; });
   }
 
   // 사용자 스크롤(기본 스크롤)을 지켜보다가 스냅 지점을 넘으면 스냅. 버튼 등 스크립트 이동 중에는 보지 않는다.
@@ -252,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function watchSnap() {
     const y = pagination.scrollTop;
-    if (!snapping && !animations.has(pagination)) {
+    if (!snapping && (!animations.has(pagination) || wheelGoal.has(pagination))) {
       const target = crossedSnap(lastBoxY, y);
       if (target !== null) snapTo(target);
     }
@@ -273,11 +287,17 @@ document.addEventListener("DOMContentLoaded", function () {
     return pagination.scrollTop >= maxScroll() - 1;
   }
 
+  // 푸터는 이 두 함수로만 열고 닫는다. 그 밖에 창이 내려가면(패널 스냅 중 박스를 막은 사이 관성이 창으로 넘어간 경우 등)
+  // 아래 창 스크롤 리스너가 BLEED로 되돌린다.
+  let footerOpen = false;
+
   function showFooter() {
+    footerOpen = true;
     animateTo(pageScroller, pageMax(), 450);
   }
 
   function hideFooter() {
+    footerOpen = false;
     animateTo(pageScroller, BLEED, 450);
   }
 
@@ -298,9 +318,11 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCoverProgress();
   }, { passive: true });
 
-  // 창은 BLEED 아래로 올라가지 않는다 (푸터에서 손가락으로 끌어올릴 때 등)
+  // 창은 BLEED 아래로 올라가지 않고(푸터에서 손가락으로 끌어올릴 때 등), 푸터를 열지 않았으면 BLEED 밑으로도 내려가지 않는다
   window.addEventListener("scroll", () => {
-    if (!animations.has(pageScroller) && pageScroller.scrollTop < BLEED - 1) pageScroller.scrollTop = BLEED;
+    if (animations.has(pageScroller)) return;
+    const y = pageScroller.scrollTop;
+    if (y < BLEED - 1 || (!footerOpen && y > BLEED + 1)) pageScroller.scrollTop = BLEED;
   }, { passive: true });
   // 화면 높이가 바뀌면(회전, iOS 툴바 변화) 박스 크기·패널 위치를 다시 맞춘다
   function relayout() {
@@ -615,9 +637,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   // ─────────────────────────────────────────────
-  // 6. 휠: 기본 스크롤. 스냅 중·직후의 남은 관성, left-panel, 푸터 경계만 따로 처리한다
+  // 6. 휠: 직접 스크롤. 스냅 중·직후의 남은 관성은 버리고, left-panel·푸터 경계는 따로 처리한다
   // ─────────────────────────────────────────────
-  const pageWheel = { time: 0, direction: 0, locked: false };
+  const pageWheel = {
+    time: 0, direction: 0, locked: false,
+    lastAbs: 0, peak: 0, declines: 0, rises: 0, inTail: false, valley: 0,
+  };
+
+  // 이 휠 이벤트가 새 스크롤(스와이프)의 시작인지.
+  // 트랙패드는 손을 뗀 뒤에도 관성 이벤트가 1~2초 이어지고, 그사이 다시 스와이프하면 끊김 없이 붙는다.
+  // 그래서 이벤트 간격만으로는 부족하고, 한 번의 스와이프는 deltaY가 커졌다가(가속) 정점 이후 줄어든다(관성)는 점을 쓴다.
+  // 아래 중 하나면 새 스크롤로 본다.
+  //  - 200ms 이상 이벤트가 없었다 (마우스 휠 한 칸, 멈췄다가 다시 스와이프)
+  //  - 방향이 바뀌었다
+  //  - 관성 구간에서 deltaY가 2번 연속 커져 그 구간 최저값보다 4 이상, 1.5배 이상이 됐다 (관성 중 새 스와이프).
+  //    관성 구간: 3번 연속 늘지 않고 정점의 70% 아래.
+  function isFreshWheel(now, direction, abs) {
+    const w = pageWheel;
+    w.rises = abs > w.lastAbs ? w.rises + 1 : 0;
+
+    const fresh = now - w.time > 200
+      || direction !== w.direction
+      || (w.inTail && w.rises >= 2 && abs >= w.valley + 4 && abs >= w.valley * 1.5);
+
+    if (fresh) {
+      w.peak     = abs;
+      w.declines = 0;
+      w.rises    = 0;
+      w.inTail   = false;
+    } else {
+      w.peak     = Math.max(w.peak, abs);
+      w.declines = abs <= w.lastAbs ? w.declines + 1 : 0;
+      if (w.inTail) {
+        w.valley = Math.min(w.valley, abs);
+      } else if (w.declines >= 3 && abs < w.peak * 0.7) {
+        w.inTail = true;
+        w.valley = abs;
+      }
+    }
+
+    w.time      = now;
+    w.direction = direction;
+    w.lastAbs   = abs;
+    return fresh;
+  }
 
   function wheelDelta(e) {
     if (e.deltaMode === 1) return e.deltaY * 16;
@@ -638,63 +701,200 @@ document.addEventListener("DOMContentLoaded", function () {
     return (direction > 0 ? right.scrollTop < max - 1 : right.scrollTop > 1) ? right : null;
   }
 
-  window.addEventListener("wheel", function (e) {
-    if (e.defaultPrevented || e.deltaY === 0 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+  // 패널이 박스 맨 위에 다 올라와 멈춰 있는지 (올라오는 중·덮이는 중이 아닌지)
+  function settledPanel(wrapper) {
+    const panel = stack.find((p) => p.el === wrapper);
+    return !!panel && Math.abs(pagination.scrollTop - panelTop(panel)) < 1;
+  }
 
-    const now       = performance.now();
-    const direction = Math.sign(e.deltaY);
-    const fresh     = now - pageWheel.time > 200 || direction !== pageWheel.direction;
-    pageWheel.time      = now;
-    pageWheel.direction = direction;
-    if (fresh) pageWheel.locked = false;
+  // 휠이 스크롤할 요소: left-panel 규칙(rightPanelFirst) → 커서 아래 스크롤 영역(right-panel 등) → 박스.
+  // 그 방향으로 더 갈 곳이 없으면(박스 끝) null
+  function wheelScroller(target, direction) {
+    const right = rightPanelFirst(target, direction);
+    if (right) return right;
+    // 박스 밖(헤더·버튼 등)에서 굴려도 문서가 아니라 박스를 스크롤한다
+    for (let el = target; el && el !== pagination && el !== document.body && el instanceof Element; el = el.parentElement) {
+      // 올라오는 중인 패널의 right-panel은 건너뛴다: 패널 전환을 끝까지 이어 가고, 다 올라온 뒤에 스크롤된다
+      if (el.classList.contains("right-panel") && !settledPanel(el.closest(".panels-wrapper"))) continue;
+      const max = el.scrollHeight - el.clientHeight;
+      if (max > 1 && /(auto|scroll)/.test(getComputedStyle(el).overflowY)
+        && (direction > 0 ? el.scrollTop < max - 1 : el.scrollTop > 1)) return el;
+    }
+    if (direction > 0) return atPaginationEnd() ? null : pagination;
+    return pagination.scrollTop > 0 ? pagination : null;
+  }
 
-    // 스냅 중, 그리고 스냅한 스크롤의 남은 이벤트(트랙패드 관성)는 버린다 → 스냅 지점에 꼭 멈춘다
-    if (snapping || pageWheel.locked || animations.has(pageScroller)) {
-      e.preventDefault();
-      if (snapping) pageWheel.locked = true;
+  // 트랙패드는 deltaY만큼 그대로 옮기고(OS가 준 가속·관성 그대로), 마우스 휠 한 칸(smooth)은 기본 스크롤처럼
+  // 짧게 부드럽게 옮긴다. 부드럽게 옮기는 중에도 4번 스냅 감시는 계속한다 (wheelGoal에 있으면 휠이 움직이는 중).
+  function wheelScrollBy(scroller, delta, smooth = false) {
+    if (!smooth) {
+      if (animations.has(scroller)) stopAnimation(scroller);
+      scroller.scrollTop += delta;
       return;
     }
+    const max  = scroller.scrollHeight - scroller.clientHeight;
+    const from = wheelGoal.has(scroller) ? wheelGoal.get(scroller) : scroller.scrollTop;
+    const goal = Math.max(0, Math.min(max, from + delta));
+    animateTo(scroller, goal, 160, () => wheelGoal.delete(scroller));
+    wheelGoal.set(scroller, goal);
+  }
 
-    const right = rightPanelFirst(e.target, direction);
-    if (right) {
+  // 마우스 휠인지 (트랙패드가 아니면). 마우스 휠은 브라우저 기본 스크롤(부드러운 스크롤·가속 등 OS 설정)을 그대로 쓴다.
+  //  - Firefox 마우스: deltaMode가 줄·페이지 단위
+  //  - Chrome·Safari 마우스: 옛 wheelDeltaY가 한 칸 120의 배수. 트랙패드는 작은 값이 이어진다 (wheelDeltaY = -3 × deltaY)
+  function isMouseWheel(e) {
+    if (e.deltaMode !== 0) return true;
+    const legacy = e.wheelDeltaY;
+    return typeof legacy === "number" && legacy !== 0 && legacy % 120 === 0 && legacy !== -3 * e.deltaY;
+  }
+
+  // 마우스 휠: 기본 스크롤. 스냅 중, left-panel 규칙, 올라오는 패널의 right-panel, 푸터 경계만 직접 처리한다.
+  // 마우스 휠은 한 칸마다 막을 수 있는(cancelable) 이벤트라 트랙패드 같은 문제가 없다.
+  function handleMouseWheel(e, direction) {
+    lastInput = "native";
+    if (snapping || animations.has(pageScroller)) {
       e.preventDefault();
-      right.scrollTop += wheelDelta(e);
       return;
     }
 
     if (footerShown()) {
       if (direction < 0) {
         e.preventDefault();
+        hideFooter();
+      }
+      return;   // 아래로는 기본 스크롤 (푸터가 화면보다 길 때)
+    }
+
+    // left-panel 위 → right-panel, 올라오는 패널의 right-panel 위 → 박스: 기본 스크롤과 다른 요소를 움직이므로 직접
+    const scroller = wheelScroller(e.target, direction);
+    const native   = scroller && scroller === nativeScroller(e.target, direction);
+    if (scroller && !native) {
+      e.preventDefault();
+      wheelScrollBy(scroller, wheelDelta(e), true);
+      return;
+    }
+
+    // 박스 끝에서 아래로 굴리면 푸터로
+    if (!scroller && direction > 0) {
+      e.preventDefault();
+      showFooter();
+    }
+  }
+
+  // 기본 스크롤이 움직일 요소: 커서 아래에서 그 방향으로 스크롤할 수 있는 가장 가까운 요소 (없으면 박스)
+  function nativeScroller(target, direction) {
+    for (let el = target; el && el !== pagination && el !== document.body && el instanceof Element; el = el.parentElement) {
+      const max = el.scrollHeight - el.clientHeight;
+      if (max > 1 && /(auto|scroll)/.test(getComputedStyle(el).overflowY)
+        && (direction > 0 ? el.scrollTop < max - 1 : el.scrollTop > 1)) return el;
+    }
+    return pagination;
+  }
+
+  // 트랙패드는 처음부터 끝까지 직접 스크롤한다 (기본 스크롤을 쓰지 않는 이유는 4번 snapTo 주석)
+  window.addEventListener("wheel", function (e) {
+    // 가로 스크롤과 핀치 확대(ctrlKey)는 브라우저에 맡긴다. top-panel 목록 가로 변환은 2번이 먼저 막는다.
+    if (e.defaultPrevented || e.ctrlKey || e.deltaY === 0 || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+
+    const direction = Math.sign(e.deltaY);
+    const fresh     = isFreshWheel(performance.now(), direction, Math.abs(e.deltaY));
+    if (isMouseWheel(e)) {
+      handleMouseWheel(e, direction);
+      return;
+    }
+
+    e.preventDefault();
+    lastInput = "trackpad";
+    if (fresh) pageWheel.locked = false;
+
+    // 스냅 중, 그리고 스냅한 스크롤의 남은 이벤트(트랙패드 관성)는 버린다 → 스냅 지점에 꼭 멈춘다.
+    // 스냅 중에 새로 시작한 스와이프는 잠그지 않아, 스냅이 끝나면 이어지는 이벤트로 바로 스크롤된다.
+    if (snapping || pageWheel.locked || animations.has(pageScroller)) return;
+
+    if (footerShown()) {
+      if (direction < 0) {
         pageWheel.locked = true;
         hideFooter();
+      } else {
+        pageScroller.scrollTop = Math.min(pageMax(), pageScroller.scrollTop + wheelDelta(e));   // 푸터가 화면보다 길 때
       }
       return;
     }
 
+    const scroller = wheelScroller(e.target, direction);
+    if (scroller) {
+      wheelScrollBy(scroller, wheelDelta(e));
+      return;
+    }
+
     // 박스 끝에서 새로 아래로 굴리면 푸터로 (끝에 닿은 스크롤의 남은 관성으로는 넘어가지 않는다)
-    if (direction > 0 && atPaginationEnd() && !canScrollInside(e.target, 1)) {
-      e.preventDefault();
-      if (fresh) {
-        pageWheel.locked = true;
-        showFooter();
-      }
+    if (direction > 0 && fresh) {
+      pageWheel.locked = true;
+      showFooter();
     }
   }, { passive: false });
 
 
   // ─────────────────────────────────────────────
-  // 7. 터치: 기본 스크롤(손가락 따라가기·관성 모두 브라우저). 스냅 중과 푸터 경계만 막는다
+  // 7. 터치: 기본 스크롤(손가락 따라가기·관성 모두 브라우저). 스냅 중, 푸터 경계, left-panel만 따로 처리한다
   // ─────────────────────────────────────────────
-  let touch = null;   // { x, y, decided, blocked }
+  let touch = null;   // { x, y, decided, blocked, right, lastY, lastTime, velocity }
+  let glidingRight = null;
+
+  // left-panel을 끈 제스처는 right-panel을 대신 스크롤한다 (6번 휠의 rightPanelFirst와 같은 규칙).
+  // 브라우저 기본 스크롤이 아니므로 손을 뗀 뒤의 관성도 직접 이어 간다 (iOS와 비슷한 감속).
+  function dragRight(t, time) {
+    const dy = touch.lastY - t.clientY;
+    const dt = Math.max(time - touch.lastTime, 1);
+    touch.right.scrollTop += dy;
+    touch.velocity = 0.8 * (dy / dt) + 0.2 * touch.velocity;
+    touch.lastY    = t.clientY;
+    touch.lastTime = time;
+  }
+
+  function glideRight(right, velocity) {
+    const max = right.scrollHeight - right.clientHeight;
+    let pos  = right.scrollTop;   // scrollTop은 정수로 반올림될 수 있어 위치는 따로 센다
+    let last = null;
+    glidingRight = right;
+    function frame(now) {
+      if (last !== null) {
+        const dt = now - last;
+        pos = Math.max(0, Math.min(max, pos + velocity * dt));
+        right.scrollTop = pos;
+        velocity *= Math.pow(0.998, dt);
+        // 끝에 닿거나 충분히 느려지면 멈춘다
+        if (Math.abs(velocity) < 0.02 || pos <= 0 || pos >= max) {
+          animations.delete(right);
+          glidingRight = null;
+          return;
+        }
+      }
+      last = now;
+      animations.set(right, requestAnimationFrame(frame));
+    }
+    animations.set(right, requestAnimationFrame(frame));
+  }
 
   document.addEventListener("touchstart", function (e) {
-    touch = e.touches.length === 1 ? { x: e.touches[0].clientX, y: e.touches[0].clientY, decided: false, blocked: false } : null;
+    lastInput = "native";
+    // 미끄러지던 right-panel은 새로 닿으면 멈춘다
+    if (glidingRight) {
+      stopAnimation(glidingRight);
+      glidingRight = null;
+    }
+    touch = e.touches.length === 1 ? { x: e.touches[0].clientX, y: e.touches[0].clientY, decided: false, blocked: false, right: null } : null;
   }, { passive: true });
 
   document.addEventListener("touchmove", function (e) {
     // 스냅 중에는 손가락이 움직여도 아무것도 스크롤하지 않는다 (막힌 박스 대신 창이 끌려가지 않게)
     if (snapping || (touch && touch.blocked)) {
       e.preventDefault();
+      return;
+    }
+    if (touch && touch.right && e.touches.length === 1) {
+      e.preventDefault();
+      dragRight(e.touches[0], e.timeStamp);
       return;
     }
     if (!touch || touch.decided || e.touches.length !== 1) return;
@@ -707,6 +907,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (Math.abs(deltaX) > Math.abs(deltaY)) return;   // 가로 스크롤
 
     const direction = Math.sign(deltaY);
+    const right = rightPanelFirst(e.target, direction);
+    if (right) {
+      e.preventDefault();
+      Object.assign(touch, { right, lastY: touch.y, lastTime: e.timeStamp, velocity: 0 });
+      dragRight(t, e.timeStamp);
+      return;
+    }
+
     if (footerShown() ? direction < 0 : direction > 0 && atPaginationEnd() && !canScrollInside(e.target, 1)) {
       e.preventDefault();
       touch.blocked = true;
@@ -714,6 +922,18 @@ document.addEventListener("DOMContentLoaded", function () {
       else showFooter();
     }
   }, { passive: false });
+
+  function endTouch(e) {
+    if (touch && touch.right) {
+      // 손을 떼기 직전 100ms 안에 움직였을 때만 관성
+      const velocity = e.timeStamp - touch.lastTime < 100 ? touch.velocity : 0;
+      if (Math.abs(velocity) > 0.05) glideRight(touch.right, velocity);
+    }
+    touch = null;
+  }
+
+  document.addEventListener("touchend", endTouch, { passive: true });
+  document.addEventListener("touchcancel", endTouch, { passive: true });
 
 
   // ─────────────────────────────────────────────
@@ -780,6 +1000,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // to-the-top: 문서를 0까지 올리지 않고(BLEED 영역이 드러나므로) 박스를 맨 위로, 문서는 BLEED로 되돌린다.
   // click-to-top.html의 기본 동작보다 먼저(캡처 단계) 받아 대신 처리한다.
+  // 버튼(to-the-top, 패널 내비게이션)으로 박스를 옮기는 중이면 그 목적지. 타이포 로고가 도착 전에 미리 사라지거나 나타난다.
+  let buttonTarget = null;
+
+  function buttonScroll(top, duration) {
+    buttonTarget = top;
+    animateTo(pagination, top, duration, () => { buttonTarget = null; });
+  }
+
   const clickToTop = document.getElementById("click-to-top");
   if (clickToTop) {
     document.addEventListener("click", (e) => {
@@ -787,7 +1015,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.stopPropagation();
       resetRightPanels(600);
       if (footerShown()) hideFooter();
-      animateTo(pagination, 0, Math.min(300 + pagination.scrollTop * 0.1, 900));
+      buttonScroll(0, Math.min(300 + pagination.scrollTop * 0.1, 900));
     }, { capture: true });
   }
 
@@ -803,7 +1031,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function goTo(top) {
       const distance = Math.abs(top - pagination.scrollTop);
       const duration = Math.min(300 + distance * 0.2, 900);
-      animateTo(pagination, top, duration);
+      buttonScroll(top, duration);
       return duration;
     }
 
@@ -830,9 +1058,28 @@ document.addEventListener("DOMContentLoaded", function () {
       nextButton.disabled = footerShown() && pageScroller.scrollTop >= pageMax() - 1;
     }
 
+    // show-window 타이포 로고 (show-window.html): show-window가 보이는 동안만 표시한다.
+    //  - 사용자가 스크롤하는 동안은 버튼과 함께 감춘다 (로고 → 위 버튼 → 아래 버튼, 0.1초 간격. 간격은 CSS).
+    //  - 멈춘 뒤 버튼이 다시 나타날 때 show-window가 아직 보이면 로고도 나타난다 (아래 버튼 → 위 버튼 → 로고).
+    //    아래 패널에서 올라와 show-window에 멈춘 경우도 같다.
+    //  - 버튼(패널 내비게이션·to-the-top)으로 오갈 때는 버튼이 그대로 있으므로 기다리지 않고 바로 사라지고 나타난다.
+    // 다음 패널이 일부 올라와 있으면 로고는 그 뒤에 가려진다 (show-window 층 안에 있으므로).
+    const logo = document.querySelector(".show-window-logo");
+
+    function updateLogo(staggered) {
+      if (!logo) return;
+      // 버튼 이동 중이면 목적지 기준 (사용자가 스크롤해 버튼 이동이 끊긴 경우는 지금 위치)
+      const y = buttonTarget !== null && animations.has(pagination) && !wheelGoal.has(pagination) ? buttonTarget : pagination.scrollTop;
+      const inShowWindow = y < boxHeight() - 1 && !footerShown();
+      const show = inShowWindow && !nav.classList.contains("is-scrolling");
+      logo.classList.toggle("is-staggered", show && staggered === true);
+      logo.classList.toggle("is-hidden", !show);
+    }
+
     updateNav();
-    pagination.addEventListener("scroll", updateNav, { passive: true });
-    window.addEventListener("scroll", updateNav, { passive: true });
+    updateLogo();
+    pagination.addEventListener("scroll", () => { updateNav(); updateLogo(); }, { passive: true });
+    window.addEventListener("scroll", () => { updateNav(); updateLogo(); }, { passive: true });
 
     // 사용자가 휠을 돌리거나 손가락으로 끄는 동안에만 감추고, 멈춘(손을 뗀) 뒤 1초가 지나면 다시 보인다.
     // 버튼을 눌러 자동으로 스크롤될 때(스크롤 이벤트만 생긴다)나 그냥 탭할 때는 그대로 둔다.
@@ -840,9 +1087,16 @@ document.addEventListener("DOMContentLoaded", function () {
     let touching  = false;
 
     function hideWhileScrolling() {
+      buttonTarget = null;   // 사용자가 스크롤을 넘겨받았다
       nav.classList.add("is-scrolling");
+      updateLogo();
       clearTimeout(idleTimer);
-      if (!touching) idleTimer = setTimeout(() => nav.classList.remove("is-scrolling"), 1000);
+      if (!touching) {
+        idleTimer = setTimeout(() => {
+          nav.classList.remove("is-scrolling");
+          updateLogo(true);
+        }, 1000);
+      }
     }
 
     document.addEventListener("wheel", hideWhileScrolling, { capture: true, passive: true });

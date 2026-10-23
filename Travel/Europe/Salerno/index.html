@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-scroll-status="top">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -17,19 +17,20 @@
 <link rel="canonical" href="https://yxxxxxxxxnxx.github.io/Travel/Europe/Salerno/">
 <meta property="og:url" content="https://yxxxxxxxxnxx.github.io/Travel/Europe/Salerno/">
 <meta property="og:site_name" content="yxxxxxxxxnxx">
+<meta property="og:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2026-06-27-Salerno.jpg">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-06-27T00:00:00+00:00">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2026-06-27-Salerno.jpg">
 <meta property="twitter:title" content="Salerno, Italy">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2026-06-27T00:00:00+00:00","datePublished":"2026-06-27T00:00:00+00:00","description":"FRA → NAP","headline":"Salerno, Italy","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Salerno/"},"url":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Salerno/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2026-06-27T00:00:00+00:00","datePublished":"2026-06-27T00:00:00+00:00","description":"FRA → NAP","headline":"Salerno, Italy","image":"https://yxxxxxxxxnxx.github.io/assets/og/2026-06-27-Salerno.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Salerno/"},"url":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Salerno/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
-  <link rel="canonical" href="https://yxxxxxxxxnxx.github.io">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792688695">
+<link rel="stylesheet" href="/assets/css/main.css?v=1792740267">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -205,7 +206,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경, 홈 포스트 썸네일)
+    // width·height 속성(_plugins/image-attrs.rb가 넣는 실제 크기)이 있으면 그 크기로 연다: lazy 이미지는 아직 안 받았을 수 있다
     const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
@@ -225,10 +227,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <a class="photo-swipe"
         href="${imgEl.src}"
         data-pswp-width="${
-          Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale
+          (Number(imgEl.getAttribute("width")) || Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale)
         }"
         data-pswp-height="${
-          Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale
+          (Number(imgEl.getAttribute("height")) || Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale)
         }"
         data-pswp-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
         target="_blank">
@@ -752,6 +754,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792740267"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -898,251 +901,251 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
       <h2 id="fra--nap">FRA → NAP</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0115.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0115.avif" alt="Salerno, Italy 사진 1"></p>
 
 <h2 id="amalfi">Amalfi</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0126.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0126.avif" alt="Salerno, Italy 사진 2"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0128.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0128.avif" alt="Salerno, Italy 사진 3"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0137.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0137.avif" alt="Salerno, Italy 사진 4"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0139.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0139.avif" alt="Salerno, Italy 사진 5"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0140.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0140.avif" alt="Salerno, Italy 사진 6"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0145.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0145.avif" alt="Salerno, Italy 사진 7"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0147.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0147.avif" alt="Salerno, Italy 사진 8"></p>
 
 <h2 id="amalfi--nerano">Amalfi → Nerano</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0153.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0153.avif" alt="Salerno, Italy 사진 9"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0154.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0154.avif" alt="Salerno, Italy 사진 10"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0157.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0157.avif" alt="Salerno, Italy 사진 11"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0178.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0178.avif" alt="Salerno, Italy 사진 12"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0185.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0185.avif" alt="Salerno, Italy 사진 13"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0186.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0186.avif" alt="Salerno, Italy 사진 14"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0194.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0194.avif" alt="Salerno, Italy 사진 15"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0205.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0205.avif" alt="Salerno, Italy 사진 16"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0213.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0213.avif" alt="Salerno, Italy 사진 17"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0221.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0221.avif" alt="Salerno, Italy 사진 18"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0222.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0222.avif" alt="Salerno, Italy 사진 19"></p>
 
 <h2 id="nerano--salerno">Nerano → Salerno</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0324.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0324.avif" alt="Salerno, Italy 사진 20"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0343.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0343.avif" alt="Salerno, Italy 사진 21"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0348.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0348.avif" alt="Salerno, Italy 사진 22"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0349.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0349.avif" alt="Salerno, Italy 사진 23"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0353.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0353.avif" alt="Salerno, Italy 사진 24"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0381.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0381.avif" alt="Salerno, Italy 사진 25"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0383.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0383.avif" alt="Salerno, Italy 사진 26"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0391.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0391.avif" alt="Salerno, Italy 사진 27"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0413.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0413.avif" alt="Salerno, Italy 사진 28"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0434.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0434.avif" alt="Salerno, Italy 사진 29"></p>
 
 <h2 id="salerno">Salerno</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0483.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0483.avif" alt="Salerno, Italy 사진 30"></p>
 
 <h2 id="salerno--minori">Salerno → Minori</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0492.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0492.avif" alt="Salerno, Italy 사진 31"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0498.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0498.avif" alt="Salerno, Italy 사진 32"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0501.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0501.avif" alt="Salerno, Italy 사진 33"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0503.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0503.avif" alt="Salerno, Italy 사진 34"></p>
 
 <h2 id="minori">Minori</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0557.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0557.avif" alt="Salerno, Italy 사진 35"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0559.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0559.avif" alt="Salerno, Italy 사진 36"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0560.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0560.avif" alt="Salerno, Italy 사진 37"></p>
 
 <h2 id="minori--agropoli">Minori → Agropoli</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0577.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0577.avif" alt="Salerno, Italy 사진 38"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0639.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0639.avif" alt="Salerno, Italy 사진 39"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0640.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0640.avif" alt="Salerno, Italy 사진 40"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0683.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0683.avif" alt="Salerno, Italy 사진 41"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0686.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0686.avif" alt="Salerno, Italy 사진 42"></p>
 
 <h2 id="agropoli">Agropoli</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0729.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0729.avif" alt="Salerno, Italy 사진 43"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0742.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0742.avif" alt="Salerno, Italy 사진 44"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0744.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0744.avif" alt="Salerno, Italy 사진 45"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0748.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0748.avif" alt="Salerno, Italy 사진 46"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0750.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0750.avif" alt="Salerno, Italy 사진 47"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0754.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0754.avif" alt="Salerno, Italy 사진 48"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0763.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0763.avif" alt="Salerno, Italy 사진 49"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0764.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0764.avif" alt="Salerno, Italy 사진 50"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0765.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0765.avif" alt="Salerno, Italy 사진 51"></p>
 
 <h3 id="archaeological-area-of-paestum">Archaeological Area of Paestum</h3>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0773.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0773.avif" alt="Salerno, Italy 사진 52"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0775.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0775.avif" alt="Salerno, Italy 사진 53"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0777.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0777.avif" alt="Salerno, Italy 사진 54"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0779.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0779.avif" alt="Salerno, Italy 사진 55"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0780.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0780.avif" alt="Salerno, Italy 사진 56"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0781.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0781.avif" alt="Salerno, Italy 사진 57"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0786.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0786.avif" alt="Salerno, Italy 사진 58"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0787.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0787.avif" alt="Salerno, Italy 사진 59"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0802.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0802.avif" alt="Salerno, Italy 사진 60"></p>
 
 <h2 id="agropoli--acciaroli">Agropoli → Acciaroli</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0861.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0861.avif" alt="Salerno, Italy 사진 61"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0877.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0877.avif" alt="Salerno, Italy 사진 62"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0878.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0878.avif" alt="Salerno, Italy 사진 63"></p>
 
 <h2 id="acciaroli">Acciaroli</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0897.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0897.avif" alt="Salerno, Italy 사진 64"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0902.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0902.avif" alt="Salerno, Italy 사진 65"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0904.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0904.avif" alt="Salerno, Italy 사진 66"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0907.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0907.avif" alt="Salerno, Italy 사진 67"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0908.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0908.avif" alt="Salerno, Italy 사진 68"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0915.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0915.avif" alt="Salerno, Italy 사진 69"></p>
 
 <h2 id="castellabate">Castellabate</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0925.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0925.avif" alt="Salerno, Italy 사진 70"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0929.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0929.avif" alt="Salerno, Italy 사진 71"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0947.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0947.avif" alt="Salerno, Italy 사진 72"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0952.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0952.avif" alt="Salerno, Italy 사진 73"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0962.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0962.avif" alt="Salerno, Italy 사진 74"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0979.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0979.avif" alt="Salerno, Italy 사진 75"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0980.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_0980.avif" alt="Salerno, Italy 사진 76"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_0981.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_0981.avif" alt="Salerno, Italy 사진 77"></p>
 
 <h2 id="castellabate--amalfi">Castellabate → Amalfi</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1032.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1032.avif" alt="Salerno, Italy 사진 78"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1033.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1033.avif" alt="Salerno, Italy 사진 79"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1040.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1040.avif" alt="Salerno, Italy 사진 80"></p>
 
 <h2 id="amalfi-1">Amalfi</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1059.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1059.avif" alt="Salerno, Italy 사진 81"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1060.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1060.avif" alt="Salerno, Italy 사진 82"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1061.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1061.avif" alt="Salerno, Italy 사진 83"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1064.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1064.avif" alt="Salerno, Italy 사진 84"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1069.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1069.avif" alt="Salerno, Italy 사진 85"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1070.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1070.avif" alt="Salerno, Italy 사진 86"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1071.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1071.avif" alt="Salerno, Italy 사진 87"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1072.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1072.avif" alt="Salerno, Italy 사진 88"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1073.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1073.avif" alt="Salerno, Italy 사진 89"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1082.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1082.avif" alt="Salerno, Italy 사진 90"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1083.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1083.avif" alt="Salerno, Italy 사진 91"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1084.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1084.avif" alt="Salerno, Italy 사진 92"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1090.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_1090.avif" alt="Salerno, Italy 사진 93"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1091.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1091.avif" alt="Salerno, Italy 사진 94"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1094.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1094.avif" alt="Salerno, Italy 사진 95"></p>
 
 <h2 id="salerno-1">Salerno</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1156.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1156.avif" alt="Salerno, Italy 사진 96"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1157.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1157.avif" alt="Salerno, Italy 사진 97"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1158.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_1158.avif" alt="Salerno, Italy 사진 98"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1159.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-06-27-Salerno/IMG_1159.avif" alt="Salerno, Italy 사진 99"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1175.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1175.avif" alt="Salerno, Italy 사진 100"></p>
 
 <h2 id="way-home">Way home</h2>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1220.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1220.avif" alt="Salerno, Italy 사진 101"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1221.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1221.avif" alt="Salerno, Italy 사진 102"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1222.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1222.avif" alt="Salerno, Italy 사진 103"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1224.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1224.avif" alt="Salerno, Italy 사진 104"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1228.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1228.avif" alt="Salerno, Italy 사진 105"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1230.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1230.avif" alt="Salerno, Italy 사진 106"></p>
 
-<p><img src="/assets/att/2026-06-27-Salerno/IMG_1232.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-06-27-Salerno/IMG_1232.avif" alt="Salerno, Italy 사진 107"></p>
 
 
     </div>
@@ -1155,8 +1158,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/Homes/Berlin/Ora/" title="Ora">
-            Ora<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Szczecin/" title="Szczecin, Poland">
+            Szczecin, Poland<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1171,16 +1174,16 @@ document.addEventListener('DOMContentLoaded', function(event) {
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Homes/Berlin/Anmeldung_Berlin/" title="베를린에서 안멜둥 (거주지 등록) 하기">
-            베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Zumikon-Zurich/" title="Zumikon-Zurich, Switzerland">
+            Zumikon-Zurich, Switzerland<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Homes/Aachen/Casa_Malia/" title="Casa Malia">
-            Casa Malia<!-- <span class="post-badges">
+          <a class="post-link" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="난로">
+            난로<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1334,7 +1337,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
           <p>
             Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
             Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&amp;preview.size=171">Google Sans Flex</a><br>
-            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
+            Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
           </p>
           <p>
             

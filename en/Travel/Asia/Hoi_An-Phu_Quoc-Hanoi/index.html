@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-scroll-status="top">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -17,19 +17,20 @@
 <link rel="canonical" href="https://yxxxxxxxxnxx.github.io/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/">
 <meta property="og:url" content="https://yxxxxxxxxnxx.github.io/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/">
 <meta property="og:site_name" content="yxxxxxxxxnxx">
+<meta property="og:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2026-03-29-Hoi_An-Phu_Quoc-Hanoi.jpg">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2026-03-29T00:00:00+00:00">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2026-03-29-Hoi_An-Phu_Quoc-Hanoi.jpg">
 <meta property="twitter:title" content="Hoi An-Phu Quoc-Hanoi, Viet Nam">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2026-03-29T00:00:00+00:00","datePublished":"2026-03-29T00:00:00+00:00","description":"Hoi An","headline":"Hoi An-Phu Quoc-Hanoi, Viet Nam","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/"},"url":"https://yxxxxxxxxnxx.github.io/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2026-03-29T00:00:00+00:00","datePublished":"2026-03-29T00:00:00+00:00","description":"Hoi An","headline":"Hoi An-Phu Quoc-Hanoi, Viet Nam","image":"https://yxxxxxxxxnxx.github.io/assets/og/2026-03-29-Hoi_An-Phu_Quoc-Hanoi.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/"},"url":"https://yxxxxxxxxnxx.github.io/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
-  <link rel="canonical" href="https://yxxxxxxxxnxx.github.io">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792688695">
+<link rel="stylesheet" href="/assets/css/main.css?v=1792740267">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/en/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -205,7 +206,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경, 홈 포스트 썸네일)
+    // width·height 속성(_plugins/image-attrs.rb가 넣는 실제 크기)이 있으면 그 크기로 연다: lazy 이미지는 아직 안 받았을 수 있다
     const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
@@ -225,10 +227,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <a class="photo-swipe"
         href="${imgEl.src}"
         data-pswp-width="${
-          Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale
+          (Number(imgEl.getAttribute("width")) || Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale)
         }"
         data-pswp-height="${
-          Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale
+          (Number(imgEl.getAttribute("height")) || Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale)
         }"
         data-pswp-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
         target="_blank">
@@ -752,6 +754,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792740267"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -901,135 +904,135 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
       <h2 id="hoi-an">Hoi An</h2>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8538.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8538.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 1"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8545.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8545.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 2"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8549.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8549.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 3"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8550.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8550.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 4"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8578.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8578.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 5"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8579.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8579.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 6"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8580.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8580.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 7"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8582.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8582.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 8"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8586.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8586.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 9"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8587.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8587.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 10"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8590.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8590.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 11"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8591.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8591.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 12"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8593.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8593.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 13"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8595.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8595.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 14"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8597.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8597.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 15"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8598.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8598.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 16"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8600.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8600.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 17"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8601.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8601.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 18"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8603.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8603.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 19"></p>
 
 <h2 id="phu-quoc">Phu Quoc</h2>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8653.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8653.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 20"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8654.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8654.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 21"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8752.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8752.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 22"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8757.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8757.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 23"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8765.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8765.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 24"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8766.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8766.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 25"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8769.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8769.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 26"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8861.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8861.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 27"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8862.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8862.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 28"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8870.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8870.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 29"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8873.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8873.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 30"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8883.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8883.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 31"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8885.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8885.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 32"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8886.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8886.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 33"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8898.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8898.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 34"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8899.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8899.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 35"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8903.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8903.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 36"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8967.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8967.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 37"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8981.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8981.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 38"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8996.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_8996.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 39"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9001.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9001.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 40"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9013.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9013.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 41"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9019.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9019.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 42"></p>
 
 <h2 id="hanoi">Hanoi</h2>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9033.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9033.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 43"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9035.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9035.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 44"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9047.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9047.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 45"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9059.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9059.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 46"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9069.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1438" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9069.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 47"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9078.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9078.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 48"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9091.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9091.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 49"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9092.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9092.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 50"></p>
 
 <h2 id="way-home">Way Home</h2>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9102.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9102.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 51"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9105.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9105.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 52"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9107.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9107.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 53"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9111.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9111.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 54"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9113.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9113.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 55"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9114.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9114.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 56"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9115.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9115.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 57"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9120.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9120.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 58"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9132.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9132.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 59"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9134.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9134.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 60"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9141.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9141.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 61"></p>
 
-<p><img src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9145.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/IMG_9145.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam 사진 62"></p>
 
 
     </div>
@@ -1042,32 +1045,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/en/Travel/Europe/Prague/" title="Prague, Czech Republic">
-            Prague, Czech Republic<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Book/Literature/Human_Acts/" title="Human Acts">
+            Human Acts<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Homes/Berlin/Protein_supplement/" title="단백질 보충제">
-            단백질 보충제<!-- <span class="post-badges">
+          <a class="post-link" href="/en/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="Stove">
+            Stove<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Travel/Europe/Wannsee/" title="Wannsee, Germany">
-            Wannsee, Germany<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Travel/Europe/Szczecin/" title="Szczecin, Poland">
+            Szczecin, Poland<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Homes/Aachen/Casa_Malia/" title="Casa Malia">
-            Casa Malia<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/" title="베를린에서 안멜둥 (거주지 등록) 하기">
+            베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1221,7 +1224,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
           <p>
             Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
             Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&amp;preview.size=171">Google Sans Flex</a><br>
-            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
+            Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
           </p>
           <p>
             

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-scroll-status="top">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -17,19 +17,20 @@
 <link rel="canonical" href="https://yxxxxxxxxnxx.github.io/Travel/Europe/Prague/">
 <meta property="og:url" content="https://yxxxxxxxxnxx.github.io/Travel/Europe/Prague/">
 <meta property="og:site_name" content="yxxxxxxxxnxx">
+<meta property="og:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2025-06-09-Prague.jpg">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2025-06-09T00:00:00+00:00">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2025-06-09-Prague.jpg">
 <meta property="twitter:title" content="Prague, Czech Republic">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2025-06-09T00:00:00+00:00","datePublished":"2025-06-09T00:00:00+00:00","description":"Praha","headline":"Prague, Czech Republic","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Prague/"},"url":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Prague/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2025-06-09T00:00:00+00:00","datePublished":"2025-06-09T00:00:00+00:00","description":"Praha","headline":"Prague, Czech Republic","image":"https://yxxxxxxxxnxx.github.io/assets/og/2025-06-09-Prague.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Prague/"},"url":"https://yxxxxxxxxnxx.github.io/Travel/Europe/Prague/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
-  <link rel="canonical" href="https://yxxxxxxxxnxx.github.io">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792688695">
+<link rel="stylesheet" href="/assets/css/main.css?v=1792740267">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/en/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -205,7 +206,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경, 홈 포스트 썸네일)
+    // width·height 속성(_plugins/image-attrs.rb가 넣는 실제 크기)이 있으면 그 크기로 연다: lazy 이미지는 아직 안 받았을 수 있다
     const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
@@ -225,10 +227,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <a class="photo-swipe"
         href="${imgEl.src}"
         data-pswp-width="${
-          Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale
+          (Number(imgEl.getAttribute("width")) || Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale)
         }"
         data-pswp-height="${
-          Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale
+          (Number(imgEl.getAttribute("height")) || Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale)
         }"
         data-pswp-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
         target="_blank">
@@ -752,6 +754,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792740267"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -900,118 +903,118 @@ document.addEventListener('DOMContentLoaded', function(event) {
     <div class="post-content e-content" itemprop="articleBody">
 
       <h2 id="praha">Praha</h2>
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4067.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4067.avif" alt="Prague, Czech Republic 사진 1"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4069.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4069.avif" alt="Prague, Czech Republic 사진 2"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4073.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4073.avif" alt="Prague, Czech Republic 사진 3"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4076.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4076.avif" alt="Prague, Czech Republic 사진 4"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4111.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4111.avif" alt="Prague, Czech Republic 사진 5"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4114.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4114.avif" alt="Prague, Czech Republic 사진 6"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4118.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4118.avif" alt="Prague, Czech Republic 사진 7"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4128.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4128.avif" alt="Prague, Czech Republic 사진 8"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4136.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4136.avif" alt="Prague, Czech Republic 사진 9"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4161.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4161.avif" alt="Prague, Czech Republic 사진 10"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4165.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4165.avif" alt="Prague, Czech Republic 사진 11"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4167.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4167.avif" alt="Prague, Czech Republic 사진 12"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4170.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4170.avif" alt="Prague, Czech Republic 사진 13"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4171.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4171.avif" alt="Prague, Czech Republic 사진 14"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4173.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1438" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4173.avif" alt="Prague, Czech Republic 사진 15"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4179.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4179.avif" alt="Prague, Czech Republic 사진 16"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4181.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4181.avif" alt="Prague, Czech Republic 사진 17"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4192.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4192.avif" alt="Prague, Czech Republic 사진 18"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4193.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4193.avif" alt="Prague, Czech Republic 사진 19"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4244.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4244.avif" alt="Prague, Czech Republic 사진 20"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4245.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4245.avif" alt="Prague, Czech Republic 사진 21"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4249.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4249.avif" alt="Prague, Czech Republic 사진 22"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4252.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4252.avif" alt="Prague, Czech Republic 사진 23"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4253.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4253.avif" alt="Prague, Czech Republic 사진 24"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4254.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4254.avif" alt="Prague, Czech Republic 사진 25"></p>
 
 <h3 id="výčep">Výčep</h3>
 <p>Korunní 1304/92</p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4132.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4132.avif" alt="Prague, Czech Republic 사진 26"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4134.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4134.avif" alt="Prague, Czech Republic 사진 27"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4137.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4137.avif" alt="Prague, Czech Republic 사진 28"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4141.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4141.avif" alt="Prague, Czech Republic 사진 29"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4145.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4145.avif" alt="Prague, Czech Republic 사진 30"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4147.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4147.avif" alt="Prague, Czech Republic 사진 31"></p>
 
 <h3 id="bockem">Bockem</h3>
 <p>Elišky Peškové 1095/5</p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4195.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4195.avif" alt="Prague, Czech Republic 사진 32"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4196.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4196.avif" alt="Prague, Czech Republic 사진 33"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4197.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4197.avif" alt="Prague, Czech Republic 사진 34"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4198.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4198.avif" alt="Prague, Czech Republic 사진 35"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4203.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4203.avif" alt="Prague, Czech Republic 사진 36"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4204.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4204.avif" alt="Prague, Czech Republic 사진 37"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4207.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4207.avif" alt="Prague, Czech Republic 사진 38"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4209.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4209.avif" alt="Prague, Czech Republic 사진 39"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4211.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4211.avif" alt="Prague, Czech Republic 사진 40"></p>
 
 <h3 id="osada">Osada</h3>
 <p>Osadní 774/35</p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4215.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4215.avif" alt="Prague, Czech Republic 사진 41"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4216.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4216.avif" alt="Prague, Czech Republic 사진 42"></p>
 
 <h3 id="dox">DOX</h3>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4217.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4217.avif" alt="Prague, Czech Republic 사진 43"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4218.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4218.avif" alt="Prague, Czech Republic 사진 44"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4221.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4221.avif" alt="Prague, Czech Republic 사진 45"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4228.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4228.avif" alt="Prague, Czech Republic 사진 46"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4233.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1438" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4233.avif" alt="Prague, Czech Republic 사진 47"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4236.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4236.avif" alt="Prague, Czech Republic 사진 48"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4239.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4239.avif" alt="Prague, Czech Republic 사진 49"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4240.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1440" height="1920" src="/assets/att/2025-06-09-Prague/IMG_4240.avif" alt="Prague, Czech Republic 사진 50"></p>
 
-<p><img src="/assets/att/2025-06-09-Prague/IMG_4242.avif" alt="alt text"></p>
+<p><img loading="lazy" decoding="async" width="1920" height="1440" src="/assets/att/2025-06-09-Prague/IMG_4242.avif" alt="Prague, Czech Republic 사진 51"></p>
 
 
     </div>
@@ -1024,8 +1027,24 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/en/Homes/Berlin/Christmas_Markets/" title="Berlin Christmas Markets">
-            Berlin Christmas Markets<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Travel/Africa/Cape_Town/" title="Cape Town, South Africa">
+            Cape Town, South Africa<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/en/Travel/Europe/J%C3%BCterbog/" title="Jüterbog, Germany">
+            Jüterbog, Germany<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/en/Home%5Cs/Berlin/Berlinale_2025/" title="Berlinale 2025">
+            Berlinale 2025<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1034,22 +1053,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <li class="">
           <a class="post-link" href="/en/Languages/Deutsch/Trennbare_Verben_und_Untrennbare_Verben/" title="Trennbare Verben und Untrennbare Verben">
             Trennbare Verben und Untrennbare Verben<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/" title="베를린에서 안멜둥 (거주지 등록) 하기">
-            베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/en/Travel/Europe/Prague/" title="Prague, Czech Republic">
-            Prague, Czech Republic<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1203,7 +1206,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
           <p>
             Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
             Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&amp;preview.size=171">Google Sans Flex</a><br>
-            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
+            Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
           </p>
           <p>
             

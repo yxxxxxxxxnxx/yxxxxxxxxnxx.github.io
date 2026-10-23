@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-scroll-status="top">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -15,21 +15,22 @@
 <meta name="description" content="구입 계기 309 euros">
 <meta property="og:description" content="구입 계기 309 euros">
 <link rel="canonical" href="https://yxxxxxxxxnxx.github.io/Tech/Electronic%20Devices/B&amp;W%20Px8/">
-<meta property="og:url" content="https://yxxxxxxxxnxx.github.io/Tech/Electronic%20Devices/B&amp;W%20Px8/">
+<meta property="og:url" content="https://yxxxxxxxxnxx.github.io/Tech/Electronic Devices/B&amp;W Px8/">
 <meta property="og:site_name" content="yxxxxxxxxnxx">
+<meta property="og:image" content="https://www.bowerswilkins.com/on/demandware.static/-/Sites-master-catalog-soundunited/default/dwf2c89100/bowers/Rich-Content/bw_px8_cancel_the_noise_desktop.jpg">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2025-08-30T00:00:00+00:00">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="https://www.bowerswilkins.com/on/demandware.static/-/Sites-master-catalog-soundunited/default/dwf2c89100/bowers/Rich-Content/bw_px8_cancel_the_noise_desktop.jpg">
 <meta property="twitter:title" content="B&amp;W Px8">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2025-08-30T00:00:00+00:00","datePublished":"2025-08-30T00:00:00+00:00","description":"구입 계기 309 euros","headline":"B&amp;W Px8","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Tech/Electronic%20Devices/B&W%20Px8/"},"url":"https://yxxxxxxxxnxx.github.io/Tech/Electronic%20Devices/B&W%20Px8/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2025-08-30T00:00:00+00:00","datePublished":"2025-08-30T00:00:00+00:00","description":"구입 계기 309 euros","headline":"B&amp;W Px8","image":"https://www.bowerswilkins.com/on/demandware.static/-/Sites-master-catalog-soundunited/default/dwf2c89100/bowers/Rich-Content/bw_px8_cancel_the_noise_desktop.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Tech/Electronic Devices/B&W Px8/"},"url":"https://yxxxxxxxxnxx.github.io/Tech/Electronic Devices/B&W Px8/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
-  <link rel="canonical" href="https://yxxxxxxxxnxx.github.io">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792688695">
+<link rel="stylesheet" href="/assets/css/main.css?v=1792740267">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/en/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -205,7 +206,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경, 홈 포스트 썸네일)
+    // width·height 속성(_plugins/image-attrs.rb가 넣는 실제 크기)이 있으면 그 크기로 연다: lazy 이미지는 아직 안 받았을 수 있다
     const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
@@ -225,10 +227,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <a class="photo-swipe"
         href="${imgEl.src}"
         data-pswp-width="${
-          Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale
+          (Number(imgEl.getAttribute("width")) || Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale)
         }"
         data-pswp-height="${
-          Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale
+          (Number(imgEl.getAttribute("height")) || Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale)
         }"
         data-pswp-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
         target="_blank">
@@ -752,6 +754,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792740267"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -935,32 +938,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/en/Travel/Asia/Seoul/" title="Seoul, South Korea">
-            Seoul, South Korea<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Travel/Europe/Szczecin/" title="Szczecin, Poland">
+            Szczecin, Poland<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Homes/Aachen/Casa_Malia/" title="Casa Malia">
-            Casa Malia<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Home%5Cs/Berlin/Berlinale_2025/" title="Berlinale 2025">
+            Berlinale 2025<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Homes/Aachen/Aufenthaltserlaubnis/" title="Student Residence Permit in Germany">
-            Student Residence Permit in Germany<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Homes/Berlin/Markthalle_Neun/" title="Markthalle Neun">
+            Markthalle Neun<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Travel/Africa/Cape_Town/" title="Cape Town, South Africa">
-            Cape Town, South Africa<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Travel/Europe/Salerno/" title="Salerno, Italy">
+            Salerno, Italy<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1114,7 +1117,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
           <p>
             Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
             Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&amp;preview.size=171">Google Sans Flex</a><br>
-            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
+            Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
           </p>
           <p>
             

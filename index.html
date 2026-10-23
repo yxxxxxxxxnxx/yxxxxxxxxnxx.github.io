@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" data-scroll-status="top">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -12,23 +12,24 @@
 <meta property="og:title" content="Home">
 <meta name="author" content="yxxxxxxxxnxx">
 <meta property="og:locale" content="en_US">
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
-<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+<meta name="description" content="여행과 집, 새것들에 대한 사진과 기록. Photos and notes on travel, homes and new things.">
+<meta property="og:description" content="여행과 집, 새것들에 대한 사진과 기록. Photos and notes on travel, homes and new things.">
 <link rel="canonical" href="https://yxxxxxxxxnxx.github.io/">
 <meta property="og:url" content="https://yxxxxxxxxnxx.github.io/">
 <meta property="og:site_name" content="yxxxxxxxxnxx">
+<meta property="og:image" content="https://yxxxxxxxxnxx.github.io/assets/og/home.jpg">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="https://yxxxxxxxxnxx.github.io/assets/og/home.jpg">
 <meta property="twitter:title" content="Home">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Home","name":"yxxxxxxxxnxx","url":"https://yxxxxxxxxnxx.github.io/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"description":"여행과 집, 새것들에 대한 사진과 기록. Photos and notes on travel, homes and new things.","headline":"Home","image":"https://yxxxxxxxxnxx.github.io/assets/og/home.jpg","name":"yxxxxxxxxnxx","url":"https://yxxxxxxxxnxx.github.io/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="icon" href="">
-  <link rel="canonical" href="https://yxxxxxxxxnxx.github.io">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792688695">
+<link rel="stylesheet" href="/assets/css/main.css?v=1792740267">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -204,7 +205,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
     }
 
     const imgEls = [];
-    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경)
+    // no-photo-swipe: 링크로 감싸지 않을 이미지 (예: 홈 show-window 배경, 홈 포스트 썸네일)
+    // width·height 속성(_plugins/image-attrs.rb가 넣는 실제 크기)이 있으면 그 크기로 연다: lazy 이미지는 아직 안 받았을 수 있다
     const els = galleryEl.querySelectorAll("img:not(.emoji):not(.no-photo-swipe)");
     els.forEach((el) => {
       if (el.src.trim() == "") {
@@ -224,10 +226,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <a class="photo-swipe"
         href="${imgEl.src}"
         data-pswp-width="${
-          Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale
+          (Number(imgEl.getAttribute("width")) || Math.max(imgEl.naturalWidth, imgEl.width) * options.photo_scale)
         }"
         data-pswp-height="${
-          Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale
+          (Number(imgEl.getAttribute("height")) || Math.max(imgEl.naturalHeight, imgEl.height) * options.photo_scale)
         }"
         data-pswp-caption="${imgEl.getAttribute("caption") || imgEl.alt}"
         target="_blank">
@@ -498,6 +500,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792740267"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -597,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 <div class="show-window">
-  <img class="show-window-image no-photo-swipe" alt="">
+  <img class="show-window-image no-photo-swipe" alt=""><div class="show-window-logo" aria-hidden="true"><span>yxxxxxxxxnxx</span></div>
 </div>
 
 <script>
@@ -677,8 +680,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Protein_supplement/">
-        <div style="background-image: url('/assets/att/2026-10-19-Protein_supplement/banner.avif');"></div>
+      <a class="post-image" href="/Homes/Berlin/Protein_supplement/"><img class="no-photo-swipe" src="/assets/att/2026-10-19-Protein_supplement/banner.avif" alt="단백질 보충제" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -796,8 +799,8 @@ REWE Beste Wahl High Protein Puddi... <span class="read_more"><i class="fa-solid
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Mallorca/">
-        <div style="background-image: url('/assets/att/2026-09-19-Mallorca/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Mallorca/"><img class="no-photo-swipe" src="/assets/att/2026-09-19-Mallorca/banner.avif" alt="Mallorca, Spain" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -995,8 +998,8 @@ Way Home
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Hamburg/">
-        <div style="background-image: url('/assets/att/2026-08-23-Hamburg/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Hamburg/"><img class="no-photo-swipe" src="/assets/att/2026-08-23-Hamburg/banner.avif" alt="Hamburg, Germany" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -1178,8 +1181,8 @@ Der Alter Elbtunnel
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Salerno/">
-        <div style="background-image: url('/assets/att/2026-06-27-Salerno/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Salerno/"><img class="no-photo-swipe" src="/assets/att/2026-06-27-Salerno/banner.avif" alt="Salerno, Italy" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -1426,8 +1429,8 @@ Castellab... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></sp
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Weert/">
-        <div style="background-image: url('/assets/att/2026-04-26-Weert/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Weert/"><img class="no-photo-swipe" src="/assets/att/2026-04-26-Weert/banner.avif" alt="Weert, The Netherlands" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -1533,8 +1536,8 @@ Binnenstad
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/L%C3%BCbeck/">
-        <div style="background-image: url('/assets/att/2026-04-05-L%C3%BCbeck/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/L%C3%BCbeck/"><img class="no-photo-swipe" src="/assets/att/2026-04-05-L%C3%BCbeck/banner.avif" alt="Lübeck, Germany" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -1666,8 +1669,8 @@ Travemünde
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/">
-        <div style="background-image: url('/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/"><img class="no-photo-swipe" src="/assets/att/2026-03-29-Hoi_An-Phu_Quoc-Hanoi/banner.avif" alt="Hoi An-Phu Quoc-Hanoi, Viet Nam" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -1883,8 +1886,8 @@ Way Home
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Asia/Seoul/">
-        <div style="background-image: url('/assets/att/2026-03-15-Seoul/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Asia/Seoul/"><img class="no-photo-swipe" src="/assets/att/2026-03-15-Seoul/banner.avif" alt="Seoul, South Korea" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -2071,8 +2074,8 @@ ICN-DAD
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Arosa/">
-        <div style="background-image: url('/assets/att/2026-01-22-Arosa/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Arosa/"><img class="no-photo-swipe" src="/assets/att/2026-01-22-Arosa/banner.avif" alt="Arosa, Switzerland" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -2184,8 +2187,8 @@ Way Home
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Africa/Gran_Canaria/">
-        <div style="background-image: url('/assets/att/2026-01-07-Gran_Canaria/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Africa/Gran_Canaria/"><img class="no-photo-swipe" src="/assets/att/2026-01-07-Gran_Canaria/banner.avif" alt="Gran Canaria, Spain" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -2428,8 +2431,8 @@ Mogán
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Valencia/">
-        <div style="background-image: url('/assets/att/2025-09-21-Valencia/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Valencia/"><img class="no-photo-swipe" src="/assets/att/2025-09-21-Valencia/banner.avif" alt="Valencia, Spain" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -2681,8 +2684,8 @@ Way Home
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Zumikon-Zurich/">
-        <div style="background-image: url('/assets/att/2025-09-07-Zumikon-Zurich/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Zumikon-Zurich/"><img class="no-photo-swipe" src="/assets/att/2025-09-07-Zumikon-Zurich/banner.avif" alt="Zumikon-Zurich, Switzerland" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -2826,8 +2829,8 @@ Way Home
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Warsaw/">
-        <div style="background-image: url('/assets/att/2025-08-24-Warsaw/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Warsaw/"><img class="no-photo-swipe" src="/assets/att/2025-08-24-Warsaw/banner.avif" alt="Warsaw, Poland" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -2995,8 +2998,8 @@ Restaurant
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Sitges/">
-        <div style="background-image: url('/assets/att/2025-07-30-Sitges/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Sitges/"><img class="no-photo-swipe" src="/assets/att/2025-07-30-Sitges/banner.avif" alt="Sitges, Spain" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -3194,8 +3197,8 @@ Restaurant
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Szczecin/">
-        <div style="background-image: url('/assets/att/2025-07-19-Szczecin/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Szczecin/"><img class="no-photo-swipe" src="/assets/att/2025-07-19-Szczecin/banner.avif" alt="Szczecin, Poland" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -3311,8 +3314,8 @@ Restaurant
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Dubrovnik/">
-        <div style="background-image: url('/assets/att/2025-07-05-Dubrovnik/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Dubrovnik/"><img class="no-photo-swipe" src="/assets/att/2025-07-05-Dubrovnik/banner.avif" alt="Dubrovnik, Croatia" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -3553,8 +3556,8 @@ Restaurant
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/J%C3%BCterbog/">
-        <div style="background-image: url('/assets/att/2025-06-22-J%C3%BCterbog/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/J%C3%BCterbog/"><img class="no-photo-swipe" src="/assets/att/2025-06-22-J%C3%BCterbog/banner.avif" alt="Jüterbog, Germany" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -3663,8 +3666,8 @@ Restaurant
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Wannsee/">
-        <div style="background-image: url('/assets/att/2025-06-17-Wannsee/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Wannsee/"><img class="no-photo-swipe" src="/assets/att/2025-06-17-Wannsee/banner.avif" alt="Wannsee, Germany" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -3767,8 +3770,8 @@ Restaurant
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Prague/">
-        <div style="background-image: url('/assets/att/2025-06-09-Prague/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Prague/"><img class="no-photo-swipe" src="/assets/att/2025-06-09-Prague/banner.avif" alt="Prague, Czech Republic" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -3966,8 +3969,8 @@ DOX
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Seville-Malaga/">
-        <div style="background-image: url('/assets/att/2025-03-18-Seville-Malaga/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Seville-Malaga/"><img class="no-photo-swipe" src="/assets/att/2025-03-18-Seville-Malaga/banner.avif" alt="Seville-Malaga, Spain" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -4173,8 +4176,8 @@ Way Home
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Europe/Lagos-Sagres-Carvoeiro/">
-        <div style="background-image: url('/assets/att/2025-03-05-Lagos-Sagres-Carvoeiro/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Europe/Lagos-Sagres-Carvoeiro/"><img class="no-photo-swipe" src="/assets/att/2025-03-05-Lagos-Sagres-Carvoeiro/banner.avif" alt="Lagos-Sagres-Carvoeiro, Portugal" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -4340,8 +4343,8 @@ Numa
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Travel/Africa/Cape_Town/">
-        <div style="background-image: url('/assets/att/2025-01-15-Cape_Town/banner.avif');"></div>
+      <a class="post-image" href="/Travel/Africa/Cape_Town/"><img class="no-photo-swipe" src="/assets/att/2025-01-15-Cape_Town/banner.avif" alt="Cape Town, South Africa" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -4548,8 +4551,8 @@ Salsify at the Roundhouse
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Protein_supplement/">
-        <div style="background-image: url('/assets/att/2026-10-19-Protein_supplement/banner.avif');"></div>
+      <a class="post-image" href="/Homes/Berlin/Protein_supplement/"><img class="no-photo-swipe" src="/assets/att/2026-10-19-Protein_supplement/banner.avif" alt="단백질 보충제" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -4651,8 +4654,8 @@ REWE Beste Wahl High Protein Puddi... <span class="read_more"><i class="fa-solid
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Restaurant_Choi/">
-        <div style="background-image: url('/assets/att/2026-10-16-Restaurant_Choi/banner.avif');"></div>
+      <a class="post-image" href="/Homes/Berlin/Restaurant_Choi/"><img class="no-photo-swipe" src="/assets/att/2026-10-16-Restaurant_Choi/banner.avif" alt="Restaurant Choi" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -4759,8 +4762,8 @@ REWE Beste Wahl High Protein Puddi... <span class="read_more"><i class="fa-solid
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Anmeldung_Berlin/">
-        <div style="background-image: url('/assets/att/2026-10-02-Anmeldung_Berlin/banner.avif');"></div>
+      <a class="post-image" href="/Homes/Berlin/Anmeldung_Berlin/"><img class="no-photo-swipe" src="/assets/att/2026-10-02-Anmeldung_Berlin/banner.avif" alt="베를린에서 안멜둥 (거주지 등록) 하기" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -4849,8 +4852,8 @@ REWE Beste Wahl High Protein Puddi... <span class="read_more"><i class="fa-solid
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Aachen/Casa_Malia/">
-        <div style="background-image: url('https://lh3.googleusercontent.com/p/AF1QipPYGxRThJRCeCDoUeT_TWOjumTTwcjacM2f1-nf=s0');"></div>
+      <a class="post-image" href="/Homes/Aachen/Casa_Malia/"><img class="no-photo-swipe" src="https://lh3.googleusercontent.com/p/AF1QipPYGxRThJRCeCDoUeT_TWOjumTTwcjacM2f1-nf=s0" alt="Casa Malia" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -4943,8 +4946,8 @@ Banner image ©️ Casa Malia
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Markthalle_Neun/">
-        <div style="background-image: url('/assets/att/2026-04-19-Markthalle_Neun/IMG_1971.avif');"></div>
+      <a class="post-image" href="/Homes/Berlin/Markthalle_Neun/"><img class="no-photo-swipe" src="/assets/att/2026-04-19-Markthalle_Neun/IMG_1971.avif" alt="Markthalle Neun" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5032,8 +5035,8 @@ Markhalle Neun에는 DM을 제외하면 대기업 프랜차이즈를 찾아볼 �
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Aachen/Aufenthaltserlaubnis/">
-        <div style="background-image: url('https://www.fb5.rwth-aachen.de/global/show_picture.asp?id=aaaaaaaacbmskbn');"></div>
+      <a class="post-image" href="/Homes/Aachen/Aufenthaltserlaubnis/"><img class="no-photo-swipe" src="https://www.fb5.rwth-aachen.de/global/show_picture.asp?id=aaaaaaaacbmskbn" alt="독일 학생체류허가" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5122,8 +5125,8 @@ Visum vs. Aufenthatltserlaubnis
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Ora/">
-        <div style="background-image: url('/assets/att/2026-04-07-Ora/banner.avif');"></div>
+      <a class="post-image" href="/Homes/Berlin/Ora/"><img class="no-photo-swipe" src="/assets/att/2026-04-07-Ora/banner.avif" alt="Ora" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5226,8 +5229,8 @@ Visum vs. Aufenthatltserlaubnis
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Christmas_Markets/">
-        <div style="background-image: url('/assets/att/2025-12-24-Berlin_Christmas_Markets/banner.avif');"></div>
+      <a class="post-image" href="/Homes/Berlin/Christmas_Markets/"><img class="no-photo-swipe" src="/assets/att/2025-12-24-Berlin_Christmas_Markets/banner.avif" alt="Berlin Christmas Markets" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5354,8 +5357,8 @@ Gendarmenmarkt
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Sperrkonto/">
-        <div style="background-image: url('https://8668267.fs1.hubspotusercontent-na1.net/hub/8668267/hubfs/custom-video-thumbnails/EN%20CA%20HZ%20V2-thumb.jpeg');"></div>
+      <a class="post-image" href="/Homes/Berlin/Sperrkonto/"><img class="no-photo-swipe" src="https://8668267.fs1.hubspotusercontent-na1.net/hub/8668267/hubfs/custom-video-thumbnails/EN%20CA%20HZ%20V2-thumb.jpeg" alt="Sperrkonto" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5447,8 +5450,8 @@ Exp... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Student_Health_Insurace/">
-        <div style="background-image: url('https://www.mawista.com/wp-content/uploads/2019/08/mawista-student.jpg');"></div>
+      <a class="post-image" href="/Homes/Berlin/Student_Health_Insurace/"><img class="no-photo-swipe" src="https://www.mawista.com/wp-content/uploads/2019/08/mawista-student.jpg" alt="독일 학생 의료 보험" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5534,8 +5537,8 @@ Exp... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Homes/Berlin/Cosmetic_Products/">
-        <div style="background-image: url('https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/ca/skin-smarts/how-to-mosturize/best-moisturizer-dermatologist-recommended-600x400.jpg');"></div>
+      <a class="post-image" href="/Homes/Berlin/Cosmetic_Products/"><img class="no-photo-swipe" src="https://www.cerave.com/-/media/project/loreal/brand-sites/cerave/americas/ca/skin-smarts/how-to-mosturize/best-moisturizer-dermatologist-recommended-600x400.jpg" alt="베를린, 화장품 기행 (紀行 또는 奇行)" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5622,8 +5625,8 @@ Exp... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span></p
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Home%5Cs/Berlin/Berlinale_2025/">
-        <div style="background-image: url('/assets/att/2025-02-23-Berlinale_2025/banner.avif');"></div>
+      <a class="post-image" href="/Home%5Cs/Berlin/Berlinale_2025/"><img class="no-photo-swipe" src="/assets/att/2025-02-23-Berlinale_2025/banner.avif" alt="Berlinale 2025" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5744,8 +5747,8 @@ with J... <span class="read_more"><i class="fa-solid fa-circle-plus"></i></span>
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Tech/Electronic%20Devices/B&amp;W%20Px8/">
-        <div style="background-image: url('https://www.bowerswilkins.com/on/demandware.static/-/Sites-master-catalog-soundunited/default/dwf2c89100/bowers/Rich-Content/bw_px8_cancel_the_noise_desktop.jpg');"></div>
+      <a class="post-image" href="/Tech/Electronic%20Devices/B&amp;W%20Px8/"><img class="no-photo-swipe" src="https://www.bowerswilkins.com/on/demandware.static/-/Sites-master-catalog-soundunited/default/dwf2c89100/bowers/Rich-Content/bw_px8_cancel_the_noise_desktop.jpg" alt="B&amp;W Px8" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5840,8 +5843,8 @@ vs. Sennheiser Momentum 4
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Book/Literature/One_Dimensional/">
-        <div style="background-image: url('/assets/att/2025-02-03-One_Dimensional/banner.avif');"></div>
+      <a class="post-image" href="/Book/Literature/One_Dimensional/"><img class="no-photo-swipe" src="/assets/att/2025-02-03-One_Dimensional/banner.avif" alt="1차원이 되고 싶어" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5931,8 +5934,8 @@ Quotes
 
   <div class="post-content">
 <div class="post-image-container">
-      <a class="post-image" href="/Book/Literature/Human_Acts/">
-        <div style="background-image: url('/assets/att/2025-01-21-Human_Acts/banner.avif');"></div>
+      <a class="post-image" href="/Book/Literature/Human_Acts/"><img class="no-photo-swipe" src="/assets/att/2025-01-21-Human_Acts/banner.avif" alt="소년이 온다" loading="lazy" decoding="async">
+
       </a>
 
       <div class="post-bubbles-container">
@@ -5975,12 +5978,11 @@ Quotes
 </div>
 
       </div>
+<script src="/assets/js/scroll-sync.js?v=1792740267"></script>
+</div>
 <div class="panel-nav" aria-label="Panels">
-    <button type="button" class="panel-nav-prev" aria-label="Previous panel"><i class="fa-solid fa-arrow-up"></i></button>
-    <button type="button" class="panel-nav-next" aria-label="Next panel"><i class="fa-solid fa-arrow-down"></i></button>
-  </div>
-
-  <script src="/assets/js/scroll-sync.js?v=1792688695"></script>
+  <button type="button" class="panel-nav-prev" aria-label="Previous panel"><i class="fa-solid fa-arrow-up"></i></button>
+  <button type="button" class="panel-nav-next" aria-label="Next panel"><i class="fa-solid fa-arrow-down"></i></button>
 </div>
 </div>
 
@@ -6004,7 +6006,8 @@ Quotes
           <p>
             Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
             Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&amp;preview.size=171">Google Sans Flex</a><br>
-            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
+            Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
           </p>
           <p>
             
