@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 {%- comment -%} data-scroll-status="top": 처음부터 맨 위 상태로 그린다. 없으면 header.html 스크립트가 붙일 때 배너가 100vh로 늘어나며 본문이 밀린다 (CLS) {%- endcomment -%}
-<html lang="{{ page.lang | default: site.active_lang | default: site.lang | default: "en" }}" data-scroll-status="top">
+{%- comment -%} data-banner-bleed: 배너가 있는 페이지는 배너를 iOS 상태바·주소창 뒤까지 채운다 (banner.html, _layout.scss) {%- endcomment -%}
+{%- include functions.html func='get_banner' -%}
+<html lang="{{ page.lang | default: site.active_lang | default: site.lang | default: "en" }}" data-scroll-status="top"{% if has_banner %} data-banner-bleed{% endif %}>
 
   {%- include head.html -%}
 

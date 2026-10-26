@@ -78,7 +78,10 @@
 
       var scrollStatus = "";
 
-      if (y <= 0) {
+      // 배너 화면 채우기 페이지는 문서가 BLEED만큼 내려간 위치가 맨 위다 (banner.html)
+      var topY = parseFloat(getComputedStyle(documentElement).getPropertyValue("--banner-bleed")) || 0;
+
+      if (y <= topY + 1) {
         scrollStatus = "top";
       } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
         scrollStatus = "bottom";

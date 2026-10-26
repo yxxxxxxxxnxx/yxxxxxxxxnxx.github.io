@@ -1,15 +1,19 @@
 ---
 layout: post
-title: 단백질 보충제 
+title: 독일 슈퍼마켓/드럭스토어 PB 단백질 보충제 
 lang: ko
 permalink: /Homes/Berlin/Protein_supplement/
 categories: Home\s
 subcategories: Berlin
 tags: 단백질 단백질보충제 베를린 독일
 banner:
-    image: /assets/att/2026-10-19-Protein_supplement/banner.avif
+    image: /assets/att/2026-10-18-Protein_supplement/banner.avif
 update: true
 ---
+
+## 마이프로틴
+
+전자 제품만큼이나 프로틴 파우더도 구입처 (온/오프라인) 와 프로모션 적용 여부에 따라 가격 차이가 크게 나는 
 
 ## Supermarket PB
 
@@ -20,7 +24,7 @@ update: true
 ![Milbona High Protein Drink](https://sortiment.lidl.ch/media/catalog/product/cache/a4ee2587a2ccecf55b6fb41febdedaf3/5/0/5007051_Schoko_PSXX_1.jpg)
 <p class="caption">©️ Lidl official website</p>
 
-가장 먹기 편하다
+가장 맛있고 먹기도 편하다. 
 초코, 딸기, 바나나, 바닐라
 35g
 당  17.49 g (딸기)
@@ -36,6 +40,12 @@ update: true
 
 초코
 피스타치오 헤이즐넛 바닐라
+
+~~~ test
+단백질
+line
+more
+~~~
 
 20g
 8.4 g (초코)

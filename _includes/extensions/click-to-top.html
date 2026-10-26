@@ -69,10 +69,12 @@
         return;
       }
 
+      // 배너 화면 채우기 페이지의 맨 위는 BLEED 위치 (banner.html)
+      const pageTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--banner-bleed')) || 0;
       if (typeof smoothScrollTo === 'function') {
-        smoothScrollTo(0);
+        smoothScrollTo(pageTop);
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: pageTop, behavior: 'smooth' });
       }
     });
 

@@ -20,6 +20,10 @@
     html[data-scroll-status="top"] .page-banner {
       height: {{ banner_height }};
     }
+    /* 화면 위아래로 BLEED만큼 더 크게: iOS Safari 상태바·주소창 뒤까지 배너가 비친다 (아래 스크립트) */
+    html[data-banner-bleed][data-scroll-status="top"] .page-banner {
+      height: calc({{ banner_height }} + var(--banner-bleed) * 2);
+    }
   </style>
   {%- endif -%}
 
@@ -82,5 +86,20 @@
       {%- endif -%}
     </div>
   </section>
+
+  <script>
+    // 배너 화면 채우기 (default.html의 data-banner-bleed, 홈 show-window와 같은 방식):
+    // iOS Safari는 문서가 맨 위(스크롤 0)이면 상태바 뒤에 비출 내용이 없어 단색 띠를 그린다. 배너를 위로 BLEED만큼
+    // 더 그려 두고 문서를 그만큼 내린 채 시작하며, 그 위로는 올라가지 않는다. 헤더 높이·'top' 판정도 이 위치 기준이다.
+    (function () {
+      var root = document.documentElement;
+      if (!root.hasAttribute("data-banner-bleed")) return;
+      var bleed = parseFloat(getComputedStyle(root).getPropertyValue("--banner-bleed")) || 0;
+      if (!location.hash && window.scrollY < bleed) window.scrollTo(0, bleed);
+      window.addEventListener("scroll", function () {
+        if (window.scrollY < bleed - 1) window.scrollTo(0, bleed);
+      }, { passive: true });
+    })();
+  </script>
 {%- endif -%}
 
