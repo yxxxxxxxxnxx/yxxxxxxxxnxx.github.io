@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-scroll-status="top">
+<html lang="ko" data-scroll-status="top" data-banner-bleed>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -33,7 +33,7 @@
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792742716">
+<link rel="stylesheet" href="/assets/css/main.css?v=1793016980">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -427,7 +427,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
     function storeScrollData() {
       var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
 
-      if (y <= 0) {
+      // 배너 화면 채우기 페이지는 문서가 BLEED만큼 내려간 위치가 맨 위다 (banner.html)
+      var topY = parseFloat(getComputedStyle(documentElement).getPropertyValue("--banner-bleed")) || 0;
+
+      if (y <= topY + 1) {
         scrollStatus = "top";
       } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
         scrollStatus = "bottom";
@@ -588,6 +591,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
     html[data-scroll-status="top"] .page-banner {
       height: 100vh;
     }
+    /* 화면 위아래로 BLEED만큼 더 크게: iOS Safari 상태바·주소창 뒤까지 배너가 비친다 (아래 스크립트) */
+    html[data-banner-bleed][data-scroll-status="top"] .page-banner {
+      height: calc(100vh + var(--banner-bleed) * 2);
+    }
   </style>
 <style>
     html .page-banner .page-banner-img > *:first-child {
@@ -603,7 +610,22 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <div style="background-image: url(/assets/att/2025-01-21-Human_Acts/banner.avif)"></div>
         <img class="img-placeholder" src="/assets/att/2025-01-21-Human_Acts/banner.avif">
 </div>
-  </section><script>
+  </section>
+
+  <script>
+    // 배너 화면 채우기 (default.html의 data-banner-bleed, 홈 show-window와 같은 방식):
+    // iOS Safari는 문서가 맨 위(스크롤 0)이면 상태바 뒤에 비출 내용이 없어 단색 띠를 그린다. 배너를 위로 BLEED만큼
+    // 더 그려 두고 문서를 그만큼 내린 채 시작하며, 그 위로는 올라가지 않는다. 헤더 높이·'top' 판정도 이 위치 기준이다.
+    (function () {
+      var root = document.documentElement;
+      if (!root.hasAttribute("data-banner-bleed")) return;
+      var bleed = parseFloat(getComputedStyle(root).getPropertyValue("--banner-bleed")) || 0;
+      if (!location.hash && window.scrollY < bleed) window.scrollTo(0, bleed);
+      window.addEventListener("scroll", function () {
+        if (window.scrollY < bleed - 1) window.scrollTo(0, bleed);
+      }, { passive: true });
+    })();
+  </script><script>
   function hashLocate(hashValue) {
     hashValue = hashValue.replace(/^.*#h-/, '');
     hashValue = decodeURIComponent(hashValue);
@@ -757,7 +779,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
-<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792742716"></script>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1793016980"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -824,10 +846,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
         return;
       }
 
+      // 배너 화면 채우기 페이지의 맨 위는 BLEED 위치 (banner.html)
+      const pageTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--banner-bleed')) || 0;
       if (typeof smoothScrollTo === 'function') {
-        smoothScrollTo(0);
+        smoothScrollTo(pageTop);
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: pageTop, behavior: 'smooth' });
       }
     });
 
@@ -919,32 +943,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="난로">
-            난로<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/Travel/Europe/J%C3%BCterbog/" title="Jüterbog, Germany">
-            Jüterbog, Germany<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/Travel/Europe/Prague/" title="Prague, Czech Republic">
-            Prague, Czech Republic<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
           <a class="post-link" href="/Travel/Europe/Wannsee/" title="Wannsee, Germany">
             Wannsee, Germany<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/Homes/Berlin/Student_Health_Insurace/" title="독일 학생 의료 보험">
+            독일 학생 의료 보험<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/Travel/Europe/Dubrovnik/" title="Dubrovnik, Croatia">
+            Dubrovnik, Croatia<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/Travel/Europe/Arosa/" title="Arosa, Switzerland">
+            Arosa, Switzerland<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->

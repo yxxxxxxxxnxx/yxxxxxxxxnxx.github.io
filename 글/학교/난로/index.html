@@ -33,7 +33,7 @@
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792742716">
+<link rel="stylesheet" href="/assets/css/main.css?v=1793016980">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -426,7 +426,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
     function storeScrollData() {
       var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
 
-      if (y <= 0) {
+      // 배너 화면 채우기 페이지는 문서가 BLEED만큼 내려간 위치가 맨 위다 (banner.html)
+      var topY = parseFloat(getComputedStyle(documentElement).getPropertyValue("--banner-bleed")) || 0;
+
+      if (y <= topY + 1) {
         scrollStatus = "top";
       } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
         scrollStatus = "bottom";
@@ -734,7 +737,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
-<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792742716"></script>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1793016980"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -801,10 +804,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
         return;
       }
 
+      // 배너 화면 채우기 페이지의 맨 위는 BLEED 위치 (banner.html)
+      const pageTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--banner-bleed')) || 0;
       if (typeof smoothScrollTo === 'function') {
-        smoothScrollTo(0);
+        smoothScrollTo(pageTop);
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: pageTop, behavior: 'smooth' });
       }
     });
 
@@ -909,32 +914,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/Travel/Europe/Hamburg/" title="Hamburg, Germany">
-            Hamburg, Germany<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Arosa/" title="Arosa, Switzerland">
+            Arosa, Switzerland<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Dubrovnik/" title="Dubrovnik, Croatia">
-            Dubrovnik, Croatia<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Aachen/Casa_Malia/" title="Casa Malia">
+            Casa Malia<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Lagos-Sagres-Carvoeiro/" title="Lagos-Sagres-Carvoeiro, Portugal">
-            Lagos-Sagres-Carvoeiro, Portugal<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Africa/Cape_Town/" title="Cape Town, South Africa">
+            Cape Town, South Africa<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Weert/" title="Weert, The Netherlands">
-            Weert, The Netherlands<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/L%C3%BCbeck/" title="Lübeck, Germany">
+            Lübeck, Germany<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->

@@ -29,7 +29,7 @@
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792742716">
+<link rel="stylesheet" href="/assets/css/main.css?v=1793016980">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/en/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -422,7 +422,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
     function storeScrollData() {
       var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
 
-      if (y <= 0) {
+      // 배너 화면 채우기 페이지는 문서가 BLEED만큼 내려간 위치가 맨 위다 (banner.html)
+      var topY = parseFloat(getComputedStyle(documentElement).getPropertyValue("--banner-bleed")) || 0;
+
+      if (y <= topY + 1) {
         scrollStatus = "top";
       } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
         scrollStatus = "bottom";
@@ -730,7 +733,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
-<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792742716"></script>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1793016980"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -797,10 +800,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
         return;
       }
 
+      // 배너 화면 채우기 페이지의 맨 위는 BLEED 위치 (banner.html)
+      const pageTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--banner-bleed')) || 0;
       if (typeof smoothScrollTo === 'function') {
-        smoothScrollTo(0);
+        smoothScrollTo(pageTop);
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: pageTop, behavior: 'smooth' });
       }
     });
 
@@ -873,6 +878,23 @@ document.addEventListener('DOMContentLoaded', function(event) {
         
       
     
+    <h2 id="Address" class="segment-name">Address</h2>
+      
+      
+        <li class="">
+<span class="post-meta">2026-10-19</span>
+<span>
+  <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/">
+    Anmeldung (Registering Address) in Berlin<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+</span>
+</li>
+        
+      
+    
     <h2 id="Amalfi" class="segment-name">Amalfi</h2>
       
       
@@ -881,6 +903,23 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <span>
   <a class="post-link" href="/en/Travel/Europe/Salerno/">
     Salerno, Italy<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+</span>
+</li>
+        
+      
+    
+    <h2 id="Anmeldung" class="segment-name">Anmeldung</h2>
+      
+      
+        <li class="">
+<span class="post-meta">2026-10-19</span>
+<span>
+  <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/">
+    Anmeldung (Registering Address) in Berlin<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -926,6 +965,19 @@ document.addEventListener('DOMContentLoaded', function(event) {
     
     <h2 id="Berlin" class="segment-name">Berlin</h2>
       
+      
+        <li class="">
+<span class="post-meta">2026-10-19</span>
+<span>
+  <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/">
+    Anmeldung (Registering Address) in Berlin<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+</span>
+</li>
+        
       
         <li class="">
 <span class="post-meta">2026-10-16</span>
@@ -1948,6 +2000,23 @@ document.addEventListener('DOMContentLoaded', function(event) {
         
       
     
+    <h2 id="Registering" class="segment-name">Registering</h2>
+      
+      
+        <li class="">
+<span class="post-meta">2026-10-19</span>
+<span>
+  <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/">
+    Anmeldung (Registering Address) in Berlin<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+</span>
+</li>
+        
+      
+    
     <h2 id="ResidencePermit" class="segment-name">ResidencePermit</h2>
       
       
@@ -2647,23 +2716,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
         
       
     
-    <h2 id="거주지등록" class="segment-name">거주지등록</h2>
-      
-      
-        <li class="">
-<span class="post-meta">2026-10-02</span>
-<span>
-  <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/">
-    베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-        
-      
-    
     <h2 id="공보험" class="segment-name">공보험</h2>
       
       
@@ -2685,10 +2737,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       
       
         <li class="">
-<span class="post-meta">2026-10-19</span>
+<span class="post-meta">2026-10-18</span>
 <span>
   <a class="post-link" href="/en/Homes/Berlin/Protein_supplement/">
-    단백질 보충제<!-- <span class="post-badges">
+    독일 슈퍼마켓/드럭스토어 PB 단백질 보충제<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -2702,10 +2754,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       
       
         <li class="">
-<span class="post-meta">2026-10-19</span>
+<span class="post-meta">2026-10-18</span>
 <span>
   <a class="post-link" href="/en/Homes/Berlin/Protein_supplement/">
-    단백질 보충제<!-- <span class="post-badges">
+    독일 슈퍼마켓/드럭스토어 PB 단백질 보충제<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -2736,10 +2788,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       
       
         <li class="">
-<span class="post-meta">2026-10-19</span>
+<span class="post-meta">2026-10-18</span>
 <span>
   <a class="post-link" href="/en/Homes/Berlin/Protein_supplement/">
-    단백질 보충제<!-- <span class="post-badges">
+    독일 슈퍼마켓/드럭스토어 PB 단백질 보충제<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -2830,23 +2882,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
       
       
         <li class="">
-<span class="post-meta">2026-10-19</span>
+<span class="post-meta">2026-10-18</span>
 <span>
   <a class="post-link" href="/en/Homes/Berlin/Protein_supplement/">
-    단백질 보충제<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-        
-      
-        <li class="">
-<span class="post-meta">2026-10-02</span>
-<span>
-  <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/">
-    베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
+    독일 슈퍼마켓/드럭스토어 PB 단백질 보충제<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -2967,23 +3006,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
         
       
     
-    <h2 id="안멜둥" class="segment-name">안멜둥</h2>
-      
-      
-        <li class="">
-<span class="post-meta">2026-10-02</span>
-<span>
-  <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/">
-    베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-        
-      
-    
     <h2 id="영화제" class="segment-name">영화제</h2>
       
       
@@ -3009,23 +3031,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <span>
   <a class="post-link" href="/en/Homes/Berlin/Student_Health_Insurace/">
     독일 학생 의료 보험<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-</span>
-</li>
-        
-      
-    
-    <h2 id="전입신고" class="segment-name">전입신고</h2>
-      
-      
-        <li class="">
-<span class="post-meta">2026-10-02</span>
-<span>
-  <a class="post-link" href="/en/Homes/Berlin/Anmeldung_Berlin/">
-    베를린에서 안멜둥 (거주지 등록) 하기<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -3120,8 +3125,22 @@ document.addEventListener('DOMContentLoaded', function(event) {
       </li>
     
       <li>
+        <a href="/en/tags/#h-Address">
+          Address <span>1</span>
+        </a>
+        <div class="wavy-line"></div>
+      </li>
+    
+      <li>
         <a href="/en/tags/#h-Amalfi">
           Amalfi <span>1</span>
+        </a>
+        <div class="wavy-line"></div>
+      </li>
+    
+      <li>
+        <a href="/en/tags/#h-Anmeldung">
+          Anmeldung <span>1</span>
         </a>
         <div class="wavy-line"></div>
       </li>
@@ -3142,7 +3161,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     
       <li>
         <a href="/en/tags/#h-Berlin">
-          Berlin <span>4</span>
+          Berlin <span>5</span>
         </a>
         <div class="wavy-line"></div>
       </li>
@@ -3477,6 +3496,13 @@ document.addEventListener('DOMContentLoaded', function(event) {
       </li>
     
       <li>
+        <a href="/en/tags/#h-Registering">
+          Registering <span>1</span>
+        </a>
+        <div class="wavy-line"></div>
+      </li>
+    
+      <li>
         <a href="/en/tags/#h-ResidencePermit">
           ResidencePermit <span>1</span>
         </a>
@@ -3722,13 +3748,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
       </li>
     
       <li>
-        <a href="/en/tags/#h-%EA%B1%B0%EC%A3%BC%EC%A7%80%EB%93%B1%EB%A1%9D">
-          거주지등록 <span>1</span>
-        </a>
-        <div class="wavy-line"></div>
-      </li>
-    
-      <li>
         <a href="/en/tags/#h-%EA%B3%B5%EB%B3%B4%ED%97%98">
           공보험 <span>1</span>
         </a>
@@ -3786,7 +3805,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     
       <li>
         <a href="/en/tags/#h-%EB%B2%A0%EB%A5%BC%EB%A6%B0">
-          베를린 <span>4</span>
+          베를린 <span>3</span>
         </a>
         <div class="wavy-line"></div>
       </li>
@@ -3827,13 +3846,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
       </li>
     
       <li>
-        <a href="/en/tags/#h-%EC%95%88%EB%A9%9C%EB%91%A5">
-          안멜둥 <span>1</span>
-        </a>
-        <div class="wavy-line"></div>
-      </li>
-    
-      <li>
         <a href="/en/tags/#h-%EC%98%81%ED%99%94%EC%A0%9C">
           영화제 <span>1</span>
         </a>
@@ -3843,13 +3855,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <li>
         <a href="/en/tags/#h-%EC%9D%98%EB%A3%8C%EB%B3%B4%ED%97%98">
           의료보험 <span>1</span>
-        </a>
-        <div class="wavy-line"></div>
-      </li>
-    
-      <li>
-        <a href="/en/tags/#h-%EC%A0%84%EC%9E%85%EC%8B%A0%EA%B3%A0">
-          전입신고 <span>1</span>
         </a>
         <div class="wavy-line"></div>
       </li>

@@ -652,6 +652,15 @@ html:has(.page-content-home)::-webkit-scrollbar {
   display: none;
 }
 
+html[data-banner-bleed] {
+  --banner-bleed: 120px;
+}
+html[data-banner-bleed][data-header-transparent][data-scroll-status=top] header.site-header {
+  position: absolute;
+  top: 120px;
+  left: 0;
+}
+
 .page-content-home .articles {
   position: relative;
 }

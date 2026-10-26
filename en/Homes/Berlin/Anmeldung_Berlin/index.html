@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-scroll-status="top">
+<html lang="en" data-scroll-status="top" data-banner-bleed>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
@@ -7,30 +7,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c">
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>베를린에서 안멜둥 (거주지 등록) 하기 | yxxxxxxxxnxx</title>
+<title>Anmeldung (Registering Address) in Berlin | yxxxxxxxxnxx</title>
 <meta name="generator" content="Jekyll v4.4.1">
-<meta property="og:title" content="베를린에서 안멜둥 (거주지 등록) 하기">
+<meta property="og:title" content="Anmeldung (Registering Address) in Berlin">
 <meta name="author" content="yxxxxxxxxnxx">
-<meta property="og:locale" content="ko">
-<meta name="description" content="다시 베를린으로">
-<meta property="og:description" content="다시 베를린으로">
-<link rel="canonical" href="https://yxxxxxxxxnxx.github.io/Homes/Berlin/Anmeldung_Berlin/">
-<meta property="og:url" content="https://yxxxxxxxxnxx.github.io/Homes/Berlin/Anmeldung_Berlin/">
+<meta property="og:locale" content="en">
+<meta name="description" content="Back to Berlin">
+<meta property="og:description" content="Back to Berlin">
+<link rel="canonical" href="https://yxxxxxxxxnxx.github.io/en/Homes/Berlin/Anmeldung_Berlin/">
+<meta property="og:url" content="https://yxxxxxxxxnxx.github.io/en/Homes/Berlin/Anmeldung_Berlin/">
 <meta property="og:site_name" content="yxxxxxxxxnxx">
-<meta property="og:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2026-10-02-Anmeldung_Berlin.jpg">
+<meta property="og:image" content="https://yxxxxxxxxnxx.github.io/assets/att/2026-10-19-Anmeldung_Berlin/banner.avif">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2026-10-02T00:00:00+00:00">
+<meta property="article:published_time" content="2026-10-19T00:00:00+00:00">
 <meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:image" content="https://yxxxxxxxxnxx.github.io/assets/og/2026-10-02-Anmeldung_Berlin.jpg">
-<meta property="twitter:title" content="베를린에서 안멜둥 (거주지 등록) 하기">
+<meta property="twitter:image" content="https://yxxxxxxxxnxx.github.io/assets/att/2026-10-19-Anmeldung_Berlin/banner.avif">
+<meta property="twitter:title" content="Anmeldung (Registering Address) in Berlin">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2026-10-02T00:00:00+00:00","datePublished":"2026-10-02T00:00:00+00:00","description":"다시 베를린으로","headline":"베를린에서 안멜둥 (거주지 등록) 하기","image":"https://yxxxxxxxxnxx.github.io/assets/og/2026-10-02-Anmeldung_Berlin.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Homes/Berlin/Anmeldung_Berlin/"},"url":"https://yxxxxxxxxnxx.github.io/Homes/Berlin/Anmeldung_Berlin/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2026-10-19T00:00:00+00:00","datePublished":"2026-10-19T00:00:00+00:00","description":"Back to Berlin","headline":"Anmeldung (Registering Address) in Berlin","image":"https://yxxxxxxxxnxx.github.io/assets/att/2026-10-19-Anmeldung_Berlin/banner.avif","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/en/Homes/Berlin/Anmeldung_Berlin/"},"url":"https://yxxxxxxxxnxx.github.io/en/Homes/Berlin/Anmeldung_Berlin/"}</script>
 <!-- End Jekyll SEO tag -->
+
+  <link rel="alternate" hreflang="en" href="https://yxxxxxxxxnxx.github.io/en/Homes/Berlin/Anmeldung_Berlin/">
+  <link rel="alternate" hreflang="ko" href="https://yxxxxxxxxnxx.github.io/Homes/Berlin/Anmeldung_Berlin/">
 <link rel="icon" href="">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1792742716">
+<link rel="stylesheet" href="/assets/css/main.css?v=1793016980">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/en/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -424,7 +427,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
     function storeScrollData() {
       var y = getScrollPos().y;documentElement.setAttribute("data-header-transparent", "");var scrollStatus = "";
 
-      if (y <= 0) {
+      // 배너 화면 채우기 페이지는 문서가 BLEED만큼 내려간 위치가 맨 위다 (banner.html)
+      var topY = parseFloat(getComputedStyle(documentElement).getPropertyValue("--banner-bleed")) || 0;
+
+      if (y <= topY + 1) {
         scrollStatus = "top";
       } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
         scrollStatus = "bottom";
@@ -585,6 +591,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
     html[data-scroll-status="top"] .page-banner {
       height: 100vh;
     }
+    /* 화면 위아래로 BLEED만큼 더 크게: iOS Safari 상태바·주소창 뒤까지 배너가 비친다 (아래 스크립트) */
+    html[data-banner-bleed][data-scroll-status="top"] .page-banner {
+      height: calc(100vh + var(--banner-bleed) * 2);
+    }
   </style>
 <style>
     html .page-banner .page-banner-img > *:first-child {
@@ -597,10 +607,25 @@ document.addEventListener('DOMContentLoaded', function(event) {
   </style>
 <section class="page-banner">
     <div class="page-banner-img">
-<div style="background-image: url(/assets/att/2026-10-02-Anmeldung_Berlin/banner.avif)"></div>
-        <img class="img-placeholder" src="/assets/att/2026-10-02-Anmeldung_Berlin/banner.avif">
+<div style="background-image: url(/assets/att/2026-10-19-Anmeldung_Berlin/banner.avif)"></div>
+        <img class="img-placeholder" src="/assets/att/2026-10-19-Anmeldung_Berlin/banner.avif">
 </div>
-  </section><script>
+  </section>
+
+  <script>
+    // 배너 화면 채우기 (default.html의 data-banner-bleed, 홈 show-window와 같은 방식):
+    // iOS Safari는 문서가 맨 위(스크롤 0)이면 상태바 뒤에 비출 내용이 없어 단색 띠를 그린다. 배너를 위로 BLEED만큼
+    // 더 그려 두고 문서를 그만큼 내린 채 시작하며, 그 위로는 올라가지 않는다. 헤더 높이·'top' 판정도 이 위치 기준이다.
+    (function () {
+      var root = document.documentElement;
+      if (!root.hasAttribute("data-banner-bleed")) return;
+      var bleed = parseFloat(getComputedStyle(root).getPropertyValue("--banner-bleed")) || 0;
+      if (!location.hash && window.scrollY < bleed) window.scrollTo(0, bleed);
+      window.addEventListener("scroll", function () {
+        if (window.scrollY < bleed - 1) window.scrollTo(0, bleed);
+      }, { passive: true });
+    })();
+  </script><script>
   function hashLocate(hashValue) {
     hashValue = hashValue.replace(/^.*#h-/, '');
     hashValue = decodeURIComponent(hashValue);
@@ -754,7 +779,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
-<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1792742716"></script>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1793016980"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -821,10 +846,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
         return;
       }
 
+      // 배너 화면 채우기 페이지의 맨 위는 BLEED 위치 (banner.html)
+      const pageTop = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--banner-bleed')) || 0;
       if (typeof smoothScrollTo === 'function') {
-        smoothScrollTo(0);
+        smoothScrollTo(pageTop);
       } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: pageTop, behavior: 'smooth' });
       }
     });
 
@@ -847,17 +874,27 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-<div class="message-box" id="no-translation-msg">
-    Sorry, this post is currently unavailable in English.
+<div class="message-box" id="gg-translation-msg">
+    This post has been translated by <span class="gem_highlight"><b>Gemini</b></span>.
 </div>
-<div class="message-box" id="update-msg">
-    There will be additional updates to this post.
-</div>
+
+<style>
+    .gem_highlight {
+        display: inline-block;
+        background: linear-gradient(to right, #4796E4, #4796E4, #8C78C9, #CE646C);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+</style>
 <header class="post-header">
-  <h1 class="post-title p-name" itemprop="name headline">베를린에서 안멜둥 (거주지 등록) 하기</h1>
+  <h1 class="post-title p-name" itemprop="name headline">Anmeldung (Registering Address) in Berlin</h1>
 <h2 class="post-subtitle">Anmeldung</h2>
 <div class="post-meta">
-    <time class="dt-published" datetime="2026-10-02T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-10-02
+    <time class="dt-published" datetime="2026-10-19T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-10-19
     </time>
     
 
@@ -892,10 +929,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 11 mins</span>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 15 mins</span>
   </div>
 <div class="post-tags">
-<a class="post-tag" href="/en/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/en/tags/#%EC%95%88%EB%A9%9C%EB%91%A5">#안멜둥</a><a class="post-tag" href="/en/tags/#%EA%B1%B0%EC%A3%BC%EC%A7%80%EB%93%B1%EB%A1%9D">#거주지등록</a><a class="post-tag" href="/en/tags/#%EC%A0%84%EC%9E%85%EC%8B%A0%EA%B3%A0">#전입신고</a>
+<a class="post-tag" href="/en/tags/#Berlin">#Berlin</a><a class="post-tag" href="/en/tags/#Anmeldung">#Anmeldung</a><a class="post-tag" href="/en/tags/#Registering">#Registering</a><a class="post-tag" href="/en/tags/#Address">#Address</a>
 </div>
 <div class="wavy-line"></div>
 
@@ -905,38 +942,38 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
     <div class="post-content e-content" itemprop="articleBody">
 
-      <h2 id="다시-베를린으로">다시 베를린으로</h2>
+      <h2 id="back-to-berlin">Back to Berlin</h2>
 
-<p>마지막 학기에는 출석 수업이 없어, 아예 베를린으로 돌아왔다. 아헨은 작고 아름다우며 실용적인 도시지만, 내게는 베를린이 조금 더 집처럼 여겨진다.</p>
+<p>Since there are no in-person classes during my final semester, I’ve moved back to Berlin. While Aachen is a small, beautiful, and practical city, Berlin just feels a bit more like home to me.</p>
 
-<p>한국에서 전입신고를 하듯, 독일에서도 거주지가 바뀌면 관청에 고지를 해야 한다. 독일 내에서 보통 맞이하게 되는 가장 간단하면서 최초의 행정 절차지만, 독일어에 능숙하지 않다면 벽처럼 느껴질 수도 있는 일이다. 여전히 내 독일어는 매우 서툴지만, 이번까지 총 세 번의 안멜둥을 모두 어찌저찌 잘 해냈다.</p>
+<p>Just as you would register your residence in Korea, any change of address in Germany requires notifying the local authority. It is typically the most straightforward and initial administrative procedure you encounter here, yet if you aren’t fluent in German, it can feel like a massive wall. My German is still extremely rusty, but somehow, I’ve managed to get through all three of my <em>Anmeldungen</em> so far.</p>
 
 <h3 id="an-um-abmeldung">An-/Um-/Abmeldung</h3>
 
-<p><strong>안멜둥 (Anmeldung)</strong> 은 한국의 전입신고와 유사하게 새로이 독일로 이주한 사람 또는 독일 내 기존 거주지 관할 구역 외의 거소로 이전할 경우에 해당한다. 14일 이내에 신고해야 한다. <strong>움멜둥 (Ummeldung)</strong> 은 관할 구역 내에서 거소를 이전할 경우에 해당한다. <strong>압멜둥 (Abmeldung)</strong> 은 새로운 거주지가 독일 밖에 위치할 경우, 따라서 독일을 떠나는 경우에 해당한다. <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></p>
+<p><strong><em>Anmeldung</em></strong> is similar to Korea’s address registration (전입신고) and applies when you move to Germany for the first time or relocate to a residence outside your previous municipal jurisdiction. You are required to register within 14 days. <strong><em>Ummeldung</em></strong> applies when you move to a new address within the same jurisdiction. <strong><em>Abmeldung</em></strong> applies when your new residence is located outside Germany—meaning you are leaving the country altogether. <sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></p>
 
-<p>나는 아헨에서 베를린으로 거소를 옮기는 것에 대한 신고이기 때문에 움멜둥 또는 압멜둥에는 해당하지 않고, 안멜둥을 진행하는 경우다. 과거 아헨에 안멜둥을 했을 때, 주민센터 (Bürgeramt) 의 정보는 자동으로 베를린에서 아헨으로 이관된다는 설명을 들었다. 외국인청 (Ausländeramt 또는 Landesamt für Einwanderung, Migrationsamt) 과 세무서 (Finanzamt) 도 마찬가지라 알고 있었지만, 아헨 외국인청에서는 최초 한 번 현장 방문을 해야 업무 이관 및 처리가 가능했고 베를린 세무서에서는 주/부거주지 소명을 요구했다. 확실히 전출지 관공서에 별도 신고는 필요하지 않지만, 전출/입 지역 관할 행정 기관의 업무 처리 방식을 확인할 필요는 있어 보인다.</p>
+<p>Since I am registering a change of address from Aachen to Berlin, it falls under <em>Anmeldung</em>, not <em>Ummeldung</em> or <em>Abmeldung</em>. Back when I did my <em>Anmeldung</em> in Aachen, I was told that my records at the local citizen’s office (<em>Bürgeramt</em>) would automatically transfer from Berlin to Aachen. I assumed the same applied to the Immigration Office (<em>Ausländeramt</em>, <em>Landesamt für Einwanderung</em>, or <em>Migrationsamt</em>) and the Tax Office (<em>Finanzamt</em>). However, the Aachen Immigration Office required a one-time in-person visit to transfer and process my file, while the Berlin Tax Office demanded justification regarding my primary/secondary residence. While you certainly don’t need to file a separate departure notice with your previous local office, it definitely pays to check how the specific administrative authorities at both ends handle their procedures.</p>
 
-<h2 id="서류">서류</h2>
+<h2 id="documents">Documents</h2>
 
-<p>필요한 서류는 두 가지가 있다.</p>
+<p>There are two required documents:</p>
 <ol>
-  <li>안멜둥 신청서 (Anmeldung bei der Meldebehörde)</li>
-  <li>임대인 확인서 (Wohnungsgeberbestätigung)</li>
+  <li>Registration Form (<em>Anmeldung bei der Meldebehörde</em>)</li>
+  <li>Landlord Confirmation Form (<em>Wohnungsgeberbestätigung</em>)</li>
 </ol>
 
-<h3 id="안멜둥-신청서">안멜둥 신청서</h3>
+<h3 id="registration-form">Registration Form</h3>
 
-<p>베를린서비스포털 (ServicePortal Berlin) 에서 제공하는 <a href="https://www.berlin.de/formularverzeichnis/?formular=/labo/zentrale-einwohnerangelegenheiten/_assets/anmeldung_bei_der_meldebehoerde.pdf">안멜둥 신청서 양식 <i class="fa fa-person-walking-arrow-right"></i></a> 을 사용한다.</p>
+<p>Use the <a href="https://www.berlin.de/formularverzeichnis/?formular=/labo/zentrale-einwohnerangelegenheiten/_assets/anmeldung_bei_der_meldebehoerde.pdf">Registration Form Template <i class="fa fa-person-walking-arrow-right"></i></a> provided by the ServicePortal Berlin.</p>
 
-<div class="pdf-embed" data-src="/assets/att/2026-10-02-Anmeldung_Berlin/anmeldung_bei_der_meldebehoerde.pdf">
+<div class="pdf-embed" data-src="/assets/att/2026-10-19-Anmeldung_Berlin/anmeldung_bei_der_meldebehoerde.pdf">
   <div class="pdf-embed-toolbar">
     <span class="pdf-embed-name">anmeldung_bei_der_meldebehoerde.pdf</span>
     <span class="pdf-embed-pages"></span>
-    <a class="pdf-embed-link" href="/assets/att/2026-10-02-Anmeldung_Berlin/anmeldung_bei_der_meldebehoerde.pdf" target="_blank" rel="noopener" title="Open">
+    <a class="pdf-embed-link" href="/assets/att/2026-10-19-Anmeldung_Berlin/anmeldung_bei_der_meldebehoerde.pdf" target="_blank" rel="noopener" title="Open">
       <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
-    <a class="pdf-embed-link" href="/assets/att/2026-10-02-Anmeldung_Berlin/anmeldung_bei_der_meldebehoerde.pdf" download="" title="Download">
+    <a class="pdf-embed-link" href="/assets/att/2026-10-19-Anmeldung_Berlin/anmeldung_bei_der_meldebehoerde.pdf" download="" title="Download">
       <i class="fa-solid fa-download"></i>
     </a>
   </div>
@@ -1063,18 +1100,18 @@ document.addEventListener('DOMContentLoaded', function(event) {
   })();
 </script>
 
-<h3 id="임대인-확인서">임대인 확인서</h3>
+<h3 id="landlord-confirmation-form">Landlord Confirmation Form</h3>
 
-<p>임대인 또는 부동산에서 아파트 임대차 계약 시 제공한 서류가 있다면 그대로 사용해도 된다. 과거 아헨에서 안멜둥 할 때, 부동산 에이전시가 준비해 준 서류를 제출했었다. 그렇지 않을 경우, 베를린서비스포털에서 제공하는 <a href="https://www.berlin.de/formularverzeichnis/?formular=/labo/zentrale-einwohnerangelegenheiten/_assets/mdb-f402544-20161102_wohnungsgeberbestaetigung.pdf">임대인 확인서 예시 양식 <i class="fa fa-person-walking-arrow-right"></i></a> 을 작성해달라 요청하면 된다.</p>
+<p>If your landlord or real estate agency provided a document when you signed the lease, you can use that directly. When I registered in Aachen previously, I submitted the document prepared by the agency. If not, you can request them to fill out the <a href="https://www.berlin.de/formularverzeichnis/?formular=/labo/zentrale-einwohnerangelegenheiten/_assets/mdb-f402544-20161102_wohnungsgeberbestaetigung.pdf">Landlord Confirmation Sample Form <i class="fa fa-person-walking-arrow-right"></i></a> provided by the ServicePortal Berlin.</p>
 
-<div class="pdf-embed" data-src="/assets/att/2026-10-02-Anmeldung_Berlin/mdb-f402544-20161102_wohnungsgeberbestaetigung.pdf">
+<div class="pdf-embed" data-src="/assets/att/2026-10-19-Anmeldung_Berlin/mdb-f402544-20161102_wohnungsgeberbestaetigung.pdf">
   <div class="pdf-embed-toolbar">
     <span class="pdf-embed-name">mdb-f402544-20161102_wohnungsgeberbestaetigung.pdf</span>
     <span class="pdf-embed-pages"></span>
-    <a class="pdf-embed-link" href="/assets/att/2026-10-02-Anmeldung_Berlin/mdb-f402544-20161102_wohnungsgeberbestaetigung.pdf" target="_blank" rel="noopener" title="Open">
+    <a class="pdf-embed-link" href="/assets/att/2026-10-19-Anmeldung_Berlin/mdb-f402544-20161102_wohnungsgeberbestaetigung.pdf" target="_blank" rel="noopener" title="Open">
       <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
-    <a class="pdf-embed-link" href="/assets/att/2026-10-02-Anmeldung_Berlin/mdb-f402544-20161102_wohnungsgeberbestaetigung.pdf" download="" title="Download">
+    <a class="pdf-embed-link" href="/assets/att/2026-10-19-Anmeldung_Berlin/mdb-f402544-20161102_wohnungsgeberbestaetigung.pdf" download="" title="Download">
       <i class="fa-solid fa-download"></i>
     </a>
   </div>
@@ -1201,27 +1238,73 @@ document.addEventListener('DOMContentLoaded', function(event) {
   })();
 </script>
 
-<h2 id="테어민-신청">테어민 신청</h2>
+<h2 id="booking-a-termin">Booking a Termin</h2>
 
-<p>이사 날짜가 정해져 있다면, 사실상 이사와 서류 준비보다도 테어민을 잡는 것이 선행되어야 한다. 처음 베를린에 안멜둥 할 때도, 그리고 아헨에서도 이 간단한 업무를 보려면 최소 3주에서 길게는 두 달까지 기다려야 했다. 이미 늦었다면, 새로고침을 생각 날 때마다 하거나 새로운 테어민 또는 취소 시간대가 풀리는 아침 일찍을 노리는 것도 방법이다. 아니면.. 어디든 남아 있는 테어민을 잡아 베를린 U-Bahn 여행을 할 수도 있다.</p>
+<p>If your move-in date is fixed, booking a <em>Termin</em> (appointment) actually takes priority over the move itself or preparing documents. The first time I registered in Berlin, and again in Aachen, getting an appointment for this simple administrative task meant waiting anywhere from 3 weeks to two full months. If you’re already late, your best bet is refreshing the booking page whenever you think of it, or hunting early in the morning when new slots or cancellations are released. Or… you can just snag whatever appointment is left anywhere in the city and treat yourself to a little tour of the Berlin U-Bahn.</p>
 
-<p>이런 과거의 노력이 무색하게 이번에는 별 기대없이 테어민 신청 페이지에 접속했다가 아주 수월하게 테어민을 잡았다. 심지어 집에서 가장 가까운 주민센터와 원하는 시간을 고를 수도 있었다. 베를린에서는 매우 흔치 않은 일이라 나도, 얘기를 전해 들은 독일인도 모두 놀랐다.</p>
+<p>In stark contrast to my past struggles, I logged onto the booking page this time with zero expectations, only to secure an appointment effortlessly. I even got to pick the <em>Bürgeramt</em> closest to my apartment and my preferred time slot. This is unheard of in Berlin, leaving both me and the locals I told completely stunned.</p>
 
-<h3 id="온라인-테어민">온라인 테어민</h3>
-<p>베를린서비스포털의 <a href="https://service.berlin.de/dienstleistung/120686/#:~:text=Unterbringungseinrichtungen%20in%20Berlin.-,F%C3%BCr%20Sie%20zust%C3%A4ndig,-Bitte%20w%C3%A4hlen%20Sie">Wohnsitz 페이지 관내 관청 리스트 <i class="fa fa-person-walking-arrow-right"></i></a> 에서 가까운 주민센터를 선택한 뒤, 신청 가능한 날짜 및 시간대를 선택할 수 있다.</p>
+<h3 id="online-termin">Online Termin</h3>
+<p>You can select a nearby <em>Bürgeramt</em> and choose an available date and time slot from the <a href="https://service.berlin.de/dienstleistung/120686/#:~:text=Unterbringungseinrichtungen%20in%20Berlin.-,F%C3%BCr%20Sie%20zust%C3%A4ndig,-Bitte%20w%C3%A4hlen%20Sie">List of Local Offices on the Wohnsitz page <i class="fa fa-person-walking-arrow-right"></i></a> on the ServicePortal Berlin.</p>
 
-<h3 id="온라인-안멜둥은-불가">온라인 안멜둥은 불가</h3>
-<p>eID 지원 카드와 Bund-ID 가 있지만, 아쉽게도 온라인으로 안멜둥을 할 수는 없었다. EU 외 국가 국적자는 반드시 테어민을 잡아 현장에서 서면으로 업무를 처리해야 한다. 온라인 안멜둥은 독일 및 EU 시민에 한하여<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup> 제공된다.</p>
+<h3 id="no-online-anmeldung">No Online Anmeldung</h3>
+<p>Despite having an eID-enabled card and a BundID account, online <em>Anmeldung</em> wasn’t an option. Non-EU citizens are strictly required to book an appointment and process the registration on-site in writing. Online <em>Anmeldung</em> is reserved exclusively for German and EU citizens.<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup></p>
 
-<h2 id="테어민">테어민</h2>
+<h2 id="the-appointment">The Appointment</h2>
+
+<h3 id="first-attempt-2026-10-02">First Attempt (2026-10-02)</h3>
+
+<p>I walked into the <em>Bürgeramt</em> with full confidence, only to run headfirst into a bizarre situation. <strong>When I registered in Aachen, my Berlin address had been registered as a secondary residence (<em>Nebenwohnung</em>).</strong> This was precisely why the Berlin Tax Office had previously demanded an explanation. Since Berlin is one of the cities that taxes secondary residences, you must avoid being registered with a <em>Nebenwohnung</em> when relocating to another city if you no longer live there or maintain the address.</p>
+
+<p>Since I had brought my binder full of administrative records and documents (expats jokingly say the very first thing you must do upon arriving in Germany is buy a binder to collect paperwork), I quickly flipped through my Aachen <em>Anmeldung</em> files. Fortunately, my original application form was right there, where I had correctly listed my new Aachen address as my sole (<em>einzige</em>) residence and marked my Berlin address as deregistered (<em>abgemeldet</em>). Lacking the confidence to explain the situation in German, I asked if I could briefly explain my situation in English, only to receive a prompt, blunt “No.”</p>
+
+<p>Eventually, an English-speaking employee nearby stepped in to help, took a look at the system, and broke the news:</p>
+
+<p>“You have registered your address in Berlin as <em>Nebenwohnung</em> on [date] November last year.”</p>
+
+<p>“Well.. no. That was not my intention. Could you please have a look at my applica…[tion form here]?”</p>
+
+<p>Cutting me off mid-sentence, the reply came: “There is no ‘No’. That’s what we have on the system.”</p>
+
+<p>To be fair, the civil servants I’ve encountered so far have been friendly enough (by German standards). I’m even grateful they don’t kick you out for not bringing a German translator like they used to. However, when a problem arises, I’ve noticed a recurring pattern: instead of offering potential solutions as experts who know the administrative process (not that I expect them to solve it for me…), they resort to a completely defensive posture.</p>
+
+<p>And just like that, I walked out with nothing solved and the absurd response that there was nothing they could do in Berlin, suggesting I <strong>go all the way to the Aachen <em>Bürgeramt</em> in person</strong> to talk it out.</p>
+
+<h4 id="hwnw">HW/NW</h4>
+
+<p>There is a difference between the document requiring your signature (retained by the authority) and the confirmation document issued to you after processing. I don’t recall the exact layout of the Aachen form, but the issued document contained no information about a secondary residence at all—despite the official’s misprocessing that kept my Berlin address as a <em>Nebenwohnung</em>! (Presumably, addresses outside their jurisdiction simply aren’t displayed.) It listed only “Hauptwohnung” (Since there was no annotation column like in Berlin, it should have been <em>einzige</em> or <em>alleinige</em>. Back then, I didn’t quite grasp the semantic nuance between <em>einzige</em> and <em>Hauptwohnung</em>.) On the form requiring a signature in Berlin, previous and future address statuses—whether sole, primary, or secondary, and whether maintained or deregistered—are explicitly marked for both locations. Conversely, the document I received simply stated “HW,” with a footnote reading “HW = Alleinige oder Hauptwohnung” (HW = Sole or Primary Residence).</p>
+
+<p>Long story short, since things can be processed entirely contrary to your intentions depending on the official’s <em>“Kibun”</em> (mood/caprice), it’s best to keep a copy of your completed application or store it carefully if they return it to you (which is also completely random…).</p>
+
+<h3 id="data-processing-2026-10-12">Data Processing (2026-10-12)</h3>
+
+<p>Fortunately, the city of Aachen helped me resolve the error via email very quickly without requiring a personal visit. If you ever run into similar trouble, as the data subject, you can cite Sections 6<sup id="fnref:3"><a href="#fn:3" class="footnote" rel="footnote" role="doc-noteref">3</a></sup> and 12<sup id="fnref:4"><a href="#fn:4" class="footnote" rel="footnote" role="doc-noteref">4</a></sup> of the German Federal Act on Registration (<em>Bundesmeldegesetz</em>) regarding your right to data self-determination, accuracy, and completeness.</p>
+
+<p>I booked another <em>Termin</em> (slots were surprisingly still plentiful!) and visited the <em>Bürgeramt</em> after the weekend, only to be told that the system hadn’t updated yet and to come back after waiting another week.</p>
+
+<h3 id="done-2026-10-19">Done (2026-10-19)</h3>
+
+<p>For the first time, no appointments were available at my local neighborhood <em>Bürgeramt</em>, so I grabbed a single remaining or canceled slot at the adjacent office and visited. A civil servant with a thoroughly businesslike expression finally handed over the stamped <em>Anmeldung</em> document. It took about three weeks in total.</p>
+
+<h2 id="survey">Survey</h2>
+
+<p>When booking a <em>Termin</em>, the city of Berlin asks whether you’d like to participate in a follow-up survey. I used to opt out every time out of laziness, but a German friend once told me a story that they only ever encountered friendly officials on the rare occasions they opted in…</p>
+
+<h2 id="footnotes">Footnotes</h2>
 
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1">
-      <p><a href="https://www.gesetze-im-internet.de/bmg/__17.html">Bundesmeldegesetz (BMG) § 17 Anmeldung, Abmeldung</a>, Bundesministerium der Justiz und für Verbraucherschutz <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
+      <p><a href="https://www.gesetze-im-internet.de/bmg/__17.html">Bundesmeldegesetz (BMG) § 17 Registration, Deregistration</a>, Federal Ministry of Justice and Consumer Protection <a href="#fnref:1" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
     <li id="fn:2">
-      <p>“Sie sind volljährig und besitzen die deutsche Staatsbürgerschaft oder sind EU-Bürger/in und Sie sind innerhalb Deutschlands umgezogen,” <a href="https://service.berlin.de/dienstleistung/120686/">Wohnsitz - Alleinige Wohnung oder Hauptwohnung anmelden</a>, ServicePortal Berlin <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
+      <p>“Sie sind volljährig und besitzen die deutsche Staatsbürgerschaft oder sind EU-Bürger/in und Sie sind innerhalb Deutschlands umgezogen,” <a href="https://service.berlin.de/dienstleistung/120686/">Residence - Register sole or main residence</a>, ServicePortal Berlin <a href="#fnref:2" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="https://www.gesetze-im-internet.de/bmg/__6.html">Bundesmeldegesetz (BMG) § 6 Accuracy and Completeness of the Register</a>, Federal Ministry of Justice and Consumer Protection <a href="#fnref:3" class="reversefootnote" role="doc-backlink">↩</a></p>
+    </li>
+    <li id="fn:4">
+      <p><a href="https://www.gesetze-im-internet.de/bmg/__12.html">Bundesmeldegesetz (BMG) § 12 Right to Correction</a>, Federal Ministry of Justice and Consumer Protection <a href="#fnref:4" class="reversefootnote" role="doc-backlink">↩</a></p>
     </li>
   </ol>
 </div>
@@ -1231,38 +1314,38 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 </article>
 <div class="post-nav">
-<a class="previous" href="/en/Travel/Europe/Mallorca/" title="Mallorca, Spain">Mallorca, Spain</a><a class="next" href="/en/Homes/Berlin/Restaurant_Choi/" title="Restaurant Choi">Restaurant Choi</a>
+<a class="previous" href="/en/Homes/Berlin/Protein_supplement/" title="독일 슈퍼마켓/드럭스토어 PB 단백질 보충제">독일 슈퍼마켓/드럭스토어 PB 단백질 보충제</a><span></span>
 </div>
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/en/Homes/Berlin/Student_Health_Insurace/" title="독일 학생 의료 보험">
-            독일 학생 의료 보험<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Homes/Aachen/Casa_Malia/" title="Casa Malia">
+            Casa Malia<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Travel/Europe/Dubrovnik/" title="Dubrovnik, Croatia">
-            Dubrovnik, Croatia<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Tech/Electronic%20Devices/B&amp;W%20Px8/" title="B&amp;W Px8">
+            B&amp;W Px8<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Travel/Europe/Prague/" title="Prague, Czech Republic">
-            Prague, Czech Republic<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Travel/Europe/Lagos-Sagres-Carvoeiro/" title="Lagos-Sagres-Carvoeiro, Portugal">
+            Lagos-Sagres-Carvoeiro, Portugal<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Homes/Berlin/Christmas_Markets/" title="Berlin Christmas Markets">
-            Berlin Christmas Markets<!-- <span class="post-badges">
+          <a class="post-link" href="/en/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="Stove">
+            Stove<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
