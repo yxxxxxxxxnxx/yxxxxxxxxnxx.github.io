@@ -267,10 +267,31 @@ document.addEventListener("DOMContentLoaded", function () {
   function watchSnap() {
     const y = pagination.scrollTop;
     if (!snapping && (!animations.has(pagination) || wheelGoal.has(pagination))) {
-      const target = crossedSnap(lastBoxY, y);
+      const stop   = panelStop(lastBoxY, y);
+      const target = stop !== null ? stop : crossedSnap(lastBoxY, y);
       if (target !== null) snapTo(target);
     }
     lastBoxY = y;
+  }
+
+  // 패널이 다 올라와 멈추는 자리(panelTop)를 지나갈 때, 그 패널의 right-panel이 진행 방향으로 더 스크롤할 수 있으면
+  // 박스를 그 자리에 멈춘다. 덮던 패널을 조금 내렸다가(위로) 다시 올리는(아래로) 스크롤이 그대로 다음 패널을
+  // 끌어올리지 않고, 이어지는 스크롤이 right-panel로 간다 (아래 패널에서 올라올 때도 같다).
+  // 멈출 자리(박스 scrollTop) 또는 null
+  function panelStop(from, to) {
+    const direction = Math.sign(to - from);
+    if (!direction) return null;
+    const panels = direction > 0 ? stack : [...stack].reverse();
+    for (const panel of panels) {
+      const right = panel.el.querySelector(".right-panel");
+      if (!right) continue;
+      const top = panelTop(panel);
+      const crossed = direction > 0 ? from < top - 0.5 && to > top + 0.5 : from > top + 0.5 && to < top - 0.5;
+      if (!crossed) continue;
+      const max = right.scrollHeight - right.clientHeight;
+      if (max > 1 && (direction > 0 ? right.scrollTop < max - 1 : right.scrollTop > 1)) return top;
+    }
+    return null;
   }
 
   // 푸터: 박스 끝에서 더 내려가면 문서를 끝까지 내려 푸터를 보여 주고,
@@ -726,15 +747,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 트랙패드는 deltaY만큼 그대로 옮기고(OS가 준 가속·관성 그대로), 마우스 휠 한 칸(smooth)은 기본 스크롤처럼
   // 짧게 부드럽게 옮긴다. 부드럽게 옮기는 중에도 4번 스냅 감시는 계속한다 (wheelGoal에 있으면 휠이 움직이는 중).
+  // 박스는 4번 panelStop 자리를 넘어가지 않는다 (그 자리에 멈춘 뒤 이어지는 스크롤은 right-panel로).
   function wheelScrollBy(scroller, delta, smooth = false) {
+    const limit = (from, to) => {
+      const stop = scroller === pagination ? panelStop(from, to) : null;
+      return stop !== null ? stop : to;
+    };
     if (!smooth) {
       if (animations.has(scroller)) stopAnimation(scroller);
-      scroller.scrollTop += delta;
+      scroller.scrollTop = limit(scroller.scrollTop, scroller.scrollTop + delta);
       return;
     }
     const max  = scroller.scrollHeight - scroller.clientHeight;
     const from = wheelGoal.has(scroller) ? wheelGoal.get(scroller) : scroller.scrollTop;
-    const goal = Math.max(0, Math.min(max, from + delta));
+    const goal = limit(from, Math.max(0, Math.min(max, from + delta)));
     animateTo(scroller, goal, 160, () => wheelGoal.delete(scroller));
     wheelGoal.set(scroller, goal);
   }
