@@ -521,6 +521,7 @@ html[data-scroll-status=down] .framework .sidebar {
 
 .site-nav {
   font-size: 16px;
+  position: relative;
 }
 .site-nav .nav-trigger {
   display: none;
@@ -549,6 +550,109 @@ html[data-scroll-status=down] .framework .sidebar {
     align-self: flex-end;
     padding-bottom: 80px;
   }
+}
+
+.lang-popup {
+  pointer-events: auto;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  box-sizing: border-box;
+  padding: 8px;
+  border: solid 2.5px #1f1f1f;
+  background-color: #f1f1f1;
+  color: #0e0e0e;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.lang-popup.is-open {
+  opacity: 1;
+  transform: none;
+}
+.lang-popup[hidden] {
+  display: none;
+}
+.lang-popup .lang-popup-title {
+  margin: 0 0 8px;
+  padding-right: 24px;
+}
+.lang-popup .lang-popup-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lang-popup .lang-popup-close svg {
+  stroke: #0e0e0e;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.lang-popup .lang-popup-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  margin-bottom: 8px;
+}
+.lang-popup .lang-popup-button {
+  justify-self: start;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.lang-popup .lang-popup-remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  cursor: pointer;
+}
+.lang-popup .lang-popup-remember input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.lang-popup .lang-popup-remember .lang-popup-box {
+  flex: none;
+  box-sizing: border-box;
+  width: 1em;
+  height: 1em;
+  border: solid 2.5px #1f1f1f;
+  background-color: #f1f1f1;
+}
+.lang-popup .lang-popup-remember input:checked + .lang-popup-box {
+  background-image: linear-gradient(to top right, transparent calc(50% - 1.25px), #1f1f1f calc(50% - 1.25px), #1f1f1f calc(50% + 1.25px), transparent calc(50% + 1.25px)), linear-gradient(to bottom right, transparent calc(50% - 1.25px), #1f1f1f calc(50% - 1.25px), #1f1f1f calc(50% + 1.25px), transparent calc(50% + 1.25px));
+}
+.lang-popup .lang-popup-remember input:focus-visible + .lang-popup-box {
+  outline: 2.5px solid #1f1f1f;
+  outline-offset: 2.5px;
 }
 
 /**
@@ -591,11 +695,18 @@ html[data-scroll-status=down] .framework .sidebar {
   display: block;
   font-size: 12px;
 }
-.site-footer a {
+.site-footer a, .site-footer .site-footer-lang-setting {
   color: #046C9A;
 }
-.site-footer a:hover {
+.site-footer a:hover, .site-footer .site-footer-lang-setting:hover {
   color: #058fcc;
+}
+.site-footer .site-footer-lang-setting {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
 }
 
 .copyleft {
@@ -699,10 +810,15 @@ html[data-banner-bleed][data-header-transparent][data-scroll-status=top] header.
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
+@media screen and (max-width: 600px) {
+  .show-window .show-window-title {
+    left: calc(8px + env(safe-area-inset-left));
+  }
+}
 .show-window .show-window-footnote {
   position: absolute;
   z-index: 1;
-  bottom: calc(185.6px + env(safe-area-inset-top));
+  bottom: calc(136px + env(safe-area-inset-top));
   left: calc(24px + env(safe-area-inset-left));
   max-width: calc(80vw - 24px);
   margin: 0;
@@ -716,6 +832,11 @@ html[data-banner-bleed][data-header-transparent][data-scroll-status=top] header.
   padding: 0 0.15em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
+}
+@media screen and (max-width: 600px) {
+  .show-window .show-window-footnote {
+    left: calc(8px + env(safe-area-inset-left));
+  }
 }
 .show-window .show-window-logo {
   position: absolute;

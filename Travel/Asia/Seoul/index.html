@@ -30,7 +30,7 @@
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1794232647">
+<link rel="stylesheet" href="/assets/css/main.css?v=1794246400">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -404,14 +404,134 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </label>
 
           <div class="trigger">
-<a class="page-link" href="/">Home</a><a class="page-link" href="/about/">About</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/archives/">Archives</a><a class="page-link" href="/tags/">Tags</a><a class="page-link" href="/en/Travel/Asia/Seoul/">En</a><!--
+<a class="page-link" href="/">Home</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/archives/">Archives</a><a class="page-link" href="/tags/">Tags</a><a class="page-link" href="/en/Travel/Asia/Seoul/">En</a><!--
 
 
 
 
 -->
           </div>
-        </nav>
+<div class="lang-popup" role="dialog" aria-labelledby="lang-popup-title" lang="en" hidden>
+  <button type="button" class="lang-popup-close" aria-label="Close">
+    <svg viewbox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M1 1l10 10M11 1L1 11"></path></svg>
+  </button>
+  <p id="lang-popup-title" class="lang-popup-title">Looking for the English page?</p>
+  <div class="lang-popup-actions">
+    <a class="lang-popup-button lang-popup-yes" href="/en/Travel/Asia/Seoul/">Yes, take me there.</a>
+    <button type="button" class="lang-popup-button lang-popup-no">No, I'll stay here.</button>
+  </div>
+  <label class="lang-popup-remember">
+    <input type="checkbox">
+    <span class="lang-popup-box" aria-hidden="true"></span>
+    <span>Remember and don't ask me again.</span>
+  </label>
+</div>
+
+<script>
+  (function () {
+    var popup = document.currentScript.previousElementSibling;
+    var isKo = true;
+    var PREF = "lang-preference";
+    var STAY_KO = "lang-stay-ko";
+    var DISMISSED = "lang-popup-closed";
+    var COUNTRY = "lang-popup-country";
+
+    function get(store, key) { try { return window[store].getItem(key); } catch (e) { return null; } }
+    function set(store, key, value) { try { window[store].setItem(key, value); } catch (e) {} }
+    function remove(store, key) { try { window[store].removeItem(key); } catch (e) {} }
+
+    var yes = popup.querySelector(".lang-popup-yes");
+    var no = popup.querySelector(".lang-popup-no");
+    var remember = popup.querySelector(".lang-popup-remember input");
+
+    // 영어 페이지의 한국어 링크([data-lang-ko])를 누르면 이번 방문 동안 한국어에 머문다
+    if (!isKo) {
+      document.addEventListener("click", function (e) {
+        if (e.target.closest && e.target.closest("[data-lang-ko]")) set("sessionStorage", STAY_KO, "1");
+      });
+    }
+
+    // 메뉴 링크는 줄 안(inline) 상자라 위아래 안쪽 여백이 .trigger 높이 밖으로 나온다.
+    // 팝업 위끝을 링크 아래 테두리에 맞추고, 그 아래 간격은 CSS margin-top이 준다.
+    function place() {
+      var link = popup.parentNode.querySelector(".trigger > .page-link:last-child");
+      if (!link || popup.hidden) return;
+      popup.style.top = (link.getBoundingClientRect().bottom - popup.parentNode.getBoundingClientRect().top) + "px";
+    }
+    window.addEventListener("resize", place);
+
+    function open() {
+      popup.hidden = false;
+      place();
+      requestAnimationFrame(function () { popup.classList.add("is-open"); });
+    }
+
+    function close() {
+      set("sessionStorage", DISMISSED, "1");
+      popup.classList.remove("is-open");
+      setTimeout(function () { popup.hidden = true; }, 200);
+    }
+
+    // 체크했으면 고른 언어를 남기고, 안 했으면 지운다 (다음 방문에 다시 묻는다)
+    function save(lang) {
+      if (remember.checked) set("localStorage", PREF, lang);
+      else remove("localStorage", PREF);
+    }
+
+    yes.addEventListener("click", function () {
+      save("en");
+      remove("sessionStorage", STAY_KO);
+      set("sessionStorage", DISMISSED, "1");
+      if (!isKo) close(); // 한국어 페이지에서는 링크가 영어 페이지로 옮긴다
+    });
+    no.addEventListener("click", function () {
+      save("ko");
+      set("sessionStorage", DISMISSED, "1");
+      if (isKo) close(); // 영어 페이지에서는 링크가 한국어 페이지로 옮긴다
+    });
+    // 닫기: 기억은 그대로 두고 닫기만 한다
+    popup.querySelector(".lang-popup-close").addEventListener("click", close);
+
+    // 푸터 "Language setting": 지금 기억을 체크박스에 보여 주고 띄운다. 헤더가 스크롤로 숨어 있으면 꺼낸다.
+    window.openLangPopup = function () {
+      remember.checked = !!get("localStorage", PREF);
+      var root = document.documentElement;
+      if (root.getAttribute("data-scroll-status") === "down") root.setAttribute("data-scroll-status", "up");
+      open();
+    };
+
+    // 저절로 띄우기·자동 이동은 한국어 페이지에서만
+    if (!isKo || get("sessionStorage", STAY_KO)) return;
+    var pref = get("localStorage", PREF);
+    if (pref === "en") { location.replace(yes.href + location.search + location.hash); return; }
+    if (pref === "ko" || get("sessionStorage", DISMISSED)) return;
+
+    var lang = (navigator.language || "").toLowerCase();
+    if (lang.indexOf("ko") === 0) return;
+
+    function showFor(country) {
+      if (country && country !== "KR") open();
+    }
+
+    var cached = get("sessionStorage", COUNTRY);
+    if (cached) {
+      showFor(cached);
+    } else {
+      var controller = window.AbortController ? new AbortController() : null;
+      if (controller) setTimeout(function () { controller.abort(); }, 3000);
+      fetch("https://api.country.is/", controller ? { signal: controller.signal } : {})
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) {
+          var country = data && data.country;
+          if (!country) return;
+          set("sessionStorage", COUNTRY, country);
+          showFor(country);
+        })
+        .catch(function () {}); // 조회 실패 시 띄우지 않는다
+    }
+  })();
+</script>
+</nav>
 </div>
   </div>
 </header>
@@ -776,7 +896,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
-<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1794232647"></script>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1794246400"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -1037,32 +1157,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/Travel/Europe/Salerno/" title="Salerno, Italy">
-            Salerno, Italy<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Berlin/Manghyang/" title="망향비빔국수">
+            망향비빔국수<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Homes/Berlin/Student_Health_Insurace/" title="독일 학생 의료 보험">
-            독일 학생 의료 보험<!-- <span class="post-badges">
+          <a class="post-link" href="/Homes/Aachen/Casa_Malia/" title="Casa Malia">
+            Casa Malia<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Homes/Berlin/Markthalle_Neun/" title="Markthalle Neun">
-            Markthalle Neun<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Rotterdam/" title="Rotterdam, The Netherlands">
+            Rotterdam, The Netherlands<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Zumikon-Zurich/" title="Zumikon-Zurich, Switzerland">
-            Zumikon-Zurich, Switzerland<!-- <span class="post-badges">
+          <a class="post-link" href="/Home%5Cs/Berlin/Berlinale_2025/" title="Berlinale 2025">
+            Berlinale 2025<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1219,12 +1339,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
             Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
             Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
           </p>
-          <p>
-            
-              
-              <a style="font-weight: bold;" href="/Travel/Asia/Seoul/">🇰🇷한국어</a> 
-              
-              <a href="/en/Travel/Asia/Seoul/">🇬🇧English</a>
+          <p><a style="font-weight: bold;" data-lang-ko href="/Travel/Asia/Seoul/">🇰🇷한국어</a> |
+            <a href="/en/Travel/Asia/Seoul/">🇬🇧English</a> |
+            <button type="button" class="site-footer-lang-setting" onclick="window.openLangPopup &amp;&amp; window.openLangPopup()">Language setting</button>
           </p>
         </div>
         <div class="site-footer-R">

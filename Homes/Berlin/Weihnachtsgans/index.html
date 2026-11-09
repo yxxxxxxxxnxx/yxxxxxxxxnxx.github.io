@@ -26,11 +26,14 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yxxxxxxxxnxx"},"dateModified":"2026-10-20T00:00:00+00:00","datePublished":"2026-10-20T00:00:00+00:00","description":"여행과 집, 새것들에 대한 사진과 기록. Photos and notes on travel, homes and new things.","headline":"크리스마스거위","image":"https://yxxxxxxxxnxx.github.io/assets/att/2026-10-20-Weihnachtsgans/banner.avif","mainEntityOfPage":{"@type":"WebPage","@id":"https://yxxxxxxxxnxx.github.io/Homes/Berlin/Weihnachtsgans/"},"url":"https://yxxxxxxxxnxx.github.io/Homes/Berlin/Weihnachtsgans/"}</script>
 <!-- End Jekyll SEO tag -->
+
+  <link rel="alternate" hreflang="en" href="https://yxxxxxxxxnxx.github.io/en/Homes/Berlin/Weihnachtsgans/">
+  <link rel="alternate" hreflang="ko" href="https://yxxxxxxxxnxx.github.io/Homes/Berlin/Weihnachtsgans/">
 <link rel="icon" href="">
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1794232647">
+<link rel="stylesheet" href="/assets/css/main.css?v=1794246400">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -404,14 +407,134 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </label>
 
           <div class="trigger">
-<a class="page-link" href="/">Home</a><a class="page-link" href="/about/">About</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/archives/">Archives</a><a class="page-link" href="/tags/">Tags</a><a class="page-link" href="/en/Homes/Berlin/Weihnachtsgans/">En</a><!--
+<a class="page-link" href="/">Home</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/archives/">Archives</a><a class="page-link" href="/tags/">Tags</a><a class="page-link" href="/en/Homes/Berlin/Weihnachtsgans/">En</a><!--
 
 
 
 
 -->
           </div>
-        </nav>
+<div class="lang-popup" role="dialog" aria-labelledby="lang-popup-title" lang="en" hidden>
+  <button type="button" class="lang-popup-close" aria-label="Close">
+    <svg viewbox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M1 1l10 10M11 1L1 11"></path></svg>
+  </button>
+  <p id="lang-popup-title" class="lang-popup-title">Looking for the English page?</p>
+  <div class="lang-popup-actions">
+    <a class="lang-popup-button lang-popup-yes" href="/en/Homes/Berlin/Weihnachtsgans/">Yes, take me there.</a>
+    <button type="button" class="lang-popup-button lang-popup-no">No, I'll stay here.</button>
+  </div>
+  <label class="lang-popup-remember">
+    <input type="checkbox">
+    <span class="lang-popup-box" aria-hidden="true"></span>
+    <span>Remember and don't ask me again.</span>
+  </label>
+</div>
+
+<script>
+  (function () {
+    var popup = document.currentScript.previousElementSibling;
+    var isKo = true;
+    var PREF = "lang-preference";
+    var STAY_KO = "lang-stay-ko";
+    var DISMISSED = "lang-popup-closed";
+    var COUNTRY = "lang-popup-country";
+
+    function get(store, key) { try { return window[store].getItem(key); } catch (e) { return null; } }
+    function set(store, key, value) { try { window[store].setItem(key, value); } catch (e) {} }
+    function remove(store, key) { try { window[store].removeItem(key); } catch (e) {} }
+
+    var yes = popup.querySelector(".lang-popup-yes");
+    var no = popup.querySelector(".lang-popup-no");
+    var remember = popup.querySelector(".lang-popup-remember input");
+
+    // 영어 페이지의 한국어 링크([data-lang-ko])를 누르면 이번 방문 동안 한국어에 머문다
+    if (!isKo) {
+      document.addEventListener("click", function (e) {
+        if (e.target.closest && e.target.closest("[data-lang-ko]")) set("sessionStorage", STAY_KO, "1");
+      });
+    }
+
+    // 메뉴 링크는 줄 안(inline) 상자라 위아래 안쪽 여백이 .trigger 높이 밖으로 나온다.
+    // 팝업 위끝을 링크 아래 테두리에 맞추고, 그 아래 간격은 CSS margin-top이 준다.
+    function place() {
+      var link = popup.parentNode.querySelector(".trigger > .page-link:last-child");
+      if (!link || popup.hidden) return;
+      popup.style.top = (link.getBoundingClientRect().bottom - popup.parentNode.getBoundingClientRect().top) + "px";
+    }
+    window.addEventListener("resize", place);
+
+    function open() {
+      popup.hidden = false;
+      place();
+      requestAnimationFrame(function () { popup.classList.add("is-open"); });
+    }
+
+    function close() {
+      set("sessionStorage", DISMISSED, "1");
+      popup.classList.remove("is-open");
+      setTimeout(function () { popup.hidden = true; }, 200);
+    }
+
+    // 체크했으면 고른 언어를 남기고, 안 했으면 지운다 (다음 방문에 다시 묻는다)
+    function save(lang) {
+      if (remember.checked) set("localStorage", PREF, lang);
+      else remove("localStorage", PREF);
+    }
+
+    yes.addEventListener("click", function () {
+      save("en");
+      remove("sessionStorage", STAY_KO);
+      set("sessionStorage", DISMISSED, "1");
+      if (!isKo) close(); // 한국어 페이지에서는 링크가 영어 페이지로 옮긴다
+    });
+    no.addEventListener("click", function () {
+      save("ko");
+      set("sessionStorage", DISMISSED, "1");
+      if (isKo) close(); // 영어 페이지에서는 링크가 한국어 페이지로 옮긴다
+    });
+    // 닫기: 기억은 그대로 두고 닫기만 한다
+    popup.querySelector(".lang-popup-close").addEventListener("click", close);
+
+    // 푸터 "Language setting": 지금 기억을 체크박스에 보여 주고 띄운다. 헤더가 스크롤로 숨어 있으면 꺼낸다.
+    window.openLangPopup = function () {
+      remember.checked = !!get("localStorage", PREF);
+      var root = document.documentElement;
+      if (root.getAttribute("data-scroll-status") === "down") root.setAttribute("data-scroll-status", "up");
+      open();
+    };
+
+    // 저절로 띄우기·자동 이동은 한국어 페이지에서만
+    if (!isKo || get("sessionStorage", STAY_KO)) return;
+    var pref = get("localStorage", PREF);
+    if (pref === "en") { location.replace(yes.href + location.search + location.hash); return; }
+    if (pref === "ko" || get("sessionStorage", DISMISSED)) return;
+
+    var lang = (navigator.language || "").toLowerCase();
+    if (lang.indexOf("ko") === 0) return;
+
+    function showFor(country) {
+      if (country && country !== "KR") open();
+    }
+
+    var cached = get("sessionStorage", COUNTRY);
+    if (cached) {
+      showFor(cached);
+    } else {
+      var controller = window.AbortController ? new AbortController() : null;
+      if (controller) setTimeout(function () { controller.abort(); }, 3000);
+      fetch("https://api.country.is/", controller ? { signal: controller.signal } : {})
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) {
+          var country = data && data.country;
+          if (!country) return;
+          set("sessionStorage", COUNTRY, country);
+          showFor(country);
+        })
+        .catch(function () {}); // 조회 실패 시 띄우지 않는다
+    }
+  })();
+</script>
+</nav>
 </div>
   </div>
 </header>
@@ -776,7 +899,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
-<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1794232647"></script>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1794246400"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -873,6 +996,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 <header class="post-header">
   <h1 class="post-title p-name" itemprop="name headline">크리스마스거위</h1>
+<h2 class="post-subtitle">Weihnachtsgans</h2>
 <div class="post-meta">
     <time class="dt-published" datetime="2026-10-20T00:00:00+00:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2026-10-20
     </time>
@@ -912,7 +1036,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
   </div>
 <div class="post-tags">
-<a class="post-tag" href="/tags/#%ED%81%AC%EB%A6%AC%EC%8A%A4%EB%A7%88%EC%8A%A4%EA%B1%B0%EC%9C%84">#크리스마스거위</a><a class="post-tag" href="/tags/#%ED%81%AC%EB%A6%AC%EC%8A%A4%EB%A7%88%EC%8A%A4">#크리스마스</a><a class="post-tag" href="/tags/#%EA%B1%B0%EC%9C%84">#거위</a><a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/tags/#%EB%8F%85%EC%9D%BC">#독일</a>
+<a class="post-tag" href="/tags/#Weihnachtsgans">#Weihnachtsgans</a><a class="post-tag" href="/tags/#%ED%81%AC%EB%A6%AC%EC%8A%A4%EB%A7%88%EC%8A%A4%EA%B1%B0%EC%9C%84">#크리스마스거위</a><a class="post-tag" href="/tags/#%ED%81%AC%EB%A6%AC%EC%8A%A4%EB%A7%88%EC%8A%A4">#크리스마스</a><a class="post-tag" href="/tags/#%EA%B1%B0%EC%9C%84">#거위</a><a class="post-tag" href="/tags/#%EB%B2%A0%EB%A5%BC%EB%A6%B0">#베를린</a><a class="post-tag" href="/tags/#%EB%8F%85%EC%9D%BC">#독일</a>
 </div>
 <div class="wavy-line"></div>
 
@@ -928,17 +1052,17 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 <p><img loading="lazy" decoding="async" width="2160" height="2880" src="/assets/att/2026-10-20-Weihnachtsgans/IMG_2616.avif" alt="크리스마스거위 사진 3"></p>
 
-<h2 id="겨울-날">겨울 날</h2>
+<h2 id="겨울날">겨울날</h2>
 
-<p>유난히도 짧게만 느껴졌던 가을이 지나가고, 어느새 베를린의 전형적인 겨울 풍경이 이곳저곳에 도착해 있다. 매해 그렇듯 베를린 사람들의 불평어린 듯한 얼굴 (단, 겨울 한정 아님 주의) 을 문득 알아채고 주변을 둘러 보면, 어김없이 구름져 흐리고 어두운 겨울 날이 한창이다.</p>
+<p>유난히도 짧게만 느껴졌던 가을이 지나가고, 어느새 베를린의 전형적인 겨울 풍경이 이곳저곳에 도착해 있다. 매해 그렇듯 베를린 사람들의 불평 어린 듯한 얼굴 (단, 겨울 한정 아님 주의) 을 문득 알아채고 주변을 둘러보면, 어김없이 구름져 흐리고 어두운 겨울날이 한창이다.</p>
 
-<p>독일의 겨울은 기온 면에서는 한국과 대체로 비슷한 날이 많지만, 일조량이 터무니 없이 적다. 오후 서너 시 경이면 해가 지는데, 그마저도 매일같이 찾아오는 짙은 구름에 가려 거의 해를 못 보고 대충 밤보단 밝으니 지금이 낮이구나 하는 정도다. 그래서 이곳 사람들의 만사에 대한 불만을 이해 못하는 바는 아니다.</p>
+<p>독일의 겨울은 기온 면에서는 한국과 대체로 비슷한 날이 많지만, 일조량이 터무니없이 적다. 오후 서너 시경이면 해가 지는데, 그마저도 매일같이 찾아오는 짙은 구름에 가려 거의 해를 못 보고 대충 밤보단 밝으니 지금이 낮이구나 하는 정도다. 그래서 이곳 사람들의 만사에 대한 불만을 이해 못 하는 바는 아니다.</p>
 
 <h2 id="크리스마스거위-weihnachtsgans">크리스마스거위 (Weihnachtsgans)</h2>
 
-<p>그간 느끼기로, 독일 음식 문화는 많은 부분 향수에 기대어 있다는 생각을 한다. 어떤 계절이 찾아오면, 명절이 다가오면 으레 하는 의식과도 같은 요리나, 그와 관련한 어릴적 기억에 대한 이야기들을 종종 듣는다.</p>
+<p>그간 느끼기로, 독일 음식 문화는 많은 부분 향수에 기대어 있다는 생각을 한다. 어떤 계절이 찾아오면, 명절이 다가오면 으레 하는 의식과도 같은 요리나, 그와 관련한 어릴 적 기억에 대한 이야기들을 종종 듣는다.</p>
 
-<p>겨울이 완연해지면, 그리고 크리스마스가 다가오면 독일에서는 거위 요리를 먹는다. 도처의 긴긴 어둠 사이에서 집안의 불을 밝히고 분주함이 주는 활기를 느끼고자 함이었을까. 거위 요리 자체가 한국에서는 잘 쓰이지 않는 재료라 생소하기도 하였고, 독일 사람들이 공유하는 향수를 느끼지 못하는 내게는 여느 독일 음식들과 마찬가지로 그저 그런 맛이었다.</p>
+<p>겨울이 완연해지면, 그리고 크리스마스가 다가오면 독일에서는 거위 요리를 먹는다. 도처의 긴긴 어둠 사이에서 집 안의 불을 밝히고 분주함이 주는 활기를 느끼고자 함이었을까. 거위 요리 자체가 한국에서는 잘 쓰이지 않는 재료라 생소하기도 하였고, 독일 사람들이 공유하는 향수를 느끼지 못하는 내게는 여느 독일 음식들과 마찬가지로 그저 그런 맛이었다.</p>
 
 
     </div>
@@ -951,32 +1075,32 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/Travel/Europe/Warsaw/" title="Warsaw, Poland">
-            Warsaw, Poland<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Europe/Prague/" title="Prague, Czech Republic">
+            Prague, Czech Republic<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Travel/Europe/Valencia/" title="Valencia, Spain">
-            Valencia, Spain<!-- <span class="post-badges">
+          <a class="post-link" href="/Travel/Asia/Hoi_An-Phu_Quoc-Hanoi/" title="Hoi An-Phu Quoc-Hanoi, Viet Nam">
+            Hoi An-Phu Quoc-Hanoi, Viet Nam<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="top-post">
+          <a class="post-link" href="/Book/Literature/One_Dimensional/" title="1차원이 되고 싶어">
+            1차원이 되고 싶어<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/Tech/Electronic%20Devices/B&amp;W%20Px8/" title="B&amp;W Px8">
-            B&amp;W Px8<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/Homes/Berlin/Restaurant_Choi/" title="Restaurant Choi">
-            Restaurant Choi<!-- <span class="post-badges">
+          <a class="post-link" href="/Home%5Cs/Berlin/Berlinale_2025/" title="Berlinale 2025">
+            Berlinale 2025<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1133,12 +1257,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
             Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
             Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
           </p>
-          <p>
-            
-              
-              <a style="font-weight: bold;" href="/Homes/Berlin/Weihnachtsgans/">🇰🇷한국어</a> 
-              
-              <a href="/en/Homes/Berlin/Weihnachtsgans/">🇬🇧English</a>
+          <p><a style="font-weight: bold;" data-lang-ko href="/Homes/Berlin/Weihnachtsgans/">🇰🇷한국어</a> |
+            <a href="/en/Homes/Berlin/Weihnachtsgans/">🇬🇧English</a> |
+            <button type="button" class="site-footer-lang-setting" onclick="window.openLangPopup &amp;&amp; window.openLangPopup()">Language setting</button>
           </p>
         </div>
         <div class="site-footer-R">
