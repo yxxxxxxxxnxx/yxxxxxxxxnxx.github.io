@@ -33,7 +33,7 @@
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1793263791">
+<link rel="stylesheet" href="/assets/css/main.css?v=1794232647">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/en/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -779,7 +779,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
-<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1793263791"></script>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1794232647"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -875,19 +875,23 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 
 <div class="message-box" id="gg-translation-msg">
-    This post has been translated by <span class="gem_highlight"><b>Gemini</b></span>.
+    This post has been translated by <img class="gem_logo" src="/assets/images/logos/Gemini.svg" alt="Gemini">.
 </div>
 
 <style>
-    .gem_highlight {
-        display: inline-block;
-        background: linear-gradient(to right, #4796E4, #4796E4, #8C78C9, #CE646C);
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
+    .gem_logo {
+        --gem-h: calc(0.7em / 0.742);
+        --gem-h: calc(1cap / 0.742);
+        display: inline;
+        height: var(--gem-h);
+        width: auto;
+        margin: 0;
+        vertical-align: calc(var(--gem-h) * -0.138);
+    }
+
+    /* 다크 테마 */
+    html[data-theme="dark"] .gem_logo {
+        filter: invert(1) hue-rotate(180deg);
     }
 </style>
 <header class="post-header">
@@ -1005,16 +1009,24 @@ document.addEventListener('DOMContentLoaded', function(event) {
       <div>Related Articles</div>
       <ul>
         <li class="">
-          <a class="post-link" href="/en/%EA%B8%80/%ED%95%99%EA%B5%90/%EB%82%9C%EB%A1%9C/" title="Stove">
-            Stove<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Travel/Europe/Lagos-Sagres-Carvoeiro/" title="Lagos-Sagres-Carvoeiro, Portugal">
+            Lagos-Sagres-Carvoeiro, Portugal<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
 </a>
         </li>
 <li class="">
-          <a class="post-link" href="/en/Travel/Europe/Salerno/" title="Salerno, Italy">
-            Salerno, Italy<!-- <span class="post-badges">
+          <a class="post-link" href="/en/Homes/Berlin/Sperrkonto/" title="Sperrkonto">
+            Sperrkonto<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/en/Travel/Europe/Valencia/" title="Valencia, Spain">
+            Valencia, Spain<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1023,14 +1035,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <li class="">
           <a class="post-link" href="/en/Homes/Aachen/Aufenthaltserlaubnis/" title="Student Residence Permit in Germany">
             Student Residence Permit in Germany<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/en/Book/Literature/Human_Acts/" title="Human Acts">
-            Human Acts<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1196,7 +1200,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
           </p>
         </div>
         <div class="site-footer-R">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Avif-logo-rgb.svg" alt="AVIF Logo Greyscale" style="filter: grayscale(100%); opacity: 1.0;" width="65"><br>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Avif-logo-rgb.svg" alt="AVIF Logo Greyscale" style="width: 65px; filter: grayscale(100%); opacity: 1.0;"><br>
           <p>All images are AVIF-optimized and compressed.<br>If display issues occur, please use the latest browser version.</p>
 <br><br>
         </div>

@@ -681,6 +681,42 @@ html[data-banner-bleed][data-header-transparent][data-scroll-status=top] header.
   height: 100%;
   object-fit: cover;
 }
+.show-window .show-window-title {
+  position: absolute;
+  z-index: 1;
+  top: calc(185.6px + env(safe-area-inset-top));
+  left: calc(24px + env(safe-area-inset-left));
+  max-width: calc(100vw - 24px);
+  margin: 0;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f1f1f1;
+}
+.show-window .show-window-title span {
+  background-color: #1f1f1f;
+  padding: 0 0.15em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.show-window .show-window-footnote {
+  position: absolute;
+  z-index: 1;
+  bottom: calc(185.6px + env(safe-area-inset-top));
+  left: calc(24px + env(safe-area-inset-left));
+  max-width: calc(80vw - 24px);
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #f1f1f1;
+}
+.show-window .show-window-footnote span {
+  background-color: #1f1f1f;
+  padding: 0 0.15em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
 .show-window .show-window-logo {
   position: absolute;
   z-index: 1;
