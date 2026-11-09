@@ -558,6 +558,9 @@ $panel-bleed: 120px;
 // 글 중간에서 위로 스크롤해 헤더가 나타날 때는 지금처럼 fixed (그때는 상단 띠가 생긴다).
 html[data-banner-bleed] {
   --banner-bleed: #{$panel-bleed};
+  // 최상단에서 더 위로 당길 때 생기는 고무줄 바운스를 억제한다 (banner.html의 bleed 되돌림과
+  // 겹쳐 떨림을 키운다). 이와 함께 세로 스크롤 체이닝/당겨서 새로고침도 막힌다.
+  overscroll-behavior-y: none;
 
   &[data-header-transparent][data-scroll-status='top'] header.site-header {
     position: absolute;
