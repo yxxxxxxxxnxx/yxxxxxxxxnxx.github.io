@@ -681,19 +681,24 @@ html[data-scroll-status=down] .framework .sidebar {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 24px;
 }
 @media screen and (max-width: 600px) {
   .site-footer .site-footer-copyright .site-footer-container {
     flex-direction: column;
-    gap: 24px;
   }
 }
-.site-footer .site-footer-copyright .site-footer-container .site-footer-L {
-  display: block;
-}
+.site-footer .site-footer-copyright .site-footer-container .site-footer-L,
 .site-footer .site-footer-copyright .site-footer-container .site-footer-R {
   display: block;
-  font-size: 12px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+@media screen and (max-width: 600px) {
+  .site-footer .site-footer-copyright .site-footer-container .site-footer-L,
+  .site-footer .site-footer-copyright .site-footer-container .site-footer-R {
+    flex: initial;
+  }
 }
 .site-footer a, .site-footer .site-footer-lang-setting {
   color: #046C9A;
