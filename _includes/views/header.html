@@ -41,7 +41,7 @@
             {%- endfor -%}
             
             {%- if site.active_lang == "en" -%}
-              <a class="page-link" {% static_href %} href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}>Ko</a>
+              <a class="page-link" data-lang-ko {% static_href %} href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}>Ko</a>
             {%- elsif site.active_lang == "ko" -%}
               <a class="page-link" {% static_href %} href="{{site.baseurl}}/en{{page.url}}"{% endstatic_href %}>En</a>
             {%- endif -%}
@@ -58,6 +58,7 @@
               </div>
             {%- endif -%} -->
           </div>
+          {%- include views/lang-popup.html -%}
         </nav>
       {%- endif -%}
     </div>

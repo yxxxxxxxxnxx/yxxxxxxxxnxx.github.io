@@ -6,7 +6,7 @@ lang: en
 permalink: /Homes/Berlin/Anmeldung_Berlin/
 categories: Home\s
 subcategories: Berlin
-tags: Berlin Anmeldung Registering Address
+tags: Anmeldung Registering Address Berlin Germany
 banner:
     image: /assets/att/2026-10-19-Anmeldung_Berlin/banner.avif
 gg: true

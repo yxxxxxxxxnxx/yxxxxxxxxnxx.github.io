@@ -133,8 +133,6 @@ code_badge:
 header_pages:
   - index.html
   - home.html
-  - about.md
-  - about.en.md
   - categories.html
   - archives.html
   - tags.html
