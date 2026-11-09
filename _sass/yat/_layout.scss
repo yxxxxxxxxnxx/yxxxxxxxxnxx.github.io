@@ -446,19 +446,21 @@ html {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      gap: $spacing-unit * 3;
 
       @include media-query($on-palm) {
         flex-direction: column;
-        gap: $spacing-unit * 3;
       }
 
-      .site-footer-L {
-        display: block;
-      }
-
+      .site-footer-L,
       .site-footer-R {
         display: block;
-        font-size: $small-font-size;
+        flex: 1 1 0;     // gap(여백)을 뺀 공간을 50:50으로 균등 분할
+        min-width: 0;    // 긴 내용이 있어도 한쪽이 상대를 밀어내지 않게
+
+        @include media-query($on-palm) {
+          flex: initial; // 모바일은 세로 스택 유지 (full-width 블록)
+        }
       }
     }
   }
