@@ -30,7 +30,7 @@
   <script src="https://kit.fontawesome.com/e6721a0674.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
-<link rel="stylesheet" href="/assets/css/main.css?v=1794246400">
+<link rel="stylesheet" href="/assets/css/main.css?v=1794247571">
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/avif.js"></script><link type="application/atom+xml" rel="alternate" href="https://yxxxxxxxxnxx.github.io/feed.xml" title="yxxxxxxxxnxx">
 <!-- Google tag (gtag.js)
@@ -737,9 +737,26 @@ document.addEventListener('DOMContentLoaded', function(event) {
       var root = document.documentElement;
       if (!root.hasAttribute("data-banner-bleed")) return;
       var bleed = parseFloat(getComputedStyle(root).getPropertyValue("--banner-bleed")) || 0;
+      if (bleed <= 0) return;
+
       if (!location.hash && window.scrollY < bleed) window.scrollTo(0, bleed);
+
+      // BLEED 위로 넘어간 오버스크롤을 매 scroll 이벤트마다 scrollTo로 즉시 되돌리면,
+      // 사용자의 연속 입력(관성·트랙패드·고무줄 스크롤)과 매 프레임 충돌해 화면이 덜덜 떨린다.
+      // 대신 스크롤이 '멈춘 뒤' 한 번만 제자리로 되돌려, 제스처 중에는 자유롭게 움직이게 한다.
+      var correcting = false;   // 우리가 되돌리는 중에 생기는 scroll 이벤트는 무시
+      var settleTimer = null;
       window.addEventListener("scroll", function () {
-        if (window.scrollY < bleed - 1) window.scrollTo(0, bleed);
+        if (correcting) return;
+        if (window.scrollY >= bleed - 1) return;       // 잠금 위치 이하면 보정 불필요
+        if (settleTimer) clearTimeout(settleTimer);
+        settleTimer = setTimeout(function () {         // 더 이상 스크롤 이벤트가 없으면 = 멈춤
+          settleTimer = null;
+          if (window.scrollY >= bleed - 1) return;
+          correcting = true;
+          window.scrollTo(0, bleed);
+          requestAnimationFrame(function () { correcting = false; });
+        }, 90);
       }, { passive: true });
     })();
   </script><script>
@@ -896,7 +913,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 --><div id="click-to-top" class="click-to-top">
   <i class="fa-solid fa-chevron-up"></i>
 </div>
-<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1794246400"></script>
+<script type="module" src="/assets/js/liquid-glass-buttons.js?v=1794247571"></script>
 <script>
   (function () {
     const clickToTop = document.getElementById('click-to-top');
@@ -1075,25 +1092,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li class="top-post">
-          <a class="post-link" href="/Book/Literature/One_Dimensional/" title="1차원이 되고 싶어">
-            1차원이 되고 싶어<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/Travel/Europe/Sitges/" title="Sitges, Spain">
-            Sitges, Spain<!-- <span class="post-badges">
-  <span class="post-badge badge-top">TOP</span>
-  <span class="post-badge badge-new">NEW</span>
-</span> -->
-</a>
-        </li>
-<li class="">
-          <a class="post-link" href="/Homes/Aachen/Casa_Malia/" title="Casa Malia">
-            Casa Malia<!-- <span class="post-badges">
+        <li class="">
+          <a class="post-link" href="/Travel/Africa/Cape_Town/" title="Cape Town, South Africa">
+            Cape Town, South Africa<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->
@@ -1102,6 +1103,22 @@ document.addEventListener('DOMContentLoaded', function(event) {
 <li class="">
           <a class="post-link" href="/Book/Literature/Human_Acts/" title="소년이 온다">
             소년이 온다<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/Homes/Berlin/Sperrkonto/" title="Sperrkonto">
+            Sperrkonto<!-- <span class="post-badges">
+  <span class="post-badge badge-top">TOP</span>
+  <span class="post-badge badge-new">NEW</span>
+</span> -->
+</a>
+        </li>
+<li class="">
+          <a class="post-link" href="/Travel/Europe/Seville-Malaga/" title="Seville-Malaga, Spain">
+            Seville-Malaga, Spain<!-- <span class="post-badges">
   <span class="post-badge badge-top">TOP</span>
   <span class="post-badge badge-new">NEW</span>
 </span> -->

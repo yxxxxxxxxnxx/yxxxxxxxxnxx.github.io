@@ -765,6 +765,7 @@ html:has(.page-content-home)::-webkit-scrollbar {
 
 html[data-banner-bleed] {
   --banner-bleed: 120px;
+  overscroll-behavior-y: none;
 }
 html[data-banner-bleed][data-header-transparent][data-scroll-status=top] header.site-header {
   position: absolute;
