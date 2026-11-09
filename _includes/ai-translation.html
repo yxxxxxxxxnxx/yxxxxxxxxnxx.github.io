@@ -1,16 +1,24 @@
+{%- capture siri_logo -%}<img class='siri_logo' src='{{ "/assets/images/logos/Siri_AI.png" | relative_url }}' alt='Siri AI'>{%- endcapture -%}
+{%- capture apple_logo -%}<img class='app_int_logo' src='{{ "/assets/images/logos/Apple_Intelligence.png" | relative_url }}' alt='Apple Intelligence'>{%- endcapture -%}
 <div class="message-box" id="ai-translation-msg">
-    {{ site.data.strings.ai_translation | replace: "Apple Intelligence", "<span class='app_int_highlight'><b>Apple Intelligence</b></span>" }}
+    {{ site.data.strings.ai_translation | replace: "Apple Intelligence", apple_logo | replace: "Siri AI", siri_logo }}
 </div>
 
 <style>
-    .app_int_highlight {
-        display: inline-block;
-        background: linear-gradient(to right, #3391ff, #af4eff, #ff3b5c, #ff9f0a);
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
+    .siri_logo,
+    .app_int_logo {
+        --ai-h: calc(0.7em / 0.65);
+        --ai-h: calc(1cap / 0.65);
+        display: inline;
+        height: var(--ai-h);
+        width: auto;
+        margin: 0;
+        vertical-align: calc(var(--ai-h) * -0.175);
+    }
+
+    /* 다크 테마 */
+    html[data-theme="dark"] .siri_logo,
+    html[data-theme="dark"] .app_int_logo {
+        filter: invert(1) hue-rotate(180deg);
     }
 </style>

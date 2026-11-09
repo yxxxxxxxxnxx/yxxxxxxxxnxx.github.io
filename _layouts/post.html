@@ -29,6 +29,10 @@ sidebar:
     {%- include gg-translation.html -%}
     {%- endif -%}
 
+    {%- if page.cl == true -%}
+    {%- include cl-translation.html -%}
+    {%- endif -%}
+
     {%- if page.update == true -%}
     {%- include update.html -%}
     {%- endif -%}

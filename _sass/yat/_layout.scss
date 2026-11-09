@@ -455,6 +455,44 @@ html[data-banner-bleed] {
     object-fit: cover;
   }
 
+  .show-window-title {
+    position: absolute;
+    z-index: 1;
+    top: calc(#{$panel-bleed + $spacing-unit + $base-font-size * $base-line-height + $spacing-unit * 2 + $spacing-unit * 2} + env(safe-area-inset-top));
+    left: calc(#{$spacing-unit * 3} + env(safe-area-inset-left));
+    max-width: calc(100vw - #{$spacing-unit * 3});
+    margin: 0;
+    @include hierarchical-font-sw(1);
+    line-height: 1.25;
+    color: $background-color;
+
+    span {
+      background-color: $text-color;
+      padding: 0 0.15em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  }
+
+  .show-window-footnote {
+    position: absolute;
+    z-index: 1;
+    bottom: calc(#{$panel-bleed + $spacing-unit + $base-font-size * $base-line-height + $spacing-unit * 2 + $spacing-unit * 2} + env(safe-area-inset-top));
+    left: calc(#{$spacing-unit * 3} + env(safe-area-inset-left));
+    max-width: calc(80vw - #{$spacing-unit * 3});
+    margin: 0;
+    @include hierarchical-font-sw(3);
+    line-height: 1.25;
+    color: $background-color;
+
+    span {
+      background-color: $text-color;
+      padding: 0 0.15em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  }
+
   // 타이포 로고: 패널 내비게이션 버튼 바로 위($spacing-unit * 2)에, 버튼과 같은 가운데 줄로 세로(반시계 90°) 표시.
   // 글자 크기·굵기 = 사이트 메뉴(.page-link)와 같게 고정, 색 = 포스트 사진 워터마크 색(#F2AD00).
   // show-window 층은 문서와 함께 BLEED만큼 위로 올라가 있으므로 화면 아래 기준 위치에 BLEED를 더한다.

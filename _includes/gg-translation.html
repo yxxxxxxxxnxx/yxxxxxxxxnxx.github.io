@@ -1,16 +1,20 @@
 <div class="message-box" id="gg-translation-msg">
-    {{ site.data.strings.gg_translation | replace: "Gemini", "<span class='gem_highlight'><b>Gemini</b></span>" }}
+    {{ site.data.strings.gg_translation | replace: "Gemini", "<img class='gem_logo' src='/assets/images/logos/Gemini.svg' alt='Gemini'>" }}
 </div>
 
 <style>
-    .gem_highlight {
-        display: inline-block;
-        background: linear-gradient(to right, #4796E4, #4796E4, #8C78C9, #CE646C);
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        color: transparent;
+    .gem_logo {
+        --gem-h: calc(0.7em / 0.742);
+        --gem-h: calc(1cap / 0.742);
+        display: inline;
+        height: var(--gem-h);
+        width: auto;
+        margin: 0;
+        vertical-align: calc(var(--gem-h) * -0.138);
+    }
+
+    /* 다크 테마 */
+    html[data-theme="dark"] .gem_logo {
+        filter: invert(1) hue-rotate(180deg);
     }
 </style>

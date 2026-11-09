@@ -1,0 +1,20 @@
+<div class="message-box" id="cl-translation-msg">
+    {{ site.data.strings.cl_translation | replace: "Claude", "<img class='cl_logo' src='/assets/images/logos/Claude.svg' alt='Claude'>" }}
+</div>
+
+<style>
+    .cl_logo {
+        --cl-h: calc(0.7em / 0.792);
+        --cl-h: calc(1cap / 0.792);
+        display: inline;
+        height: var(--cl-h);
+        width: auto;
+        margin: 0;
+        vertical-align: calc(var(--cl-h) * -0.092);
+    }
+
+    /* 다크 테마 */
+    html[data-theme="dark"] .cl_logo {
+        filter: invert(1) hue-rotate(180deg);
+    }
+</style>

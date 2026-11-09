@@ -7,7 +7,7 @@ categories: Home\s
 subcategories: Aachen
 tags:  CasaMalia Restaurant Aachen
 banner:
-    image: https://lh3.googleusercontent.com/p/AF1QipPYGxRThJRCeCDoUeT_TWOjumTTwcjacM2f1-nf=s0
+    image: /assets/att/2026-04-24-Casa_Malia/banner.avif
 ---
 
 ## Casa Malia
