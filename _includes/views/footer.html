@@ -23,14 +23,14 @@
           </p>
           <p>
             {%- comment -%} 언어 링크와 언어 설정 (views/lang-popup.html의 팝업을 다시 띄운다) {%- endcomment -%}
-            <a{% if site.active_lang == "ko" %} style="font-weight: bold;"{% endif %} data-lang-ko {% static_href %}href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}>🇰🇷한국어</a> |
-            <a{% if site.active_lang == "en" %} style="font-weight: bold;"{% endif %} {% static_href %}href="{{site.baseurl}}/en{{page.url}}"{% endstatic_href %}>🇬🇧English</a> |
+            <a{% if site.active_lang == "ko" %} style="font-weight: bold;"{% endif %} data-lang-ko {% static_href %}href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}>한국어</a> |
+            <a{% if site.active_lang == "en" %} style="font-weight: bold;"{% endif %} {% static_href %}href="{{site.baseurl}}/en{{page.url}}"{% endstatic_href %}>English</a><br>
             <button type="button" class="site-footer-lang-setting" onclick="window.openLangPopup && window.openLangPopup()">Language setting</button>
           </p>
         </div>
         <div class="site-footer-R">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Avif-logo-rgb.svg" alt="AVIF Logo Greyscale" style="filter: grayscale(100%); opacity: 1.0;" width="65"><br>
-          <p>All images are AVIF-optimized and compressed.<br>If display issues occur, please use the latest browser version.</p><br><br>
+          <p>All images are AVIF-optimized and compressed. If display issues occur, please use the latest browser version.</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Avif-logo-rgb.svg" alt="AVIF Logo Greyscale" style="filter: grayscale(100%); opacity: 1.0;" width="65">
         </div>
     </div>
   </div>
