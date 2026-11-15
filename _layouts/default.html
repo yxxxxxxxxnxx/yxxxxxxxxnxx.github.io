@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{%- comment -%} data-scroll-status="top": 처음부터 맨 위 상태로 그린다. 없으면 header.html 스크립트가 붙일 때 배너가 100vh로 늘어나며 본문이 밀린다 (CLS) {%- endcomment -%}
+{%- comment -%} data-banner-bleed: 배너가 있는 페이지는 배너를 iOS 상태바·주소창 뒤까지 채운다 (banner.html, _layout.scss) {%- endcomment -%}
+{%- include functions.html func='get_banner' -%}
+<html lang="{{ page.lang | default: site.active_lang | default: site.lang | default: "en" }}" data-scroll-status="top"{% if has_banner %} data-banner-bleed{% endif %}>
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include views/header.html -%}
+
+    {%- include views/banner.html -%}
+
+    {%- include extensions/hashlocate.html -%}
+
+    <!-- {%- include extensions/theme-toggle.html -%} -->
+
+    {%- include extensions/click-to-top.html -%}
+
+    <main class="page-content" aria-label="Content">
+
+      <!-- <script src="/assets/js/scroll-sync.js"></script>
+      <script src="/assets/js/scroll-control.js"></script> -->
+
+      <div class="wrapper">
+        {%- if page.banner -%}
+          {{ content }}
+        {%- else -%}
+          <div class="header-offset">
+          {{ content }}
+          </div>
+        {%- endif -%}
+      </div>
+    </main>
+
+    {%- include views/footer.html -%}
+
+  </body>
+</html>

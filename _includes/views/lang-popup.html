@@ -1,0 +1,142 @@
+{%- comment -%}
+  언어 안내 팝업과 언어 선택 기억 (header.html의 .site-nav 안, 메뉴(.trigger) 바로 뒤). 쿠키는 쓰지 않는다.
+  저장:
+  - localStorage "lang-preference": "en" | "ko" (체크박스를 체크하고 Yes/No로 고른 값. 체크하지 않고 고르면 지운다.
+    닫기 버튼은 아무것도 바꾸지 않는다)
+  - sessionStorage "lang-stay-ko": 이번 방문(탭)에서 영어 페이지의 한국어 링크(메뉴 "Ko", 푸터 "한국어", 팝업 No)를 누름.
+    그동안 자동 이동과 팝업을 멈출 뿐 저장된 선택은 그대로라, 창을 닫고 다시 오면 다시 영어로 옮긴다.
+  - sessionStorage "lang-popup-closed", "lang-popup-country": 이번 방문에서 닫음 / 조회한 국가 코드
+  한국어 페이지에서 저절로 뜨는 경우:
+  - "en"이 남아 있으면 묻지 않고 같은 글의 영어 페이지로 바로 옮긴다. "ko"면 띄우지 않는다.
+  - 남은 게 없으면: 브라우저 기본 언어가 한국어가 아니고 접속 IP 국가(country.is)가 한국이 아닐 때 띄운다.
+  푸터의 "Language setting"(window.openLangPopup)은 조건 없이 어느 언어 페이지에서나 띄운다.
+  고르는 뜻은 두 언어 페이지에서 같다: Yes = 영어, No = 한국어. 닫기 = 이번만 닫음.
+  Yes·No·닫기 모두 이번 방문 동안은 다시 저절로 띄우지 않는다 (다음 방문에 다시 묻는다, 기억이 없다면).
+{%- endcomment -%}
+{%- assign ko_href = site.baseurl | append: page.url -%}
+{%- assign en_href = site.baseurl | append: '/en' | append: page.url -%}
+<div class="lang-popup" role="dialog" aria-labelledby="lang-popup-title" lang="en" hidden>
+  <button type="button" class="lang-popup-close" aria-label="Close">
+    <svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M1 1l10 10M11 1L1 11"/></svg>
+  </button>
+  <p id="lang-popup-title" class="lang-popup-title">Looking for the English page?</p>
+  <div class="lang-popup-actions">
+    {%- if site.active_lang == "ko" %}
+    <a class="lang-popup-button lang-popup-yes" {% static_href %}href="{{ en_href }}"{% endstatic_href %}>Yes, take me there.</a>
+    <button type="button" class="lang-popup-button lang-popup-no">No, I'll stay here.</button>
+    {%- else %}
+    <button type="button" class="lang-popup-button lang-popup-yes">Yes, I'll stay here.</button>
+    <a class="lang-popup-button lang-popup-no" data-lang-ko {% static_href %}href="{{ ko_href }}"{% endstatic_href %}>No, switch to Korean.</a>
+    {%- endif %}
+  </div>
+  <label class="lang-popup-remember">
+    <input type="checkbox">
+    <span class="lang-popup-box" aria-hidden="true"></span>
+    <span>Remember and don't ask me again.</span>
+  </label>
+</div>
+
+<script>
+  (function () {
+    var popup = document.currentScript.previousElementSibling;
+    var isKo = {% if site.active_lang == "ko" %}true{% else %}false{% endif %};
+    var PREF = "lang-preference";
+    var STAY_KO = "lang-stay-ko";
+    var DISMISSED = "lang-popup-closed";
+    var COUNTRY = "lang-popup-country";
+
+    function get(store, key) { try { return window[store].getItem(key); } catch (e) { return null; } }
+    function set(store, key, value) { try { window[store].setItem(key, value); } catch (e) {} }
+    function remove(store, key) { try { window[store].removeItem(key); } catch (e) {} }
+
+    var yes = popup.querySelector(".lang-popup-yes");
+    var no = popup.querySelector(".lang-popup-no");
+    var remember = popup.querySelector(".lang-popup-remember input");
+
+    // 영어 페이지의 한국어 링크([data-lang-ko])를 누르면 이번 방문 동안 한국어에 머문다
+    if (!isKo) {
+      document.addEventListener("click", function (e) {
+        if (e.target.closest && e.target.closest("[data-lang-ko]")) set("sessionStorage", STAY_KO, "1");
+      });
+    }
+
+    // 메뉴 링크는 줄 안(inline) 상자라 위아래 안쪽 여백이 .trigger 높이 밖으로 나온다.
+    // 팝업 위끝을 링크 아래 테두리에 맞추고, 그 아래 간격은 CSS margin-top이 준다.
+    function place() {
+      var link = popup.parentNode.querySelector(".trigger > .page-link:last-child");
+      if (!link || popup.hidden) return;
+      popup.style.top = (link.getBoundingClientRect().bottom - popup.parentNode.getBoundingClientRect().top) + "px";
+    }
+    window.addEventListener("resize", place);
+
+    function open() {
+      popup.hidden = false;
+      place();
+      requestAnimationFrame(function () { popup.classList.add("is-open"); });
+    }
+
+    function close() {
+      set("sessionStorage", DISMISSED, "1");
+      popup.classList.remove("is-open");
+      setTimeout(function () { popup.hidden = true; }, 200);
+    }
+
+    // 체크했으면 고른 언어를 남기고, 안 했으면 지운다 (다음 방문에 다시 묻는다)
+    function save(lang) {
+      if (remember.checked) set("localStorage", PREF, lang);
+      else remove("localStorage", PREF);
+    }
+
+    yes.addEventListener("click", function () {
+      save("en");
+      remove("sessionStorage", STAY_KO);
+      set("sessionStorage", DISMISSED, "1");
+      if (!isKo) close(); // 한국어 페이지에서는 링크가 영어 페이지로 옮긴다
+    });
+    no.addEventListener("click", function () {
+      save("ko");
+      set("sessionStorage", DISMISSED, "1");
+      if (isKo) close(); // 영어 페이지에서는 링크가 한국어 페이지로 옮긴다
+    });
+    // 닫기: 기억은 그대로 두고 닫기만 한다
+    popup.querySelector(".lang-popup-close").addEventListener("click", close);
+
+    // 푸터 "Language setting": 지금 기억을 체크박스에 보여 주고 띄운다. 헤더가 스크롤로 숨어 있으면 꺼낸다.
+    window.openLangPopup = function () {
+      remember.checked = !!get("localStorage", PREF);
+      var root = document.documentElement;
+      if (root.getAttribute("data-scroll-status") === "down") root.setAttribute("data-scroll-status", "up");
+      open();
+    };
+
+    // 저절로 띄우기·자동 이동은 한국어 페이지에서만
+    if (!isKo || get("sessionStorage", STAY_KO)) return;
+    var pref = get("localStorage", PREF);
+    if (pref === "en") { location.replace(yes.href + location.search + location.hash); return; }
+    if (pref === "ko" || get("sessionStorage", DISMISSED)) return;
+
+    var lang = (navigator.language || "").toLowerCase();
+    if (lang.indexOf("ko") === 0) return;
+
+    function showFor(country) {
+      if (country && country !== "KR") open();
+    }
+
+    var cached = get("sessionStorage", COUNTRY);
+    if (cached) {
+      showFor(cached);
+    } else {
+      var controller = window.AbortController ? new AbortController() : null;
+      if (controller) setTimeout(function () { controller.abort(); }, 3000);
+      fetch("https://api.country.is/", controller ? { signal: controller.signal } : {})
+        .then(function (res) { return res.ok ? res.json() : null; })
+        .then(function (data) {
+          var country = data && data.country;
+          if (!country) return;
+          set("sessionStorage", COUNTRY, country);
+          showFor(country);
+        })
+        .catch(function () {}); // 조회 실패 시 띄우지 않는다
+    }
+  })();
+</script>

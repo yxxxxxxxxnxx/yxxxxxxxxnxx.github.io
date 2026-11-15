@@ -1,0 +1,22 @@
+# 홈 최상단 show-window 패널에 표시할 이미지 목록
+# 접속/새로고침 때마다 이 중 하나를 무작위로 고른다 (직전에 본 이미지는 피한다).
+# 목록이 비어 있으면 show-window 패널을 표시하지 않는다.
+#
+#   file:     assets/images/show-window/
+#   position: (선택) 이미지를 자를 때 기준 위치. CSS object-position 값 (기본 center)
+#
+# 예)
+# - file: seoul-night.avif
+# - file: lisbon-tram.jpg
+#   position: center bottom
+
+- file: IMG_1127.avif 
+- file: IMG_2174.avif
+- file: IMG_2263.avif
+- file: IMG_2270.avif
+- file: IMG_2275.avif
+- file: IMG_2892.avif
+- file: IMG_2914.avif
+- file: IMG_4613.avif
+- file: IMG_4737.avif
+- file: IMG_6368.avif

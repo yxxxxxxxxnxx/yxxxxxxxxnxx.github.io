@@ -1,0 +1,37 @@
+<footer class="site-footer h-card">
+  <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-copyright">
+      {%- assign currentYear = 'now' | date: "%Y" -%}
+          {%- assign copyright = site.copyright
+              | replace: '{currentYear}', currentYear
+              | replace: '{author}', site.author
+              | replace: '(c)', '&copy;'
+              | replace: '(p)', '℗'
+              | replace: '(cleft)', '<span class="copyleft">&copy;</span>'
+          -%}
+      <div>{{ copyright }}<br></div>
+      <div class="wavy-line"></div><br>
+      <div class="site-footer-container">
+        <div class="site-footer-L">
+          <p>
+            Powered by <a href="https://jekyllrb.com/">Jekyll</a> &amp; <a href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a><br>
+            Webfonts <a href="https://github.com/wanteddev/wanted-sans">Wanted Sans</a>, <a href="https://github.com/Jihwan-Suh/PyeojinGothic">Pyeojin Gothic</a>, <a href="https://fonts.google.com/specimen/Google+Sans+Flex?preview.text=l%2033%2049&specimen.preview.text=l+33+49&preview.size=171">Google Sans Flex</a><br>
+            Color palette <a href="https://github.com/karthik/wesanderson/">The Darjeeling Ltd.</a><br>
+            Liquid glass <a href="https://github.com/gentpan/liquidglass">liquidglass</a><br><br>
+          </p>
+          <p>
+            {%- comment -%} 언어 링크와 언어 설정 (views/lang-popup.html의 팝업을 다시 띄운다) {%- endcomment -%}
+            <a{% if site.active_lang == "ko" %} style="font-weight: bold;"{% endif %} data-lang-ko {% static_href %}href="{{site.baseurl}}{{page.url}}"{% endstatic_href %}>한국어</a> |
+            <a{% if site.active_lang == "en" %} style="font-weight: bold;"{% endif %} {% static_href %}href="{{site.baseurl}}/en{{page.url}}"{% endstatic_href %}>English</a><br>
+            <button type="button" class="site-footer-lang-setting" onclick="window.openLangPopup && window.openLangPopup()">Language setting</button>
+          </p>
+        </div>
+        <div class="site-footer-R">
+          <p>All images are AVIF-optimized and compressed. If display issues occur, please use the latest browser version.</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Avif-logo-rgb.svg" alt="AVIF Logo Greyscale" style="filter: grayscale(100%); opacity: 1.0;" width="65">
+        </div>
+    </div>
+  </div>
+</footer>

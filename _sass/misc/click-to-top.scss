@@ -1,0 +1,195 @@
+// 리퀴드 글래스 느낌의 버튼 (iOS 26 스타일 근사): 뒤 배경을 살짝 흐리고 채도를 올린 반투명 유리 +
+// 가는 밝은 테두리 + 위쪽 안쪽 하이라이트 + 부드러운 그림자. backdrop-filter만 써서 Safari·Chrome 모두 같은 모습.
+// 테두리는 크기가 바뀌지 않도록 border 대신 안쪽 그림자로 그린다.
+%liquid-glass {
+  background-color: rgba(#fff, 0.22);
+  -webkit-backdrop-filter: blur(4px) saturate(160%);   // liquid-glass-buttons.js의 FALLBACK과 같게
+  backdrop-filter: blur(4px) saturate(160%);
+  box-shadow:
+    inset 0 0 0 1px rgba(#fff, 0.45),      // 테두리
+    inset 0 1px 1px rgba(#fff, 0.7),       // 위쪽 하이라이트
+    inset 0 -1px 1px rgba(#fff, 0.2),      // 아래쪽 반사
+    0 8px 24px rgba(#000, 0.18);           // 떠 있는 그림자
+  color: $text-color;
+}
+
+// Chrome·Edge에서 엔진이 실제 굴절을 켰을 때 (liquid-glass-buttons.js가 .is-refracting을 붙인다):
+// 굴절이 잘 보이도록 유리 색을 엷게 하고, 테두리 반사는 엔진이 그리므로 안쪽 하이라이트는 뺀다.
+%liquid-glass-refracting {
+  background-color: rgba(#fff, 0.16);   // 어두운 사진 위에서도 어두운 화살표가 보일 만큼
+  box-shadow:
+    inset 0 0 0 1px rgba(#fff, 0.35),
+    0 8px 24px rgba(#000, 0.18);
+}
+
+%liquid-glass-dark {
+  background-color: rgba(#000, 0.28);
+  box-shadow:
+    inset 0 0 0 1px rgba(#fff, 0.18),
+    inset 0 1px 1px rgba(#fff, 0.3),
+    inset 0 -1px 1px rgba(#fff, 0.08),
+    0 8px 24px rgba(#000, 0.4);
+  color: $dark-text-color;
+}
+
+// 버튼 아이콘 크기 (to-the-top, 패널 내비게이션)
+:root {
+  --button-icon-size: 20px;
+}
+
+.click-to-top {
+  @extend %liquid-glass;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  // viewport-fit=cover: iPhone 하단 주소창·홈 인디케이터, 가로 화면의 노치를 피한다
+  right: calc(60px + env(safe-area-inset-right));
+  bottom: calc(48px + env(safe-area-inset-bottom));
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  font-size: var(--button-icon-size);
+  user-select: none;
+  transition: 0.3s;
+  z-index: 10;
+
+  @include media-query($on-laptop) {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    right: calc(35px + env(safe-area-inset-right));
+    font-size: var(--button-icon-size);
+  }
+}
+
+.click-to-top.is-refracting,
+.panel-nav.is-refracting {
+  @extend %liquid-glass-refracting;
+}
+
+.click-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+html[data-theme="dark"] {
+  .click-to-top {
+    @extend %liquid-glass-dark;
+  }
+
+  .click-to-top.is-refracting,
+  .panel-nav.is-refracting {
+    background-color: rgba(#000, 0.12);
+  }
+}
+
+
+// 홈 전용: 패널(show-window, top-panel, 카테고리, 푸터) 사이를 오가는 위/아래 버튼.
+// click-to-top 바로 위($spacing-unit * 2 간격)에 놓는 위아래로 긴 버블 하나 (리퀴드 글래스도 하나).
+// 높이 = click-to-top 지름 × 2 - $spacing-unit * 2, 위·아래 버튼이 반씩 나눈다.
+$panel-nav-trim: $spacing-unit * 2;
+
+.panel-nav {
+  $size: 64px;   // click-to-top 지름
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  width: $size;
+  height: $size * 2 - $panel-nav-trim;
+  right: calc(60px + env(safe-area-inset-right));
+  bottom: calc(#{48px + $size + $spacing-unit * 2} + env(safe-area-inset-bottom));
+  border-radius: 9999px;   // 최댓값: 위아래 끝이 반원
+  @extend %liquid-glass;
+  overflow: hidden;
+  user-select: none;
+  z-index: 10;
+  // 나타날 때: 배경과 아래 화살표가 먼저 떠오르고(ease-out으로 감속) 0.1초 뒤 위 화살표, 다시 0.1초 뒤 show-window 타이포 로고.
+  // 사라질 때(역순): 로고 → 0.1초 뒤 위 화살표 → 0.1초 뒤 아래 화살표와 배경이 가라앉는다(ease-in으로 가속).
+  $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  $ease-in:  cubic-bezier(0.55, 0, 1, 0.45);
+
+  transition:
+    opacity 0.3s $ease-out,
+    transform 0.3s $ease-out;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+    padding: 0;
+    border: none;
+    background: none;
+    color: inherit;
+    font-size: var(--button-icon-size);
+    cursor: pointer;
+
+    // 화살표 아이콘 (FontAwesome이 <i>를 <svg>로 바꿀 수 있어 자식 요소 전체를 대상으로 한다)
+    & > * {
+      transition:
+        opacity 0.3s $ease-out,
+        transform 0.3s $ease-out;
+    }
+
+    // 비활성: 화살표만 흐리게
+    &:disabled {
+      cursor: default;
+
+      & > * {
+        opacity: 0.3;
+      }
+    }
+  }
+
+  .panel-nav-prev > * {
+    transition-delay: 0.1s;
+  }
+
+  // 휠을 돌리거나 손가락으로 끄는 동안 감추고, 멈춘 뒤 1초가 지나면 다시 보인다 (scroll-sync.js)
+  &.is-scrolling {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition:
+      opacity 0.25s $ease-in 0.2s,
+      transform 0.25s $ease-in 0.2s;
+
+    button > * {
+      opacity: 0;
+      transform: translateY(8px);
+      transition:
+        opacity 0.25s $ease-in,
+        transform 0.25s $ease-in;
+    }
+
+    .panel-nav-prev > * {
+      transition-delay: 0.1s;
+    }
+
+    .panel-nav-next > * {
+      transition-delay: 0.2s;
+    }
+  }
+
+  @include media-query($on-laptop) {
+    $size: 48px;
+
+    width: $size;
+    height: $size * 2 - $panel-nav-trim;
+    right: calc(35px + env(safe-area-inset-right));
+    bottom: calc(#{48px + $size + $spacing-unit * 2} + env(safe-area-inset-bottom));
+  }
+}
+
+html[data-theme="dark"] {
+  .panel-nav {
+    @extend %liquid-glass-dark;
+  }
+}

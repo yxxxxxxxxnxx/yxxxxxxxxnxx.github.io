@@ -1,0 +1,344 @@
+$dark-background-color: #000000 !default;
+$dark-text-color: #fff !default;
+
+html[data-theme="dark"]  {
+  &[data-scroll-status='top'] {
+    header.site-header-transparent {
+      &.site-header {
+        @include media-query($on-laptop) {
+          .page-link {
+            color: #fff;
+          }
+        }
+      }
+    }
+
+    footer.site-footer {
+      .site-footer-inner {
+        border-top: solid 1px #000000 !important;
+        transition: 0s;
+      }
+    }
+  }
+
+  body {
+    color: $dark-text-color;
+    background-color: $dark-background-color;
+  }
+
+  *:not(pre) > code {
+    color: $dark-text-color;
+    background-color: transparent;
+    border: 1px solid map-get($brand-colors, 'darjeelingorange');
+  }
+
+  blockquote {
+    color: $dark-text-color;
+    border-left: 4px solid #fff;
+  }
+
+  table {
+    color: #fff;
+
+    tr {
+      &:nth-child(even) {
+        background-color: #000;
+      }
+    }
+  
+    th {
+      background-color: #000;
+      border: 1px solid #fff;
+      border-bottom-color: #fff;
+    }
+  
+    td {
+      border: 1px solid #fff;
+    }
+  }
+
+  .site-header {
+    background-color: #000000;
+
+    .site-brand {
+      .site-brand-inner {
+        &, &:visited {
+          color: #f8f8f8;
+        }
+      }
+    }
+
+    .site-nav .page-link {
+      color: #fff;
+    }
+
+    .ct-language-dropdown {
+      color: #fff;
+      background-color: $dark-background-color;
+      box-shadow: 0 0 3px 1px #0000005b;
+    }
+
+    .ct-language-selected, .ct-language-dropdown li:hover {
+      background-color: #222 !important;
+    }
+
+    @include media-query($on-laptop) {
+      .menu-icon > svg {
+          fill: rgba($dark-text-color, 80%);
+      }
+
+      .site-nav input:checked ~ .trigger {
+        background-color: #000000;
+        border: 1px solid #fff;
+      }
+    }
+  }
+
+  .site-footer {
+    color: #fff;
+    background-color: #000;
+  }
+
+  .left-vsplit:before {
+    background-color: #fff;
+  }
+
+  .page-banner {
+    .page-banner-img {
+      & > *:first-child {
+        opacity: 0.718;
+      }
+    }
+  }
+
+  .show-window {
+    background-color: $dark-background-color;
+  }
+
+  .pagination {
+    .top-panel,
+    .panels-wrapper {
+      background-color: $dark-background-color;
+    }
+
+    // 어두운 배경에서는 밝은 테두리로 경계를 보이고 그림자는 검게 (macOS 다크 모드 창처럼)
+    .top-panel::before,
+    .panels-wrapper::before {
+      box-shadow:
+        0 0 0 0.5px rgba($dark-text-color, 0.25),
+        0 -4px 12px rgba(#000, 0.5),
+        0 -22px 70px 4px rgba(#000, 0.8);
+    }
+
+    .load-more .load-more-bubble,
+    .panel-cover-label span {
+      border-color: $dark-text-color;
+      background-color: $dark-text-color;
+      color: $dark-background-color;
+    }
+
+    .post-link {
+      color: #fff;
+    }
+
+    .post-subtitle {
+      color: $grey-color-dark;
+    }
+
+    .post-excerpt {
+      color: $grey-color;
+    }
+
+    .post-list {
+      & > li:not(:last-child) {
+        border-bottom: 1px solid #fff;
+      }
+    }
+
+    .post-text {
+      color: $grey-color-dark;
+    }
+
+    .post-tags .post-tag {
+      color: $brand-color;
+      border: 1px solid $brand-color;
+      background-color: transparent;
+    }
+
+    .post-category .post-categories {
+      color: map-get($brand-colors, 'darjeelingred');
+      border: 1px solid map-get($brand-colors, 'darjeelingred');
+      background-color: transparent;
+    }
+  }
+
+  .page-segments {
+    .post-meta {
+      color: $grey-color-dark;
+    }
+
+    li {
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  .post {
+
+    .message-box {
+      border: 1px solid #fff;
+      background-color: transparent;
+    }
+
+    .post-header {
+      border-bottom: 1px solid #fff;
+    }
+
+    .post-meta {
+      color: $grey-color-dark;
+    }
+
+    .post-content {
+      img:not(.emoji):not([raw]) {
+        background-color: #ffffff33;
+      }
+
+      hr {
+        background-color: #555; //
+      }
+    }
+
+    .post-related {
+      & > *:first-child {
+        color: #fff;
+      }
+
+      a:hover {
+        color: #fff;
+      }
+
+      .post-link {
+        color: $grey-color-dark;
+  
+        &:hover {
+          color: $grey_color-dark;
+        }
+      }
+    }
+
+    .post-nav {
+      display: flex;
+      justify-content: space-between;
+      margin: 72px 0 59px;
+      padding: 31px 0 0;
+    
+      a {
+        @include relative-font-size(1.125);
+        color: $grey-color-dark;
+        line-height: 15px;
+        max-width: 50%;
+      }
+    
+      .previous:before {
+        content: ' ';
+        border: solid $grey-color-dark;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 4px;
+        margin-right: 8px;
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+      }
+    
+      .next:after {
+        content: ' ';
+        border: solid $grey-color-dark;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 4px;
+        margin-left: 8px;
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+      }
+    }
+  }
+
+  .common-list {
+    li {
+      border-bottom: solid 1px #fff;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      a {
+        color: #fff; //
+      }
+      
+      span {
+        background-color: #fff;
+        color: #000;
+      }
+    }
+  }
+
+  .post-menu {
+    .post-menu-title {
+      color: #fff;
+    }
+
+    .post-menu-content {
+      ul {
+        border-left: 0px solid #fff;
+
+        a {
+          color: #fff;
+        }
+
+        .active {
+          background-color: #fff;
+          border-left: 0px solid #fff;
+
+          a {
+            color: #000;
+          }
+
+          a:hover {
+            color: #000 !important;
+          }
+        }
+      }
+    }
+  }
+
+  a .post-badges .post-badge {
+    color: $dark-background-color !important;
+  }
+
+  a:visited .post-badges .post-badge.badge-new {
+    display: none;
+    background-color: $dark-background-color;
+  }
+}
+
+.page-archives {
+  .page-archives-list {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  .archives-time {
+    @include relative-font-size(1.5);
+
+    &:not(:first-child) {
+      margin-top: 18px;
+    }
+    margin-bottom: 8px;
+  }
+
+  .post-meta {
+    font-size: $small-font-size;
+    color: $grey-color-dark;
+  }
+}

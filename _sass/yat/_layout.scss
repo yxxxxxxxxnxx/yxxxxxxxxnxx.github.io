@@ -1,0 +1,1592 @@
+/**
+ * Shared placeholders
+ */
+
+// site-brand 라인 공통 베이스
+%brand-line01-base {
+  font-size: clamp(64px, 5vw, 128px);
+  line-height: 0.8;
+  transform: translateX(-2.5px);
+  transition: 0.1s filter, color;
+}
+
+%brand-line02-base {
+  font-size: $base-font-size * 1.5;
+  font-weight: $base-font-weight * 1.5;
+  line-height: 1.2;
+  transition: 0.1s filter, color;
+}
+
+%brand-line03-base {
+  font-size: $base-font-size;
+  font-weight: $base-font-weight * 1.5;
+  color: $text-color;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  transition: 0.1s filter, color;
+  margin-top: $spacing-unit;
+}
+
+// 화살표 공통 베이스 (.paginator, .post-nav 공용)
+%nav-arrow {
+  content: ' ';
+  border: solid $background-color;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: $spacing-unit * 0.5;
+}
+
+// 버블 태그 공통 베이스
+%bubble-tag-base {
+  @include hierarchical-font-sw(4);
+  display: inline-block;
+  text-decoration: none;
+  border: 1px solid $brand-color;
+  padding: 2px $spacing-unit;
+  border-radius: 100px;
+  background-color: $brand-color;
+  color: $background-color;
+}
+
+// 어두운 버블 (Load more, 패널 전환 시 다음 패널명)
+%panel-bubble {
+  @extend %bubble-tag-base;
+  border-color: $text-color;
+  background-color: $text-color;
+  color: $background-color;
+  font-family: inherit;
+  line-height: inherit;   // button은 line-height를 물려받지 않아 tag 버블보다 낮아진다
+}
+
+// 스크롤바 숨김 공통
+%scrollbar-hidden {
+  &::-webkit-scrollbar { display: none; }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+
+@keyframes load-more-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+/**
+ * Animation for transparent header
+ */
+html {
+  &[data-header-transparent] {
+    header.site-header {
+      position: fixed;
+    }
+  }
+
+  &[data-scroll-status='top'] {
+    header.site-header-transparent {
+      height: 0;
+      margin-top: 0;
+      background-color: transparent;
+      transition: 0.1s height, background-color, box-shadow;
+
+      &.site-header {
+        .site-brand-inner, .page-link {
+          transition: 0.1s color;
+        }
+
+        @include media-query($on-laptop) {
+          .page-link {
+            color: $header-text-color;
+          }
+
+          .menu-icon > svg {
+            fill: $white-color;
+          }
+        }
+      }
+    }
+
+    footer.site-footer {
+      color: unset;
+      background-color: transparent;
+    }
+  }
+
+  &[data-scroll-status='down'] {
+    // 위로 밀어 올린 뒤 display: none으로 완전히 뺀다. iOS Safari는 화면 너비만 한 fixed 헤더가 있기만 하면
+    // (화면 밖에 있거나 visibility: hidden이어도) 상태바 띠를 단색으로 칠해, 콘텐츠가 그 뒤로 비치지 않는다.
+    header.site-header {
+      transform: translateY(-100%);
+      display: none;
+    }
+
+    .framework .sidebar {
+      top: 20px;
+    }
+  }
+
+  // 다시 나타날 때 위에서 내려온다 (display: none에서 돌아오는 순간의 시작 모습)
+  &[data-scroll-status='up'] header.site-header {
+    @starting-style {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+.site-header {
+  background-color: transparent;
+  height: auto;
+  // viewport-fit=cover: iPhone의 다이내믹 아일랜드·노치 아래로 메뉴가 들어가지 않게 위쪽 안전 영역만큼 더 띄운다
+  padding: calc(#{$spacing-unit * 3} + env(safe-area-inset-top)) 0 $spacing-unit * 3;
+  width: 100%;
+  // display는 사라질 때 슬라이드가 끝난 뒤에 바뀌도록 (allow-discrete)
+  transition: transform 0.2s, text-shadow 0.2s, display 0.2s allow-discrete;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.00);
+  pointer-events: none;
+
+  @include flex-sticky(0);
+  z-index: 1000;
+
+  // 모바일: 위 여백 16px (다이내믹 아일랜드 안전 영역은 그대로 더한다)
+  @include media-query($on-palm) {
+    padding-top: calc(#{$spacing-unit * 2} + env(safe-area-inset-top));
+  }
+
+  a, button, .page-link, .menu-icon, .nav-trigger {
+    pointer-events: auto;  /* ← 추가 */
+  }
+
+  // 가로 화면에서 노치 쪽으로 들어가지 않게 좌우 안전 영역만큼 더 띄운다
+  & > .wrapper {
+    margin: 0 $spacing-unit * 3;
+    padding: 0 env(safe-area-inset-right) 0 env(safe-area-inset-left);
+    max-width: 100%;
+    transition: 0.2s margin;
+
+    @include media-query(1024px) {
+      margin: 0 $spacing-unit * 3;
+      max-width: unset;
+    }
+
+    // 모바일: 좌우(오른쪽 메뉴 포함) 여백 8px
+    @include media-query($on-palm) {
+      margin: 0 $spacing-unit;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.site-header-inner {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @include media-query($on-palm) {
+    flex-direction: column-reverse;
+  }
+}
+
+.site-brand {
+  margin-right: 50px;
+
+  .site-brand-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .site-brand-inner-line01 {
+      @extend %brand-line01-base;
+      font-weight: $base-font-weight * 1.25;
+      color: $background-color;
+      -webkit-text-stroke: 5px $text-color;
+      paint-order: stroke fill;
+    }
+
+    .site-brand-inner-line01-mono {
+      @extend %brand-line01-base;
+      font-weight: $base-font-weight * 1.25;
+      color: $text-color;
+    }
+
+    .site-brand-inner-line02 {
+      @extend %brand-line02-base;
+      color: $background-color;
+      background-color: $text-color;
+      width: fit-content;
+      margin-bottom: $spacing-unit * 0.5;
+      padding: 0 $spacing-unit * 0.5;
+    }
+
+    .site-brand-inner-line02-mono {
+      @extend %brand-line02-base;
+      color: $text-color;
+      letter-spacing: -1px;
+    }
+
+    .site-brand-inner-line03,
+    .site-brand-inner-line03-mono {
+      @extend %brand-line03-base;
+    }
+
+    @include media-query($on-laptop) {
+      .site-brand-inner-line01,
+      .site-brand-inner-line01-mono {
+        font-size: $base-font-size * 4.0;
+      }
+
+      .site-brand-inner-line02,
+      .site-brand-inner-line02-mono {
+        font-size: $base-font-size * 1.25;
+      }
+
+      .site-brand-inner-line03,
+      .site-brand-inner-line03-mono {
+        font-size: $base-font-size;
+      }
+    }
+
+    &, &:visited {
+      color: $header-text-color;
+    }
+  }
+}
+
+.site-nav {
+  @include relative-font-size(1);
+
+  .nav-trigger {
+    display: none;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .page-link {
+    line-height: $base-line-height;
+    color: $header-text-color;
+    transition: 0.1s ease-in-out;
+    font-size: $base-font-size;
+    font-weight: $base-font-weight * 1.5;
+    border: solid 2.5px $text-color;
+    background-color: $header-background-color;
+    padding: $spacing-unit;
+
+    &:not(:last-child) {
+      margin-right: -2.5px;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  @include media-query($on-palm) {
+    align-self: flex-end;
+    padding-bottom: $spacing-unit * 10;
+  }
+
+  position: relative; // 영어 안내 팝업(.lang-popup)의 기준
+}
+
+// 영어 페이지 안내 팝업 (views/lang-popup.html): 사이트 내비게이션 바로 아래, 내비게이션과 같은 너비·배경·테두리·글자
+.lang-popup {
+  $border: 2.5px; // 내비게이션 .page-link 테두리와 같은 두께 (밑줄·체크박스 테두리도 이 두께)
+
+  pointer-events: auto; // 헤더는 pointer-events: none이라 링크·버튼 말고는 클릭이 뒤로 빠진다 (체크박스 label)
+  position: absolute;
+  top: 100%; // 스크립트가 메뉴 링크 아래 테두리 위치로 다시 맞춘다
+  left: 0;
+  right: 0;
+  margin-top: $spacing-unit;
+  box-sizing: border-box;
+  padding: $spacing-unit;
+  border: solid $border $text-color;
+  background-color: $header-background-color;
+  color: $header-text-color;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight * 1.5;
+  line-height: 1.25;
+  opacity: 0;
+  transform: translateY(-$spacing-unit);
+  transition: opacity 0.2s, transform 0.2s;
+
+  &.is-open {
+    opacity: 1;
+    transform: none;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+
+  .lang-popup-title {
+    margin: 0 0 $spacing-unit;
+    padding-right: $spacing-unit * 3; // 닫기 버튼 자리
+  }
+
+  .lang-popup-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $spacing-unit * 4;
+    height: $spacing-unit * 4;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      stroke: $header-text-color;
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+  }
+
+  // Yes는 왼쪽, No는 팝업 너비 50% 지점에서 시작 (좌우 안쪽 여백이 같아서 두 칸의 경계 = 팝업 가운데)
+  .lang-popup-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    margin-bottom: $spacing-unit;
+  }
+
+  .lang-popup-button {
+    justify-self: start;
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-thickness: $border;
+    text-underline-offset: 0.2em;
+    cursor: pointer;
+  }
+
+  // 체크박스: 실제 input은 보이지 않게 두고(키보드·스크린리더용), 옆 .lang-popup-box를 그린다.
+  // 상자나 문구를 누를 때만 바뀐다 (label 너비 = 내용 너비).
+  .lang-popup-remember {
+    display: flex;
+    align-items: center;
+    gap: $spacing-unit;
+    width: fit-content;
+    cursor: pointer;
+
+    input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    // 글자 높이(1em) 정사각형. 체크하면 상자 안을 모서리에서 모서리로 잇는 두 대각선 (굵기 = 테두리 두께)
+    .lang-popup-box {
+      flex: none;
+      box-sizing: border-box;
+      width: 1em;
+      height: 1em;
+      border: solid $border $text-color;
+      background-color: $background-color;
+    }
+
+    input:checked + .lang-popup-box {
+      $line: transparent calc(50% - #{$border * 0.5}), $text-color calc(50% - #{$border * 0.5}),
+             $text-color calc(50% + #{$border * 0.5}), transparent calc(50% + #{$border * 0.5});
+      background-image: linear-gradient(to top right, $line), linear-gradient(to bottom right, $line);
+    }
+
+    input:focus-visible + .lang-popup-box {
+      outline: $border solid $text-color;
+      outline-offset: $border;
+    }
+  }
+}
+
+
+/**
+ * Wavy Line
+ */
+.wavy-line {
+  border-bottom: solid 2.5px $text-color;
+}
+
+
+/**
+ * Site footer
+ */
+.site-footer {
+  @include relative-font-size(1.0);
+  color: $text-color;
+  font-weight: $base-font-weight * 1.5;
+  background-color: $background-color;
+  text-align: left;
+  transition: background-color 0.2s;
+
+  .site-footer-copyright {
+    transition: border-top 0.2s;
+    // 맨 아래 내용이 iPhone 하단 주소창·홈 인디케이터에 가리지 않게
+    padding: $spacing-unit * 5 0 calc(#{$spacing-unit * 5} + env(safe-area-inset-bottom));
+
+    .site-footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: $spacing-unit * 3;
+
+      @include media-query($on-palm) {
+        flex-direction: column;
+      }
+
+      .site-footer-L,
+      .site-footer-R {
+        display: block;
+        flex: 1 1 0;     // gap(여백)을 뺀 공간을 50:50으로 균등 분할
+        min-width: 0;    // 긴 내용이 있어도 한쪽이 상대를 밀어내지 않게
+
+        @include media-query($on-palm) {
+          flex: initial; // 모바일은 세로 스택 유지 (full-width 블록)
+        }
+      }
+    }
+  }
+
+  a, .site-footer-lang-setting {
+    $a-color: $brand-color;
+    color: $a-color;
+
+    &:hover {
+      color: lighten($a-color, 10%);
+    }
+  }
+
+  // 언어 설정 버튼: 옆 언어 링크와 같은 모양
+  .site-footer-lang-setting {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    cursor: pointer;
+  }
+}
+
+.copyleft {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+
+
+/**
+ * Post header
+ */
+%post-header {
+  .post-header {
+    margin-bottom: $spacing-unit * 3;
+  }
+
+  .post-title {
+    @include relative-font-size(2.625);
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  .post-tags {
+    padding-right: 150px;
+
+    .post-tag {
+      display: inline-block;
+      margin: 0 $spacing-unit * 1.5 0 0;
+    }
+  }
+}
+
+
+/**
+ * Page content
+ */
+.header-offset {
+  padding-top: var(--header-height);
+}
+
+.page-content {
+  @extend %flex-1;
+  -ms-flex: none;
+  padding: $spacing-unit * 6 0;
+  padding-top: 72px;
+  min-width: 0;
+}
+
+.page-content-home {
+  @extend %flex-1;
+  -ms-flex: none;
+
+  // 홈은 문서(창) 자체가 스크롤된다. 높이를 묶거나 overflow로 자르면 패널 sticky가 풀리므로 그대로 둔다.
+  .framework,
+  .framework .main {
+    height: auto;
+    overflow: visible;
+  }
+}
+
+// 홈은 문서 스크롤바를 감춘다 (패널이 화면 너비(100vw)를 꽉 채우므로 스크롤바만큼 가로로 넘치지 않게)
+html:has(.page-content-home) {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// iOS Safari 상태바·주소창 뒤까지 채우는 여백 (scroll-sync.js의 BLEED는 .pagination의 --panel-bleed에서 읽는다)
+$panel-bleed: 120px;
+
+// 배너가 있는 페이지 (default.html의 data-banner-bleed): 홈 show-window처럼 배너를 화면 위아래로 $panel-bleed만큼
+// 더 크게 그리고 문서를 그만큼 내린 채 시작한다 (banner.html). iOS Safari 상태바·주소창 뒤에 배너가 비친다.
+// 맨 위에서는 헤더를 fixed가 아닌 absolute로 둔다 (화면 너비의 fixed 헤더가 있으면 상태바를 단색으로 칠한다).
+// 글 중간에서 위로 스크롤해 헤더가 나타날 때는 지금처럼 fixed (그때는 상단 띠가 생긴다).
+html[data-banner-bleed] {
+  --banner-bleed: #{$panel-bleed};
+  // 최상단에서 더 위로 당길 때 생기는 고무줄 바운스를 억제한다 (banner.html의 bleed 되돌림과
+  // 겹쳐 떨림을 키운다). 이와 함께 세로 스크롤 체이닝/당겨서 새로고침도 막힌다.
+  overscroll-behavior-y: none;
+
+  &[data-header-transparent][data-scroll-status='top'] header.site-header {
+    position: absolute;
+    top: $panel-bleed;
+    left: 0;
+  }
+}
+
+// show-window: 스크롤 박스 밖, 뒤쪽 배경 층. 문서가 움직이지 않으므로 sticky 없이도 제자리에 머문다.
+// iOS Safari는 화면 맨 위에 sticky로 고정된 요소가 있으면 상태바에 단단한 띠를 덮어, 사진이 비치지 않게 된다.
+// 높이는 화면 + 위아래 $panel-bleed (다이내믹 아일랜드·주소창 뒤까지).
+.page-content-home .articles {
+  position: relative;
+}
+
+.show-window {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: calc(var(--view-h, 100vh) + #{$panel-bleed * 2});
+  overflow: hidden;
+  background-color: $background-color;
+
+  .show-window-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .show-window-title {
+    position: absolute;
+    z-index: 1;
+    top: calc(#{$panel-bleed + $spacing-unit + $base-font-size * $base-line-height + $spacing-unit * 2 + $spacing-unit * 2} + env(safe-area-inset-top));
+    left: calc(#{$spacing-unit * 3} + env(safe-area-inset-left));
+    max-width: calc(100vw - #{$spacing-unit * 3});
+    margin: 0;
+    @include hierarchical-font-sw(1);
+    line-height: 1.25;
+    color: $background-color;
+
+    span {
+      background-color: $text-color;
+      padding: 0 0.15em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    @include media-query($on-palm) {
+      left: calc(#{$spacing-unit} + env(safe-area-inset-left));
+    }
+  }
+
+  .show-window-footnote {
+    position: absolute;
+    z-index: 1;
+    bottom: calc(#{$panel-bleed + $spacing-unit * 2} + env(safe-area-inset-top));
+    left: calc(#{$spacing-unit * 3} + env(safe-area-inset-left));
+    max-width: calc(80vw - #{$spacing-unit * 3});
+    margin: 0;
+    @include hierarchical-font-sw(3);
+    line-height: 1.25;
+    color: $background-color;
+
+    span {
+      background-color: $text-color;
+      padding: 0 0.15em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+
+    @include media-query($on-palm) {
+      left: calc(#{$spacing-unit} + env(safe-area-inset-left));
+    }
+  }
+
+  // 타이포 로고: 패널 내비게이션 버튼 바로 위($spacing-unit * 2)에, 버튼과 같은 가운데 줄로 세로(반시계 90°) 표시.
+  // 글자 크기·굵기 = 사이트 메뉴(.page-link)와 같게 고정, 색 = 포스트 사진 워터마크 색(#F2AD00).
+  // show-window 층은 문서와 함께 BLEED만큼 위로 올라가 있으므로 화면 아래 기준 위치에 BLEED를 더한다.
+  // 위치 값은 click-to-top.scss의 .panel-nav와 맞춘다: 내비게이션 아래끝 = 48px + $size + $spacing-unit * 2,
+  // 내비게이션 높이 = $size * 2 - $spacing-unit * 2, 로고는 그 위 $spacing-unit * 2.
+  // 등장·퇴장 (scroll-sync.js가 .is-hidden을 붙인다): 내비게이션 버튼과 같은 길이·곡선으로 가라앉으며 사라지고 떠오르며 나타난다.
+  // 스크롤로 사라질 때는 로고가 먼저, 나타날 때는 아래·위 화살표 다음에 로고(.is-staggered: 위 화살표보다 0.1초 늦게).
+  .show-window-logo {
+    $size: 64px;
+    $ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    $ease-in:  cubic-bezier(0.55, 0, 1, 0.45);
+
+    position: absolute;
+    z-index: 1;
+    right: calc(60px + env(safe-area-inset-right));
+    bottom: calc(#{$panel-bleed + 48px + $size * 3 + $spacing-unit * 2} + env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: center;
+    width: $size;
+    pointer-events: none;
+    transition:
+      opacity 0.3s $ease-out,
+      transform 0.3s $ease-out;
+
+    &.is-staggered {
+      transition-delay: 0.2s;
+    }
+
+    &.is-hidden {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity 0.25s $ease-in,
+        transform 0.25s $ease-in;
+    }
+
+    // 소문자 띠(기준선 ~ x-height)의 가운데는 줄 상자 가운데보다 아래(반시계로 돌리면 오른쪽)에 있으므로 왼쪽으로 옮겨
+    // 소문자 가운데를 버튼 아이콘의 세로 축에 맞춘다. 0.067em은 렌더링된 글자 픽셀을 재서 맞춘 값이다.
+    span {
+      // 옆으로 눕힌 세로쓰기(가로 글자를 시계 90°) + 180° = 아래에서 위로 읽는 반시계 90°.
+      // sideways: 가로쓰기와 같은 기준선·줄 상자를 쓴다.
+      writing-mode: vertical-rl;
+      text-orientation: sideways;
+      transform: rotate(180deg);
+      position: relative;
+      left: -0.067em;
+      font-family: "Wanted Sans Variable", "Wanted Sans", sans-serif;
+      font-size: $base-font-size;                // 사이트 메뉴와 같은 고정 크기
+      font-weight: $base-font-weight * 1.5;     // 사이트 메뉴와 같은 굵기 (600)
+      line-height: 1;
+      color: map-get($brand-colors, "darjeelingyellow");
+      white-space: nowrap;
+    }
+
+    @include media-query($on-laptop) {
+      $size: 48px;
+
+      right: calc(35px + env(safe-area-inset-right));
+      bottom: calc(#{$panel-bleed + 48px + $size * 3 + $spacing-unit * 2} + env(safe-area-inset-bottom));
+      width: $size;
+    }
+  }
+
+  // 다음 패널이 덮는 만큼 점점 어두워진다 (--cover-dim, scroll-sync.js)
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #000;
+    opacity: calc(var(--cover-dim, 0) * 0.5);
+    pointer-events: none;
+  }
+}
+
+// 홈의 헤더는 fixed·sticky가 아니라 absolute로 둔다. 홈은 문서가 BLEED(120px) 위치에 머물러 있으므로 그 자리에
+// 두면 고정된 것과 똑같이 보인다. iOS Safari는 화면 너비만 한 fixed·sticky 헤더가 있으면 상태바 띠를 단색으로 칠해,
+// show-window가 다이내믹 아일랜드 뒤까지 비치지 않기 때문.
+html:has(.page-content-home) header.site-header,
+html:has(.page-content-home)[data-header-transparent] header.site-header {
+  position: absolute;
+  top: $panel-bleed;
+  left: 0;
+}
+
+.page-heading {
+  @include relative-font-size(2);
+}
+
+.post-list-heading {
+  @include relative-font-size(1.75);
+}
+
+
+/**
+ * Pagination page
+ */
+.pagination {
+  // 패널들은 이 박스 안에서 스크롤된다. 박스는 화면보다 위아래로 $panel-bleed만큼 크고, 문서는 그만큼 내려 둔다
+  // (scroll-sync.js). 위·아래로 넘친 부분이 iOS Safari 상태바·주소창 뒤에 블러로 비친다.
+  --panel-bleed: #{$panel-bleed};
+
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: calc(100vh + #{$panel-bleed * 2});   // 실제 높이는 scroll-sync.js가 화면 높이로 맞춘다
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overscroll-behavior: none;
+  @extend %scrollbar-hidden;
+
+  // 패널 전환: 패널(top-panel, 카테고리)은 끝까지 스크롤된 위치에 고정되고(박스 안 sticky),
+  // 다음 패널이 아래에서 올라와 덮는다. 같은 z-index면 뒤의 패널이 위에 그려진다.
+  // 패널은 위아래로 $panel-bleed만큼 여백을 두고 박스 맨 위(= 스크린 최상단, 다이내믹 아일랜드 뒤)에 고정된다.
+  // 위 여백이 상태바 뒤를, 아래 여백이 주소창 뒤를 채우고 내용은 그 사이(화면 높이)에 놓인다.
+  // top(화면보다 긴 패널의 고정 위치)과 스냅(70%)은 scroll-sync.js가 맡는다.
+  .top-panel,
+  .panels-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-top: $panel-bleed;
+    padding-bottom: $panel-bleed;
+    background-color: $background-color;
+  }
+
+  // show-window 자리. 투명해서 뒤(박스 밖)에 있는 show-window가 비친다.
+  .show-window-spacer {
+    height: calc(var(--view-h, 100vh) + #{$panel-bleed * 2});
+  }
+
+  // 올라오는 패널에 macOS 활성 창처럼 넓고 부드러운 그림자를 드리운다 (가는 테두리 + 가까운 그림자 + 넓게 퍼지는 그림자).
+  // 패널이 아래에서 올라오므로 위쪽으로 드리운다. 그림자는 패널과 같은 크기의 빈 요소(::before)에 주고,
+  // 패널이 화면 아래에 있을 때는 보이지 않다가 30% 올라오는 동안 진해진다
+  // (--cover-progress: 0 ~ 1, scroll-sync.js가 패널마다 갱신).
+  .top-panel::before,
+  .panels-wrapper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    box-shadow:
+      0 0 0 0.5px rgba($text-color, 0.2),
+      0 -4px 12px rgba($text-color, 0.12),
+      0 -22px 70px 4px rgba($text-color, 0.5);
+    // 상단 위쪽만 남긴다. 그대로 두면 테두리·번짐이 패널 아래(on-palm에서는 푸터와의 경계)에도 선처럼 보인다.
+    clip-path: inset(-200px 0 0 0);
+    opacity: clamp(0, calc(var(--cover-progress, 0) / 0.3), 1);
+    pointer-events: none;
+  }
+
+  // 다음 패널이 덮는 만큼 점점 어두워진다 (--cover-dim: 0 ~ 1, scroll-sync.js가 갱신)
+  .top-panel::after,
+  .panels-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background-color: #000;
+    opacity: calc(var(--cover-dim, 0) * 0.5);
+    pointer-events: none;
+  }
+
+  // 패널이 올라오는 동안 그림자 속(패널 상단 바로 위)에 보이는 패널명 버블. Load more와 같은 모양·등장 효과.
+  .panel-cover-label {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + #{$spacing-unit * 2});
+    transform: translateX(-50%);
+    z-index: 2;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in;
+
+    &.is-visible {
+      opacity: 1;
+    }
+
+    span {
+      @extend %panel-bubble;
+    }
+  }
+
+  .top-panel {
+    width: 100vw;
+    height: max-content;
+    display: block;
+
+    .post-list {
+      display: flex;
+      flex-direction: row;
+      gap: $spacing-unit * 2;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      overflow-x: auto;
+
+      > li {
+        width: 100%;
+        box-sizing: border-box;
+
+        &:not(:last-child) {
+          border-bottom: none;
+        }
+
+        .wavy-line {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .panels-wrapper {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    height: calc(var(--view-h, 100vh) + #{$panel-bleed * 2});   // 내용 높이 = 화면 높이
+    gap: 2.5vw;
+    // overflow를 두지 않는다: hidden·clip(일부 브라우저)은 위로 드리운 그림자(::before)까지 잘라 낸다.
+    // 좌우 패널 폭 합(47.5 + 2.5 + 47.5vw)이 화면보다 좁아 넘칠 일은 없다.
+
+    .left-panel {
+      width: 47.5vw;
+      flex-shrink: 0;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    .right-panel {
+      width: 47.5vw;
+      flex-shrink: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      .element-container {
+        margin-left: 0;
+      }
+    }
+  }
+
+  .top-panel,
+  .left-panel,
+  .right-panel,
+  .top-panel .post-list,
+  .right-panel .post-list {
+    @extend %scrollbar-hidden;
+  }
+
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    list-style: none;
+
+    > li {
+      width: 100%;
+      box-sizing: border-box;
+
+      .wavy-line {
+        margin-bottom: $spacing-unit * 4;
+      }
+
+      // 마지막으로 보이는 항목 (Load more 전에 숨겨 둔 항목 앞 포함)
+      &:last-child .wavy-line,
+      &:has(+ .is-more:not(.is-shown)) .wavy-line {
+        display: none;
+      }
+
+      // Load more 전까지 숨겨 둔 포스트. 누르면 0.3초 동안 나타난다.
+      &.is-more:not(.is-shown) {
+        display: none;
+      }
+
+      &.is-more.is-shown {
+        animation: load-more-fade-in 0.3s ease-in;
+      }
+    }
+  }
+
+  .post-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: $spacing-unit * 2;
+    margin-bottom: $spacing-unit * 2;
+
+    .element-container {
+      display: flex;
+      flex-direction: column;
+      margin-left: $spacing-unit * 3;
+
+      .title-container {
+        display: inline !important;
+
+        .post-title {
+          margin-bottom: $spacing-unit * 0.5;
+          transition: 0.2s all;
+
+          a {
+            text-decoration: none;
+          }
+        }
+
+        .post-link {
+          @include hierarchical-font-sw(2);
+          letter-spacing: -1px;
+          line-height: 1;
+          color: $text-color;
+        }
+
+        .post-subtitle {
+          @include hierarchical-font-sw(3);
+          color: $text-color;
+          margin-bottom: $spacing-unit * 2;
+        }
+      }
+
+      .excerpt-container {
+        display: inline;
+
+        .post-text {
+          @include hierarchical-font-sw(4);
+          color: $text-color;
+          word-break: break-word;
+          overflow-wrap: break-word;
+          flex: 1;
+        }
+      }
+    }
+
+    .post-image-container {
+      position: relative;
+      height: 87.5vh;
+      width: 100%;
+
+      .post-bubbles-container {
+        position: absolute;
+        left: $spacing-unit * 2;
+        bottom: $spacing-unit;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: $spacing-unit;
+
+        .post-tags .post-tag {
+          @extend %bubble-tag-base;
+          transition: color 0.2s;
+          margin-bottom: $spacing-unit;
+
+          &:not(:last-child) {
+            margin-right: $spacing-unit;
+          }
+        }
+
+        .post-category .post-categories {
+          @extend %bubble-tag-base;
+          border-color: map-get($brand-colors, "darjeelingred");
+          background-color: map-get($brand-colors, "darjeelingred");
+          margin-bottom: $spacing-unit;
+        }
+      }
+
+      .post-image {
+        display: block;
+        height: 100%;
+        width: 100%;
+
+        & > *:first-child {
+          display: block;
+          height: 100%;
+          width: 100%;
+          max-width: none;
+          object-fit: cover;
+          object-position: center;
+          overflow: hidden;
+          transition: 0.2s all ease-in-out;
+        }
+      }
+    }
+  }
+
+  .top-panel {
+    // 위 여백($panel-bleed)을 배경색 대신 사진으로 채운다: 목록을 여백만큼 위로 올리고(.post-list) 그만큼 사진 영역을 키운다.
+    // 목록은 가로 스크롤 박스라 안쪽 요소를 올리면 박스 경계에서 잘리므로 목록 자체를 올린다.
+    // 고정되면 늘어난 사진이 다이내믹 아일랜드 뒤를 채우고, 데스크톱에서는 화면 위 바깥이라 보이지 않는다.
+    .post-list {
+      margin-top: -$panel-bleed;
+    }
+
+    .post-content {
+      height: calc(var(--view-h, 100vh) + #{$panel-bleed});
+      overflow: hidden;
+      gap: 0;
+      margin-bottom: 0;
+    }
+
+    .element-container {
+      flex-shrink: 0;
+      margin-top: $spacing-unit * 3;
+      margin-right: $spacing-unit * 3;
+    }
+
+    .post-image-container {
+      flex: 1;
+      min-height: 0;
+      height: auto;
+      width: 100%;
+
+      .post-image {
+        height: 100%;
+        width: 100%;
+
+        & > *:first-child {
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  // 카테고리 제목. flex 기본값(stretch)이면 제목이 패널 높이 전체로 늘어나므로 글자 높이만큼만 차지하게 한다.
+  .left-panel {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+  }
+
+  // 가로쓰기. 줄마다 따로 박스를 그려 위에서 아래로 쌓는다 (박스 폭은 글자 길이만큼).
+  .left-panel .panel-title {
+    @include hierarchical-font-sw(2);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $spacing-unit;
+    letter-spacing: -1px;
+    line-height: 1;
+    // 패널이 화면 맨 위에 붙었을 때 다이내믹 아일랜드 아래로 들어가지 않게
+    margin: calc(#{$spacing-unit * 3} + env(safe-area-inset-top)) $spacing-unit * 3 $spacing-unit * 3;
+
+    .panel-title-line {
+      color: $background-color;
+      background-color: $text-color;
+      border: solid 2.5px $text-color;
+      padding: $spacing-unit;
+    }
+  }
+
+  .right-panel {
+    // 목록 끝(시작)에서 계속 스크롤하면 박스로 이어져 패널 전환으로 넘어간다 (브라우저 기본 스크롤 연결)
+
+    // 끝에서도 마지막 항목을 화면 위까지 올릴 수 있게 남겨 두는 여백.
+    // padding으로 두면 sticky인 Load more 버블이 그만큼 위에 붙으므로 빈 요소로 둔다.
+    &::after {
+      content: '';
+      display: block;
+      height: 64vh;
+    }
+
+    .post-image-container {
+      width: 47.5vw;
+      height: 47.5vw;
+    }
+
+    // 목록 끝에 닿으면 천천히 나타나는 버블. 누르면 다음 8개 포스트를 더 보여 준다.
+    // 데스크톱에서는 right-panel 아래쪽에 붙어 있어 마지막 항목이 길어도 보인다.
+    .load-more {
+      display: flex;
+      justify-content: center;
+      position: sticky;
+      bottom: $spacing-unit * 2;
+      z-index: 2;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in;
+
+      &.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .load-more-bubble {
+        @extend %panel-bubble;
+        cursor: pointer;
+      }
+    }
+
+    // title과 subtitle 사이 0, title(+subtitle)과 excerpt 사이 8px
+    .element-container .title-container {
+      margin-bottom: $spacing-unit;
+
+      .post-title,
+      .post-subtitle {
+        margin: 0;
+      }
+    }
+
+    .excerpt-container p {
+      margin-top: 0;
+    }
+  }
+
+  @include media-query($on-palm) {
+    // top-panel 포스트 제목·excerpt 좌우 여백 8px
+    .top-panel .element-container {
+      margin-left: $spacing-unit;
+      margin-right: $spacing-unit;
+    }
+
+    // 카테고리명: 상단 여백 8px (다이내믹 아일랜드 안전 영역은 그대로 더한다).
+    // 왼쪽은 0: left-panel이 이미 화면에서 8px 안쪽이라, 박스 왼쪽이 사진 왼쪽(8px)과 맞는다.
+    .left-panel .panel-title {
+      margin-top: calc(#{$spacing-unit} + env(safe-area-inset-top));
+      margin-left: 0;
+    }
+
+    // 세로로 쌓고 높이는 내용만큼. 화면보다 길면 끝까지 본 뒤 그 위치에 고정된다.
+    // 좌우 여백 8px: 패널 폭 = 화면 - 16px
+    .panels-wrapper {
+      flex-direction: column;
+      height: auto;
+      align-items: center;
+      gap: $spacing-unit * 3;
+
+      // 배경 영역 없이 카테고리명만 right-panel 위에 붙여 표시
+      .left-panel {
+        width: calc(100vw - #{$spacing-unit * 2});
+        height: auto;
+      }
+
+      // 스크롤 컨테이너가 아니다 (pagination이 통째로 스크롤)
+      .right-panel {
+        width: calc(100vw - #{$spacing-unit * 2});
+        height: auto;
+        overflow: visible;
+
+        &::after {
+          height: 32vh;
+        }
+
+        .load-more {
+          position: static;
+        }
+
+        .post-image-container {
+          width: calc(100vw - #{$spacing-unit * 2});
+          height: calc(100vw - #{$spacing-unit * 2});
+        }
+
+        .post-content .post-image-container .post-image > *:first-child {
+          width: calc(100vw - #{$spacing-unit * 2});
+          height: calc(100vw - #{$spacing-unit * 2});
+        }
+
+      }
+    }
+  }
+
+  .paginator {
+    text-align: center;
+
+    & > .previous:before {
+      @extend %nav-arrow;
+      margin-right: $spacing-unit;
+      transform: rotate(135deg);
+    }
+
+    & > .next:after {
+      @extend %nav-arrow;
+      margin-left: $spacing-unit;
+      transform: rotate(-45deg);
+    }
+
+    .previous span, .next span {
+      color: $text-color;
+    }
+
+    .indicator {
+      padding: 0 $spacing-unit * 2;
+    }
+  }
+}
+
+
+/**
+ * Posts
+ */
+.post {
+  @extend %post-header;
+
+  .message-box {
+    font-size: $base-font-size;
+    font-weight: $base-font-weight * 1.5;
+    border: solid 2.5px $text-color;
+    background-color: $header-background-color;
+    padding: $spacing-unit * 0.5;
+    margin-bottom: $spacing-unit;
+    text-align: center;
+  }
+
+  .post-header {
+    margin: 50px auto 60px;
+
+    .post-title {
+      @include hierarchical-font-sw(2);
+      margin-bottom: $spacing-unit * 0.5;
+    }
+
+    .post-subtitle {
+      @include hierarchical-font-sw(3);
+      margin-bottom: $spacing-unit;
+    }
+
+    .post-meta {
+      @include hierarchical-font-sw(4);
+      color: $text-color;
+      margin-bottom: $spacing-unit;
+    }
+
+    .wavy-line {
+      display: block;
+      margin-top: $spacing-unit * 4;
+    }
+  }
+
+  .post-content {
+    margin-bottom: $spacing-unit * 3;
+    overflow-wrap: normal;
+    word-break: normal;
+
+    h2 {
+      @include relative-font-size(2);
+
+      @include media-query($on-laptop) {
+        @include relative-font-size(1.75);
+      }
+    }
+
+    h3 {
+      @include relative-font-size(1.625);
+
+      @include media-query($on-laptop) {
+        @include relative-font-size(1.375);
+      }
+    }
+
+    h4 {
+      @include relative-font-size(1.25);
+
+      @include media-query($on-laptop) {
+        @include relative-font-size(1.125);
+      }
+    }
+
+    img, svg, iframe {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    img:not(.emoji), svg, iframe {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 75vh;
+      max-height: 75svh;
+      object-fit: contain;
+
+      @include media-query($on-palm) {
+        max-height: none;
+      }
+    }
+
+    video {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    h2, h3, h4, h5, h6 {
+      margin: 60px 0 19px;
+    }
+
+    p, hr {
+      margin-bottom: $spacing-unit * 3;
+    }
+
+    hr {
+      height: 1px;
+      background-color: #ebebeb;
+      border: none;
+    }
+  }
+
+  .post-related {
+    & > *:first-child {
+      @include relative-font-size(1.425);
+      color: $text-color;
+      margin-bottom: $spacing-unit * 2;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-left: 0;
+
+    }
+
+    .post-link {
+      @include relative-font-size(1.075);
+      color: $text-color;
+
+      &:hover {
+        color: $text-color;
+      }
+    }
+  }
+}
+
+.caption {
+  font-size: $small-font-size;
+  display: block;
+  text-align: center;
+}
+
+.post-comments {
+  padding-top: $spacing-unit * 3;
+}
+
+
+/**
+ * Posts misc
+ */
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin: $spacing-unit * 9 0 $spacing-unit * 7;
+  padding: $spacing-unit * 4 0 0;
+
+  a {
+    @include relative-font-size(1.125);
+    color: $background-color;
+    border: solid 2.5px $text-color;
+    padding: $spacing-unit;
+    background-color: $text-color;
+    line-height: $spacing-unit * 2.5;
+    max-width: 30%;
+  }
+
+  .previous:before {
+    @extend %nav-arrow;
+    margin-right: $spacing-unit;
+    transform: rotate(135deg);
+  }
+
+  .next:after {
+    @extend %nav-arrow;
+    margin-left: $spacing-unit;
+    transform: rotate(-45deg);
+  }
+}
+
+
+/**
+ * Archives page
+ */
+.page-archives {
+  .page-archives-list {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  .archives-time {
+    @include relative-font-size(1.5);
+    margin-bottom: $spacing-unit;
+
+    &:not(:first-child) {
+      margin-top: $spacing-unit * 2;
+    }
+  }
+
+  .post-meta {
+    font-size: $small-font-size;
+    color: $text-color;
+  }
+}
+
+
+/**
+ * Page banner
+ */
+.page-banner {
+  display: block;
+  position: relative;
+  height: $banner-height;
+  background-color: $text-color;
+  transition: height 0.2s;
+
+  .page-banner-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 1;
+
+    & > *:first-child {
+      @include center-image;
+      transition: 0.1s all ease-in-out;
+    }
+
+    & > video {
+      width: 100vw;
+      object-fit: cover;
+    }
+
+    & > img.img-placeholder {
+      display: none;
+    }
+  }
+
+  @include media-query($on-palm) {
+    height: #{calc($banner-height / 1.5)};
+  }
+}
+
+
+/**
+ * Layout and sidebar
+ */
+.framework {
+  @extend %flex;
+  height: 100%;
+
+  .main {
+    @extend %flex-1;
+    height: 100%;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .sidebar {
+    padding-left: $spacing-unit;
+    transition: top 0.2s, display 0.2s;
+
+    @include flex-sticky($header-height + $spacing-unit * 6);
+
+    @include media-query($on-laptop) {
+      display: none;
+    }
+  }
+}
+
+
+/**
+ * Segments page
+ */
+.page-segments {
+  .page-segments-list {
+    margin-left: 0;
+    list-style: none;
+  }
+
+  .segment-name {
+    font-weight: $base-font-weight * 1.5;
+    margin-bottom: $spacing-unit;
+    position: relative;
+
+    @include relative-font-size(1.6);
+
+    &:not(:first-child) {
+      margin-top: $spacing-unit * 4;
+    }
+
+    &:hover:before {
+      content: '#';
+      left: -1em;
+      position: absolute;
+    }
+  }
+
+  .post-meta {
+    color: $text-color;
+  }
+
+  li a {
+    color: $text-color;
+
+    &.post-link {
+      margin-left: $spacing-unit * 0.5;
+    }
+
+    &:hover {
+      color: $text-color;
+    }
+  }
+}
+
+.left-vsplit:before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  margin: 0 10px;
+  background-color: $background-color;
+  vertical-align: baseline;
+}
+
+
+/**
+ * Post badge
+ */
+.post-badges {
+  display: inline-block;
+  position: relative;
+  margin-left: $spacing-unit;
+  margin-top: $spacing-unit * 0.5;
+  user-select: none;
+}
+
+.pagination .post-badges  { bottom: 0.5em; }
+.post-related .post-badges,
+.page-segments .post-badges { bottom: 0.1em; }
+
+.post-badge {
+  display: none;
+  padding: 0 $spacing-unit * 0.5;
+  background-color: $brand-color;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 2px;
+  transition-duration: $base-transition-duration;
+}
+
+.post-badge.badge-new {
+  display: inline-block;
+}
+
+.top-post .post-badges .post-badge.badge-top {
+  display: inline-block;
+}
+
+a:visited .post-badges .post-badge.badge-new {
+  display: none;
+  color: $background-color;
+  background-color: $background-color;
+}

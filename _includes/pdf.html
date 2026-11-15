@@ -1,0 +1,148 @@
+{%- comment -%}
+  Embed a PDF in a post, rendered with PDF.js so it looks the same on every
+  device (iOS Safari only shows the first page of an <iframe>d PDF).
+
+  Usage:
+    {% include pdf.html src="/assets/att/2025-01-15-Cape_Town/sample.pdf" %}
+    {% include pdf.html src="..." height="600px" %}
+
+  - src:    path to the PDF (keep it under /assets, which polyglot does not localize)
+  - height: max height of the scrollable viewer (default 80vh)
+{%- endcomment -%}
+
+{%- assign pdf_src = include.src | relative_url -%}
+{%- assign pdf_name = include.src | split: "/" | last -%}
+
+<div class="pdf-embed" data-src="{{ pdf_src }}">
+  <div class="pdf-embed-toolbar">
+    <span class="pdf-embed-name">{{ pdf_name }}</span>
+    <span class="pdf-embed-pages"></span>
+    <a class="pdf-embed-link" href="{{ pdf_src }}" target="_blank" rel="noopener" title="Open">
+      <i class="fa-solid fa-arrow-up-right-from-square"></i>
+    </a>
+    <a class="pdf-embed-link" href="{{ pdf_src }}" download title="Download">
+      <i class="fa-solid fa-download"></i>
+    </a>
+  </div>
+  <div class="pdf-embed-viewer"{% if include.height %} style="max-height: {{ include.height }}"{% endif %}>
+    <div class="pdf-embed-status">Loading PDF…</div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const PDFJS_VERSION = '3.11.174';
+    const PDFJS_BASE = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/' + PDFJS_VERSION + '/';
+
+    // Load PDF.js once, however many PDFs the page embeds.
+    function loadPdfJs() {
+      if (window.__pdfJsLoading) return window.__pdfJsLoading;
+      window.__pdfJsLoading = new Promise(function (resolve, reject) {
+        const script = document.createElement('script');
+        script.src = PDFJS_BASE + 'pdf.min.js';
+        script.onload = function () {
+          window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_BASE + 'pdf.worker.min.js';
+          resolve(window.pdfjsLib);
+        };
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+      return window.__pdfJsLoading;
+    }
+
+    function renderPage(page, canvas, width) {
+      const base = page.getViewport({ scale: 1 });
+      const scale = width / base.width;
+      const ratio = window.devicePixelRatio || 1;
+      const viewport = page.getViewport({ scale: scale * ratio });
+
+      canvas.width = Math.floor(viewport.width);
+      canvas.height = Math.floor(viewport.height);
+      canvas.style.width = Math.floor(base.width * scale) + 'px';
+      canvas.style.height = Math.floor(base.height * scale) + 'px';
+      return page.render({ canvasContext: canvas.getContext('2d'), viewport: viewport }).promise;
+    }
+
+    function init(embed) {
+      const viewer = embed.querySelector('.pdf-embed-viewer');
+      const status = viewer.querySelector('.pdf-embed-status');
+      const pagesLabel = embed.querySelector('.pdf-embed-pages');
+
+      loadPdfJs()
+        .then(function (pdfjsLib) {
+          return pdfjsLib.getDocument(embed.dataset.src).promise;
+        })
+        .then(function (pdf) {
+          status.remove();
+          pagesLabel.textContent = pdf.numPages + (pdf.numPages > 1 ? ' pages' : ' page');
+
+          const slots = [];
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const canvas = document.createElement('canvas');
+            canvas.className = 'pdf-embed-page';
+            viewer.appendChild(canvas);
+            slots.push({ num: i, canvas: canvas, page: null, width: 0 });
+          }
+
+          function pageWidth() {
+            return viewer.clientWidth - 16;
+          }
+
+          function draw(slot) {
+            const width = pageWidth();
+            if (slot.width === width) return;
+            slot.width = width;
+            const pagePromise = slot.page ? Promise.resolve(slot.page) : pdf.getPage(slot.num);
+            pagePromise.then(function (page) {
+              slot.page = page;
+              return renderPage(page, slot.canvas, width);
+            });
+          }
+
+          // Size every placeholder from page 1 so the scrollbar is right before pages render.
+          pdf.getPage(1).then(function (first) {
+            const base = first.getViewport({ scale: 1 });
+            const w = pageWidth();
+            slots.forEach(function (slot) {
+              slot.canvas.style.width = w + 'px';
+              slot.canvas.style.height = Math.floor(w * base.height / base.width) + 'px';
+            });
+          });
+
+          // Render pages only as they scroll into view.
+          const visible = new Set();
+          const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              const slot = slots.find(function (s) { return s.canvas === entry.target; });
+              if (entry.isIntersecting) {
+                visible.add(slot);
+                draw(slot);
+              } else {
+                visible.delete(slot);
+              }
+            });
+          }, { root: viewer, rootMargin: '200px 0px' });
+          slots.forEach(function (slot) { observer.observe(slot.canvas); });
+
+          // Re-render visible pages when the viewer width changes (rotation, resize).
+          let resizeTimer;
+          let lastWidth = viewer.clientWidth;
+          window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+              if (viewer.clientWidth === lastWidth) return;
+              lastWidth = viewer.clientWidth;
+              slots.forEach(function (slot) { if (!visible.has(slot)) slot.width = 0; });
+              visible.forEach(draw);
+            }, 200);
+          });
+        })
+        .catch(function () {
+          status.textContent = 'Could not load the PDF. Use the link above to open it.';
+        });
+    }
+
+    const script = document.currentScript;
+    init(script.previousElementSibling);
+  })();
+</script>

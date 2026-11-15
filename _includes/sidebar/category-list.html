@@ -1,0 +1,38 @@
+{%- include functions.html func='log' level='debug' msg='Get categories value' -%}
+
+{%- include functions.html func='get_categories' -%}
+{% assign categories = return %}
+
+<div class="common-list">
+  <ul>
+    <li>
+      <a href="{{ '/index.html' | relative_url }}">
+        All<span>{{ site.posts.size }}</span>
+      </a>
+      <div class="wavy-line"></div>
+    </li>
+
+    {% for key in categories %}
+      <li>
+        <a href="{{ '/categories/' | relative_url }}#h-{{ key }}">
+          {{ key }} <span>{{ site.posts | where: 'categories', key | size }}</span>
+        </a>
+        {% assign items = site.posts | where: 'categories', key %}
+        {% assign subcategories = items | map: 'subcategories' | join: ',' | split: ',' | uniq %}
+        <ul class="subcategories-list">
+          {% for subcategory in subcategories %}
+            {% if subcategory %}
+              <li>
+                <a href="{{ '/categories/' | relative_url }}#h-{{ subcategory }}">
+                  {{ subcategory }} <span>{{ items | where: 'subcategories', subcategory | size }}</span>
+                </a>
+                <!-- <div class="wavy-line"></div> -->
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <div class="wavy-line"></div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

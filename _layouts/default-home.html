@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.active_lang | default: site.lang | default: "en" }}" data-scroll-status="top">
+
+  {%- include head.html -%}
+
+  <body>
+
+    {%- include views/header.html -%}
+
+    {%- include extensions/hashlocate.html -%}
+
+    {%- include extensions/click-to-top.html -%}
+
+    <main class="page-content-home" aria-label="Content">
+
+      <!-- <script src="/assets/js/scroll-sync.js"></script>
+      <script src="/assets/js/scroll-control.js"></script> -->
+
+      <div class="wrapper-home">
+        {{ content }}
+      </div>
+    </main>
+    
+    {%- include views/footer.html -%}
+
+  </body>
+</html>

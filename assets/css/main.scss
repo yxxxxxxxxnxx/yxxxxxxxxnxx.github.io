@@ -1,0 +1,58 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+// Default theme colors
+$theme-colors: (
+  "coolblack": #000,
+  "spacegrey": #353535,
+  "snowwhite": #f1f1f1,
+);
+
+// Default brand colors
+$brand-colors: (
+  "darjeelingyellow": #F2AD00,
+  "darjeelingred": #FF0000,
+  "darjeelinggreen": #00A08A,
+  "darjeelingorange": #F98400,
+  "darjeelingblue": #046C9A,
+  "pageBackground": #f1f1f1
+);
+
+$theme-name: "{{ site.theme_color }}";
+$brand-name: "{{ site.brand_color }}";
+$theme-color: map-get($theme-colors, "snowwhite");
+$brand-color: map-get($brand-colors, "darjeelingblue");
+
+@if map-has-key($theme-colors, $theme-name) {
+  $theme-color: map-get($theme-colors, $theme-name);
+} @else if str-index($theme-name, "#") == 1 {
+  $theme-color: {{ site.theme_color | default: '#ffffff' }};
+}
+
+@if map-has-key($brand-colors, $brand-name) {
+  $brand-color: map-get($brand-colors, $brand-name);
+} @else if str-index($brand-name, "#") == 1 {
+  $brand-color: {{ site.brand_color | default: '#ff5100' }};
+}
+
+$content-width: {{ site.content_width | default: '920px' }};
+
+// Click to top theme
+$click-to-top-light-background-color: map-get($brand-colors, "pageBackground");
+$click-to-top-light-color: #000;
+$click-to-top-dark-background-color: #000;
+$click-to-top-dark-color: #fff;
+
+// Selection styles
+$selection-color: #000;
+$selection-background-color: map-get($brand-colors, "darjeelingblue");
+
+@if $selection-color == "" {
+  $selection-color: inherit;
+}
+@if $selection-background-color == "" {
+  $selection-background-color: rgba(invert($brand-color), 0.3);
+}
+
+@import "yat";

@@ -1,0 +1,47 @@
+/**
+ * Common list
+ */
+.common-list {
+  @include relative-font-size(1.0);
+  min-width: 200px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  li {
+    // border-bottom: solid 1px #000;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      text-decoration: none;
+      font-weight: $base-font-weight * 1.5;
+      color: $text-color;
+      transition: background 0.2s;
+    }
+
+    span {
+      @include relative-font-size(1.0);
+      display: inline-block;
+      align-self: center;
+      margin-left: 20px;
+      color: #000;
+      font-weight: $base-font-weight * 1.5;
+    }
+  }
+
+  .subcategories-list {
+    margin-left: 8px;
+  }
+
+  .subcategories-list  li{
+    border-bottom: none;
+  }
+}

@@ -1,0 +1,102 @@
+{%- if page.paginator -%}
+  {%- assign paginator = page.paginator -%}
+{%- elsif paginator == nil -%}
+  {%- assign paginator = site -%}
+{%- endif -%}
+
+{%- assign name = 'excerpt.image_style' -%}
+{%- include functions.html func='get_value' default='z' -%}
+{%- assign image_style = return | append: '-image-style' -%}
+
+{%- if paginator.posts.size > 0 -%}
+{%- comment -%} show-window는 스크롤 박스(.pagination) 밖의 배경 층, 박스 안에는 그 자리(spacer)만 둔다 {%- endcomment -%}
+{%- include views/show-window.html -%}
+
+<div class="pagination">
+
+  {%- if site.data.show_window.size > 0 -%}
+  <div class="show-window-spacer" aria-hidden="true"></div>
+  {%- endif -%}
+
+  <div class="top-panel">
+
+    <div class="panel-cover-label" aria-hidden="true">
+      <span>최신 ・ Newest</span>
+    </div>
+    <ul class="post-list {{ image_style }}">
+      {%- assign all_posts_with_banner = paginator.posts | where_exp: "item", "item.banner" -%}
+      {%- assign latest_post = all_posts_with_banner | first -%}
+      {%- if latest_post -%}
+        {%- assign post = latest_post -%}
+        {%- include views/pagination-item.html -%}
+      {%- endif -%}
+    </ul>
+  </div>
+
+
+  {%- comment -%} 패널 순서·제목·분류는 _data/pagination_panels.yml에서 정한다 {%- endcomment -%}
+  {%- for group in site.data.pagination_panels -%}
+    {%- assign panel_posts = "" | split: "" -%}
+    {%- for category in group.categories -%}
+      {%- assign category_posts = paginator.posts
+          | where_exp: "post", "post.categories contains category"
+          | where_exp: "post", "post.banner" -%}
+      {%- assign panel_posts = panel_posts | concat: category_posts -%}
+    {%- endfor -%}
+    {%- assign panel_posts = panel_posts | sort: "date" | reverse -%}
+
+    {%- if panel_posts.size > 0 -%}
+      <div class="panels-wrapper panels-{{ group.key }}">
+
+        <div class="panel-cover-label" aria-hidden="true">
+          <span>{{ group.title | join: ' ・ ' | escape }}</span>
+        </div>
+
+        <div class="left-panel">
+          <h2 class="panel-title">
+            {%- for line in group.title -%}
+              <span class="panel-title-line">{{ line | escape }}</span>
+            {%- endfor -%}
+          </h2>
+        </div>
+
+        <div class="right-panel">
+          <ul class="post-list {{ image_style }}">
+            {%- comment -%} 처음에는 8개만 보이고, 나머지는 Load more를 누를 때마다 8개씩 보인다 {%- endcomment -%}
+            {%- for post in panel_posts -%}
+              {%- if forloop.index > 8 -%}
+                {%- assign post_item_class = 'is-more' -%}
+              {%- else -%}
+                {%- assign post_item_class = '' -%}
+              {%- endif -%}
+              {%- include views/pagination-item.html -%}
+            {%- endfor -%}
+            {%- assign post_item_class = '' -%}
+          </ul>
+
+          {%- if panel_posts.size > 8 -%}
+          <div class="load-more">
+            <button type="button" class="load-more-bubble">Load more</button>
+          </div>
+          {%- endif -%}
+        </div>
+
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+
+  <script src="/assets/js/scroll-sync.js?v={{ site.time | date: '%s' }}"></script>
+
+
+  {%- if paginator.total_pages > 1 -%}
+    {%- include views/paginator.html -%}
+  {%- endif -%}
+
+</div>
+
+{%- comment -%} 박스(.pagination, z-index 1) 밖에 둔다: 안에 두면 그 쌓임 맥락에 갇혀 푸터가 올라올 때 뒤로 가려진다 {%- endcomment -%}
+<div class="panel-nav" aria-label="Panels">
+  <button type="button" class="panel-nav-prev" aria-label="Previous panel"><i class="fa-solid fa-arrow-up"></i></button>
+  <button type="button" class="panel-nav-next" aria-label="Next panel"><i class="fa-solid fa-arrow-down"></i></button>
+</div>
+{%- endif -%}

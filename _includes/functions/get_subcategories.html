@@ -1,0 +1,14 @@
+{% assign split_mark = '<|>' %}
+
+{% assign subcategories = '' %}
+{% for post in site.posts %}
+  {% for subcategory in post.subcategories %}
+    {% assign subcategories = subcategories | append: split_mark | append: subcategory %}
+  {% endfor %}
+{% endfor %}
+
+{% assign return = subcategories
+  | remove_first: split_mark
+  | split: split_mark
+  | uniq
+  | sort: self %}
